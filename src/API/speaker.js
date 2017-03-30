@@ -14,7 +14,6 @@ let getSpeaker = (speakerId) => {
         let body = JSON.parse(response.body);
 
         return {
-            //speaker object
             bio: body.bio,
             firstName: body.firstName,
             lastName: body.lastName,
