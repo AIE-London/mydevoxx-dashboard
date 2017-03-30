@@ -43,4 +43,8 @@ let getSpeaker = (speakerId) => {
 let parseTrack = (track) => {
     return track.split(",").map((item) => {
         return item.trim()});
-}
+};
+
+module.exports = {
+    getSpeaker: getSpeaker
+};
