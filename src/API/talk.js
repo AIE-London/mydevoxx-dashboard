@@ -1,4 +1,12 @@
-const endpoint = "http://cfp.devoxx.co.uk/api/conferences/DV17/talks/";
+let endpoint = "http://cfp.devoxx.co.uk/api/conferences/DV17/talks/";
+
+/**
+ * Use a mocked endpoint
+ */
+if (process.env.NODE_ENV != "production"){
+    console.log("Not in production, using mocked endpoint");
+    endpoint = "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/talks/"; // Only works with talkId JWG-0522
+}
 
 /**
  * Get a talk by it's Id
@@ -54,4 +62,8 @@ let parseSpeakers = (speakers) -> {
  */
 let getSpeakerIdFromUrl = (url) => {
     return url.slice(url.lastIndexOf("/") + 1).trim();
+};
+
+module.exports = {
+    getTalk: getTalk
 };
