@@ -1,6 +1,11 @@
+import request from 'then-request';
+
 let speakerEndpoint = "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/";
 const mockSpeakerEndpoint = "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/speakers/";
 
+/**
+ * Use mock endpoint outside of live
+ */
 if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0){
     speakerEndpoint = mockSpeakerEndpoint;
 }
@@ -13,10 +18,8 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0){
  *          acceptedTalks[acceptedTalks], links, talkType, track[track], talkId, talkTitle}
  */
 let getSpeaker = (speakerId) => {
-    return fetch(speakerEndpoint + speakerId, {
-        method: 'GET'
-    }).then((response) => {
-        let body = JSON.parse(response.body);
+    return request('GET', speakerEndpoint + speakerId).then((response) => {
+        let body = JSON.parse(response.getBody());
         return {
             bio: body.bio,
             firstName: body.firstName,
@@ -41,11 +44,15 @@ let getSpeaker = (speakerId) => {
  * @param track
  * @returns {Array}
  */
-let parseTrack = (track) => {
-    return track.split(",").map((item) => {
-        return item.trim()});
+let parseTrack = (tracks) => {
+    let result = [];
+    if (tracks) {
+        result = tracks.split(",").map((item) => {return item.trim()});
+    }
+    return result;
 };
 
 export default {
-    getSpeaker: getSpeaker
+    getSpeaker: getSpeaker,
+    parseTrack: parseTrack
 };
