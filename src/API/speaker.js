@@ -6,7 +6,7 @@ const mockSpeakerEndpoint = "https://aston-wiremock.eu-gb.mybluemix.net/api/conf
 /**
  * Use mock endpoint outside of live
  */
-if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0){
+if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
     speakerEndpoint = mockSpeakerEndpoint;
 }
 
