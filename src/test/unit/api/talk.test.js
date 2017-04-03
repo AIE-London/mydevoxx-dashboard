@@ -1,4 +1,4 @@
-import talk from "../../API/talk";
+import talk from "../../../main/api/talk";
 
 describe('parseTracks', () => {
 
@@ -51,36 +51,6 @@ describe('getSpeakerIdFromUrl', () => {
         } catch (error){
             expect(error.name).toEqual('InvalidURLException');
         }
-    });
-
-});
-
-describe('getTalk', () => {
-
-    it('should get a talk with a valid id', () => {
-        return talk.getTalk("JWG-0522").then((result) => {
-            expect(result.id).toEqual("JWG-0522");
-        }).catch((error) => {
-            expect(true).toBe(false);
-        })
-    });
-
-    it('should get a talk with an invalid id', () => {
-        return talk.getTalk("JWG-0523")
-        .then((result) => {
-            expect(true).toEqual(false);
-        }).catch((error) => {
-            expect(error.name).toEqual("Error");
-        });
-    });
-
-    it('should get a talk with an invalid id', () => {
-        return talk.getTalk().then((result) => {
-            expect(true).toEqual(false);
-        }).catch((error) => {
-            console.log("helllo");
-            expect(error.name).toEqual("Error");
-        });
     });
 
 });
