@@ -1,4 +1,4 @@
-import speaker from "../../../api/speaker";
+import speaker from "../../../main/api/speaker";
 
 test('speaker integration test', () => {
     describe('parseTrack', () => {
