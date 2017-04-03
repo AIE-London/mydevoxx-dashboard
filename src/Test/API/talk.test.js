@@ -1,4 +1,4 @@
-import talk from "../../API/talk";
+import talk from "../../main/api/talk";
 
 describe('parseTracks', () => {
 
