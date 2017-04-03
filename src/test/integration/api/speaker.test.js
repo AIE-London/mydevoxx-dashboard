@@ -1,4 +1,4 @@
-import speaker from "../../../main/api/speaker";
+import speaker from "../../../api/speaker";
 
 test('speaker integration test', () => {
 
