@@ -10,7 +10,6 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "jest": "^19.0.2",
     "react-scripts": "0.9.5"
   },
   "scripts": {
