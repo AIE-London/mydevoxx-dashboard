@@ -45,17 +45,17 @@ class reportStats extends React.Component {
                 <Row center="xs">
                     <Col xs={10}>
 
-                        <StatHeader>I spent <Orange>450 minutes</Orange></StatHeader>
+                        <StatHeader>I spent <Orange>{this.props.minutes} minutes</Orange></StatHeader>
 
-                        <StatValue>Attending <Orange>9 Talks</Orange></StatValue>
+                        <StatValue>Attending <Orange>{this.props.talks} talks</Orange></StatValue>
 
                         <StatHeader>Learning what's new in...</StatHeader>
 
-                        <StatValue>JavaScript, Java, Polymer </StatValue>
+                        <StatValue>{this.props.learning} </StatValue>
 
                         <StatHeader>Networking with</StatHeader>
 
-                        <StatValue> <Orange>300</Orange> Attendees</StatValue>
+                        <StatValue> <Orange>{this.props.attendees}</Orange> Attendees</StatValue>
 
                     </Col>
                 </Row>
