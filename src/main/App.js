@@ -9,7 +9,7 @@ class App extends Component {
       <div className="App">
         <Row center="xs">
           <Col xs={10}>
-            <TalkCard></TalkCard>
+            <TalkCard title="Welcome to Devoxx 2017"></TalkCard>
           </Col>
         </Row>
       </div>

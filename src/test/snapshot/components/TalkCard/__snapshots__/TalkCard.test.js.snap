@@ -1,0 +1,17 @@
+exports[`test card component 1`] = `
+<div
+  className="bZpqYG">
+  <h2
+    id="title">
+    Welcome to Devoxx
+  </h2>
+  <p
+    className="App-intro">
+    To get started, edit 
+    <code>
+      src/App.js
+    </code>
+     and save to reload.
+  </p>
+</div>
+`;
