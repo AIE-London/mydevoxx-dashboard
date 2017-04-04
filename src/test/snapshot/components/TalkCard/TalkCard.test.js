@@ -21,4 +21,4 @@ test('card component with title snapshot', () => {
   ).toJSON();
   expect(tree).toMatchSnapshot();
 
-});
+});  

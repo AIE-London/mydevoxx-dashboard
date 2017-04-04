@@ -1,17 +1,62 @@
-exports[`test card component 1`] = `
+exports[`test card component with title snapshot 1`] = `
 <div
-  className="bZpqYG">
-  <h2
-    id="title">
-    Welcome to Devoxx
-  </h2>
-  <p
-    className="App-intro">
-    To get started, edit 
-    <code>
-      src/App.js
-    </code>
-     and save to reload.
-  </p>
+  className="bvnlUe row"
+  left="xs">
+  <div
+    className="col-xs-6 fteZLe">
+    <div
+      className="row"
+      left="xs">
+      <h2
+        className="dwcXfU"
+        id="title">
+        Welcome to Devoxx
+      </h2>
+    </div>
+    <p
+      className="App-intro">
+      To get started, edit 
+      <code>
+        src/App.js
+      </code>
+       and save to reload.
+    </p>
+  </div>
+  <div
+    className="col-xs-6 eZvXOT">
+    <div
+      className="row"
+      left="xs">
+      <h3
+        className="jJURiy"
+        id="notesHeader">
+        My Notes
+      </h3>
+    </div>
+    <div
+      className="row"
+      left="xs">
+      <p
+        className="cDpRHH">
+        Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer nec. Feugiat qualisque quo an. Labores officiis te nam.
+      </p>
+    </div>
+    <div
+      className="row"
+      left="xs">
+      <h3
+        className="jJURiy"
+        id="notesHeader">
+        My Reviews
+      </h3>
+    </div>
+    <div
+      className="row"
+      left="xs">
+      <p>
+        Feugiat qualisque quo an. Labores officiis te nam.
+      </p>
+    </div>
+  </div>
 </div>
 `;
