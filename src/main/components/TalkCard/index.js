@@ -1,21 +1,24 @@
+/**
+ * Created by dan on 04/04/2017.
+ */
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Card from '../Card';
+import logo from '../../logo.svg';
 
-class App extends Component {
+class TalkCard extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
+      <Card>
+        <divgit st>
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
-        </div>
+        </divgit>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-      </div>
+      </Card>
     );
   }
 }
 
-export default App;
+export default TalkCard;
