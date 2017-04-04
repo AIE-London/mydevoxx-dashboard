@@ -51,26 +51,27 @@ const CardNotes = styled(CardParagraph)`
 
 class TalkCard extends Component {
   render() {
+    let {title, rating, description, topTracks, notes} = this.props.talk;
     return (
       <Card start="xs">
         <LeftPartition xs={6}>
           <Row start="xs">
-            <CardHeader id="title">{ this.props.title }</CardHeader>
+            <CardHeader id="title">{ title }</CardHeader>
           </Row>
           <Row end="xs">
-            <StarRating rating="4"></StarRating>
+            <StarRating rating={rating}></StarRating>
           </Row>
           <CardParagraph>
-            Join the organisers of Devoxx UK and great keynote speakers for inspring stories in 20 minute segments.
+            {description}
           </CardParagraph>
           <Row>
             <CardSubhead>Top Tracks</CardSubhead>
           </Row>
           <Row>
             <CommaList>
-              <CommaListItem>Java</CommaListItem>
-              <CommaListItem>Devoxx</CommaListItem>
-              <CommaListItem>Spring</CommaListItem>
+              {topTracks.map(trackName => (
+                <CommaListItem key={trackName}>{trackName}</CommaListItem>
+              ))}
             </CommaList>
           </Row>
         </LeftPartition>
@@ -79,7 +80,7 @@ class TalkCard extends Component {
             <CardSubhead id="notesHeader">My Notes</CardSubhead>
           </Row>
           <Row start="xs">
-            <CardNotes>Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer nec. Feugiat qualisque quo an. Labores officiis te nam.</CardNotes>
+            <CardNotes>{notes}</CardNotes>
           </Row>
           <Row start="xs">
             <CardSubhead id="notesHeader">My Reviews</CardSubhead>

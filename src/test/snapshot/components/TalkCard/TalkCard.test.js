@@ -6,6 +6,22 @@ import ReactDOM from 'react-dom';
 import TalkCard from '../../../../main/components/TalkCard/';
 import renderer from 'react-test-renderer';
 
+
+const talkData = {
+  title: 'Welcome to Devoxx',
+  description: 'Join the organisers of Devoxx UK and great keynote ' +
+  'speakers for inspring stories in 20 minutes.',
+  rating: 3,
+  topTracks: [
+    'Devoxx',
+    'SpringBoot',
+  ],
+  notes: 'Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos ' +
+  'volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer' +
+  ' nec. Feugiat qualisque quo an. Labores officii.'
+};
+
+
 test('card component', () => {
 
   it('renders without crashing', () => {
@@ -17,8 +33,8 @@ test('card component', () => {
 test('card component with title snapshot', () => {
 
   const tree = renderer.create(
-    <TalkCard title="Welcome to Devoxx" />
+    <TalkCard talk={talkData} />
   ).toJSON();
   expect(tree).toMatchSnapshot();
 
-});  
+});
