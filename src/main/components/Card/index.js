@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import {Col} from 'react-flexbox-grid';
 
 const Card = styled(Col)`
-  background: #fff;
+  background: #FAFAFA;
   border-radius: 2px;
   padding: 0;
   box-sizing: border-box;
