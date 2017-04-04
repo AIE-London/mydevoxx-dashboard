@@ -69,9 +69,9 @@ class StarRating extends Component {
     var stars = [];
     for(var i = 1; i <= 5; i++) {
       if (i <= rating){
-        stars.push(<ActiveStar/>);
+        stars.push(<ActiveStar key={i}/>);
       } else {
-        stars.push(<Star/>);
+        stars.push(<Star key={i}/>);
       }
     }
     return stars;

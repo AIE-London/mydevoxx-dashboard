@@ -8,10 +8,27 @@ exports[`test card component with title snapshot 1`] = `
       className="row"
       left="xs">
       <h2
-        className="dwcXfU"
+        className="Axdp"
         id="title">
         Welcome to Devoxx
       </h2>
+    </div>
+    <div
+      className="row end-xs">
+      <div
+        className="row"
+        left="xs">
+        <div
+          className="kmDnAn" />
+        <div
+          className="kmDnAn" />
+        <div
+          className="kmDnAn" />
+        <div
+          className="kmDnAn" />
+        <div
+          className="cWcebC" />
+      </div>
     </div>
     <p
       className="App-intro">

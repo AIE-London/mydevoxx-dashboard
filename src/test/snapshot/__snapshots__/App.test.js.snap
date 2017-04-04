@@ -20,10 +20,27 @@ exports[`test app component snapshot 1`] = `
             className="row"
             left="xs">
             <h2
-              className="dwcXfU"
+              className="Axdp"
               id="title">
               Welcome to Devoxx 2017
             </h2>
+          </div>
+          <div
+            className="row end-xs">
+            <div
+              className="row"
+              left="xs">
+              <div
+                className="kmDnAn" />
+              <div
+                className="kmDnAn" />
+              <div
+                className="kmDnAn" />
+              <div
+                className="kmDnAn" />
+              <div
+                className="cWcebC" />
+            </div>
           </div>
           <p
             className="App-intro">
