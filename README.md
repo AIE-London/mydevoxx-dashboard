@@ -6,13 +6,18 @@ Below is the candidate folder structure
 
 - public
 - src
-    - Actions
-    - Components
-    - Containers
-    - Reducers
-    - Store
-    - API
-    - Test
-        - Components
-        - Reducers
-        - API
+    - main
+        - actions
+        - components
+        - containers
+        - reducers
+        - store
+        - api
+    - test
+        - integration
+            - api
+        - unit
+            - reducers
+            - api
+        - snapshot
+            - components
