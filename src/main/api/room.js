@@ -10,7 +10,11 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
     roomEndpoint = mockRoomEndpoint;
 }
 
-
+/**
+ * Get array of rooms available at the conference
+ *
+ * @returns {Array}
+ */
 let getRooms = () => {
   return request('GET', roomEndpoint).then((response) => {
       let body = JSON.parse(response.body);
