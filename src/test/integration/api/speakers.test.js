@@ -1,16 +1,26 @@
 import speakers from "../../../main/api/speakers";
 import wireMockAPI from "./wiremock/wiremock-api";
 import speakersMapping from "./wiremock/mappings/speakers";
-import notFound from "./wiremock/mappings/404";
+import notFound from "./wiremock/mappings/notFoundSpeakers";
 
+/**
+ * Set up wiremock with normal room api response
+ */
 let normalSetup = () => {
     return wireMockAPI.postMapping(speakersMapping);
 };
 
+/**
+ * Set up wiremock with 404 response
+ */
 let notFoundSetup = () => {
     return wireMockAPI.postMapping(notFound);
 };
 
+/**
+ * <if> wiremock is trained with a speakers response list -> returns speaker list
+ * <else> wiremock is trained with a 404 response -> returns 404
+ */
 describe('getSpeakers', () => {
     it('should work return data and handles a 404', () => {
         return normalSetup() // Setup mock for positive test

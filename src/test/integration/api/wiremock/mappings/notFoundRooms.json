@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "url": "/api/conferences/DV17/speakers"
+    "url": "/api/conferences/DV17/rooms/"
   },
   "response": {
     "status": 404,
