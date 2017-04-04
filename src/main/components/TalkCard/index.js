@@ -6,6 +6,7 @@ import Card from '../Card';
 import styled from 'styled-components';
 import {Col, Row} from 'react-flexbox-grid';
 
+import {CommaList, CommaListItem} from '../CommaList';
 import StarRating from '../StarRating';
 
 /**
@@ -48,31 +49,12 @@ const CardNotes = styled(CardParagraph)`
   font-size: 0.9em;
 `;
 
-const CommaList = styled.ul`
-  opacity: 0.6;
-  padding: 0;
-  padding-left: 0.5em;
-  display: inline;
-  list-style: none;
-`;
-
-const CommaListItem = styled.li`
-  display: inline-block;
-  margin-right: 0.5em;
-  &:after {
-    content: ", ";
-  }
-  &:last-child:after {
-    content: "";
-  }
-`;
-
 class TalkCard extends Component {
   render() {
     return (
-      <Card left="xs">
+      <Card start="xs">
         <LeftPartition xs={6}>
-          <Row left="xs">
+          <Row start="xs">
             <CardHeader id="title">{ this.props.title }</CardHeader>
           </Row>
           <Row end="xs">
@@ -93,16 +75,16 @@ class TalkCard extends Component {
           </Row>
         </LeftPartition>
         <RightPartition xs={6}>
-          <Row left="xs">
+          <Row start="xs">
             <CardSubhead id="notesHeader">My Notes</CardSubhead>
           </Row>
-          <Row left="xs">
+          <Row start="xs">
             <CardNotes>Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer nec. Feugiat qualisque quo an. Labores officiis te nam.</CardNotes>
           </Row>
-          <Row left="xs">
+          <Row start="xs">
             <CardSubhead id="notesHeader">My Reviews</CardSubhead>
           </Row>
-          <Row left="xs">
+          <Row start="xs">
             <p>Feugiat qualisque quo an. Labores officiis te nam.</p>
           </Row>
         </RightPartition>
