@@ -1,0 +1,47 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/conferences/DV17/rooms",
+    "response": {
+      "status": 200,
+      "jsonBody": [
+        {
+          "content": "All rooms",
+          "rooms": [
+            {
+              "name": "Room 8",
+              "id": "room8",
+              "recorded": true,
+              "setup": "theatre",
+              "capacity": 745
+            },
+            {
+              "name": "Room 5",
+              "id": "room5",
+              "recorded": true,
+              "setup": "theatre",
+              "capacity": 684
+            },
+            {
+              "name": "Room 9",
+              "id": "room9",
+              "recorded": true,
+              "setup": "theatre",
+              "capacity": 425
+            },
+            {
+              "name": "Room 6",
+              "id": "room6",
+              "recorded": true,
+              "setup": "theatre",
+              "capacity": 407
+            }
+          ]
+        }
+      ],
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    }
+  }
+}

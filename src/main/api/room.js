@@ -19,7 +19,7 @@ let getRooms = () => {
   return request('GET', roomEndpoint).then((response) => {
       let body = JSON.parse(response.body);
 
-      return body.map((item) => {
+      var roomMappingResult = body.map((item) => {
           return {
               id: item.rooms[0].id,
               name: item.rooms[0].name,
@@ -28,6 +28,10 @@ let getRooms = () => {
               recorded: item.rooms[0].recorded
           }
       });
+      return roomMappingResult;
   });
 };
 
+export default {
+    getRoom: getRoom
+}
