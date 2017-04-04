@@ -3,8 +3,8 @@
  */
 import request from 'then-request';
 
-let endpoint = "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers";
-const mockEndpoint = "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/speakers";
+let endpoint = "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/";
+const mockEndpoint = "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/speakers/";
 
 if ( ["production", "integration"].indexOf(process.env.NODE_ENV) < 0){
     endpoint = mockEndpoint;

@@ -1,7 +1,7 @@
-import room from "../../../main/api/room";
+import room from "../../../main/api/rooms";
 import wiremockAPI from "./wiremock/wiremock-api";
-import roomMapping from "./wiremock/mappings/room"
-import notFound from "./wiremock/mappings/404";
+import roomMapping from "./wiremock/mappings/rooms"
+import notFound from "./wiremock/mappings/notFoundRooms.json";
 
 /**
  * Set up wiremock with normal room api response
@@ -23,19 +23,20 @@ let notFoundSetup = () => {
  */
 describe('getRooms', () => {
     it('should return room data and handle a 404', () => {
-        return normalSetup().then(room.getRoom).then((result) => {
+        return normalSetup().then(room.getRooms).then((result) => {
             expect(result[0]).toEqual({
-                name: "Room 8",
-                id: "room8",
-                recorded: true,
-                setup: "theatre",
-                capacity: "745"
+                id: 'a_gallery_hall',
+                name: 'Gallery Hall',
+                capacity: 1500,
+                setup: 'special',
+                recorded: undefined
             })
         }, (error) => {
             expect(true).toBe(false);
-        }).then(notFoundSetup).then(room.getRoom).then((result) => {
+        }).then(notFoundSetup).then(room.getRooms).then((result) => {
             expect(true).toBe(false);
         }).catch((error) => {
+            console.log(error);
             if (error.statusCode) {
                 expect(error.statusCode).toBe(404);
             } else {

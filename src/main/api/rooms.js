@@ -17,21 +17,23 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
  */
 let getRooms = () => {
   return request('GET', roomEndpoint).then((response) => {
-      let body = JSON.parse(response.body);
 
-      var roomMappingResult = body.map((item) => {
+      let body = JSON.parse(response.getBody());
+
+      var roomMappingResult = body.rooms.map((item) => {
           return {
-              id: item.rooms[0].id,
-              name: item.rooms[0].name,
-              capacity: item.rooms[0].capacity,
-              setup: item.rooms[0].setup,
-              recorded: item.rooms[0].recorded
+              id: item.id,
+              name: item.name,
+              capacity: item.capacity,
+              setup: item.setup,
+              recorded: item.recorded
           }
       });
+
       return roomMappingResult;
   });
 };
 
 export default {
-    getRoom: getRoom
+    getRooms: getRooms
 }
