@@ -2,7 +2,7 @@
  * Created by SCMORETO on 30/03/2017.
  */
 
-import speakers from "../../API/speakers";
+import speakers from "../../../main/api/speakers";
 
 
 describe('getSpeakers', () => {
