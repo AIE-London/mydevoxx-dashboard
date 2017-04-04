@@ -41,7 +41,30 @@ const CardParagraph = styled.p`
   padding-left: 1.5em;
   padding-top: 0;
   opacity: 0.6;
+  text-align: left;
+`;
+
+const CardNotes = styled(CardParagraph)`
   font-size: 0.9em;
+`;
+
+const CommaList = styled.ul`
+  opacity: 0.6;
+  padding: 0;
+  padding-left: 0.5em;
+  display: inline;
+  list-style: none;
+`;
+
+const CommaListItem = styled.li`
+  display: inline-block;
+  margin-right: 0.5em;
+  &:after {
+    content: ", ";
+  }
+  &:last-child:after {
+    content: "";
+  }
 `;
 
 class TalkCard extends Component {
@@ -55,16 +78,26 @@ class TalkCard extends Component {
           <Row end="xs">
             <StarRating rating="4"></StarRating>
           </Row>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
+          <CardParagraph>
+            Join the organisers of Devoxx UK and great keynote speakers for inspring stories in 20 minute segments.
+          </CardParagraph>
+          <Row>
+            <CardSubhead>Top Tracks</CardSubhead>
+          </Row>
+          <Row>
+            <CommaList>
+              <CommaListItem>Java</CommaListItem>
+              <CommaListItem>Devoxx</CommaListItem>
+              <CommaListItem>Spring</CommaListItem>
+            </CommaList>
+          </Row>
         </LeftPartition>
         <RightPartition xs={6}>
           <Row left="xs">
             <CardSubhead id="notesHeader">My Notes</CardSubhead>
           </Row>
           <Row left="xs">
-            <CardParagraph>Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer nec. Feugiat qualisque quo an. Labores officiis te nam.</CardParagraph>
+            <CardNotes>Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer nec. Feugiat qualisque quo an. Labores officiis te nam.</CardNotes>
           </Row>
           <Row left="xs">
             <CardSubhead id="notesHeader">My Reviews</CardSubhead>
