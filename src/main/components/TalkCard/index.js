@@ -6,6 +6,8 @@ import Card from '../Card';
 import styled from 'styled-components';
 import {Col, Row} from 'react-flexbox-grid';
 
+import StarRating from '../StarRating';
+
 /**
  *  Styled Components
  */
@@ -13,6 +15,7 @@ const CardHeader = styled.h2`
   font-family: Helvetica;
   font-weight: 500;
   font-size: 2em;
+  margin-bottom: 0;
 `;
 
 const CardSubhead = styled.h3`
@@ -48,6 +51,9 @@ class TalkCard extends Component {
         <LeftPartition xs={6}>
           <Row left="xs">
             <CardHeader id="title">{ this.props.title }</CardHeader>
+          </Row>
+          <Row end="xs">
+            <StarRating rating="4"></StarRating>
           </Row>
           <p className="App-intro">
             To get started, edit <code>src/App.js</code> and save to reload.
