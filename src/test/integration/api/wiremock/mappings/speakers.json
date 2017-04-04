@@ -1,0 +1,998 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/conferences/DV17/speakers"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": [{
+      "uuid": "695b40d928dd0a905b7ab1b900b5a5752870a7d8",
+      "company": "Ranger4",
+      "lastName": "Beal",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/695b40d928dd0a905b7ab1b900b5a5752870a7d8",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Helen Beal"
+      }],
+      "firstName": "Helen",
+      "avatarURL": "https://media.licdn.com/media/p/2/000/10f/320/3b9da1f.jpg",
+      "twitter": "@helenranger4"
+    }, {
+      "uuid": "36b84431383f74bcfe3f456d179363e282fe79eb",
+      "company": "Voxxed",
+      "lastName": "Beaumont",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/36b84431383f74bcfe3f456d179363e282fe79eb",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Katharine Beaumont"
+      }],
+      "firstName": "Katharine",
+      "avatarURL": "https://lh3.googleusercontent.com/-LKKRuOK-LEs/WFJql5AwQII/AAAAAAAAABA/JpGn12PingIQF-w6gJKaiKMYD3COD5ihgCEw/w140-h140-p/Screen%2BShot%2B2016-11-11%2Bat%2B17.04.51.png",
+      "twitter": "@katharineCodes"
+    }, {
+      "uuid": "7ad3a3fbce212fb6311fb97ddfd88b930339fbeb",
+      "company": null,
+      "lastName": "Bhasin",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/7ad3a3fbce212fb6311fb97ddfd88b930339fbeb",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Krishan Bhasin"
+      }],
+      "firstName": "Krishan",
+      "avatarURL": "https://pbs.twimg.com/profile_images/820022399437508608/ouCxWPyB.jpg",
+      "twitter": "@KrishBhasin"
+    }, {
+      "uuid": "c7ef9ab5f69b25bb242f96b52df25ba9daee8d66",
+      "company": "Google",
+      "lastName": "Bhatnagar",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/c7ef9ab5f69b25bb242f96b52df25ba9daee8d66",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Prateek Bhatnagar"
+      }],
+      "firstName": "Prateek",
+      "avatarURL": "https://avatars1.githubusercontent.com/u/5960497?v=3&s=150",
+      "twitter": "@_prateekbh"
+    }, {
+      "uuid": "b1e584483fd5638460a39fea972c4461e4e754bd",
+      "company": "CGI",
+      "lastName": "Chatzizacharias",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/b1e584483fd5638460a39fea972c4461e4e754bd",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Alexander Chatzizacharias"
+      }],
+      "firstName": "Alexander",
+      "avatarURL": "https://s.gravatar.com/avatar/4badd9a4e892c77cb6f8ffc407d074f9?s=80",
+      "twitter": "@alex90_ch"
+    }, {
+      "uuid": "498f4766fd1b8c50f4dd6aa45def8e79caea86ff",
+      "company": "IBM",
+      "lastName": "Cheeseman",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/498f4766fd1b8c50f4dd6aa45def8e79caea86ff",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Paul Cheeseman"
+      }],
+      "firstName": "Paul",
+      "avatarURL": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/4/005/0b5/393/2a9e05c.jpg",
+      "twitter": null
+    }, {
+      "uuid": "46e1c9fc439648827c7b7ce3a4d6fa50120bf439",
+      "company": "IBM",
+      "lastName": "Chughtai",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/46e1c9fc439648827c7b7ce3a4d6fa50120bf439",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Soheel Chughtai"
+      }],
+      "firstName": "Soheel",
+      "avatarURL": "http://www.gravatar.com/avatar/cd25f91f7b779960921e778a502ced1c",
+      "twitter": "@chughts"
+    }, {
+      "uuid": "8bbbc23017292ae6803c0c9c2533e8c91b358def",
+      "company": "Raytheon",
+      "lastName": "Clown",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/8bbbc23017292ae6803c0c9c2533e8c91b358def",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Freaky Clown"
+      }],
+      "firstName": "Freaky",
+      "avatarURL": "https://pbs.twimg.com/profile_images/829973844018548736/gfOvjHnD_400x400.jpg",
+      "twitter": "@__freakyclown__"
+    }, {
+      "uuid": "aab8f731e4c58f1a5659053edf391ff7dd47c72d",
+      "company": "Tomitribe",
+      "lastName": "Cortez",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/aab8f731e4c58f1a5659053edf391ff7dd47c72d",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Roberto Cortez"
+      }],
+      "firstName": "Roberto",
+      "avatarURL": "http://www.gravatar.com/avatar/d9a06fda174419c0dffb982f226518c2",
+      "twitter": "@radcortez"
+    }, {
+      "uuid": "5d2cbedf9bed3fd8b1b602bee35bdeb6d6a46a2b",
+      "company": "Microsoft",
+      "lastName": "Davies",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/5d2cbedf9bed3fd8b1b602bee35bdeb6d6a46a2b",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Giles Davies"
+      }],
+      "firstName": "Giles",
+      "avatarURL": "https://d8142femxnlg1.cloudfront.net/cropped-profile-photos/19ddfac6d91593e2c43565df1b5234af628dc804-t640.jpeg",
+      "twitter": "@VisualStudioUK"
+    }, {
+      "uuid": "8f4a4d8aeab3d8b0e32ceb4a7052794ec85c6d34",
+      "company": "Red Hat",
+      "lastName": "Escoffier",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/8f4a4d8aeab3d8b0e32ceb4a7052794ec85c6d34",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Clement Escoffier"
+      }],
+      "firstName": "Clement",
+      "avatarURL": "https://avatars0.githubusercontent.com/u/402301?v=3&s=460",
+      "twitter": "@clementplop"
+    }, {
+      "uuid": "266563da6e996fe854975a6553f667eababd0673",
+      "company": "CloudBees",
+      "lastName": "Farcic",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/266563da6e996fe854975a6553f667eababd0673",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Viktor Farcic"
+      }],
+      "firstName": "Viktor",
+      "avatarURL": "https://technologyconversations.files.wordpress.com/2013/11/portrait.jpg",
+      "twitter": "@vfarcic"
+    }, {
+      "uuid": "8a31c5e6ae6f6fa6abf29ff0a36177ea97b0c1a1",
+      "company": "Red Hat",
+      "lastName": "Finnigan",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/8a31c5e6ae6f6fa6abf29ff0a36177ea97b0c1a1",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Ken Finnigan"
+      }],
+      "firstName": "Ken",
+      "avatarURL": "https://lh5.googleusercontent.com/-F6m6WTyd4P4/AAAAAAAAAAI/AAAAAAAAAHY/0Fbvik-T-b4/photo.jpg",
+      "twitter": "@kenfinnigan"
+    }, {
+      "uuid": "6712ee0b7da52931c1144557040e96a23cab6906",
+      "company": "United Nations et al.",
+      "lastName": "Fiorentino lo Regio",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/6712ee0b7da52931c1144557040e96a23cab6906",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Davide Fiorentino lo Regio"
+      }],
+      "firstName": "Davide",
+      "avatarURL": "https://lh3.googleusercontent.com/-SIaqc4Szg7g/AAAAAAAAAAI/AAAAAAAADk0/cyugxWa787k/photo.jpg",
+      "twitter": "@daftano"
+    }, {
+      "uuid": "263ad216d8eadae53c6cc3756c5dca69b619cc23",
+      "company": "Google",
+      "lastName": "Fluin",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/263ad216d8eadae53c6cc3756c5dca69b619cc23",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Stephen Fluin"
+      }],
+      "firstName": "Stephen",
+      "avatarURL": "https://fluin.io/assets/speaker.jpg",
+      "twitter": "stephenfluin"
+    }, {
+      "uuid": "fa0598aeeb349074d506d5851512af57533abcc8",
+      "company": "Red Hat",
+      "lastName": "Fusco",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/fa0598aeeb349074d506d5851512af57533abcc8",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Mario Fusco"
+      }],
+      "firstName": "Mario",
+      "avatarURL": "https://pbs.twimg.com/profile_images/758704602812452864/_U-PR9S0.jpg",
+      "twitter": "@mariofusco"
+    }, {
+      "uuid": "71c6277f89ecef8f79c48056442244326a791ace",
+      "company": "Tomitribe",
+      "lastName": "Gallimore",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/71c6277f89ecef8f79c48056442244326a791ace",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Jonathan Gallimore"
+      }],
+      "firstName": "Jonathan",
+      "avatarURL": "https://avatars3.githubusercontent.com/u/548624?v=3&s=460",
+      "twitter": "@jongallimore"
+    }, {
+      "uuid": "154d6113c0291792412bd5eae51894fdf3ba823a",
+      "company": "JetBrains",
+      "lastName": "Gee",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/154d6113c0291792412bd5eae51894fdf3ba823a",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Trisha Gee"
+      }],
+      "firstName": "Trisha",
+      "avatarURL": "https://lh4.googleusercontent.com/-gCjf_lruZFA/U_N8JSJygUI/AAAAAAAAPgo/81X4YxpLlXQ/w620-h712-no/_bnj8631-1000px.jpg",
+      "twitter": "@trisha_gee"
+    }, {
+      "uuid": "ba3745ebd8f8f01ee61468be59d26faeadcb739f",
+      "company": "Baqend",
+      "lastName": "Gessert",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/ba3745ebd8f8f01ee61468be59d26faeadcb739f",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Felix Gessert"
+      }],
+      "firstName": "Felix",
+      "avatarURL": "https://www.dropbox.com/s/nzhdzh2ef9njtvp/felix.jpg?dl=1",
+      "twitter": "@Baqendcom"
+    }, {
+      "uuid": "286c8e3ad0804742a1c2fd4c624cf0a0aeeb53ef",
+      "company": "MapR",
+      "lastName": "Grall",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/286c8e3ad0804742a1c2fd4c624cf0a0aeeb53ef",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Tugdual Grall"
+      }],
+      "firstName": "Tugdual",
+      "avatarURL": "http://www.gravatar.com/avatar/aab9ac774f61c5d9bf143b5a1bfe901b",
+      "twitter": "@tgrall"
+    }, {
+      "uuid": "a3eb424741797e4c4b7518bf6fe5176957431974",
+      "company": "Red Hat",
+      "lastName": "Grinovero",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/a3eb424741797e4c4b7518bf6fe5176957431974",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Sanne Grinovero"
+      }],
+      "firstName": "Sanne",
+      "avatarURL": "http://www.gravatar.com/avatar/57637a2eb871b34eba14e700c78c6a5d",
+      "twitter": "SanneGrinovero"
+    }, {
+      "uuid": "9c65ffc560d56bc8d6e488e51decc2e2461eb074",
+      "company": "Gradle Inc",
+      "lastName": "Groeschke",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/9c65ffc560d56bc8d6e488e51decc2e2461eb074",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Rene Groeschke"
+      }],
+      "firstName": "Rene",
+      "avatarURL": "http://www.gravatar.com/avatar/5fae5a7bec8d50aca266e84001d29063",
+      "twitter": "@breskeby"
+    }, {
+      "uuid": "69e5596a50112585d5acdb93e0a4da47a10a6a8d",
+      "company": "Couchbase",
+      "lastName": "Gupta",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/69e5596a50112585d5acdb93e0a4da47a10a6a8d",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Arun Gupta"
+      }],
+      "firstName": "Arun",
+      "avatarURL": "https://lh6.googleusercontent.com/-gon2JtIuiqI/AAAAAAAAAAI/AAAAAAAAmu8/ejVmjY9FgKY/photo.jpg",
+      "twitter": "@arungupta"
+    }, {
+      "uuid": "9b785d9ed9525f8ad2f17297918134aac34b1aa6",
+      "company": "Adaptavist",
+      "lastName": "Hardiker",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/9b785d9ed9525f8ad2f17297918134aac34b1aa6",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Dan Hardiker"
+      }],
+      "firstName": "Dan",
+      "avatarURL": "http://www.adaptavist.com/w/wp-content/assets/dan-hardiker-cto.jpg",
+      "twitter": "@dhardiker"
+    }, {
+      "uuid": "3945c5b4786dd15e37d9005fcba3c8b4be9792f5",
+      "company": "Intechrity Ltd",
+      "lastName": "Heap",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/3945c5b4786dd15e37d9005fcba3c8b4be9792f5",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Michael Heap"
+      }],
+      "firstName": "Michael",
+      "avatarURL": "http://www.gravatar.com/avatar/bbf9decfbfc2ab5b450ec503749ded28",
+      "twitter": "@mheap"
+    }, {
+      "uuid": "f613f46254bb4cccbf688e43b01b2933677eb070",
+      "company": "Pivotal",
+      "lastName": "Heckler",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/f613f46254bb4cccbf688e43b01b2933677eb070",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Mark Heckler"
+      }],
+      "firstName": "Mark",
+      "avatarURL": "http://www.gravatar.com/avatar/394797f95420c4da4c84379f0d0b11c9",
+      "twitter": "@MkHeck"
+    }, {
+      "uuid": "55718f7a7b317aa6799f2107b85293c9236e0fc3",
+      "company": "Google",
+      "lastName": "Hoffa",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/55718f7a7b317aa6799f2107b85293c9236e0fc3",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Felipe Hoffa"
+      }],
+      "firstName": "Felipe",
+      "avatarURL": "https://lh6.googleusercontent.com/-x0g6DqAqF7U/UiaF4kusPkI/AAAAAAAAxG0/SKph0J0fF6s/s723-no/FelipeHoffa174.jpg",
+      "twitter": "@felipehoffa"
+    }, {
+      "uuid": "6e39c3f790deebba5070c3ba73e29b923ce4bfa9",
+      "company": "Min Doktor",
+      "lastName": "Hofvander",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/6e39c3f790deebba5070c3ba73e29b923ce4bfa9",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Siren Hofvander"
+      }],
+      "firstName": "Siren",
+      "avatarURL": "http://techworld.idg.se/polopoly_fs/1.605228!imageManager/351544119.jpg",
+      "twitter": "@securitypony"
+    }, {
+      "uuid": "9e3f44824d7d7714c6b4f7a1346f9c867c5b72c7",
+      "company": "Info Support",
+      "lastName": "Janssen",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/9e3f44824d7d7714c6b4f7a1346f9c867c5b72c7",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Johan Janssen"
+      }],
+      "firstName": "Johan",
+      "avatarURL": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/0c9/38f/237f560.jpg",
+      "twitter": "@johanjanssen42"
+    }, {
+      "uuid": "862b011eae4786eea59f08675119267640c56bf4",
+      "company": "Movivo",
+      "lastName": "Johnston",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/862b011eae4786eea59f08675119267640c56bf4",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Paul Johnston"
+      }],
+      "firstName": "Paul",
+      "avatarURL": "https://pbs.twimg.com/profile_images/621614929712427008/vF2DPPvD.png",
+      "twitter": "@PaulDJohnston"
+    }, {
+      "uuid": "09d12f7ea469e18bddd0f761ec574a719e2c1f1d",
+      "company": "JavaSpecialists.eu",
+      "lastName": "Kabutz",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/09d12f7ea469e18bddd0f761ec574a719e2c1f1d",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Heinz Kabutz"
+      }],
+      "firstName": "Heinz",
+      "avatarURL": "http://javaspecialists.eu/pics/heinz3.jpg",
+      "twitter": "@heinzkabutz"
+    }, {
+      "uuid": "536fcbbbb73ccae2bd786e0ccf56df8b35e7356e",
+      "company": "RBS",
+      "lastName": "Kandalov",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/536fcbbbb73ccae2bd786e0ccf56df8b35e7356e",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Dmitry Kandalov"
+      }],
+      "firstName": "Dmitry",
+      "avatarURL": "https://lh4.googleusercontent.com/-6FspQNw6u10/AAAAAAAAAAI/AAAAAAAAA7I/6NRBXWpZDps/photo.jpg",
+      "twitter": "@dmitrykandalov"
+    }, {
+      "uuid": "a04c9901e5a785d32cef76c901cc96c75a11a98f",
+      "company": "Trivadis Switzerland",
+      "lastName": "Kazmierczak",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/a04c9901e5a785d32cef76c901cc96c75a11a98f",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Jonatan Kazmierczak"
+      }],
+      "firstName": "Jonatan",
+      "avatarURL": "http://class-visualizer.net/author/jonatan-k_photo.jpeg",
+      "twitter": null
+    }, {
+      "uuid": "fb0b9725b57abd76dcb64bd66adaa99020073bb7",
+      "company": "JCore",
+      "lastName": "Knopper",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/fb0b9725b57abd76dcb64bd66adaa99020073bb7",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Bas Knopper"
+      }],
+      "firstName": "Bas",
+      "avatarURL": "https://media.licdn.com/media/AAEAAQAAAAAAAAgJAAAAJDU0Yjg3M2ZjLTJkOTYtNDFhNC1hOTRhLTFkMDdmMmE0Y2UyMw.jpg",
+      "twitter": "@BWknopper"
+    }, {
+      "uuid": "d3719cd815813672592ab70aacdb9b1dec2dd629",
+      "company": "ThoughtWorks",
+      "lastName": "Kua",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/d3719cd815813672592ab70aacdb9b1dec2dd629",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Patrick Kua"
+      }],
+      "firstName": "Patrick",
+      "avatarURL": "http://www.gravatar.com/avatar/84f4802c92f6d4371e4a1398d2dd8b4d",
+      "twitter": "@patkua"
+    }, {
+      "uuid": "061ad17e66b067d53d2cb167ca03a6f19640746c",
+      "company": "IG",
+      "lastName": "Lebrero",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/061ad17e66b067d53d2cb167ca03a6f19640746c",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Daniel Lebrero"
+      }],
+      "firstName": "Daniel",
+      "avatarURL": "http://en.gravatar.com/userimage/38792381/b0f54df774ad03c9b8c553be0af3b322.jpg?size=150",
+      "twitter": "@danlebrero"
+    }, {
+      "uuid": "98ba6c7d1793f0451caca2c2f7b43b6a3cda2f60",
+      "company": "JDriven",
+      "lastName": "Lippolis",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/98ba6c7d1793f0451caca2c2f7b43b6a3cda2f60",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Riccardo Lippolis"
+      }],
+      "firstName": "Riccardo",
+      "avatarURL": "http://www.gravatar.com/avatar/e80dee2e4920153fb914b11ee84b175d",
+      "twitter": null
+    }, {
+      "uuid": "248214429497110dc2a9ca757d4d34260259424d",
+      "company": "Red Hat",
+      "lastName": "Little",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/248214429497110dc2a9ca757d4d34260259424d",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Mark Little"
+      }],
+      "firstName": "Mark",
+      "avatarURL": "https://lh4.googleusercontent.com/-bUqBqkbCX58/AAAAAAAAAAI/AAAAAAAAALg/6wj2BOClcVc/photo.jpg",
+      "twitter": "@nmcl"
+    }, {
+      "uuid": "c36bd2cdc776f5fefa10ae7a2c23931e2b88ec32",
+      "company": "ZeroTurnaround",
+      "lastName": "Maple",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/c36bd2cdc776f5fefa10ae7a2c23931e2b88ec32",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Simon Maple"
+      }],
+      "firstName": "Simon",
+      "avatarURL": "https://static.sched.org/a4/1563067/avatar.jpg.320x320px.jpg?7da",
+      "twitter": "@sjmaple"
+    }, {
+      "uuid": "e428cbfa4ae46b4e22a81c9941970c46cb05813a",
+      "company": "Payara Services",
+      "lastName": "Mihályi",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/e428cbfa4ae46b4e22a81c9941970c46cb05813a",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Ondrej Mihályi"
+      }],
+      "firstName": "Ondrej",
+      "avatarURL": "http://www.gravatar.com/avatar/872bb9cfb80c71fe0f9f23f1c86958c4",
+      "twitter": "@omihalyi"
+    }, {
+      "uuid": "8a130215012d278cedb81ac3b84df4b77e4407a6",
+      "company": "smartcode ltd",
+      "lastName": "Molak",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/8a130215012d278cedb81ac3b84df4b77e4407a6",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Jan Molak"
+      }],
+      "firstName": "Jan",
+      "avatarURL": "http://www.gravatar.com/avatar/a2b64fcf9055015c22ac5080115fe4a8",
+      "twitter": "@JanMolak"
+    }, {
+      "uuid": "dd32423f36c9e9763723a54c8765e14322708e7d",
+      "company": "Philips Lighting - Hue",
+      "lastName": "Mols",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/dd32423f36c9e9763723a54c8765e14322708e7d",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Jeroen Mols"
+      }],
+      "firstName": "Jeroen",
+      "avatarURL": "https://s.gravatar.com/avatar/a9483b61417d83337599d50642fd3921",
+      "twitter": "@molsjeroen"
+    }, {
+      "uuid": "7f3708fe1a2aac53b0c274db2139b7bc1c78a81f",
+      "company": "BlackBerry Cybersecurity Services",
+      "lastName": "Murray",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/7f3708fe1a2aac53b0c274db2139b7bc1c78a81f",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Campbell Murray"
+      }],
+      "firstName": "Campbell",
+      "avatarURL": "https://pbs.twimg.com/profile_images/483327207935193089/W_jPvxyf_400x400.jpeg",
+      "twitter": "@zyx2k"
+    }, {
+      "uuid": "41f6ae7b0acb96e40ef452fb0688ee5f5624982a",
+      "company": "Red Hat UK Ltd",
+      "lastName": "Musgrove",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/41f6ae7b0acb96e40ef452fb0688ee5f5624982a",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Michael Musgrove"
+      }],
+      "firstName": "Michael",
+      "avatarURL": "https://lh3.googleusercontent.com/-Y55_jZhMEW0/AAAAAAAAAAI/AAAAAAAAADQ/QV5N09EKu5Y/photo.jpg",
+      "twitter": "@mmusgrov1"
+    }, {
+      "uuid": "64a18d565194b0912bc8eee181d5c14dc4a3d8c2",
+      "company": "Streamdata.io",
+      "lastName": "Neveu",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/64a18d565194b0912bc8eee181d5c14dc4a3d8c2",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Audrey Neveu"
+      }],
+      "firstName": "Audrey",
+      "avatarURL": "http://www.gravatar.com/avatar/7e357ae5b0366a29f1f54434791ddefd.png",
+      "twitter": "@Audrey_Neveu"
+    }, {
+      "uuid": "b5938f9521d4242099df7ab7b513b8bb70a55d7b",
+      "company": "Smartsheet",
+      "lastName": "Neward",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/b5938f9521d4242099df7ab7b513b8bb70a55d7b",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Ted Neward"
+      }],
+      "firstName": "Ted",
+      "avatarURL": "https://pbs.twimg.com/profile_images/55857457/javapolis_400x400.png",
+      "twitter": "@tedneward"
+    }, {
+      "uuid": "3eea085421a764ac598259512ea7d8c61d6c5ed7",
+      "company": "Philips",
+      "lastName": "Pas",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/3eea085421a764ac598259512ea7d8c61d6c5ed7",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Marco Pas"
+      }],
+      "firstName": "Marco",
+      "avatarURL": "https://lh3.googleusercontent.com/bPoeCFzsIrXaxCqHsW2oOyd1LVU8yFDa_xnDuZzJdSha_PQoxTjzigDiMhFSBUB4SkbupQNYVzlW=s500-no",
+      "twitter": "@marcopas"
+    }, {
+      "uuid": "da2efaefc17e080c53baff7e6525e65e87ab9774",
+      "company": "walkmod",
+      "lastName": "Pau Fernández",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/da2efaefc17e080c53baff7e6525e65e87ab9774",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Raquel Pau Fernández"
+      }],
+      "firstName": "Raquel",
+      "avatarURL": "https://lh5.googleusercontent.com/-gpyd1u760zw/AAAAAAAAAAI/AAAAAAAAAAA/40NTLE5649A/photo.jpg",
+      "twitter": "@raquelpau"
+    }, {
+      "uuid": "8d3c3519f9a044d40cdabad1c1d5cfd98a12e34f",
+      "company": "WM-Jug",
+      "lastName": "Pitchford",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/8d3c3519f9a044d40cdabad1c1d5cfd98a12e34f",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Steve Pitchford"
+      }],
+      "firstName": "Steve",
+      "avatarURL": "https://lh3.googleusercontent.com/-BqyzdOAi6pA/AAAAAAAAAAI/AAAAAAAAAEA/rG4hLQAh7Sc/photo.jpg",
+      "twitter": "@stevejpitchford"
+    }, {
+      "uuid": "5baf477a1c6f8b4f096fae4b01adf85bdfd9380c",
+      "company": "IBM",
+      "lastName": "Poole",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/5baf477a1c6f8b4f096fae4b01adf85bdfd9380c",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Steve Poole"
+      }],
+      "firstName": "Steve",
+      "avatarURL": "https://lh6.googleusercontent.com/-FcN65Thya_Q/AAAAAAAAAAI/AAAAAAAAAJ8/wFsmagxR2dw/photo.jpg",
+      "twitter": "spoole167"
+    }, {
+      "uuid": "86678179c3bbe98106cd2c3ea44b335856493328",
+      "company": "Atlassian",
+      "lastName": "Price",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/86678179c3bbe98106cd2c3ea44b335856493328",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Dominic Price"
+      }],
+      "firstName": "Dominic",
+      "avatarURL": "https://lh3.googleusercontent.com/-TGuG_AeyRi0/AAAAAAAAAAI/AAAAAAAAAiA/LVusX5yfLVM/photo.jpg",
+      "twitter": "@domprice"
+    }, {
+      "uuid": "58fb120f3073e615444aa63a64a19ab22022b337",
+      "company": "JDriven",
+      "lastName": "Pronk",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/58fb120f3073e615444aa63a64a19ab22022b337",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Erik Pronk"
+      }],
+      "firstName": "Erik",
+      "avatarURL": "https://media.licdn.com/media/p/4/005/024/371/3b6417b.jpg",
+      "twitter": "@erikjpronk"
+    }, {
+      "uuid": "c8895db7b537c000e66f79048b3505c80d5c617d",
+      "company": "Ocado Technology",
+      "lastName": "Płachta",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/c8895db7b537c000e66f79048b3505c80d5c617d",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Michał Płachta"
+      }],
+      "firstName": "Michał",
+      "avatarURL": "http://michalplachta.com/images/me.jpg",
+      "twitter": "@miciek"
+    }, {
+      "uuid": "6d2e959f618d232a66b3a65c61f53f0bda93057f",
+      "company": "Okta",
+      "lastName": "Raible",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/6d2e959f618d232a66b3a65c61f53f0bda93057f",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Matt Raible"
+      }],
+      "firstName": "Matt",
+      "avatarURL": "https://pbs.twimg.com/profile_images/809579440304963586/E3KsClil_400x400.jpg",
+      "twitter": "@mraible"
+    }, {
+      "uuid": "d5ca8f23a646481455643d72b4f922097199cf3c",
+      "company": "IBM UK Ltd",
+      "lastName": "Read",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/d5ca8f23a646481455643d72b4f922097199cf3c",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Paul Read"
+      }],
+      "firstName": "Paul",
+      "avatarURL": "https://pbs.twimg.com/profile_images/519117698953789440/Din_Zq1D_400x400.jpeg",
+      "twitter": "@BetaWork"
+    }, {
+      "uuid": "8a7d68a8a2b09105c969cbae7b37019d4fa470a5",
+      "company": "Oracle",
+      "lastName": "Reinhold",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/8a7d68a8a2b09105c969cbae7b37019d4fa470a5",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Mark Reinhold"
+      }],
+      "firstName": "Mark",
+      "avatarURL": "http://mreinhold.org/mr.jpg",
+      "twitter": "@mreinhold"
+    }, {
+      "uuid": "7cc6f09da2d2babb5344924ec936dae781dc9ae4",
+      "company": "Renze Consulting",
+      "lastName": "Renze",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/7cc6f09da2d2babb5344924ec936dae781dc9ae4",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Matthew Renze"
+      }],
+      "firstName": "Matthew",
+      "avatarURL": "http://www.gravatar.com/avatar/cb3cf07b2486a3238151d4ac2151982b",
+      "twitter": "@matthewrenze"
+    }, {
+      "uuid": "2f5d5d787c5d58c50cbf91dce7749b0bc7b7fdff",
+      "company": "Eventuate, Inc",
+      "lastName": "Richardson",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/2f5d5d787c5d58c50cbf91dce7749b0bc7b7fdff",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Chris Richardson"
+      }],
+      "firstName": "Chris",
+      "avatarURL": "https://lh3.googleusercontent.com/-aRtHvqT3C6M/AAAAAAAAAAI/AAAAAAAAAFI/b4EoiFufHA0/photo.jpg",
+      "twitter": "@crichardson"
+    }, {
+      "uuid": "c2d8b8e1e33706d84d040f43d770cd72da5c6030",
+      "company": "Azul",
+      "lastName": "Ritter",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/c2d8b8e1e33706d84d040f43d770cd72da5c6030",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Simon Ritter"
+      }],
+      "firstName": "Simon",
+      "avatarURL": "http://www.oracle.com/technetwork/articles/java/simonritter-321088.jpg",
+      "twitter": "@speakjava"
+    }, {
+      "uuid": "99636d62d4ccc4eece54531845373c8893d5b9f5",
+      "company": "Google",
+      "lastName": "Robinson",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/99636d62d4ccc4eece54531845373c8893d5b9f5",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Sara Robinson"
+      }],
+      "firstName": "Sara",
+      "avatarURL": "http://www.gravatar.com/avatar/67579e109470575357d64bdea1558ba9",
+      "twitter": "@SRobTweets"
+    }, {
+      "uuid": "45f704377f504f2f5696fa38d27fcb123c1cf1fe",
+      "company": "OpenDevise",
+      "lastName": "SABLONNIÈRE",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/45f704377f504f2f5696fa38d27fcb123c1cf1fe",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Hubert 😎 SABLONNIÈRE"
+      }],
+      "firstName": "Hubert 😎",
+      "avatarURL": "http://www.gravatar.com/avatar/756896776ddf47e64c33a86120feb528.png?s=200",
+      "twitter": "@hsablonniere"
+    }, {
+      "uuid": "17aca648fd2cbd573d8010e7bc243375ee9724d6",
+      "company": "msg systems ag",
+      "lastName": "Schwartz",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/17aca648fd2cbd573d8010e7bc243375ee9724d6",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Alexander Schwartz"
+      }],
+      "firstName": "Alexander",
+      "avatarURL": "https://lh3.googleusercontent.com/-aALzjLd2px8/AAAAAAAAAAI/AAAAAAAAHRE/bi2m3QHx-Gk/photo.jpg",
+      "twitter": "@ahus1de"
+    }, {
+      "uuid": "de7da2bf847484356f648d4e33fed3176e7844c5",
+      "company": "Pluralsight",
+      "lastName": "Sessi",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/de7da2bf847484356f648d4e33fed3176e7844c5",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Koffi Alain Sessi"
+      }],
+      "firstName": "Koffi Alain",
+      "avatarURL": "https://pbs.twimg.com/profile_images/636263072227655680/p2n4WGlA_400x400.jpg",
+      "twitter": "@aksessi"
+    }, {
+      "uuid": "ef1bf6c7f366f593a5c98076e3eae65ea2c47833",
+      "company": "Vonage",
+      "lastName": "Shirazi",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/ef1bf6c7f366f593a5c98076e3eae65ea2c47833",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Jack Shirazi"
+      }],
+      "firstName": "Jack",
+      "avatarURL": "https://i.ytimg.com/vi/D9gpM_BPLH0/maxresdefault.jpg",
+      "twitter": null
+    }, {
+      "uuid": "9bce598bc563a69e774288621c41d52862b6541c",
+      "company": "Jayway",
+      "lastName": "Sikö",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/9bce598bc563a69e774288621c41d52862b6541c",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Pär Sikö"
+      }],
+      "firstName": "Pär",
+      "avatarURL": "http://www.gravatar.com/avatar/968c7063a451d711132c8a4d26050e18",
+      "twitter": "@per_siko"
+    }, {
+      "uuid": "3cddc425bf6bc3c6a7584a6a0355a9bf3f14e655",
+      "company": "Finalist",
+      "lastName": "Spiritus",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/3cddc425bf6bc3c6a7584a6a0355a9bf3f14e655",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Kim Spiritus"
+      }],
+      "firstName": "Kim",
+      "avatarURL": "https://pbs.twimg.com/profile_images/2206803397/2523183_400x400.jpg",
+      "twitter": "@KimSpiritus"
+    }, {
+      "uuid": "5e8ca892589dc7c4c4cf151bcb27e456eea6c1dc",
+      "company": "Heroku / Salesforce",
+      "lastName": "Stevenson",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/5e8ca892589dc7c4c4cf151bcb27e456eea6c1dc",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "John Stevenson"
+      }],
+      "firstName": "John",
+      "avatarURL": "http://www.gravatar.com/avatar/1ff5786158c0be54051ef8e5c544555d",
+      "twitter": "@jr0cket"
+    }, {
+      "uuid": "65fec258e22bad79f9ea398fd935cce372a5de0b",
+      "company": "Pivotal",
+      "lastName": "Stine",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/65fec258e22bad79f9ea398fd935cce372a5de0b",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Matt Stine"
+      }],
+      "firstName": "Matt",
+      "avatarURL": "http://www.mattstine.com/img/matt_stine_pr.jpg",
+      "twitter": "@mstine"
+    }, {
+      "uuid": "651edbf3e16cb49603fcbba45b55c33db2f380ef",
+      "company": "Red Hat",
+      "lastName": "Sutter",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/651edbf3e16cb49603fcbba45b55c33db2f380ef",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Burr Sutter"
+      }],
+      "firstName": "Burr",
+      "avatarURL": "http://www.gravatar.com/avatar/4f91e291208ba2a4940d7849bf98c601",
+      "twitter": "@burrsutter"
+    }, {
+      "uuid": "8d2d3c6fd601c1608010dd95764aee45f89a9c70",
+      "company": "IBM",
+      "lastName": "Sutter",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/8d2d3c6fd601c1608010dd95764aee45f89a9c70",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Kevin Sutter"
+      }],
+      "firstName": "Kevin",
+      "avatarURL": "https://lh3.googleusercontent.com/-WE50dOB4RKo/AAAAAAAAAAI/AAAAAAAAARM/pi5n-Bg6foY/photo.jpg",
+      "twitter": "@kwsutter"
+    }, {
+      "uuid": "fe956c1339ec2cd85d719a461350a68feaef202f",
+      "company": "Capgemini Plc",
+      "lastName": "THIYAGARAJAN",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/fe956c1339ec2cd85d719a461350a68feaef202f",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "GAYATHRI THIYAGARAJAN"
+      }],
+      "firstName": "GAYATHRI",
+      "avatarURL": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAACMAAAAJDU1MjA2NjdjLTQyZTMtNDYwOC04YzRjLTEzYWUzODBiMGU3OA.jpg",
+      "twitter": "@gaythu_rajan"
+    }, {
+      "uuid": "2638fa08dacf49c617d1e85fb84946c579742002",
+      "company": "efinance",
+      "lastName": "Taman",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/2638fa08dacf49c617d1e85fb84946c579742002",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Mohamed Taman"
+      }],
+      "firstName": "Mohamed",
+      "avatarURL": "https://lh3.googleusercontent.com/-rLWQ0lGcSE0/AAAAAAAAAAI/AAAAAAAAC-g/8C_EJl7IwI4/photo.jpg",
+      "twitter": "@_tamanm"
+    }, {
+      "uuid": "aac932293fe73b9b762a24c5ba7cddf734d6304d",
+      "company": "Convendia",
+      "lastName": "Tron-Lozai",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/aac932293fe73b9b762a24c5ba7cddf734d6304d",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Cesar Tron-Lozai"
+      }],
+      "firstName": "Cesar",
+      "avatarURL": "http://www.gravatar.com/avatar/17e728101f07c488226e9f0ea7ba38ef",
+      "twitter": "@cesarTronLozai"
+    }, {
+      "uuid": "ad70ca3a0db8d5b2e26df3c0bb59c488ed970f5b",
+      "company": "Salesforce",
+      "lastName": "Tune",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/ad70ca3a0db8d5b2e26df3c0bb59c488ed970f5b",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Nick Tune"
+      }],
+      "firstName": "Nick",
+      "avatarURL": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRVNEtRvoXKTGiDF2ZDvFqmuBI-nuc5VEaLbR5MCcQY7NsitkbU",
+      "twitter": "@ntcoding"
+    }, {
+      "uuid": "bc87ca3dd6bed413b2158e8114ddfad90c673819",
+      "company": "A.C.A IT-Solutions",
+      "lastName": "Vanpoucke",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/bc87ca3dd6bed413b2158e8114ddfad90c673819",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Stijn Vanpoucke"
+      }],
+      "firstName": "Stijn",
+      "avatarURL": "https://pbs.twimg.com/profile_images/676338582420774912/LIUkI74b.jpg",
+      "twitter": "@stijnvp"
+    }, {
+      "uuid": "7266eb21d62c9f7233deba8d3b7d01fbd37a0ab1",
+      "company": "TTNR Labs",
+      "lastName": "Wakart",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/7266eb21d62c9f7233deba8d3b7d01fbd37a0ab1",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Nitsan Wakart"
+      }],
+      "firstName": "Nitsan",
+      "avatarURL": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAARIAAAAJGFmNzNjMTA5LWE1NzAtNDQ5NC05Y2FlLTAyMmZkZWVlOGY0MQ.jpg",
+      "twitter": "@nitsanw"
+    }, {
+      "uuid": "cb3671eb7a1454eef468409831e019177a130433",
+      "company": "Amazon Web Services",
+      "lastName": "Walker",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/cb3671eb7a1454eef468409831e019177a130433",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Tara Walker"
+      }],
+      "firstName": "Tara",
+      "avatarURL": "https://media.amazonwebservices.com/blog/2016/welcome_tara_2.png",
+      "twitter": "@taraw"
+    }, {
+      "uuid": "d5654af4eabee673a0b8547db98b5843d440f3c5",
+      "company": "Pivotal",
+      "lastName": "Weaver",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/d5654af4eabee673a0b8547db98b5843d440f3c5",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "James Weaver"
+      }],
+      "firstName": "James",
+      "avatarURL": "http://www.gravatar.com/avatar/8897b277c707ba9dc602d7fe3dab4a12",
+      "twitter": "@JavaFXpert"
+    }, {
+      "uuid": "8e4ed4f316ff92095dc9188877ea1cfcf60a45de",
+      "company": "ROCeteer",
+      "lastName": "Wilde",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/8e4ed4f316ff92095dc9188877ea1cfcf60a45de",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Heather Wilde"
+      }],
+      "firstName": "Heather",
+      "avatarURL": "http://www.gravatar.com/avatar/7183fa8195c454bef33f3ffbf2c44c40",
+      "twitter": "@heathriel"
+    }, {
+      "uuid": "c4e901dc2d3c8bb07d79ad8a42d89c7d36473653",
+      "company": null,
+      "lastName": "Winder",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/c4e901dc2d3c8bb07d79ad8a42d89c7d36473653",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Russel Winder"
+      }],
+      "firstName": "Russel",
+      "avatarURL": "https://lh6.googleusercontent.com/-k2oaGDSK7fk/AAAAAAAAAAI/AAAAAAAAAJc/_ib3sF_hcZE/photo.jpg",
+      "twitter": "@russel_winder"
+    }, {
+      "uuid": "509ff6d000200750fa592d2fbd37e03fefb98486",
+      "company": "Finalist / Duchess",
+      "lastName": "ten Bruggencate",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/509ff6d000200750fa592d2fbd37e03fefb98486",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Regina ten Bruggencate"
+      }],
+      "firstName": "Regina",
+      "avatarURL": "http://www.gravatar.com/avatar/a56a4a33c0d2828339cb1436937dbc87.png",
+      "twitter": "@reginatb38"
+    }, {
+      "uuid": "2218229da8896c661f7f847206b93a018a82b78f",
+      "company": "JPoint",
+      "lastName": "van Rijn",
+      "links": [{
+        "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/2218229da8896c661f7f847206b93a018a82b78f",
+        "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+        "title": "Roy van Rijn"
+      }],
+      "firstName": "Roy",
+      "avatarURL": "http://www.gravatar.com/avatar/04f202879fdfca1e105d32545de7accb",
+      "twitter": "@royvanrijn"
+    }],
+
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    }
+  }
+}
