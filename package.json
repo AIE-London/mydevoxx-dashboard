@@ -4,7 +4,10 @@
   "private": true,
   "dependencies": {
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "superagent": "^3.5.2",
+    "then-request": "^2.2.0",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
