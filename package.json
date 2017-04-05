@@ -13,13 +13,8 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "babelify": "^7.3.0",
-    "browserify": "^14.1.0",
-    "css-loader": "^0.28.0",
-    "gulp": "^3.9.1",
     "react-scripts": "0.9.5",
-    "style-loader": "^0.16.1",
-    "vinyl-source-stream": "^1.1.0"
+
   },
   "scripts": {
     "start": "react-scripts start",
