@@ -2,6 +2,7 @@ import speakers from "../../../main/api/speakers";
 import wireMockAPI from "./wiremock/wiremock-api";
 import speakersMapping from "./wiremock/mappings/speakers";
 import notFound from "./wiremock/mappings/notFoundSpeakers";
+import testingErrors from "./testing-errors";
 
 /**
  * Set up wiremock with normal room api response
@@ -30,19 +31,21 @@ describe('getSpeakers', () => {
                     id: '695b40d928dd0a905b7ab1b900b5a5752870a7d8',
                     name: 'Helen Beal'
                 })
-            }, (error) => { // Should not error, so thro expect error below
-                expect(true).toBe(false); // Throw an expect error to differentiate from 404 in the catch
+            }, (error) => { // Should not error, so throw exception
+                throw new testingErrors.UnexpectedErrorException("Unexpected error when retrieving speakers after \"Normal\" setup");
             })
             .then(notFoundSetup) // Setup Mock for 404 response
             .then(speakers.getSpeakers)
-            .then((results) => {
-                expect(true).toBe(false); // Should not get here, so fair with expect error
+            .then((results) => { // Should not pass, so throw exception
+                throw new testingErrors.UnexpectedSuccessException("Unexpected success when retrieving speakers after \"Not Found\" setup");
             })
             .catch((error) => {
-                if (error.statusCode){ // Failed on negative test - good!
+            console.log(error);
+                if (error.body && error.body.toString() === "Not Found"){ // Expected error from negative test
                     expect(error.statusCode).toBe(404);
-                } else { // Failed on positive test - bad!
-                    expect(true).toBe(false);
+                } else {
+                    console.error(error);
+                    throw error;
                 }
             })
     })
