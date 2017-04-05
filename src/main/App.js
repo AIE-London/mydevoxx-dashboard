@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import TalkCard from './components/TalkCard/';
-import ReportStats from './components/ReportStats'
+
+import { Row, Col } from 'react-flexbox-grid';
+import TalkCard from './components/TalkCard';
+import logo from './logo.svg';
+
 import './App.css';
 import {Col, Row} from 'react-flexbox-grid';
 
