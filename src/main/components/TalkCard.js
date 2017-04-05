@@ -8,7 +8,7 @@ import {Col, Row} from 'react-flexbox-grid';
 
 import {CommaList, CommaListItem} from './CommaList';
 import StarRating from './StarRating';
-import Review from '../review';
+import Review from './Review';
 
 /**
  *  Styled Components
