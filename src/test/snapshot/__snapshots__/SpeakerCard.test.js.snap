@@ -1,0 +1,62 @@
+exports[`test reportStats component with title snapshot 1`] = `
+<div
+  className="bvnlUe row">
+  <div
+    className="container-fluid">
+    <div
+      className="row">
+      <div
+        className="">
+        <img
+          className="fOjFzA"
+          src="defaultIcon.png" />
+      </div>
+      <div
+        className="col-xs">
+        <div>
+          <h3>
+            Testy
+          </h3>
+          <p>
+            Testy Inc.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row">
+      <div
+        className="col-md-3">
+        <div>
+          Personal Blog:
+        </div>
+        <div
+          className="gqPtzL">
+          blogname.com
+        </div>
+      </div>
+    </div>
+    <div
+      className="row">
+      <div
+        className="col-md-3">
+        <div>
+          Other Talks:
+        </div>
+        <ul>
+          <li>
+            Talk 1 is One
+          </li>
+          <li>
+            Talk 2 is Two
+          </li>
+          <li>
+            Talk 3 is Three
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;
