@@ -1,0 +1,101 @@
+exports[`test StarRating with rating 0 1`] = `
+<div
+  className="row"
+  left="xs">
+  <div
+    className="cWcebC" />
+  <div
+    className="cWcebC" />
+  <div
+    className="cWcebC" />
+  <div
+    className="cWcebC" />
+  <div
+    className="cWcebC" />
+</div>
+`;
+
+exports[`test StarRating with rating 1 1`] = `
+<div
+  className="row"
+  left="xs">
+  <div
+    className="kmDnAn" />
+  <div
+    className="cWcebC" />
+  <div
+    className="cWcebC" />
+  <div
+    className="cWcebC" />
+  <div
+    className="cWcebC" />
+</div>
+`;
+
+exports[`test StarRating with rating 2 1`] = `
+<div
+  className="row"
+  left="xs">
+  <div
+    className="kmDnAn" />
+  <div
+    className="kmDnAn" />
+  <div
+    className="cWcebC" />
+  <div
+    className="cWcebC" />
+  <div
+    className="cWcebC" />
+</div>
+`;
+
+exports[`test StarRating with rating 3 1`] = `
+<div
+  className="row"
+  left="xs">
+  <div
+    className="kmDnAn" />
+  <div
+    className="kmDnAn" />
+  <div
+    className="kmDnAn" />
+  <div
+    className="cWcebC" />
+  <div
+    className="cWcebC" />
+</div>
+`;
+
+exports[`test StarRating with rating 4 1`] = `
+<div
+  className="row"
+  left="xs">
+  <div
+    className="kmDnAn" />
+  <div
+    className="kmDnAn" />
+  <div
+    className="kmDnAn" />
+  <div
+    className="kmDnAn" />
+  <div
+    className="cWcebC" />
+</div>
+`;
+
+exports[`test StarRating with rating 5 1`] = `
+<div
+  className="row"
+  left="xs">
+  <div
+    className="kmDnAn" />
+  <div
+    className="kmDnAn" />
+  <div
+    className="kmDnAn" />
+  <div
+    className="kmDnAn" />
+  <div
+    className="kmDnAn" />
+</div>
+`;

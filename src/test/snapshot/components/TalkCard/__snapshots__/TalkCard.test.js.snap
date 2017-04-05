@@ -1,0 +1,107 @@
+exports[`test card component with title snapshot 1`] = `
+<div
+  className="bvnlUe row start-xs">
+  <div
+    className="col-xs-6 fteZLe">
+    <div
+      className="row start-xs">
+      <h2
+        className="Axdp"
+        id="title">
+        Welcome to Devoxx
+      </h2>
+    </div>
+    <div
+      className="row end-xs">
+      <div
+        className="row"
+        left="xs">
+        <div
+          className="kmDnAn" />
+        <div
+          className="kmDnAn" />
+        <div
+          className="kmDnAn" />
+        <div
+          className="cWcebC" />
+        <div
+          className="cWcebC" />
+      </div>
+    </div>
+    <p
+      className="jLJUnn">
+      Join the organisers of Devoxx UK and great keynote speakers for inspring stories in 20 minutes.
+    </p>
+    <div
+      className="row">
+      <h3
+        className="jJURiy">
+        Top Tracks
+      </h3>
+    </div>
+    <div
+      className="row">
+      <ul
+        className="izGhAk">
+        <li
+          className="cLQKgI">
+          Devoxx
+        </li>
+        <li
+          className="cLQKgI">
+          SpringBoot
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="col-xs-6 eZvXOT">
+    <div
+      className="row start-xs">
+      <h3
+        className="jJURiy"
+        id="notesHeader">
+        My Notes
+      </h3>
+    </div>
+    <div
+      className="row start-xs">
+      <p
+        className="bKHqKP">
+        Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer nec. Feugiat qualisque quo an. Labores officii.
+      </p>
+    </div>
+    <div
+      className="row start-xs">
+      <h3
+        className="jJURiy"
+        id="notesHeader">
+        My Reviews
+      </h3>
+    </div>
+    <div
+      className="fEZGiH row start-xs">
+      <div
+        className="row start-xs">
+        <div
+          className="">
+          <img
+            className="imhmHM"
+            src="test-image.jpeg" />
+        </div>
+        <div
+          className="col-xs">
+          <h3
+            className="jPwRym">
+            Test User 123
+          </h3>
+          <p
+            className="ZxTsc">
+            123 Great session, thanks for organising. Looking forward to the next one!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
