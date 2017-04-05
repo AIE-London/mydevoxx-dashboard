@@ -42,7 +42,7 @@ class Review extends Component {
       return (
         <Row start="xs">
           <Col>
-            <ProfileImg src={ image } />
+            { image && <ProfileImg src={ image } />}
           </Col>
           <Col xs>
             <Name>{name}</Name>
