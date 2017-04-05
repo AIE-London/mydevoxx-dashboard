@@ -1,9 +1,5 @@
 import talk from "../../../main/api/talk";
 
-beforeAll(() => {
-    return "";
-});
-
 test('talk integration tests', () => {
 
     describe('getTalk', () => {
