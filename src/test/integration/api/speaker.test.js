@@ -2,6 +2,7 @@ import speaker from "../../../main/api/speaker";
 import wiremockAPI from "./wiremock/wiremock-api";
 import speakerMapping from "./wiremock/mappings/speaker"
 import notFound from "./wiremock/mappings/notFoundSpeaker.json";
+import {UnexpectedErrorException, UnexpectedSuccessException} from "./testingErrors";
 
 /**
  * Set up wiremock with normal speaker api response
@@ -17,6 +18,10 @@ let notFoundSetup = () => {
     return wiremockAPI.postMapping(notFound);
 };
 
+/**
+ * <if> wiremock is trained with a speaker response list -> returns speaker details
+ * <else> wiremock is trained with a 404 response -> returns 404
+ */
 describe('getSpeaker', () => {
     it('should return speaker data and handle a 404', () => {
         return normalSetup().then(speaker.getSpeaker("695b40d928dd0a905b7ab1b900b5a5752870a7d8"))
@@ -29,17 +34,18 @@ describe('getSpeaker', () => {
                     company: 'Ranger4',
                     twitter: '@helenranger4',
                     blog: 'www.ranger4.com',
-                    track: 'Methodology Culture'
+                    track: 'Methodology & Culture'
                 })
             }, (error) => {
-                expect(true).toBe(false);
+                throw new UnexpectedErrorException("Unexpected error when retrieving speaker after \"Normal\" setup", error);
             }).then(notFoundSetup).then(speaker.getSpeaker("BB2")).then((result) => {
-                expect(true).toBe(false);
+                throw new UnexpectedSuccessException("Unexpected success when retrieving speaker after \"Not Found\" setup");
             }).catch((error) => {
                 if (error.statusCode) {
                     expect(error.statusCode).toEqual(404);
                 } else {
-                    expect(true).toBe(false);
+                    console.error(error);
+                    throw error;
                 }
             });
     });

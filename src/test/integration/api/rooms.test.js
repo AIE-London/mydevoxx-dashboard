@@ -2,6 +2,7 @@ import room from "../../../main/api/rooms";
 import wiremockAPI from "./wiremock/wiremockApi";
 import roomMapping from "./wiremock/mappings/rooms"
 import notFound from "./wiremock/mappings/notFoundRooms.json";
+import {UnexpectedErrorException, UnexpectedSuccessException} from "./testingErrors";
 
 /**
  * Set up wiremock with normal room api response
@@ -32,15 +33,16 @@ describe('getRooms', () => {
                 recorded: undefined
             })
         }, (error) => {
-            expect(true).toBe(false);
+            throw new UnexpectedErrorException("Unexpected error when retrieving speakers after \"Normal\" setup", error);
         }).then(notFoundSetup).then(room.getRooms).then((result) => {
-            expect(true).toBe(false);
+            throw new UnexpectedSuccessException("Unexpected success when retrieving speakers after \"Not Found\" setup");
         }).catch((error) => {
             console.log(error);
             if (error.statusCode) {
                 expect(error.statusCode).toBe(404);
             } else {
-                expect(true).toBe(false);
+                console.error(error);
+                throw error;
             }
         });
     });
