@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Review from '../../../../main/components/Review';
+import Review from '../../../../main/review';
 import renderer from 'react-test-renderer';
 import testImage from '../../images/test-image.jpeg';
 
