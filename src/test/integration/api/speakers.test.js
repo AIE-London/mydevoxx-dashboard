@@ -24,7 +24,7 @@ let notFoundSetup = () => {
  */
 describe('getSpeakers', () => {
     it('should work return data and handles a 404', () => {
-        return notFoundSetup() // Setup mock for positive test
+        return normalSetup() // Setup mock for positive test
             .then(speakers.getSpeakers)
             .then((results) => {
                 expect(results[0]).toEqual({
