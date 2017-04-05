@@ -15,7 +15,7 @@ let reportStatsData =
         "attendees": 435
     };
 
-import testImage from '../tst/snapshot/images/test-image.jpeg';
+import testImage from '../test/snapshot/images/test-image.jpeg';
 
 const talkDetail = {
   title: 'Welcome to Devoxx 2017',
