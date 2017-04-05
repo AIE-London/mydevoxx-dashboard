@@ -2,6 +2,74 @@ exports[`test app component snapshot 1`] = `
 <div
   className="App">
   <div
+    className="row center-xs">
+    <div
+      className="col-xs-10">
+      <div
+        className="row center-xs">
+        <div
+          className="col-xs-10">
+          <div
+            className="col-xs-2">
+            <div
+              className="row start-xs">
+              <h1
+                className="iscJSK">
+                MyReport
+              </h1>
+            </div>
+          </div>
+          <div
+            className="row center-xs">
+            <div
+              className="col-xs-10">
+              <h2
+                className="eUofwH">
+                I spent 
+                <span
+                  className="kiuWfQ">
+                  455
+                   minutes
+                </span>
+              </h2>
+              <p
+                className="jlawfx">
+                Attending 
+                <span
+                  className="kiuWfQ">
+                  10
+                   talks
+                </span>
+              </p>
+              <h2
+                className="eUofwH">
+                Learning what\'s new in...
+              </h2>
+              <p
+                className="jlawfx">
+                JS, Polymer, Java
+                 
+              </p>
+              <h2
+                className="eUofwH">
+                Networking with
+              </h2>
+              <p
+                className="jlawfx">
+                 
+                <span
+                  className="kiuWfQ">
+                  435
+                </span>
+                 Attendees
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
     style={
       Object {
         "height": "72px",

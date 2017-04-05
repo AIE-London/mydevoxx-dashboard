@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 import { Row, Col } from 'react-flexbox-grid';
 import TalkCard from './components/TalkCard';
+import ReportStats from './components/ReportStats';
 import logo from './logo.svg';
 
 import './App.css';
-import {Col, Row} from 'react-flexbox-grid';
 
 let reportStatsData =
     {
@@ -48,7 +48,7 @@ class App extends Component {
 
           <Row center="xs">
               <Col xs={10}>
-                  <ReportStats  minutes={minutes} talks={talks} learning={learning} attendees={attendees} ></ReportStats>
+                  <ReportStats minutes={minutes} talks={talks} learning={learning} attendees={attendees} ></ReportStats>
               </Col>
           </Row>
         <div style={{height: '72px'}}>
