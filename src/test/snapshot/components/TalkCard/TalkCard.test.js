@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TalkCard from '../../../../main/components/TalkCard/';
 import renderer from 'react-test-renderer';
-
+import testImage from '../../images/test-image.jpeg';
 
 const talkData = {
   title: 'Welcome to Devoxx',
@@ -18,7 +18,13 @@ const talkData = {
   ],
   notes: 'Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos ' +
   'volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer' +
-  ' nec. Feugiat qualisque quo an. Labores officii.'
+  ' nec. Feugiat qualisque quo an. Labores officii.',
+  review: {
+    name: 'Test User 123',
+    comment: '123 Great session, thanks for organising. Looking forward to the next one!',
+    image: testImage
+  }
+
 };
 
 

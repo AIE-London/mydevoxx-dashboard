@@ -96,10 +96,27 @@ exports[`test app component snapshot 1`] = `
             </h3>
           </div>
           <div
-            className="row start-xs">
-            <p>
-              Feugiat qualisque quo an. Labores officiis te nam.
-            </p>
+            className="fEZGiH row start-xs">
+            <div
+              className="row start-xs">
+              <div
+                className="">
+                <img
+                  className="imhmHM"
+                  src="test-image.jpeg" />
+              </div>
+              <div
+                className="col-xs">
+                <h3
+                  className="jPwRym">
+                  Test User
+                </h3>
+                <p
+                  className="ZxTsc">
+                  Great session, thanks for organising. Looking forward to the next one!
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

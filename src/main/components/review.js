@@ -8,8 +8,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import {Col, Row} from 'react-flexbox-grid';
 
-import DefaultImg from '../images/default-profile.png';
-
 /**
  *  Styled Components
  */
