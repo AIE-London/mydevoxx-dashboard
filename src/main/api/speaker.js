@@ -21,6 +21,7 @@ let getSpeaker = (speakerId) => {
     return request('GET', speakerEndpoint + speakerId).then((response) => {
         let body = JSON.parse(response.getBody());
         return {
+            uuid: body.uuid,
             bio: body.bio,
             firstName: body.firstName,
             lastName: body.lastName,
