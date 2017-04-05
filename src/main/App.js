@@ -3,6 +3,8 @@ import TalkCard from './components/TalkCard/';
 import './App.css';
 import {Col, Row} from 'react-flexbox-grid';
 
+import testImage from '../test/snapshot/images/test-image.jpeg';
+
 const talkDetail = {
   title: 'Welcome to Devoxx 2017',
   description: 'Join the organisers of Devoxx UK and great keynote ' +
@@ -15,7 +17,12 @@ const talkDetail = {
   ],
   notes: 'Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos ' +
   'volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer' +
-  ' nec. Feugiat qualisque quo an. Labores officiis te nam.'
+  ' nec. Feugiat qualisque quo an. Labores officiis te nam.',
+  review: {
+    name: 'Test User',
+    comment: 'Great session, thanks for organising. Looking forward to the next one!',
+    image: testImage
+  }
 };
 
 class App extends Component {

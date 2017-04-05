@@ -8,6 +8,7 @@ import {Col, Row} from 'react-flexbox-grid';
 
 import {CommaList, CommaListItem} from '../CommaList';
 import StarRating from '../StarRating';
+import Review from '../Review';
 
 /**
  *  Styled Components
@@ -49,14 +50,18 @@ const CardNotes = styled(CardParagraph)`
   font-size: 0.9em;
 `;
 
+const ReviewContainer = styled(Row)`
+  padding: 0.5em 1em;
+`;
+
 class TalkCard extends Component {
   render() {
-    let {title, rating, description, topTracks, notes} = this.props.talk;
+    let {title, rating, description, topTracks, notes, review} = this.props.talk;
     return (
       <Card start="xs">
         <LeftPartition xs={6}>
           <Row start="xs">
-            <CardHeader id="title">{ title }</CardHeader>
+            <CardHeader id="title">{title}</CardHeader>
           </Row>
           <Row end="xs">
             <StarRating rating={rating}></StarRating>
@@ -85,9 +90,9 @@ class TalkCard extends Component {
           <Row start="xs">
             <CardSubhead id="notesHeader">My Reviews</CardSubhead>
           </Row>
-          <Row start="xs">
-            <p>Feugiat qualisque quo an. Labores officiis te nam.</p>
-          </Row>
+          <ReviewContainer start="xs">
+            <Review review={review}></Review>
+          </ReviewContainer>
         </RightPartition>
       </Card>
     );
