@@ -4,8 +4,20 @@ import ReportStats from './components/ReportStats'
 import './App.css';
 import {Col, Row} from 'react-flexbox-grid';
 
+let reportStatsData =
+    {
+        "minutes": 455,
+        "talks": 10,
+        "learning": "JS, Polymer, Java" ,
+        "attendees": 435
+    };
+
 class App extends Component {
+
   render() {
+
+    let {minutes, talks, learning, attendees} = reportStatsData;
+
     return (
       <div className="App">
         <Row center="xs">
@@ -15,7 +27,7 @@ class App extends Component {
         </Row>
           <Row center="xs">
               <Col xs={10}>
-                  <ReportStats  minutes="455" talks="10" learning="JS, Java, Polymer" attendees="345" ></ReportStats>
+                  <ReportStats  minutes={minutes} talks={talks} learning={learning} attendees={attendees} ></ReportStats>
               </Col>
           </Row>
       </div>
