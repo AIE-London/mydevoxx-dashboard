@@ -2,13 +2,13 @@
  * Created by dan on 04/04/2017.
  */
 import React, { Component } from 'react';
-import Card from '../Card';
+import Card from './Card';
 import styled from 'styled-components';
 import {Col, Row} from 'react-flexbox-grid';
 
-import {CommaList, CommaListItem} from '../CommaList';
-import StarRating from '../StarRating';
-import Review from '../Review';
+import {CommaList, CommaListItem} from './CommaList';
+import StarRating from './StarRating';
+import Review from './Review';
 
 /**
  *  Styled Components
