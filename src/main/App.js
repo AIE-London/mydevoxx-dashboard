@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import { Row, Col} from 'react-flexbox-grid';
+import TalkCard from './components/TalkCard';
 import testImage from '../test/snapshot/images/test-image.jpeg';
 
 const talkDetail = {
