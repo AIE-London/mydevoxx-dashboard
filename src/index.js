@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './main/components/SpeakerCard/index.js';
+import App from './main/components/SpeakerCard.js';
 
 import './index.css';
 

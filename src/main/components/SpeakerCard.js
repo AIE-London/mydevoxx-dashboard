@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import Title from '../SpeakerTitle';
-import Card from '../Card';
+import Title from './SpeakerTitle';
+import Card from './Card';
 import Default from './defaultIcon.png';
 import styled from 'styled-components';
 
@@ -46,7 +46,7 @@ class speakerCard extends React.Component {
                     <ul>
                         {
                             this.props.talks.map( function(talk) {
-                                return <li>{talk}</li>
+                                return <li key={talk}>{talk}</li>
                             })
                         }
 
