@@ -1,0 +1,110 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "api/conferences/DV17/schedules/thursday"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "slots": [
+        {
+          "roomId": "a_gallery_hall",
+          "notAllocated": false,
+          "fromTimeMillis": 1494493200000,
+          "break": null,
+          "roomSetup": "special",
+          "talk": {
+            "trackId": "java",
+            "talkType": "Opening Keynote",
+            "track": "Java Language",
+            "summaryAsHtml": "<p>Bring your favorite questions about Java SE and the Java Development Kit\n-- past, present, or future -- to this open Q&amp;A session.</p>\n",
+            "id": "JWG-0522",
+            "speakers": [
+              {
+                "link": {
+                  "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/8a7d68a8a2b09105c969cbae7b37019d4fa470a5",
+                  "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+                  "title": "Mark Reinhold"
+                },
+                "name": "Mark Reinhold"
+              }
+            ],
+            "title": "Ask the Architect",
+            "lang": "en",
+            "summary": "Bring your favorite questions about Java SE and the Java Development Kit\r\n-- past, present, or future -- to this open Q&A session."
+          },
+          "fromTime": "10:00",
+          "toTimeMillis": 1494494400000,
+          "toTime": "10:20",
+          "roomCapacity": 1500,
+          "roomName": "Gallery Hall",
+          "slotId": "opening_key_a_gallery_hall_thursday_11_10h0_10h20",
+          "day": "thursday"
+        },
+        {
+          "roomId": "z_hall",
+          "notAllocated": false,
+          "fromTimeMillis": 1494494400000,
+          "break": {
+            "id": "coffee",
+            "nameEN": "Coffee Break",
+            "nameFR": "Pause café",
+            "room": {
+              "id": "z_hall",
+              "name": "Exhibition floor",
+              "capacity": 1500,
+              "setup": "special"
+            }
+          },
+          "roomSetup": "special",
+          "talk": null,
+          "fromTime": "10:20",
+          "toTimeMillis": 1494496200000,
+          "toTime": "10:50",
+          "roomCapacity": 1500,
+          "roomName": "Exhibition floor",
+          "slotId": "coffee_thursday_11_10h20_10h50",
+          "day": "thursday"
+        },
+        {
+          "roomId": "x_lab_room1",
+          "notAllocated": false,
+          "fromTimeMillis": 1494495900000,
+          "break": null,
+          "roomSetup": "classroom",
+          "talk": {
+            "trackId": "cloud",
+            "talkType": "Hands-on Labs",
+            "track": "Cloud, Containers &amp; Infrastructure",
+            "summaryAsHtml": "<p>When first approaching the Google Cloud Platform, it can be intimidating. Filled with features, including compute, storage and other powerful tools, getting going with GCP can be an overwhelming experience--the Google cloud's Paradox of Choice come to life. Never fear; in this workshop, we'll start from the basics, get started working with Google Cloud Platform, and walk our way through some basic application development tasks on our way to building an application that scales, Google style.</p>\n",
+            "id": "YZE-1227",
+            "speakers": [
+              {
+                "link": {
+                  "href": "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/b5938f9521d4242099df7ab7b513b8bb70a55d7b",
+                  "rel": "http://cfp.devoxx.co.uk/api/profile/speaker",
+                  "title": "Ted Neward"
+                },
+                "name": "Ted Neward"
+              }
+            ],
+            "title": "Busy Developer’s Workshop: Google Cloud Platform",
+            "lang": "en",
+            "summary": "When first approaching the Google Cloud Platform, it can be intimidating. Filled with features, including compute, storage and other powerful tools, getting going with GCP can be an overwhelming experience--the Google cloud's Paradox of Choice come to life. Never fear; in this workshop, we'll start from the basics, get started working with Google Cloud Platform, and walk our way through some basic application development tasks on our way to building an application that scales, Google style."
+          },
+          "fromTime": "10:45",
+          "toTimeMillis": 1494503100000,
+          "toTime": "12:45",
+          "roomCapacity": 32,
+          "roomName": "Lab Room A",
+          "slotId": "lab_x_lab_room1_thursday_11_10h45_12h45",
+          "day": "thursday"
+        }
+      ]
+    },
+
+"headers": {
+"Content-Type": "application/json; charset=utf-8"
+}
+}
+}
