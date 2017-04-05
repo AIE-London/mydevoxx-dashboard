@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/conferences/DV17/speaker/BB2"
+  },
+  "response": {
+    "status": 404,
+    "body": "Speaker not found",
+
+    "headers": {
+      "Content-Type": "text/plain; charset=utf-8"
+    }
+  }
+}
