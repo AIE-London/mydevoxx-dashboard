@@ -21,7 +21,7 @@ if ( ["production", "integration"].indexOf(process.env.NODE_ENV) < 0){
 let getSlots = (day) => {
     /*endpoint + day*/
     return request('GET', endpoint + day).then((response) => {
-        var result =  body.slots.map(function(item){
+        var result =  body.slots.map((item) => {
             return {
                 roomId: item.roomId,
                 fromTimeMillis: item.fromTimeMillis,
