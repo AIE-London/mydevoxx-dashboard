@@ -1,6 +1,7 @@
-function UnexpectedErrorException (message) {
+function UnexpectedErrorException (message, innerException) {
     this.name = 'UnexpectedErrorException';
     this.message = message || "There was an unexpected error";
+    this.innerException = innerException || undefined;
 };
 
 UnexpectedErrorException.prototype = Error.prototype;

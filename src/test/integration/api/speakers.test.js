@@ -24,7 +24,7 @@ let notFoundSetup = () => {
  */
 describe('getSpeakers', () => {
     it('should work return data and handles a 404', () => {
-        return normalSetup() // Setup mock for positive test
+        return notFoundSetup() // Setup mock for positive test
             .then(speakers.getSpeakers)
             .then((results) => {
                 expect(results[0]).toEqual({
@@ -32,7 +32,7 @@ describe('getSpeakers', () => {
                     name: 'Helen Beal'
                 })
             }, (error) => { // Should not error, so throw exception
-                throw new testingErrors.UnexpectedErrorException("Unexpected error when retrieving speakers after \"Normal\" setup");
+                throw new testingErrors.UnexpectedErrorException("Unexpected error when retrieving speakers after \"Normal\" setup", error);
             })
             .then(notFoundSetup) // Setup Mock for 404 response
             .then(speakers.getSpeakers)
