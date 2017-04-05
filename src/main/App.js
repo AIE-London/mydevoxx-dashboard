@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
-
 import { Row, Col } from 'react-flexbox-grid';
 import TalkCard from './components/TalkCard';
 import ReportStats from './components/ReportStats';
 import logo from './logo.svg';
 
 import './App.css';
-
-let reportStatsData =
-    {
-        "minutes": 455,
-        "talks": 10,
-        "learning": "JS, Polymer, Java" ,
-        "attendees": 435
-    };
 
 import testImage from '../test/snapshot/images/test-image.jpeg';
 
@@ -36,6 +27,15 @@ const talkDetail = {
     image: testImage
   }
 };
+
+
+let reportStatsData =
+    {
+        "minutes": 455,
+        "talks": 10,
+        "learning": "JS, Polymer, Java" ,
+        "attendees": 435
+    };
 
 class App extends Component {
 
