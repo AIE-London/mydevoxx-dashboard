@@ -65,6 +65,7 @@ function InvalidURLException (message) {
     this.name = 'InvalidURLException';
     this.message = message || 'Invalid URL Provided';
 };
+
 InvalidURLException.prototype = Error.prototype;
 
 /**
