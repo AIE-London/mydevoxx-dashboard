@@ -13,7 +13,7 @@ function UnexpectedSuccessException (message) {
 
 UnexpectedSuccessException.prototype = Error.prototype;
 
-export default {
-    UnexpectedErrorException : UnexpectedErrorException,
-    UnexpectedSuccessException : UnexpectedSuccessException
+export {
+    UnexpectedErrorException,
+    UnexpectedSuccessException
 }
