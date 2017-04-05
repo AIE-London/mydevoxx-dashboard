@@ -5,7 +5,6 @@ import ReportStats from './components/ReportStats';
 import logo from './logo.svg';
 
 import './App.css';
-import {Col, Row} from 'react-flexbox-grid';
 
 import testImage from '../test/snapshot/images/test-image.jpeg';
 
