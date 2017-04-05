@@ -1,0 +1,56 @@
+exports[`test Review Component - Empty Review 1`] = `
+<div
+  className="row start-xs">
+  <div
+    className="" />
+  <div
+    className="col-xs">
+    <h3
+      className="jPwRym" />
+    <p
+      className="ZxTsc" />
+  </div>
+</div>
+`;
+
+exports[`test Review Component - Fully populated review 1`] = `
+<div
+  className="row start-xs">
+  <div
+    className="">
+    <img
+      className="imhmHM"
+      src="test-image.jpeg" />
+  </div>
+  <div
+    className="col-xs">
+    <h3
+      className="jPwRym">
+      Test User
+    </h3>
+    <p
+      className="ZxTsc">
+      Great session, thanks for organising. Looking forward to the next one!
+    </p>
+  </div>
+</div>
+`;
+
+exports[`test Review Component - Missing Image 1`] = `
+<div
+  className="row start-xs">
+  <div
+    className="" />
+  <div
+    className="col-xs">
+    <h3
+      className="jPwRym">
+      Test User 3
+    </h3>
+    <p
+      className="ZxTsc">
+      3 Great session, thanks for organising. Looking forward to the next one!
+    </p>
+  </div>
+</div>
+`;

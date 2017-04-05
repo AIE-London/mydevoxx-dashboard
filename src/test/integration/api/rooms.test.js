@@ -1,5 +1,5 @@
 import room from "../../../main/api/rooms";
-import wiremockAPI from "./wiremock/wiremock-api";
+import wiremockAPI from "./wiremock/wiremockApi";
 import roomMapping from "./wiremock/mappings/rooms"
 import notFound from "./wiremock/mappings/notFoundRooms.json";
 
