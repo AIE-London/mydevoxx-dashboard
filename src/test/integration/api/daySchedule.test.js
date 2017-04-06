@@ -36,7 +36,10 @@ let emptyArraySetup = () => {
 describe('getSlots', () => {
     it('should work return data and handles a 404', () => {
         return normalSetup() // Setup mock for positive test
-            .then(daySchedule.getSlots("thursday"))
+            .then(() => {
+                return "thursday"
+            })
+            .then(daySchedule.getSlots)
             .then((results) => {
                 expect(results[0]).toEqual({
                     roomId: 'a_gallery_hall',
@@ -49,33 +52,31 @@ describe('getSlots', () => {
                 throw new UnexpectedErrorException("Unexpected error when retrieving day schedule after \"Normal\" setup", error); // Throw an expect error to differentiate from 404 in the catch
             })
             .then(notFoundSetup) // Setup Mock for 404 response
-            .then(daySchedule.getSlots("thursday"))
+            .then(() => {
+                return "thursday"
+            })
+            .then(daySchedule.getSlots)
             .then((results) => {
                 throw new UnexpectedSuccessException("Unexpected success when retrieving day schedule after \"Not Found\" setup"); // Should not get here, so fail with expect error
+            }).then(emptyArraySetup)
+            .then(() => {
+                return "thursdy"
+            })
+            .then(daySchedule.getSlots)
+            .then((results) => {
+                expect(results).toEqual([])
+
+            }, (error) => { // Should not error, so thro expect error below
+                throw new UnexpectedErrorException("Unexpected error when retrieving day schedule after \"Empty Array\" setup", error); // Throw an expect error to differentiate from 404 in the catch
             })
             .catch((error) => {
-                if (error.statusCode){ // Failed on negative test - good!
+                if (error.body && error.body.toString() === "Not Found"){ // Expected error from negative test
                     expect(error.statusCode).toBe(404);
-                } else { // Failed on positive test - bad!
+                } else {
                     console.error(error);
                     throw error;
                 }
-            });
+            })
     });
+}
 
-    /**
-     * <if> wiremock trained with empty array response -> returns 404 response
-     */
-    it('should return a 404 based on an empty array', () => {
-        return emptyArraySetup().then(getSlots("thursday")).then((results) => {
-            throw new UnexpectedSuccessException("Unexpected success when retrieving day schedule after \"Not Found\" setup");
-        }).catch((error) => {
-            if(error.statusCode) {
-                expect(error.statusCode).toBe(404);
-            } else {
-                console.error(error);
-                throw error;
-            }
-        });
-    });
-});
