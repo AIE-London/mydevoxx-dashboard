@@ -18,7 +18,7 @@ let notFoundSetup = () => {
     return wireMockAPI.postMapping(notFound);
 };
 
-/**a
+/**
  * <if> wiremock is trained with a speakers response list -> returns speaker list
  * <else> wiremock is trained with a 404 response -> returns 404
  */
