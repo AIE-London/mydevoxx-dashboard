@@ -39,6 +39,8 @@ let getSpeaker = (speakerId) => {
  * @returns {Array}
  */
 let parseTalkId = (talkId) => {
+    console.log("TALK ID");
+    console.log(talkId);
     let result = [];
     if (talkId) {
         result = talkId.split(",").map((item) => {
