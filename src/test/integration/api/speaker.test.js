@@ -35,8 +35,7 @@ describe('getSpeaker', () => {
                     avatarUrl: 'https://media.licdn.com/media/p/2/000/10f/320/3b9da1f.jpg',
                     company: 'Ranger4',
                     twitter: '@helenranger4',
-                    blog: 'www.ranger4.com',
-                    track: 'Methodology & Culture'
+                    blog: 'www.ranger4.com'
                 })
             }, (error) => {
                 throw new UnexpectedErrorException("Unexpected error when retrieving speaker after \"Normal\" setup", error);
