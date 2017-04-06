@@ -24,6 +24,7 @@ let getSpeaker = (speakerId) => {
             firstName: body.firstName,
             lastName: body.lastName,
             avatarURL: body.avatarURL,
+            acceptedTalks: body.acceptedTalks,
             company: body.company,
             twitter: body.twitter,
             blog: body.blog,
