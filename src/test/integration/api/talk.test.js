@@ -5,7 +5,7 @@ import notFound from "./wiremock/mappings/notFoundTalk";
 import {UnexpectedErrorException, UnexpectedSuccessException} from "./testingErrors";
 
 /**
- * Set up wiremock with normal room api response
+ * Set up wiremock with normal talk api response
  */
 let normalSetup = () => {
     return wireMockAPI.postMapping(talkMapping);
@@ -19,51 +19,30 @@ let notFoundSetup = () => {
 };
 
 /**
- * <if> wiremock is trained with a speakers response list -> returns speaker list
+ * <if> wiremock is trained with a talk response -> returns talk details
  * <else> wiremock is trained with a 404 response -> returns 404
  */
 describe('getTalk', () => {
     it('should return talk data and handle a 404', () => {
-        return normalSetup().then(talk.getTalk("").then((result) => {
-                expect(result).toEqual({
-                    id: 'JWG-0522'
-                })
-            }, (error) => {
-                throw new UnexpectedErrorException("Unexpected error when retrieving speakers after \"Normal\" setup", error);
-            });
+        return normalSetup().then(() => {
+            return "IBN-5679";
+        }).then(talk.getTalk).then((result) => {
+            expect(result).toEqual({
+                id: 'IBN-5679'
+            })
+        }, (error) => {
+            throw new UnexpectedErrorException("Unexpected error when retrieving talk after \"Normal\" setup", error);
+        }).then(notFoundSetup).then(() => {
+            return "BB8";
+        }).then(talk.getTalk).then((result) => {
+            throw new UnexpectedSuccessException("Unexpected success when retrieving talk after \"Not Found\" setup");
+        }).catch((error) => {
+            if (error.statusCode) {
+                expect(error.statusCode).toEqual(404);
+            } else {
+                console.error(error);
+                throw error;
+            }
+        });
     });
 });
-
-
-test('talk integration tests', () => {
-
-    describe('getTalk', () => {
-
-        it('should get a talk with a valid id', () => {
-            return talk.getTalk("JWG-0522").then((result) => {
-                expect(result.id).toEqual("JWG-0522");
-            }).catch((error) => {
-                expect(true).toBe(false);
-            })
-        });
-
-        it('should get a talk with an invalid id', () => {
-            return talk.getTalk("JWG-0523")
-                .then((result) => {
-                    expect(true).toEqual(false);
-                }).catch((error) => {
-                    expect(error.name).toEqual("Error");
-                });
-        });
-
-        it('should throw error when getting a talk with an undefined id', () => {
-            return talk.getTalk().then((result) => {
-                expect(true).toEqual(false);
-            }).catch((error) => {
-                console.log("helllo");
-                expect(error.name).toEqual("Error");
-            });
-        });
-
-    });
-})

@@ -24,9 +24,11 @@ let notFoundSetup = () => {
  */
 describe('getSpeaker', () => {
     it('should return speaker data and handle a 404', () => {
-        return normalSetup().then(speaker.getSpeaker("695b40d928dd0a905b7ab1b900b5a5752870a7d8"))
+        return normalSetup().then(() => {
+            return "695b40d928dd0a905b7ab1b900b5a5752870a7d8";
+        }).then(speaker.getSpeaker)
             .then((result) => {
-                expect(result[0]).toEqual({
+                expect(result).toEqual({
                     uuid: '695b40d928dd0a905b7ab1b900b5a5752870a7d8',
                     firstName: 'Helen',
                     lastName: 'Beal',
@@ -38,7 +40,9 @@ describe('getSpeaker', () => {
                 })
             }, (error) => {
                 throw new UnexpectedErrorException("Unexpected error when retrieving speaker after \"Normal\" setup", error);
-            }).then(notFoundSetup).then(speaker.getSpeaker("BB2")).then((result) => {
+            }).then(notFoundSetup).then(() => {
+                return "BB2";
+            }).then(speaker.getSpeaker).then((result) => {
                 throw new UnexpectedSuccessException("Unexpected success when retrieving speaker after \"Not Found\" setup");
             }).catch((error) => {
                 if (error.statusCode) {
