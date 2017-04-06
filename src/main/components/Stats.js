@@ -5,8 +5,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Card from './Card';
 import styled from 'styled-components';
-import {CommaList, CommaListItem} from './CommaList';
-
+import {CommaList, CommaListItem} from './CommaList'
 
 const Container = styled.div`
     width: 400px;
@@ -29,30 +28,30 @@ class Stats extends React.Component {
                 </Col>
 
                 <Row start="xs">
-                    <Col xs={10}>
+                    <Col xs={12}>
 
                         <StatHeader>Top Tracks:</StatHeader>
-
-                        <CommaList>
-                            {
-                                this.props.tracks.map( function(track) {
-                                    return <CommaListItem key={track}>{track}</CommaListItem>
-                                })
-                            }
-
-                        </CommaList>
+                        <div style={{textAlign: 'center'}}>
+                            <CommaList >
+                                {
+                                    this.props.tracks.map( function(track) {
+                                        return <CommaListItem key={track}>{track}</CommaListItem>
+                                    })
+                                }
+                            </CommaList>
+                        </div>
 
                         <StatHeader>Top Speakers:</StatHeader>
 
-                        <CommaList>
-                            {
-                                this.props.speakers.map( function(speaker) {
-                                    return <CommaListItem key={speaker}>{speaker}</CommaListItem>
-                                })
-                            }
-
-                        </CommaList>
-
+                        <div style={{textAlign: 'center'}}>
+                            <CommaList>
+                                {
+                                    this.props.speakers.map( function(speaker) {
+                                        return <CommaListItem key={speaker}>{speaker}</CommaListItem>
+                                    })
+                                }
+                            </CommaList>
+                        </div>
                     </Col>
                 </Row>
             </Col>
