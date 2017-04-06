@@ -20,15 +20,22 @@ if ( ["production", "integration"].indexOf(process.env.NODE_ENV) < 0){
  */
 let getSlots = (day) => {
     /*endpoint + day*/
+    console.log("DAY: " + endpoint + day);
+
     return request('GET', endpoint + day).then((response) => {
-        var result =  body.slots.map((item) => {
-            return {
-                roomId: item.roomId,
-                fromTimeMillis: item.fromTimeMillis,
-                talkId: item.talk.id,
-                toTimeMillis: item.toTimeMillis,
-                roomName: item.roomName
-            };
+
+        let body = JSON.parse(response.getBody());
+
+        let result =  body.slots.map((item) => {
+            if (item.talk){
+                return {
+                    roomId: item.roomId,
+                    fromTimeMillis: item.fromTimeMillis,
+                    talkId: item.talk.id,
+                    toTimeMillis: item.toTimeMillis,
+                    roomName: item.roomName
+                };
+            }
         });
         return result;
     });

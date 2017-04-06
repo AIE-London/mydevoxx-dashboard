@@ -1,11 +1,11 @@
 {
   "request": {
     "method": "GET",
-    "url": "api/conferences/DV17/schedules/thursday"
+    "url": "/api/conferences/DV17/schedules/thursday"
   },
   "response": {
     "status": 200,
-    "body": {"slots":[]},
+    "jsonBody": {"slots":[]},
 
     "headers": {
       "Content-Type": "text/plain; charset=utf-8"

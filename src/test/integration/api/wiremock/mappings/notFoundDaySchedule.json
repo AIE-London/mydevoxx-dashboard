@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "url": "api/conferences/DV17/schedules/thursday"
+    "url": "/api/conferences/DV17/schedules/thursday"
   },
   "response": {
     "status": 404,
