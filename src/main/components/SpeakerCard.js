@@ -22,10 +22,17 @@ const Blog = styled.div`
     paddingTop: 2px;
 `;
 
+const Container = styled.div`
+    width: 400px;
+    height: 400px;
+    
+`;
+
 class speakerCard extends React.Component {
 
     render() {
-        return <Card><Grid fluid>
+        return <Card> <Grid>
+
             <Row>
                 <Col>
                     <ImgCircle src={Default} ></ImgCircle>
@@ -34,14 +41,16 @@ class speakerCard extends React.Component {
                     <Title name={this.props.name} company={this.props.company}/>
                 </Col>
             </Row>
+
             <Row>
-                <Col md={3}>
+                <Col>
                     <div>Personal Blog:</div>
                     <Blog>{this.props.blog}</Blog>
                 </Col>
             </Row>
+
             <Row>
-                <Col md={3}>
+                <Col>
                     <div>Other Talks:</div>
                     <ul>
                         {
@@ -54,10 +63,47 @@ class speakerCard extends React.Component {
                 </Col>
             </Row>
 
-        </Grid> </Card>;
+            </Grid></Card>;
+
 
     }
 }
+
+/*
+ return <Card> <Grid fluid>
+
+ <Row style={{textAlign: left}}>
+ <Col>
+
+ </Col>
+ <Col xs>
+
+ </Col>
+ </Row>
+
+ <Row start="xs">
+ <Col>
+ <div>Personal Blog:</div>
+ <Blog>{this.props.blog}</Blog>
+ </Col>
+ </Row>
+
+ <Row start="xs">
+ <Col>
+ <div>Other Talks:</div>
+ <ul>
+ {
+ this.props.talks.map( function(talk) {
+ return <li key={talk}>{talk}</li>
+ })
+ }
+
+ </ul>
+ </Col>
+ </Row>
+
+ </Grid></Card>;
+ */
 
 
 export default speakerCard;
