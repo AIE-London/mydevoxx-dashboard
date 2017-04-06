@@ -23,11 +23,11 @@ let getSpeaker = (speakerId) => {
             uuid: body.uuid,
             firstName: body.firstName,
             lastName: body.lastName,
-            avatarUrl: body.avatarUrl,
+            avatarURL: body.avatarURL,
             company: body.company,
             twitter: body.twitter,
             blog: body.blog,
-            talkId: parseTalkId(body.acceptedTalks.talkId)
+            talkId: parseTalkId(body.acceptedTalks.id)
         };
     });
 };
@@ -39,8 +39,6 @@ let getSpeaker = (speakerId) => {
  * @returns {Array}
  */
 let parseTalkId = (talkId) => {
-    console.log("TALK ID");
-    console.log(talkId);
     let result = [];
     if (talkId) {
         result = talkId.split(",").map((item) => {

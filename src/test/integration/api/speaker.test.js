@@ -32,7 +32,7 @@ describe('getSpeaker', () => {
                     uuid: '695b40d928dd0a905b7ab1b900b5a5752870a7d8',
                     firstName: 'Helen',
                     lastName: 'Beal',
-                    avatarUrl: 'https://media.licdn.com/media/p/2/000/10f/320/3b9da1f.jpg',
+                    avatarURL: 'https://media.licdn.com/media/p/2/000/10f/320/3b9da1f.jpg',
                     company: 'Ranger4',
                     twitter: '@helenranger4',
                     blog: 'www.ranger4.com',
