@@ -12,13 +12,17 @@ let reportStatsData =
         "attendees": 435
     };
 
+
 class App extends Component {
 
   render() {
 
+
     let {minutes, talks, learning, attendees} = this.props.reportStats;
 
+
     return (
+
       <div className="App">
 
           <Row center="xs">
@@ -30,6 +34,7 @@ class App extends Component {
 
           </SessionView>
       </div>
+
     );
   }
 }

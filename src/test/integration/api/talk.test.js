@@ -1,34 +1,75 @@
 import talk from "../../../main/api/talk";
+import wireMockAPI from "./wiremock/wiremockApi";
+import talkMapping from "./wiremock/mappings/talk";
+import notFound from "./wiremock/mappings/notFoundTalk";
+import {UnexpectedErrorException, UnexpectedSuccessException, MappingSetupException} from "./testingErrors";
+import {raiseOrPassError, expectNotFoundOrRethrowError} from "./testingHelpers";
 
-test('talk integration tests', () => {
+/**
+ * Set up wiremock with normal talk api response
+ */
+let normalSetup = () => {
+    return wireMockAPI.postMapping(talkMapping);
+};
 
-    describe('getTalk', () => {
+/**
+ * Set up wiremock with 404 response
+ */
+let notFoundSetup = () => {
+    return wireMockAPI.postMapping(notFound);
+};
 
-        it('should get a talk with a valid id', () => {
-            return talk.getTalk("JWG-0522").then((result) => {
-                expect(result.id).toEqual("JWG-0522");
-            }).catch((error) => {
-                expect(true).toBe(false);
+/**
+ * <if> wiremock is trained with a talk response -> returns talk details
+ * <else> wiremock is trained with a 404 response -> returns 404
+ */
+describe('getTalk', () => {
+   it('should return talk data', () => {
+       return normalSetup()
+           .then(() => "IBN-5679",
+               (error) => {
+                   raiseOrPassError("MappingSetupException", "Wiremock mapping failed for \"normalSetup\"", error);
+               })
+           .then(talk.getTalk)
+           .then((result) => {
+                expect(result).toEqual(
+                    {
+                        description:"Talk summary",
+                        id:"IBN-5679",
+                        name:"The DevOps Superpattern",
+                        speakers:[
+                            {
+                                id:"695b40d928dd0a905b7ab1b900b5a5752870a7d8",
+                                name:"Helen Beal"
+                            }
+                        ],
+                        tracks:["Agile", "DevOps"]
+                    }
+                )
+           }, (error) => {
+                raiseOrPassError("UnexpectedErrorException", "Unexpected error on \"getTalk\" after \"normalSetup\"", error);
+           })
+           .catch((error) => {
+               console.error(error);
+               throw error;
+           })
+   });
+
+    it("should handle a 404", () => {
+        return notFoundSetup()
+        .then(() => "idonotexist",
+            (error) => {
+                raiseOrPassError("MappingSetupException", "Wiremock mapping failed for \"notFoundSetup\"", error);
             })
-        });
-
-        it('should get a talk with an invalid id', () => {
-            return talk.getTalk("JWG-0523")
-              .then((result) => {
-                  expect(true).toEqual(false);
-              }).catch((error) => {
-                  expect(error.name).toEqual("Error");
-              });
-        });
-
-        it('should throw error when getting a talk with an undefined id', () => {
-            return talk.getTalk().then((result) => {
-                expect(true).toEqual(false);
-            }).catch((error) => {
-                console.log("helllo");
-                expect(error.name).toEqual("Error");
-            });
-        });
-
-    });
-})
+            .then(talk.getTalk)
+            .then((result) => {
+                raiseOrPassError("UnexpectedSuccessException", "Unexpected success on \"getTalk\" after \"notFoundSetup\"");
+            }, (error) => {
+                expectNotFoundOrRethrowError(error, "Unexpected error on \"getTalk\" after \"notFoundSetup\"");
+            })
+            .catch((error) => {
+                console.error(error);
+                throw error;
+            })
+    })
+});

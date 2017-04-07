@@ -14,6 +14,7 @@ let reportStatsData =
 
 test('app component', () => {
 
+
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<App />, div);
@@ -22,7 +23,7 @@ test('app component', () => {
 });
 
 
-test('app component snapshot', () => {
+test('App component snapshot', () => {
     const tree = renderer.create(
       <App reportStats={reportStatsData}/>
     ).toJSON();
