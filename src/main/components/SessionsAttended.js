@@ -1,9 +1,6 @@
 /**
  * Created by tsadler on 06/04/2017.
  */
-/**
- * Created by tsadler on 06/04/2017.
- */
 import React from 'react';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import styled from 'styled-components';
@@ -47,17 +44,25 @@ class sessionsAttended extends React.Component {
 
         return <Container>
             <Card>
-                <Col xs={12}>
+                <Col xs={12}>/**
+                 * sets Col width to 12
+                 */
 
-                    <Col xs={10}>
-                        <Row start="xs">
+                    <Col xs={10}>/**
+                     *sets the width of the col in the col to 10 out of 12
+                     */
+                        <Row start="xs">/**
+                         * sets where the row content begins start = left, center = center, end = right
+                         */
                             <StatMainHeader>MySessions</StatMainHeader>
                         </Row>
                     </Col>
 
                     <Row center="xs">
                         <Col xs={10}>
-                            <Row start="xs" middle="xs">
+                            <Row start="xs" middle="xs"> /**
+                             * sets content to middle of the row not top/bottom
+                             */
                                 <Col xs>
                                     <CardHeader>Title{this.props.title} </CardHeader>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget libero mi.
