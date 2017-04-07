@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Speaker from '../../main/components/SpeakerCard';
+import Speaker from '../../../../main/components/SpeakerCard';
 import renderer from 'react-test-renderer';
 
 test('app component', () => {
