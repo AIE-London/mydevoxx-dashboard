@@ -18,7 +18,7 @@ test('FurtherReading component', () => {
 test('FurtherReading component with title snapshot', () => {
 
     const tree = renderer.create(
-        <FurtherReading  text ="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at gravida neque. Suspendisse vitae lacus eget tellus facilisis...." />
+        <FurtherReading  text ="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at gravida neque.Lacus eget tellus facilisis...." />
     ).toJSON();
     expect(tree).toMatchSnapshot();
 
