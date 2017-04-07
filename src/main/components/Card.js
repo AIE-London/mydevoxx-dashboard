@@ -1,9 +1,8 @@
 /**
  * Created by dan on 04/04/2017.
  */
-import React, { Component } from 'react';
 import styled from 'styled-components';
-import {Row} from 'react-flexbox-grid';
+import { Row } from 'react-flexbox-grid';
 
 const Card = styled(Row)`
   background: #FAFAFA;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, browserHistory } from 'react-router-dom';
 import { Row, Col } from 'react-flexbox-grid';
 import TalkCard from './TalkCard';
 import ReportStats from './ReportStats';

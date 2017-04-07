@@ -2,7 +2,7 @@
  * Created by TSADLER on 03/04/2017.
  */
 import React from 'react';
-import {Grid, Row, Col} from 'react-flexbox-grid';
+import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
 const StatMainHeader = styled.h1`
