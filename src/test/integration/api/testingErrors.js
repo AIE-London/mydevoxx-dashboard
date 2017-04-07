@@ -11,9 +11,16 @@ function UnexpectedSuccessException (message) {
     this.message = message || "There was an unexpected success";
 };
 
+function MappingSetupException (message, innerException) {
+    this.name = 'MappingSetupException';
+    this.message = message || "There was an error setting up mapping";
+    this.innerException = innerException || undefined;
+};
+
 UnexpectedSuccessException.prototype = Error.prototype;
 
 export {
     UnexpectedErrorException,
-    UnexpectedSuccessException
+    UnexpectedSuccessException,
+    MappingSetupException
 }
