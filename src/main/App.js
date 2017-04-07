@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Col, Row} from 'react-flexbox-grid';
+import ReportStats from './components/ReportStats';
 
 let reportStatsData =
     {
@@ -29,7 +30,7 @@ class App extends Component {
                   <ReportStats  minutes={minutes} talks={talks} learning={learning} attendees={attendees} ></ReportStats>
               </Col>
           </Row>
-          <SessionView dayNo="One" sTime="10:00" room="GIANT HALLWAY">
+          <SessionView dayNo="One" sTime="10:00" room="Mezzanine">
 
           </SessionView>
       </div>
