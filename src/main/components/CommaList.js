@@ -1,8 +1,6 @@
 /**
  * Created by dan on 04/04/2017.
  */
-import React  from 'react';
-
 import styled from 'styled-components';
 
 export const CommaList = styled.ul`

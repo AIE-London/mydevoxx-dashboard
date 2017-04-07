@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/conferences/DV17/schedules/thursday"
+  },
+  "response": {
+    "status": 404,
+    "body": "Not Found",
+
+    "headers": {
+      "Content-Type": "text/plain; charset=utf-8"
+    }
+  }
+}
