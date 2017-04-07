@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Report from '../../main/Component/Report';
+import Report from '../../main/components/Report';
 import renderer from 'react-test-renderer';
 
 test('report component', () => {
