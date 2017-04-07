@@ -1,21 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Report from '../../main/components/Report';
+import App from '../../main/App';
 import renderer from 'react-test-renderer';
 
-test('report component', () => {
+test('App component', () => {
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Report />, div);
+    ReactDOM.render(<App />, div);
   });
 
 });
 
 
-test('ReportStats component snapshot', () => {
+test('App component snapshot', () => {
     const tree = renderer.create(
-      <Report />
+      <App />
     ).toJSON();
     expect(tree).toMatchSnapshot();
 });

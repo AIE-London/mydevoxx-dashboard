@@ -13,10 +13,10 @@ class App extends Component {
     return (
         <Router history={browserHistory}>
           <div>
+            <Route path='/' component={Dashboard} />
             <Route path='/report' component={Report} />
             <Route path='/talk/:id' component={Talk} />
             <Route path='top-rated' component={TopRated} />
-            <p>App page</p>
           </div>
         </Router>
     );

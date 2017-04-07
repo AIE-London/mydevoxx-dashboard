@@ -32,7 +32,7 @@ let reportStatsData =
     {
         "minutes": 455,
         "talks": 10,
-        "learning": "JS, Polymer, Java" ,
+        "learning": "Spring, Java" ,
         "attendees": 435
     };
 
