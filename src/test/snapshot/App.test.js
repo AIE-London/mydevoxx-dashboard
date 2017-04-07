@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../../main/App';
+import Report from '../../main/Component/Report';
 import renderer from 'react-test-renderer';
 
-test('app component', () => {
+test('report component', () => {
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -13,9 +13,9 @@ test('app component', () => {
 });
 
 
-test('app component snapshot', () => {
+test('ReportStats component snapshot', () => {
     const tree = renderer.create(
-      <App />
+      <Report />
     ).toJSON();
     expect(tree).toMatchSnapshot();
 });
