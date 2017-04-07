@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-
 import './App.css';
 import {Col, Row} from 'react-flexbox-grid';
 import ReportStats from './components/ReportStats';
-
-
-
 import SessionView from './components/SessionView';
-
-
-
-
 
 let reportStatsData =
     {
