@@ -16,7 +16,7 @@ class App extends Component {
 
   render() {
 
-    let {minutes, talks, learning, attendees} = reportStatsData;
+    let {minutes, talks, learning, attendees} = this.props.reportStats;
 
     return (
       <div className="App">
