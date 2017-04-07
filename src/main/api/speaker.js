@@ -17,7 +17,9 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
  * @returns {bio, firstName, lastName, avatarUrl, company, twitter, blog, talkId}
  */
 let getSpeaker = (speakerId) => {
+
     return request('GET', speakerEndpoint + speakerId).then((response) => {
+
         let body = JSON.parse(response.getBody());
         return {
             uuid: body.uuid,
@@ -27,7 +29,7 @@ let getSpeaker = (speakerId) => {
             company: body.company,
             twitter: body.twitter,
             blog: body.blog,
-            talkId: parseTalkId(body.acceptedTalks.id)
+            talkId: parseTalkId(body.acceptedTalks[0].id)
         };
     });
 };

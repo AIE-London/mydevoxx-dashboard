@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "url": "/api/conferences/DV17/talks/BB8"
+    "url": "/api/conferences/DV17/talks/idonotexist"
   },
   "response": {
     "status": 404,

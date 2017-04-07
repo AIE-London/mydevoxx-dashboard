@@ -37,7 +37,6 @@ describe('getRooms', () => {
         }).then(notFoundSetup).then(room.getRooms).then((result) => {
             throw new UnexpectedSuccessException("Unexpected success when retrieving speakers after \"Not Found\" setup");
         }).catch((error) => {
-            console.log(error);
             if (error.statusCode) {
                 expect(error.statusCode).toBe(404);
             } else {

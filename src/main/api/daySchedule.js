@@ -19,8 +19,6 @@ if ( ["production", "integration"].indexOf(process.env.NODE_ENV) < 0){
  * @returns (Array) [{roomId, fromTimeMillis, talkId, toTimeMillis, roomName]})
  */
 let getSlots = (day) => {
-    /*endpoint + day*/
-    console.log("DAY: " + endpoint + day);
 
     return request('GET', endpoint + day).then((response) => {
 

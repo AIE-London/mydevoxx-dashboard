@@ -2,7 +2,8 @@ import talk from "../../../main/api/talk";
 import wireMockAPI from "./wiremock/wiremockApi";
 import talkMapping from "./wiremock/mappings/talk";
 import notFound from "./wiremock/mappings/notFoundTalk";
-import {UnexpectedErrorException, UnexpectedSuccessException} from "./testingErrors";
+import {UnexpectedErrorException, UnexpectedSuccessException, MappingSetupException} from "./testingErrors";
+import {raiseOrPassError, expectNotFoundOrRethrowError} from "./testingHelpers";
 
 /**
  * Set up wiremock with normal talk api response
@@ -23,26 +24,52 @@ let notFoundSetup = () => {
  * <else> wiremock is trained with a 404 response -> returns 404
  */
 describe('getTalk', () => {
-    it('should return talk data and handle a 404', () => {
-        return normalSetup().then(() => {
-            return "IBN-5679";
-        }).then(talk.getTalk).then((result) => {
-            expect(result).toEqual({
-                id: 'IBN-5679'
+   it('should return talk data', () => {
+       return normalSetup()
+           .then(() => "IBN-5679",
+               (error) => {
+                   raiseOrPassError("MappingSetupException", "Wiremock mapping failed for \"normalSetup\"", error);
+               })
+           .then(talk.getTalk)
+           .then((result) => {
+                expect(result).toEqual(
+                    {
+                        description:"Talk summary",
+                        id:"IBN-5679",
+                        name:"The DevOps Superpattern",
+                        speakers:[
+                            {
+                                id:"695b40d928dd0a905b7ab1b900b5a5752870a7d8",
+                                name:"Helen Beal"
+                            }
+                        ],
+                        tracks:["Agile", "DevOps"]
+                    }
+                )
+           }, (error) => {
+                raiseOrPassError("UnexpectedErrorException", "Unexpected error on \"getTalk\" after \"normalSetup\"", error);
+           })
+           .catch((error) => {
+               console.error(error);
+               throw error;
+           })
+   });
+
+    it("should handle a 404", () => {
+        return notFoundSetup()
+        .then(() => "idonotexist",
+            (error) => {
+                raiseOrPassError("MappingSetupException", "Wiremock mapping failed for \"notFoundSetup\"", error);
             })
-        }, (error) => {
-            throw new UnexpectedErrorException("Unexpected error when retrieving talk after \"Normal\" setup", error);
-        }).then(notFoundSetup).then(() => {
-            return "BB8";
-        }).then(talk.getTalk).then((result) => {
-            throw new UnexpectedSuccessException("Unexpected success when retrieving talk after \"Not Found\" setup");
-        }).catch((error) => {
-            if (error.statusCode) {
-                expect(error.statusCode).toEqual(404);
-            } else {
+            .then(talk.getTalk)
+            .then((result) => {
+                raiseOrPassError("UnexpectedSuccessException", "Unexpected success on \"getTalk\" after \"notFoundSetup\"");
+            }, (error) => {
+                expectNotFoundOrRethrowError(error, "Unexpected error on \"getTalk\" after \"notFoundSetup\"");
+            })
+            .catch((error) => {
                 console.error(error);
                 throw error;
-            }
-        });
-    });
+            })
+    })
 });

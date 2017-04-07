@@ -1,11 +1,11 @@
 {
   "request": {
     "method": "GET",
-    "url": "/api/conferences/DV17/speakers/idonotexist"
+    "url": "/api/conferences/DV17/schedules/"
   },
   "response": {
     "status": 404,
-    "body": "Speaker not found",
+    "body": "Not Found",
 
     "headers": {
       "Content-Type": "text/plain; charset=utf-8"
