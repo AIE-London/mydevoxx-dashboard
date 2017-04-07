@@ -1,0 +1,91 @@
+exports[`test stats component with all properties filled 1`] = `
+<div
+  className="dRQkYN">
+  <div
+    className="bvnlUe row center-xs">
+     
+    <div
+      className="col-xs-10">
+       
+      <div
+        className="col-xs-6">
+         
+        <div
+          className="row start-xs">
+           
+          <h1>
+            My Stats
+          </h1>
+        </div>
+      </div>
+      <div
+        className="row start-xs">
+         
+        <div
+          className="col-xs-12">
+           
+          <h2
+            className="eIkKGg">
+            Top Tracks:
+          </h2>
+           
+          <div
+            style={
+              Object {
+                "textAlign": "center",
+              }
+            }>
+             
+            <ul
+              className="izGhAk">
+               
+              <li
+                className="cLQKgI">
+                Agile
+              </li>
+              <li
+                className="cLQKgI">
+                Bgile
+              </li>
+              <li
+                className="cLQKgI">
+                Cgile
+              </li>
+            </ul>
+          </div>
+          <h2
+            className="eIkKGg">
+            Top Speakers:
+          </h2>
+           
+          <div
+            style={
+              Object {
+                "paddingBottom": 15,
+                "textAlign": "center",
+              }
+            }>
+             
+            <ul
+              className="izGhAk">
+               
+              <li
+                className="cLQKgI">
+                Person One
+              </li>
+              <li
+                className="cLQKgI">
+                Person Two
+              </li>
+              <li
+                className="cLQKgI">
+                Person Three
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
