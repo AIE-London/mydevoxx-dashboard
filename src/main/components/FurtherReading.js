@@ -16,6 +16,7 @@ const StatMainHeader = styled.h1`
     font-size: 2em;
     font-family: helvetica;
     margin-left: 15px;
+    margin-bottom:0px;
 `;
 
 const StatValue = styled.p`
@@ -28,7 +29,9 @@ const LinkValue = styled.p`
     font-size: 0.75em;
     color: #fff;
     font-family: helvetica;
-     margin-left: 15px;
+     margin-left: 30px;
+     margin-top:0px;
+     margin-bottom:0px;
 `;
 
 class furtherReading extends React.Component {
@@ -39,19 +42,18 @@ class furtherReading extends React.Component {
             <Row center="xs">
                     <Col xs={12}>
 
-
-                        <Col xs={5}>
+                        <Col xs={10}>
                             <Row start="xs">
-                                <StatMainHeader>AdvancedReading</StatMainHeader>
-                                <LinkValue> <a href> http:www.bbc.com </a> </LinkValue>
+                                <StatMainHeader>Advanced Reading</StatMainHeader>
+                                <LinkValue> <a href="https://www.bbc.co.uk"> Link to advanced reading </a> </LinkValue>
                             </Row>
                         </Col>
 
                         <Row center="xs">
                             <Col xs={10}>
 
-                                <StatValue>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at gravida neque. Suspendisse
-                                    vitae lacus eget tellus facilisis .... </StatValue>
+                                <StatValue>{this.props.text} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at gravida neque. Suspendisse
+                                    vitae lacus eget tellus facilisis.... </StatValue>
 
                             </Col>
                         </Row>

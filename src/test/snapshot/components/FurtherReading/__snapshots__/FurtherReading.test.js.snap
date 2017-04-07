@@ -1,0 +1,44 @@
+exports[`test FurtherReading component with title snapshot 1`] = `
+<div
+  className="coDiMZ">
+  <div
+    className="bvnlUe row">
+    <div
+      className="row center-xs">
+      <div
+        className="col-xs-12">
+        <div
+          className="col-xs-10">
+          <div
+            className="row start-xs">
+            <h1
+              className="ijXbfx">
+              Advanced Reading
+            </h1>
+            <p
+              className="hGHyBD">
+               
+              <a
+                href="https://www.bbc.co.uk">
+                 Link to advanced reading 
+              </a>
+               
+            </p>
+          </div>
+        </div>
+        <div
+          className="row center-xs">
+          <div
+            className="col-xs-10">
+            <p
+              className="hBDBjN">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at gravida neque. Suspendisse vitae lacus eget tellus facilisis....
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at gravida neque. Suspendisse vitae lacus eget tellus facilisis.... 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
