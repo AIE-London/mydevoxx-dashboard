@@ -1,4 +1,4 @@
-exports[`test app component snapshot 1`] = `
+exports[`test ReportStats component snapshot 1`] = `
 <div
   className="App">
   <div
