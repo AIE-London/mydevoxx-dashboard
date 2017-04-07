@@ -1,5 +1,6 @@
 exports[`test App component snapshot 1`] = `
-<div>
+<div
+  className="App">
   <div
     className="row center-xs">
     <div
