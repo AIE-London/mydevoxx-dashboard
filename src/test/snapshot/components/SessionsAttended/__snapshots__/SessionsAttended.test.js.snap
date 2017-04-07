@@ -5,10 +5,13 @@ exports[`test sessionsAttended component with title snapshot 1`] = `
     className="bvnlUe row">
     <div
       className="col-xs-12">
+      /**
       <div
         className="col-xs-10">
+        /**
         <div
           className="row start-xs">
+          /**
           <h1
             className="dEhMDz">
             MySessions
@@ -21,6 +24,7 @@ exports[`test sessionsAttended component with title snapshot 1`] = `
           className="col-xs-10">
           <div
             className="row start-xs middle-xs">
+             /**
             <div
               className="col-xs">
               <h2

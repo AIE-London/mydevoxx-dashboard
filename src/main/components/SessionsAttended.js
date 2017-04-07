@@ -45,14 +45,14 @@ class sessionsAttended extends React.Component {
         return <Container>
             <Card>
                 <Col xs={12}>/**
-                 {* sets Col width to 12
+                 {/** sets Col width to 12
                  */}
 
                     <Col xs={10}>/**
-                     {*sets the width of the col in the col to 10 out of 12
+                     {/**sets the width of the col in the col to 10 out of 12
                      */}
                         <Row start="xs">/**
-                         {* sets where the row content begins start = left, center = center, end = right
+                         {/** sets where the row content begins start = left, center = center, end = right
                          */}
                             <StatMainHeader>MySessions</StatMainHeader>
                         </Row>
@@ -61,7 +61,7 @@ class sessionsAttended extends React.Component {
                     <Row center="xs">
                         <Col xs={10}>
                             <Row start="xs" middle="xs"> /**
-                             {* sets content to middle of the row not top/bottom
+                             {/** sets content to middle of the row not top/bottom
                              */}
                                 <Col xs>
                                     <CardHeader>Title{this.props.title} </CardHeader>
