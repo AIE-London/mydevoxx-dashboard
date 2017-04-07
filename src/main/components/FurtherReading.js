@@ -29,7 +29,8 @@ const LinkValue = styled.p`
 class furtherReading extends React.Component {
     render() {
 
-        return <Card> <Row center="xs">
+        return <Card>
+            <Row center="xs">
                     <Col xs={12}>
 
 
