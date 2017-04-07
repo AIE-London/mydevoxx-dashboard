@@ -1,321 +1,391 @@
 exports[`test App component snapshot 1`] = `
-<div
-  className="App">
-  <div
-    className="row center-xs">
+
+<div>
+  <div>
     <div
-      className="col-xs-10">
-      <div
-        className="row center-xs">
+      className={undefined}
+      style={
+        Object {
+          "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+          "backgroundColor": "#ff9e19",
+          "borderRadius": "0px",
+          "boxShadow": "0 1px 6px rgba(0, 0, 0, 0.12),
+                 0 1px 4px rgba(0, 0, 0, 0.12)",
+          "boxSizing": "border-box",
+          "color": "#fff",
+          "display": "flex",
+          "fontFamily": "Roboto, sans-serif",
+          "muiPrepared": true,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "position": "relative",
+          "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+          "width": "100%",
+          "zIndex": 1100,
+        }
+      }>
+      <button
+        disabled={false}
+        href={undefined}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onTouchStart={[Function]}
+        onTouchTap={[Function]}
+        style={
+          Object {
+            "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+            "background": "none",
+            "border": 10,
+            "boxSizing": "border-box",
+            "cursor": "pointer",
+            "display": "inline-block",
+            "fontFamily": "Roboto, sans-serif",
+            "fontSize": 0,
+            "fontWeight": "inherit",
+            "height": 48,
+            "margin": 0,
+            "marginLeft": -16,
+            "marginRight": 8,
+            "marginTop": 13.5,
+            "muiPrepared": true,
+            "outline": "none",
+            "overflow": "visible",
+            "padding": 12,
+            "position": "relative",
+            "textDecoration": "none",
+            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            "verticalAlign": null,
+            "width": 48,
+            "zIndex": 1,
+          }
+        }
+        tabIndex={0}
+        type="button">
         <div
-          className="col-xs-10">
-          <div
-            className="col-xs-2">
-            <div
-              className="row start-xs">
-              <h1
-                className="iscJSK">
-                MyReport
-              </h1>
-            </div>
-          </div>
-          <div
-            className="row center-xs">
-            <div
-              className="col-xs-10">
-              <h2
-                className="eUofwH">
-                I spent 
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}>
+          <svg
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={
+              Object {
+                "color": "#ffffff",
+                "display": "inline-block",
+                "fill": "#ffffff",
+                "height": 24,
+                "muiPrepared": true,
+                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+            viewBox="0 0 24 24">
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </div>
+      </button>
+      <h1
+        onTouchTap={[Function]}
+        style={
+          Object {
+            "boxFlex": 1,
+            "color": "#ffffff",
+            "flex": "1",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "height": "75",
+            "letterSpacing": 0,
+            "lineHeight": "75px",
+            "margin": 0,
+            "muiPrepared": true,
+            "overflow": "hidden",
+            "paddingTop": 0,
+            "textOverflow": "ellipsis",
+            "whiteSpace": "nowrap",
+          }
+        }>
+        MyDevoxx
+      </h1>
+      <div
+        style={
+          Object {
+            "marginLeft": "auto",
+            "marginRight": -16,
+            "marginTop": 13.5,
+            "muiPrepared": true,
+          }
+        }>
+        <div>
+          <a
+            href="/"
+            onClick={[Function]}>
+            <button
+              disabled={false}
+              href={undefined}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              onTouchTap={[Function]}
+              style={
+                Object {
+                  "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                  "backgroundColor": "rgba(0, 0, 0, 0)",
+                  "border": 10,
+                  "borderRadius": 2,
+                  "boxSizing": "border-box",
+                  "color": "#fff",
+                  "cursor": "pointer",
+                  "display": "inline-block",
+                  "fontFamily": "Roboto, sans-serif",
+                  "fontSize": "inherit",
+                  "fontWeight": "inherit",
+                  "height": 36,
+                  "lineHeight": "36px",
+                  "margin": 0,
+                  "minWidth": 88,
+                  "muiPrepared": true,
+                  "outline": "none",
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "relative",
+                  "textAlign": "center",
+                  "textDecoration": "none",
+                  "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                  "userSelect": "none",
+                  "verticalAlign": null,
+                  "zIndex": 1,
+                }
+              }
+              tabIndex={0}
+              type="button">
+              <div
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}>
                 <span
-                  className="kiuWfQ">
-                  455
-                   minutes
+                  style={
+                    Object {
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "letterSpacing": 0,
+                      "muiPrepared": true,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "position": "relative",
+                      "textTransform": "uppercase",
+                      "verticalAlign": "middle",
+                    }
+                  }>
+                  Home
                 </span>
-              </h2>
-              <p
-                className="jlawfx">
-                Attending 
+              </div>
+            </button>
+          </a>
+          <a
+            href="/report"
+            onClick={[Function]}>
+            <button
+              disabled={false}
+              href={undefined}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              onTouchTap={[Function]}
+              style={
+                Object {
+                  "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                  "backgroundColor": "rgba(0, 0, 0, 0)",
+                  "border": 10,
+                  "borderRadius": 2,
+                  "boxSizing": "border-box",
+                  "color": "#fff",
+                  "cursor": "pointer",
+                  "display": "inline-block",
+                  "fontFamily": "Roboto, sans-serif",
+                  "fontSize": "inherit",
+                  "fontWeight": "inherit",
+                  "height": 36,
+                  "lineHeight": "36px",
+                  "margin": 0,
+                  "minWidth": 88,
+                  "muiPrepared": true,
+                  "outline": "none",
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "relative",
+                  "textAlign": "center",
+                  "textDecoration": "none",
+                  "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                  "userSelect": "none",
+                  "verticalAlign": null,
+                  "zIndex": 1,
+                }
+              }
+              tabIndex={0}
+              type="button">
+              <div
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}>
                 <span
-                  className="kiuWfQ">
-                  10
-                   talks
+                  style={
+                    Object {
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "letterSpacing": 0,
+                      "muiPrepared": true,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "position": "relative",
+                      "textTransform": "uppercase",
+                      "verticalAlign": "middle",
+                    }
+                  }>
+                  Report
                 </span>
-              </p>
-              <h2
-                className="eUofwH">
-                Learning what\'s new in...
-              </h2>
-              <p
-                className="jlawfx">
-                JS, Polymer, Java
-                 
-              </p>
-              <h2
-                className="eUofwH">
-                Networking with
-              </h2>
-              <p
-                className="jlawfx">
-                 
+              </div>
+            </button>
+          </a>
+          <a
+            href="/top-rated"
+            onClick={[Function]}>
+            <button
+              disabled={false}
+              href={undefined}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              onTouchTap={[Function]}
+              style={
+                Object {
+                  "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                  "backgroundColor": "rgba(0, 0, 0, 0)",
+                  "border": 10,
+                  "borderRadius": 2,
+                  "boxSizing": "border-box",
+                  "color": "#fff",
+                  "cursor": "pointer",
+                  "display": "inline-block",
+                  "fontFamily": "Roboto, sans-serif",
+                  "fontSize": "inherit",
+                  "fontWeight": "inherit",
+                  "height": 36,
+                  "lineHeight": "36px",
+                  "margin": 0,
+                  "minWidth": 88,
+                  "muiPrepared": true,
+                  "outline": "none",
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "relative",
+                  "textAlign": "center",
+                  "textDecoration": "none",
+                  "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                  "userSelect": "none",
+                  "verticalAlign": null,
+                  "zIndex": 1,
+                }
+              }
+              tabIndex={0}
+              type="button">
+              <div
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}>
                 <span
-                  className="kiuWfQ">
-                  435
+                  style={
+                    Object {
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "letterSpacing": 0,
+                      "muiPrepared": true,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "position": "relative",
+                      "textTransform": "uppercase",
+                      "verticalAlign": "middle",
+                    }
+                  }>
+                  Top Rated
                 </span>
-                 Attendees
-              </p>
-            </div>
-          </div>
+              </div>
+            </button>
+          </a>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="dZUSMd">
-    <h2
-      className="dzXVgj">
-      Day 
-      One
-    </h2>
-    <h2
-      className="iHLkzq">
-      10:00
-       - 
-      Mezzanine
-    </h2>
     <div
-      className="row center-xs">
-      <div
-        className="col-xs-10">
-        <div
-          className="bvnlUe row start-xs">
-          <div
-            className="col-xs-6 fteZLe">
-            <div
-              className="row start-xs">
-              <h2
-                className="Axdp"
-                id="title">
-                Welcome to Devoxx 2017
-              </h2>
-            </div>
-            <div
-              className="row end-xs">
-              <div
-                className="row"
-                left="xs">
-                <div
-                  className="kmDnAn" />
-                <div
-                  className="kmDnAn" />
-                <div
-                  className="kmDnAn" />
-                <div
-                  className="kmDnAn" />
-                <div
-                  className="cWcebC" />
-              </div>
-            </div>
-            <p
-              className="jLJUnn">
-              Join the organisers of Devoxx UK and great keynote speakers for inspring stories in 20 minute segments.
-            </p>
-            <div
-              className="row">
-              <h3
-                className="jJURiy">
-                Top Tracks
-              </h3>
-            </div>
-            <div
-              className="row">
-              <ul
-                className="izGhAk">
-                <li
-                  className="cLQKgI">
-                  Java
-                </li>
-                <li
-                  className="cLQKgI">
-                  Devoxx
-                </li>
-                <li
-                  className="cLQKgI">
-                  Spring
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div
-            className="col-xs-6 eZvXOT">
-            <div
-              className="row start-xs">
-              <h3
-                className="jJURiy"
-                id="notesHeader">
-                My Notes
-              </h3>
-            </div>
-            <div
-              className="row start-xs">
-              <p
-                className="bKHqKP">
-                Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer nec. Feugiat qualisque quo an. Labores officiis te nam.
-              </p>
-            </div>
-            <div
-              className="row start-xs">
-              <h3
-                className="jJURiy"
-                id="notesHeader">
-                My Reviews
-              </h3>
-            </div>
-            <div
-              className="fEZGiH row start-xs">
-              <div
-                className="row start-xs">
-                <div
-                  className="">
-                  <img
-                    className="imhmHM"
-                    src="test-image.jpeg" />
-                </div>
-                <div
-                  className="col-xs">
-                  <h3
-                    className="jPwRym">
-                    Test User
-                  </h3>
-                  <p
-                    className="ZxTsc">
-                    Great session, thanks for organising. Looking forward to the next one!
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <h2
-      className="iHLkzq">
-      Speakers: 
-    </h2>
-    <div
-      className="row around-xs">
-      <div
-        className="lluTUT row">
-        <div
-          className="euoSBq">
-          <div
-            className="row">
-            <div
-              className="">
-              <img
-                className="fOjFzA"
-                src="defaultIcon.png" />
-            </div>
-            <div
-              className="col-xs">
-              <div>
-                <h3>
-                  Test Speaker
-                </h3>
-                <p>
-                  Capgemini
-                </p>
-              </div>
-            </div>
-          </div>
-          <div
-            className="row">
-            <div
-              className="">
-              <div>
-                Personal Blog:
-              </div>
-              <div
-                className="fYLUow">
-                personalblog.com
-              </div>
-            </div>
-          </div>
-          <div
-            className="row">
-            <div
-              className="">
-              <div>
-                Other Talks:
-              </div>
-              <ul>
-                <div
-                  className="fYLUow">
-                  <li>
-                    Intro to Devoxx (Room 1 - 11:45)
-                  </li>
-                </div>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="lluTUT row">
-        <div
-          className="euoSBq">
-          <div
-            className="row">
-            <div
-              className="">
-              <img
-                className="fOjFzA"
-                src="defaultIcon.png" />
-            </div>
-            <div
-              className="col-xs">
-              <div>
-                <h3>
-                  Test Speaker
-                </h3>
-                <p>
-                  Capgemini
-                </p>
-              </div>
-            </div>
-          </div>
-          <div
-            className="row">
-            <div
-              className="">
-              <div>
-                Personal Blog:
-              </div>
-              <div
-                className="fYLUow">
-                personalblog.com
-              </div>
-            </div>
-          </div>
-          <div
-            className="row">
-            <div
-              className="">
-              <div>
-                Other Talks:
-              </div>
-              <ul>
-                <div
-                  className="fYLUow">
-                  <li>
-                    Intro to Devoxx (Room 1 - 11:45)
-                  </li>
-                </div>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      className="bvnlUe row"
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "key": undefined,
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+      location={
+        Object {
+          "hash": "",
+          "key": undefined,
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        }
+      }
+      match={
+        Object {
+          "isExact": true,
+          "params": Object {},
+          "path": "/",
+          "url": "/",
+        }
+      }
+      staticContext={undefined} />
   </div>
 </div>
 `;
