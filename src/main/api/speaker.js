@@ -1,4 +1,4 @@
-import request from 'then-request';
+import request from 'then-request';
 
 let speakerEndpoint = "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/";
 const mockSpeakerEndpoint = "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/speakers/";
@@ -14,45 +14,43 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
  * Get a speaker by Id
  *
  * @param speakerId
- * @returns {bio, firstName, lastName, avatarUrl, company, twitter, blog,
- *          acceptedTalks[acceptedTalks], links, talkType, track[track], talkId, talkTitle}
+ * @returns {bio, firstName, lastName, avatarUrl, company, twitter, blog, talkId}
  */
 let getSpeaker = (speakerId) => {
+
     return request('GET', speakerEndpoint + speakerId).then((response) => {
+
         let body = JSON.parse(response.getBody());
         return {
-            bio: body.bio,
+            uuid: body.uuid,
             firstName: body.firstName,
             lastName: body.lastName,
-            avatarUrl: body.avatarUrl,
+            avatarURL: body.avatarURL,
             company: body.company,
             twitter: body.twitter,
             blog: body.blog,
-            acceptedTalks: body.acceptedTalks,
-            links: body.acceptedTalks.links,
-            talkType: body.talkType,
-            track: parseTrack(body.acceptedTalks.track),
-            talkId: body.talkId,
-            talkTitle: body.talkTitle
+            talkId: parseTalkId(body.acceptedTalks[0].id)
         };
     });
 };
 
 /**
- * Creates track array from String of tracks
+ * Creates talkId array from speaker api response including talkIds
  *
- * @param track
+ * @param talkId
  * @returns {Array}
  */
-let parseTrack = (tracks) => {
+let parseTalkId = (talkId) => {
     let result = [];
-    if (tracks) {
-        result = tracks.split(",").map((item) => {return item.trim()});
+    if (talkId) {
+        result = talkId.split(",").map((item) => {
+            return item.trim()
+        });
     }
     return result;
 };
 
 export default {
     getSpeaker: getSpeaker,
-    parseTrack: parseTrack
+    parseTalkId: parseTalkId
 };

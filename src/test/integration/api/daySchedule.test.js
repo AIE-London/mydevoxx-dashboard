@@ -15,7 +15,7 @@ let isTestingException = (error) =>{
     } else {
         return false;
     }
-}
+};
 
 /**
  * Set up wiremock with normal day schedule api response
