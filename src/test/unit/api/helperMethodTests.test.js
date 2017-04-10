@@ -19,13 +19,16 @@ let unexpectedErrorSetup = () => {
 it('should report unexpected error thrown on an api call', () => {
     //setup conditions to call test helper method
     return unexpectedErrorSetup()
-        .then(() => "error")
+        .then(() => "error",
+            (error) => {
+                raiseOrPassError("MappingSetupException", "Wiremock mapping failed for \"notFoundSetup\"", error);
+            })
         .then(speaker.getSpeaker)
-        .then((error) => {
+        .catch((error) => {
+            expect(error.statusCode).toBe(400);
             expectNotFoundOrRethrowError(error, "Unexpected error");
         });
 });
-
 
 /**
  * test raiseOrPassError
