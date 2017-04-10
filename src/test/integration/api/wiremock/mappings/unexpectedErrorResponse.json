@@ -4,7 +4,7 @@
     "url": "/api/conferences/DV17/speakers/error"
   },
   "response": {
-    "status": 400,
+    "status": 404,
     "body": "Unexpected error response",
 
     "headers": {

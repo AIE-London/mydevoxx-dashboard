@@ -7,6 +7,7 @@ function expectNotFoundOrRethrowError(error, message){
         if (error.statusCode){
             expect(error.statusCode).toBe(404);
         } else {
+            console.log("hit else in notFoundOrRethrowError");
             throw UnexpectedErrorException(message, error);
         }
     }
