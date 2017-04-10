@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/conferences/DV17/speakers/error"
+  },
+  "response": {
+    "status": 400,
+    "body": "Speaker not found",
+
+    "headers": {
+      "Content-Type": "text/plain; charset=utf-8"
+    }
+  }
+}
