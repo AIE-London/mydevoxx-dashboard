@@ -35,7 +35,7 @@ let reportStatsData =
         "attendees": 435
     };
 
-class App extends Component {
+class Report extends Component {
 
   render() {
 
@@ -61,4 +61,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Report;
