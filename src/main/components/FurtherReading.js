@@ -34,36 +34,30 @@ const LinkValue = styled.p`
      margin-bottom:0px;
 `;
 
-class furtherReading extends React.Component {
+class FurtherReading extends React.Component {
     render() {
-
         return <Container>
         <Card>
             <Row center="xs">
                     <Col xs={12}>
-
                         <Col xs={10}>
                             <Row start="xs">
-                                <StatMainHeader>Advanced Reading</StatMainHeader>
-                                <LinkValue> <a href="https://www.bbc.co.uk"> Link to advanced reading </a> </LinkValue>
+                                <StatMainHeader>{this.props.mainHeader}</StatMainHeader>
+                                <LinkValue>
+                                    <a href={this.props.url}>{this.props.urlText}</a>
+                                </LinkValue>
                             </Row>
                         </Col>
-
                         <Row center="xs">
                             <Col xs={10}>
-
-                                <StatValue>{this.props.text} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at gravida neque. Suspendisse
-                                    vitae lacus eget tellus facilisis.... </StatValue>
-
+                                <StatValue>{this.props.text}</StatValue>
                             </Col>
                         </Row>
                     </Col>
-
                 </Row>
             </Card>
         </Container>
-
     }
 }
 
-export default furtherReading;
+export default FurtherReading;

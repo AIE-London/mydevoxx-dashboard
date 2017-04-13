@@ -17,12 +17,10 @@ exports[`test FurtherReading component with title snapshot 1`] = `
             </h1>
             <p
               className="hGHyBD">
-               
               <a
-                href="https://www.bbc.co.uk">
-                 Link to advanced reading 
+                href="http://www.bbc.co.uk">
+                Link to advanced reading
               </a>
-               
             </p>
           </div>
         </div>
@@ -33,7 +31,6 @@ exports[`test FurtherReading component with title snapshot 1`] = `
             <p
               className="hBDBjN">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at gravida neque.Lacus eget tellus facilisis....
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at gravida neque. Suspendisse vitae lacus eget tellus facilisis.... 
             </p>
           </div>
         </div>
