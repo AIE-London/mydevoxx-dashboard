@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import Card from './Card';
 import Default from './defaultIcon.png';
 
-const Container  = styled.div`
+const Container = styled.div`
   width: 400px;
   height: 400px;
 `;
@@ -41,20 +41,18 @@ const Image = styled.img`
 
 class sessionsAttended extends React.Component {
     render() {
-
         return <Container>
             <Card>
                 <Col xs={12}>/**
                  {/** sets Col width to 12
                  */}
-
                     <Col xs={10}>/**
                      {/**sets the width of the col in the col to 10 out of 12
                      */}
                         <Row start="xs">/**
                          {/** sets where the row content begins start = left, center = center, end = right
                          */}
-                            <StatMainHeader>MySessions</StatMainHeader>
+                            <StatMainHeader>mainHeader{this.props.mainHeader}</StatMainHeader>
                         </Row>
                     </Col>
 
@@ -64,34 +62,27 @@ class sessionsAttended extends React.Component {
                              {/** sets content to middle of the row not top/bottom
                              */}
                                 <Col xs>
-                                    <CardHeader>Title{this.props.title} </CardHeader>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget libero mi.
-                                        Ut vulputate leo in velit porta sollicitudin. Pellentesque vitae felis maximus, gravida
-                                        mauris sed, bibendum turpis.</p>
+                                    <CardHeader>title{this.props.title}</CardHeader>
+                                    <p>cardContent{this.props.cardContent}</p>
                                 </Col>
-                                <Col xs={2}><Image src={Default} ></Image></Col>
+                                <Col xs={2}><Image src={Default}></Image></Col>
                             </Row>
-
                         </Col>
                     </Row>
-
 
                     <Row center="xs">
                         <Col xs={10}>
                             <Row start="xs" middle="xs">
                                 <Col xs>
-                                    <CardSubhead>Speaker:</CardSubhead>
-                                    <p>{this.props.name}name</p> </Col>
-
+                                    <CardSubhead>subHeader{this.props.subHeader}</CardSubhead>
+                                    <p>name{this.props.name}</p>
+                                </Col>
                             </Row>
-
                         </Col>
                     </Row>
-
                 </Col>
             </Card>
         </Container>
-
     }
 }
 export default sessionsAttended;

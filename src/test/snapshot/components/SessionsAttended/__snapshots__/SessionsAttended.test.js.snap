@@ -14,6 +14,7 @@ exports[`test sessionsAttended component with title snapshot 1`] = `
           /**
           <h1
             className="dEhMDz">
+            mainHeader
             MySessions
           </h1>
         </div>
@@ -29,11 +30,11 @@ exports[`test sessionsAttended component with title snapshot 1`] = `
               className="col-xs">
               <h2
                 className="gkGJEX">
-                Title
+                title
                 Polymer - Web Standards
-                 
               </h2>
               <p>
+                cardContent
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget libero mi. Ut vulputate leo in velit porta sollicitudin. Pellentesque vitae felis maximus, gravida mauris sed, bibendum turpis.
               </p>
             </div>
@@ -56,13 +57,13 @@ exports[`test sessionsAttended component with title snapshot 1`] = `
               className="col-xs">
               <h3
                 className="jJURiy">
+                subHeader
                 Speaker:
               </h3>
               <p>
-                Dan Cotton
                 name
+                Dan Cotton
               </p>
-               
             </div>
           </div>
         </div>
