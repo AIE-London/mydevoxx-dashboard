@@ -43,27 +43,19 @@ class sessionsAttended extends React.Component {
     render() {
         return <Container>
             <Card>
-                <Col xs={12}>/**
-                 {/** sets Col width to 12
-                 */}
-                    <Col xs={10}>/**
-                     {/**sets the width of the col in the col to 10 out of 12
-                     */}
-                        <Row start="xs">/**
-                         {/** sets where the row content begins start = left, center = center, end = right
-                         */}
-                            <StatMainHeader>mainHeader{this.props.mainHeader}</StatMainHeader>
+                <Col xs={12}>
+                    <Col xs={10}>
+                        <Row start="xs">
+                            <StatMainHeader>{this.props.mainHeader}</StatMainHeader>
                         </Row>
                     </Col>
 
                     <Row center="xs">
                         <Col xs={10}>
-                            <Row start="xs" middle="xs"> /**
-                             {/** sets content to middle of the row not top/bottom
-                             */}
+                            <Row start="xs" middle="xs">
                                 <Col xs>
-                                    <CardHeader>title{this.props.title}</CardHeader>
-                                    <p>cardContent{this.props.cardContent}</p>
+                                    <CardHeader>{this.props.title}</CardHeader>
+                                    <p>{this.props.cardContent}</p>
                                 </Col>
                                 <Col xs={2}><Image src={Default}></Image></Col>
                             </Row>
@@ -74,8 +66,8 @@ class sessionsAttended extends React.Component {
                         <Col xs={10}>
                             <Row start="xs" middle="xs">
                                 <Col xs>
-                                    <CardSubhead>subHeader{this.props.subHeader}</CardSubhead>
-                                    <p>name{this.props.name}</p>
+                                    <CardSubhead>{this.props.subHeader}</CardSubhead>
+                                    <p>{this.props.name}</p>
                                 </Col>
                             </Row>
                         </Col>
