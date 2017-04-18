@@ -3,7 +3,7 @@
  */
 import React from 'react';
 
-class speakerTitle extends React.Component{
+class SpeakerTitle extends React.Component{
 
 
     render() {
@@ -13,4 +13,4 @@ class speakerTitle extends React.Component{
       </div>
   }
 };
-export default speakerTitle;
+export default SpeakerTitle;

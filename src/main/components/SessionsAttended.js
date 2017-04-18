@@ -39,7 +39,7 @@ const Image = styled.img`
     marginTop: 20px;
 `;
 
-class sessionsAttended extends React.Component {
+class SessionsAttended extends React.Component {
     render() {
         return <Container>
             <Card>
@@ -77,4 +77,4 @@ class sessionsAttended extends React.Component {
         </Container>
     }
 }
-export default sessionsAttended;
+export default SessionsAttended;

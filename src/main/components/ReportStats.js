@@ -29,7 +29,7 @@ const Orange = styled.span`
     color: #ff9e19;
 `;
 
-class reportStats extends React.Component {
+class ReportStats extends React.Component {
     render() {
 
         return <Row center="xs">
@@ -65,4 +65,4 @@ class reportStats extends React.Component {
     }
 }
 
-export default reportStats;
+export default ReportStats;

@@ -22,7 +22,7 @@ const Blog = styled.div`
     paddingTop: 2px;
 `;
 
-class speakerCard extends React.Component {
+class SpeakerCard extends React.Component {
 
     render() {
         return <Card><Grid fluid>
@@ -60,4 +60,4 @@ class speakerCard extends React.Component {
 }
 
 
-export default speakerCard;
+export default SpeakerCard;
