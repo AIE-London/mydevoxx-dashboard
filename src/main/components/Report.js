@@ -3,7 +3,6 @@ import { Row, Col } from 'react-flexbox-grid';
 import TalkCard from './TalkCard';
 import ReportStats from './ReportStats';
 
-
 import testImage from '../../test/snapshot/images/test-image.jpeg';
 
 const talkDetail = {

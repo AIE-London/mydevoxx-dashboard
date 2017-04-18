@@ -2,7 +2,7 @@
  * Created by DLINDSAY on 03-Apr-17.
  */
 import React from 'react';
-import { Row, Col } from 'react-flexbox-grid';
+import {Row, Col} from 'react-flexbox-grid';
 import Title from './SpeakerTitle';
 import Default from './defaultIcon.png';
 import styled from 'styled-components';
@@ -38,54 +38,45 @@ const Container = styled.div`
     paddingBottom: 10px;
     text-align: left;
     margin-left : 20px;
-    
-    
 `;
-
-
-
 
 class speakerCard extends React.Component {
 
     render() {
         return <Card2>
             <Container >
+                <Row>
+                    <Col>
+                        <ImgCircle src={Default}></ImgCircle>
+                    </Col>
+                    <Col xs>
+                        <Title name={this.props.name} company={this.props.company}/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <div>Personal Blog:</div>
+                        <Blog>{this.props.blog}</Blog>
+                    </Col>
+                </Row>
 
-            <Row>
-                <Col>
-                    <ImgCircle src={Default} ></ImgCircle>
-                </Col>
-                <Col xs>
-                    <Title name={this.props.name} company={this.props.company}/>
-                </Col>
-            </Row>
-            <Row>
-                <Col >
-                    <div>Personal Blog:</div>
-                    <Blog>{this.props.blog}</Blog>
-                </Col>
-            </Row>
-
-            <Row>
-                <Col >
-                    <div>Other Talks:</div>
-                    <ul>
-                        <Blog>
-                        {
-                            this.props.talks.map( function(talk) {
-                                return <li key={talk}>{talk}</li>
-                            })
-                        }
-                        </Blog>
-                    </ul>
-                </Col>
-            </Row>
-
+                <Row>
+                    <Col>
+                        <div>Other Talks:</div>
+                        <ul>
+                            <Blog>
+                                {
+                                    this.props.talks.map(function (talk) {
+                                        return <li key={talk}>{talk}</li>
+                                    })
+                                }
+                            </Blog>
+                        </ul>
+                    </Col>
+                </Row>
             </Container>
- </Card2>;
-
+        </Card2>;
     }
 }
-
 
 export default speakerCard;
