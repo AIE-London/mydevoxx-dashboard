@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'react-flexbox-grid';
-import TalkCard from './TalkCard';
-import SpeakerCard from './SpeakerCard';
 import styled from 'styled-components';
 import Report from './Report';
 
@@ -36,23 +34,9 @@ class SessionView extends Component {
                 {/*Puts elemenst inside the <Row> within a row format, this is then split into columns so that the TalkCard Component can position elements correctly*/}
                 <Row center="xs">
                     <Col xs={10}>
-                        <Report>
-                            <TalkCard talk={talkDetail}></TalkCard>
-                        </Report>
+                        <Report>{this.props.report}</Report>
                     </Col>
                 </Row>
-
-                <WhiteText>Speakers: </WhiteText>
-
-                {/*Imports for the Speaker card are within the imports, the parameters are then provide for them to be displayed*/}
-                <Row around="xs">
-                    <SpeakerCard name="Test Speaker" company="Capgemini" blog="personalblog.com"
-                                 talks={["Intro to Devoxx (Room 1 - 11:45)"]}></SpeakerCard>
-                    <SpeakerCard name="Test Speaker" company="Capgemini" blog="personalblog.com"
-                                 talks={["Intro to Devoxx (Room 1 - 11:45)"]}></SpeakerCard>
-                </Row>
-
-
             </Window>
         );
     }

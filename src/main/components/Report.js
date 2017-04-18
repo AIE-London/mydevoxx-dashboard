@@ -22,9 +22,16 @@ const talkDetail = {
     name: 'Test User',
     comment: 'Great session, thanks for organising. Looking forward to the next one!',
     image: testImage
+  },
+  speaker: {
+      name: 'Test Speaker',
+      company: 'Capgemini',
+      blog: 'personalblog.com',
+      talks: [
+          'Intro to Devoxx (Room 1 - 11:45)'
+      ]
   }
 };
-
 
 let reportStatsData =
     {
@@ -41,7 +48,7 @@ class Report extends Component {
     let {minutes, talks, learning, attendees} = reportStatsData;
 
     return (
-        <div className="App">
+        <div className="Report">
 
             <Row center="xs">
                 <Col xs={10}>

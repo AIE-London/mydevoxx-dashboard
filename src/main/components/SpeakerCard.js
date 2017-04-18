@@ -1,6 +1,3 @@
-/**
- * Created by DLINDSAY on 03-Apr-17.
- */
 import React from 'react';
 import {Row, Col} from 'react-flexbox-grid';
 import Title from './SpeakerTitle';
@@ -40,7 +37,7 @@ const Container = styled.div`
     margin-left : 20px;
 `;
 
-class speakerCard extends React.Component {
+class SpeakerCard extends React.Component {
 
     render() {
         return <Card2>
@@ -79,4 +76,4 @@ class speakerCard extends React.Component {
     }
 }
 
-export default speakerCard;
+export default SpeakerCard;
