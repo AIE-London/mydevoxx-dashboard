@@ -6,7 +6,7 @@ import styled from 'styled-components';
 export const CommaList = styled.ul`
   opacity: 0.6;
   padding: 0;
-  margin-top: 0.5em;
+  margin-top: 0.5px;
   padding-left: 0.5em;
   display: inline;
   list-style: none;

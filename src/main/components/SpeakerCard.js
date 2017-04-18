@@ -12,7 +12,7 @@ const ImgCircle = styled.img`
     borderRadius: 50%;
     width: 50px;
     height: 50px;
-    marginTop: 20px;
+    margin-top: 20px;
     border: 5px solid white;
 `;
 

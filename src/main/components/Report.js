@@ -35,14 +35,14 @@ let reportStatsData =
         "attendees": 435
     };
 
-class App extends Component {
+class Report extends Component {
 
   render() {
 
     let {minutes, talks, learning, attendees} = reportStatsData;
 
     return (
-        <div className="App">
+        <div className="Report">
 
             <Row center="xs">
                 <Col xs={10}>
@@ -61,4 +61,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Report;
