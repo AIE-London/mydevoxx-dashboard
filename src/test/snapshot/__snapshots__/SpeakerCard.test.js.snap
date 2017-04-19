@@ -1,4 +1,4 @@
-exports[`test reportStats component with title snapshot 1`] = `
+exports[`test SpeakerCard component with title snapshot 1`] = `
 <div
   className="bvnlUe row">
   <div

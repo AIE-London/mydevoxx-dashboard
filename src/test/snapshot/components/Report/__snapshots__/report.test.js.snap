@@ -1,6 +1,6 @@
 exports[`test Report component snapshot 1`] = `
 <div
-  className="App">
+  className="Report">
   <div
     className="row center-xs">
     <div
@@ -159,7 +159,7 @@ exports[`test Report component snapshot 1`] = `
             className="row start-xs">
             <h3
               className="jJURiy"
-              id="notesHeader">
+              id="reviewHeader">
               My Reviews
             </h3>
           </div>
