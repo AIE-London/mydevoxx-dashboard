@@ -22,12 +22,14 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
  */
 let getUUID = () => {
     return request('GET', UuidEndpoint).then((response) => {
-
-        let body = JSON.parse(response.getBody());
+        console.log(response);
+        let body = response.getBody();
 
        // return body;
-        return {
-        body
-        }
+        return body.toString();
     });
+};
+
+export default {
+    getUUID
 };

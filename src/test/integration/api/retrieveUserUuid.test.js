@@ -19,12 +19,8 @@ let normalSetup = () => {
 
 describe('getUUID', () => {
     it('should return a UUID', () => {
-        return normalSetup()
-            .then(retrieveUuid.getUUID,
-                (error) => {
-                    raiseOrPassError("MappingSetupException", "Wiremock mapping failed for \"normalSetup\"", error)
-                }).then((result) => {
-                expect(result.body.response.body).toEqual(
+        return retrieveUuid.getUUID().then((result) => {
+                expect(result).toEqual(
                     '26667c9fdcc603ee93b43fb3e780b07378695a86'
                 )
             }, (error) => {
