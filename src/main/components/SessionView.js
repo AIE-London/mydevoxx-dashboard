@@ -31,7 +31,6 @@ class SessionView extends Component {
 
                 <WhiteText>{this.props.sTime} - {this.props.room}</WhiteText>
 
-                {/*Puts elemenst inside the <Row> within a row format, this is then split into columns so that the TalkCard Component can position elements correctly*/}
                 <Row center="xs">
                     <Col xs={10}>
                         <Report>{this.props.report}</Report>

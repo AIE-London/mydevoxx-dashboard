@@ -40,39 +40,44 @@ const Container = styled.div`
 class SpeakerCard extends React.Component {
 
     render() {
-        return <Card2>
-            <Container >
-                <Row>
-                    <Col>
-                        <ImgCircle src={Default}></ImgCircle>
-                    </Col>
-                    <Col xs>
-                        <Title name={this.props.name} company={this.props.company}/>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <div>Personal Blog:</div>
-                        <Blog>{this.props.blog}</Blog>
-                    </Col>
-                </Row>
 
-                <Row>
-                    <Col>
-                        <div>Other Talks:</div>
-                        <ul>
-                            <Blog>
-                                {
-                                    this.props.talks.map(function (talk) {
-                                        return <li key={talk}>{talk}</li>
-                                    })
-                                }
-                            </Blog>
-                        </ul>
-                    </Col>
-                </Row>
-            </Container>
-        </Card2>;
+        let {name, company, blog, talks} = this.props.speaker;
+
+        return (
+            <Card>
+                <Container>
+                    <Row>
+                        <Col>
+                            <ImgCircle src={Default}></ImgCircle>
+                        </Col>
+                        <Col xs>
+                            <Title name={name} company={company}/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <div>Personal Blog:</div>
+                            <Blog>{blog}</Blog>
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col>
+                            <div>Other Talks:</div>
+                            <ul>
+                                <Blog>
+                                    {
+                                        talks.map(function (talk) {
+                                            return <li key={talk}>{talk}</li>
+                                        })
+                                    }
+                                </Blog>
+                            </ul>
+                        </Col>
+                    </Row>
+                </Container>
+            </Card>
+        );
     }
 }
 
