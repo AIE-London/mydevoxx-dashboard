@@ -1,11 +1,11 @@
 /**
  * Created by DLINDSAY on 05-Apr-17.
  */
-import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Card from './Card';
 import styled from 'styled-components';
 import {CommaList, CommaListItem} from './CommaList'
+import React, { Component } from 'react';
 
 const Container = styled.div` 
     width: 400px;
@@ -17,7 +17,7 @@ const StatHeader = styled.h2`
     font-family: helvetica;
 `;
 
-class Stats extends React.Component {
+class Stats extends Component {
     render() {
         return <Container><Card center="xs"> {/* Wraps the Card component within the Container component */}
             <Col xs={10}>

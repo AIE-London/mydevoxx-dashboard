@@ -1,9 +1,9 @@
 /**
  * Created by DLINDSAY on 04-Apr-17.
  */
-import React from 'react';
+import React, { Component } from 'react';
 
-class SpeakerTitle extends React.Component{
+class SpeakerTitle extends Component{
 
 
     render() {

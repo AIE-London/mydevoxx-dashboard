@@ -1,11 +1,11 @@
 /**
  * Created by tsadler on 06/04/2017.
  */
-import React from 'react';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import styled from 'styled-components';
 import Card from './Card';
 import Default from './defaultIcon.png';
+import React, { Component } from 'react';
 
 const Container = styled.div`
   width: 400px;
@@ -39,7 +39,7 @@ const Image = styled.img`
     marginTop: 20px;
 `;
 
-class SessionsAttended extends React.Component {
+class SessionsAttended extends Component {
     render() {
         return <Container>
             <Card>
