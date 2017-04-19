@@ -46,8 +46,7 @@ const reportStatsData =
 
 class Report extends Component {
 
-    render() {
-
+  render() {
         let {minutes, talks, learning, attendees} = reportStatsData;
 
         return (

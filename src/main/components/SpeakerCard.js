@@ -37,8 +37,7 @@ const Container = styled.div`
     margin-left : 20px;
 `;
 
-class SpeakerCard extends React.Component {
-
+class SpeakerCard extends Component {
     render() {
 
         let {name, company, blog, talks} = this.props.speaker;

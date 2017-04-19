@@ -1,9 +1,9 @@
 /**
  * Created by TSADLER on 03/04/2017.
  */
-import React from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
+import React, { Component } from 'react';
 
 const StatMainHeader = styled.h1`
     text-align: left;
@@ -29,7 +29,7 @@ const Orange = styled.span`
     color: #ff9e19;
 `;
 
-class reportStats extends React.Component {
+class ReportStats extends Component {
     render() {
 
         return <Row center="xs">
@@ -65,4 +65,4 @@ class reportStats extends React.Component {
     }
 }
 
-export default reportStats;
+export default ReportStats;

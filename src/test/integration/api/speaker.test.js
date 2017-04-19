@@ -1,6 +1,6 @@
 import speaker from "../../../main/api/speaker";
 import wiremockAPI from "./wiremock/wiremockApi";
-import speakerMapping from "./wiremock/mappings/speaker"
+import speakerMapping from "./wiremock/mappings/speaker";
 import notFound from "./wiremock/mappings/notFoundSpeaker.json";
 import {UnexpectedErrorException, UnexpectedSuccessException, MappingSetupException} from "./testingErrors";
 import {raiseOrPassError, expectNotFoundOrRethrowError} from "./testingHelpers";
