@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import Speaker from '../../main/components/SpeakerCard';
 import renderer from 'react-test-renderer';
 
-test('app component', () => {
+test('SpeakerCard component', () => {
 
     it('renders without crashing', () => {
         const div = document.createElement('div');
@@ -17,7 +17,7 @@ test('app component', () => {
 
 });
 
-test('reportStats component with title snapshot', () => {
+test('SpeakerCard component with title snapshot', () => {
     const tree = renderer.create(
         <Speaker  name="Testy" company="Testy Inc." blog="blogname.com" talks={["Talk 1 is One", "Talk 2 is Two", "Talk 3 is Three"]} />
     ).toJSON();

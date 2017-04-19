@@ -1,9 +1,9 @@
 /**
  * Created by DLINDSAY on 04-Apr-17.
  */
-import React from 'react';
+import React, { Component } from 'react';
 
-class speakerTitle extends React.Component{
+class SpeakerTitle extends Component{
 
 
     render() {
@@ -13,4 +13,4 @@ class speakerTitle extends React.Component{
       </div>
   }
 };
-export default speakerTitle;
+export default SpeakerTitle;

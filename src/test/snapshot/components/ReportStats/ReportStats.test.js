@@ -9,7 +9,7 @@ import renderer from 'react-test-renderer';
 
 
 
-test('reportStats component', () => {
+test('ReportStats component', () => {
 
     it('renders without crashing', () => {
         const div = document.createElement('div');
@@ -17,7 +17,7 @@ test('reportStats component', () => {
     });
 
 });
-test('reportStats component with title snapshot', () => {
+test('ReportStats component with title snapshot', () => {
 
     const tree = renderer.create(
         <ReportStats  minutes="455" talks="10" learning="JS, Java, Polymer" attendees="345" />

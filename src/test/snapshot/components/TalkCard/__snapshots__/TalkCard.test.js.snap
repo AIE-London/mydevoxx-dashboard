@@ -75,7 +75,7 @@ exports[`test card component with title snapshot 1`] = `
       className="row start-xs">
       <h3
         className="jJURiy"
-        id="notesHeader">
+        id="reviewHeader">
         My Reviews
       </h3>
     </div>
