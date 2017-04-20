@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SessionsAttended from '../../../../main/components/SessionsAttended/';
+import SessionsAttended from '../../../../main/components/SessionsAttended';
 import renderer from 'react-test-renderer';
 
 test('SessionsAttended component', () => {

@@ -1,7 +1,7 @@
 /**
  * Created by dan on 04/04/2017.
  */
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import {Row} from 'react-flexbox-grid';
 
@@ -65,24 +65,25 @@ const ActiveStar = styled(Star)`
   }
 `;
 class StarRating extends Component {
-  getStars(rating){
-    var stars = [];
-    for(var i = 1; i <= 5; i++) {
-      if (i <= rating){
-        stars.push(<ActiveStar key={i}/>);
-      } else {
-        stars.push(<Star key={i}/>);
-      }
+    getStars(rating) {
+        let stars = [];
+        for (var i = 1; i <= 5; i++) {
+            if (i <= rating) {
+                stars.push(<ActiveStar key={i}/>);
+            } else {
+                stars.push(<Star key={i}/>);
+            }
+        }
+        return stars;
     }
-    return stars;
-  }
-  render() {
-    return (
-      <Row left="xs">
-        {this.getStars(this.props.rating)}
-      </Row>
-    );
-  }
+
+    render() {
+        return (
+            <Row left="xs">
+                {this.getStars(this.props.rating)}
+            </Row>
+        );
+    }
 }
 
 export default StarRating;
