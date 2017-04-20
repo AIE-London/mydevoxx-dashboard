@@ -7,7 +7,7 @@ import request from 'then-request';
 
 
 let UuidEndpoint = "http://cfp.devoxx.co.uk/uuid?email=";
-const mockUuidEndpoint = "https://aston-wiremock.eu-gb.mybluemix.net/uuid?email=dan.cotton@capgemini.com";
+const mockUuidEndpoint = "https://aston-wiremock.eu-gb.mybluemix.net/uuid?email=";
 
 /**
  * Use mock endpoint outside of live
@@ -20,9 +20,9 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
  * Get the users UUID  for the conference
  * @returns {UUID}
  */
-let getUUID = () => {
-    return request('GET', UuidEndpoint).then((response) => {
-        console.log(response);
+let getUUID = (email) => {
+    return request('GET', UuidEndpoint + email).then((response) => {
+        //console.log(response);
         let body = response.getBody();
 
        // return body;

@@ -18,8 +18,9 @@ let normalSetup = () => {
 
 
 describe('getUUID', () => {
-    it('should return a UUID', () => {
-        return retrieveUuid.getUUID().then((result) => {
+    it('should return a UUID for user DanC', () => {
+        return retrieveUuid.getUUID("dan.cotton@capgemini.com")
+                .then((result) => {
                 expect(result).toEqual(
                     '26667c9fdcc603ee93b43fb3e780b07378695a86'
                 )
@@ -31,12 +32,21 @@ describe('getUUID', () => {
                 throw error;
             })
     });
+
+    it('should return a UUID for user ScottM', () => {
+        return retrieveUuid.getUUID("scott.moreton@capgemini.com")
+            .then((result) => {
+                expect(result).toEqual(
+                    '695b40d928dd0a905b7ab1b900b5a5752870a7d8'
+                )
+            }, (error) => {
+                raiseOrPassError("UnexpectedErrorException", "Unexpected error on \"getUUID\" after \"normalSetup\"", error);
+            })
+            .catch((error) => {
+                console.error(error);
+                throw error;
+            })
+    });
+
 });
 
-
-/**
- * Set up wiremock with 404 response
- */
-// let notFoundSetup = () => {
-//     return wiremockAPI.postMapping(notFound);
-// };
