@@ -17,255 +17,172 @@ exports[`test card component with title snapshot 1`] = `
     <div
       className="col-xs-10">
       <div
-        className="Report">
+        className="bvnlUe row start-xs">
         <div
-          className="row center-xs">
+          className="col-xs-6 fteZLe">
           <div
-            className="col-xs-10">
+            className="row start-xs">
+            <h2
+              className="Axdp"
+              id="title">
+              Welcome to Devoxx 2017
+            </h2>
+          </div>
+          <div
+            className="row end-xs">
             <div
-              className="row center-xs">
+              className="row"
+              left="xs">
               <div
-                className="col-xs-10">
-                <div
-                  className="col-xs-2">
-                  <div
-                    className="row start-xs">
-                    <h1
-                      className="iscJSK">
-                      MyReport
-                    </h1>
-                  </div>
-                </div>
-                <div
-                  className="row center-xs">
-                  <div
-                    className="col-xs-10">
-                    <h2
-                      className="eUofwH">
-                      I spent 
-                      <span
-                        className="kiuWfQ">
-                        455
-                         minutes
-                      </span>
-                    </h2>
-                    <p
-                      className="jlawfx">
-                      Attending 
-                      <span
-                        className="kiuWfQ">
-                        10
-                         talks
-                      </span>
-                    </p>
-                    <h2
-                      className="eUofwH">
-                      Learning what\'s new in...
-                    </h2>
-                    <p
-                      className="jlawfx">
-                      Spring, Java
-                       
-                    </p>
-                    <h2
-                      className="eUofwH">
-                      Networking with
-                    </h2>
-                    <p
-                      className="jlawfx">
-                       
-                      <span
-                        className="kiuWfQ">
-                        435
-                      </span>
-                       Attendees
-                    </p>
-                  </div>
-                </div>
+                className="kmDnAn" />
+              <div
+                className="kmDnAn" />
+              <div
+                className="kmDnAn" />
+              <div
+                className="kmDnAn" />
+              <div
+                className="cWcebC" />
+            </div>
+          </div>
+          <p
+            className="jLJUnn">
+            Join the organisers of Devoxx UK and great keynote speakers for inspring stories in 20 minute segments.
+          </p>
+          <div
+            className="row">
+            <h3
+              className="jJURiy">
+              Top Tracks
+            </h3>
+          </div>
+          <div
+            className="row">
+            <ul
+              className="izGhAk">
+              <li
+                className="cLQKgI">
+                Java
+              </li>
+              <li
+                className="cLQKgI">
+                Devoxx
+              </li>
+              <li
+                className="cLQKgI">
+                Spring
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          className="col-xs-6 eZvXOT">
+          <div
+            className="row start-xs">
+            <h3
+              className="jJURiy"
+              id="notesHeader">
+              My Notes
+            </h3>
+          </div>
+          <div
+            className="row start-xs">
+            <p
+              className="bKHqKP">
+              Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer nec. Feugiat qualisque quo an. Labores officiis te nam.
+            </p>
+          </div>
+          <div
+            className="row start-xs">
+            <h3
+              className="jJURiy"
+              id="reviewHeader">
+              My Reviews
+            </h3>
+          </div>
+          <div
+            className="fEZGiH row start-xs">
+            <div
+              className="row start-xs">
+              <div
+                className="">
+                <img
+                  className="imhmHM"
+                  src="test-image.jpeg" />
+              </div>
+              <div
+                className="col-xs">
+                <h3
+                  className="jPwRym">
+                  Test User
+                </h3>
+                <p
+                  className="ZxTsc">
+                  Great session, thanks for organising. Looking forward to the next one!
+                </p>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div
+      className="col-xs-10">
+      <div
+        className="lluTUT row">
         <div
-          style={
-            Object {
-              "height": "72px",
-            }
-          } />
-        <div
-          className="row center-xs">
+          className="kblate">
           <div
-            className="col-xs-10">
+            className="row">
             <div
-              className="bvnlUe row start-xs">
-              <div
-                className="col-xs-6 fteZLe">
-                <div
-                  className="row start-xs">
-                  <h2
-                    className="Axdp"
-                    id="title">
-                    Welcome to Devoxx 2017
-                  </h2>
-                </div>
-                <div
-                  className="row end-xs">
-                  <div
-                    className="row"
-                    left="xs">
-                    <div
-                      className="kmDnAn" />
-                    <div
-                      className="kmDnAn" />
-                    <div
-                      className="kmDnAn" />
-                    <div
-                      className="kmDnAn" />
-                    <div
-                      className="cWcebC" />
-                  </div>
-                </div>
-                <p
-                  className="jLJUnn">
-                  Join the organisers of Devoxx UK and great keynote speakers for inspring stories in 20 minute segments.
+              className="">
+              <img
+                className="fOjFzA"
+                src="defaultIcon.png" />
+            </div>
+            <div
+              className="col-xs">
+              <div>
+                <h3>
+                  Test Speaker
+                </h3>
+                <p>
+                  Capgemini
                 </p>
-                <div
-                  className="row">
-                  <h3
-                    className="jJURiy">
-                    Top Tracks
-                  </h3>
-                </div>
-                <div
-                  className="row">
-                  <ul
-                    className="izGhAk">
-                    <li
-                      className="cLQKgI">
-                      Java
-                    </li>
-                    <li
-                      className="cLQKgI">
-                      Devoxx
-                    </li>
-                    <li
-                      className="cLQKgI">
-                      Spring
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div
-                className="col-xs-6 eZvXOT">
-                <div
-                  className="row start-xs">
-                  <h3
-                    className="jJURiy"
-                    id="notesHeader">
-                    My Notes
-                  </h3>
-                </div>
-                <div
-                  className="row start-xs">
-                  <p
-                    className="bKHqKP">
-                    Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer nec. Feugiat qualisque quo an. Labores officiis te nam.
-                  </p>
-                </div>
-                <div
-                  className="row start-xs">
-                  <h3
-                    className="jJURiy"
-                    id="reviewHeader">
-                    My Reviews
-                  </h3>
-                </div>
-                <div
-                  className="fEZGiH row start-xs">
-                  <div
-                    className="row start-xs">
-                    <div
-                      className="">
-                      <img
-                        className="imhmHM"
-                        src="test-image.jpeg" />
-                    </div>
-                    <div
-                      className="col-xs">
-                      <h3
-                        className="jPwRym">
-                        Test User
-                      </h3>
-                      <p
-                        className="ZxTsc">
-                        Great session, thanks for organising. Looking forward to the next one!
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
           <div
-            className="col-xs-10">
+            className="row">
             <div
-              className="lluTUT row">
-              <div
-                className="kblate">
-                <div
-                  className="row">
-                  <div
-                    className="">
-                    <img
-                      className="fOjFzA"
-                      src="defaultIcon.png" />
-                  </div>
-                  <div
-                    className="col-xs">
-                    <div>
-                      <h3>
-                        Test Speaker
-                      </h3>
-                      <p>
-                        Capgemini
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="row">
-                  <div
-                    className="">
-                    <div>
-                      Personal Blog:
-                    </div>
-                    <div
-                      className="fYLUow">
-                      personalblog.com
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="row">
-                  <div
-                    className="">
-                    <div>
-                      Other Talks:
-                    </div>
-                    <ul>
-                      <div
-                        className="fYLUow">
-                        <li>
-                          Intro to Devoxx (Room 1 - 11:45)
-                        </li>
-                        <li>
-                          Intro to Devoxx 2 (Room 2 - 13:45)
-                        </li>
-                      </div>
-                    </ul>
-                  </div>
-                </div>
+              className="">
+              <div>
+                Personal Blog:
               </div>
+              <div
+                className="fYLUow">
+                personalblog.com
+              </div>
+            </div>
+          </div>
+          <div
+            className="row">
+            <div
+              className="">
+              <div>
+                Other Talks:
+              </div>
+              <ul>
+                <div
+                  className="fYLUow">
+                  <li>
+                    Intro to Devoxx (Room 1 - 11:45)
+                  </li>
+                  <li>
+                    Intro to Devoxx 2 (Room 2 - 13:45)
+                  </li>
+                </div>
+              </ul>
             </div>
           </div>
         </div>

@@ -79,8 +79,10 @@ class App extends Component {
                                 title="MyDevoxx"
                                 iconElementRight={<NavButtons />}/>
                             <Route path='/' component={Dashboard}/>
-                            <Route path='/report' render={props => <Report reportStats={reportStatsData}
-                                                                                      talk={talkDetail} />}/>
+                            <Route path='/report' render={function (props) {
+                                    return <Report reportStats={reportStatsData} talk={talkDetail} />
+                                }
+                            }/>
                             <Route path='/talk/:id' component={Talk}/>
                             <Route path='/top-rated' component={TopRated}/>
                         </div>

@@ -54,7 +54,8 @@ test('Report component', () => {
 
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<Report route={routeData}/>, div);
+        ReactDOM.render(<Report reportStats={routeData.reportStats}
+            talk={routeData.talk} />, div);
     });
 
 });
@@ -62,7 +63,8 @@ test('Report component', () => {
 
 test('Report component snapshot', () => {
     const tree = renderer.create(
-        <Report route={routeData}/>
+        <Report reportStats={routeData.reportStats}
+                talk={routeData.talk} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
 });

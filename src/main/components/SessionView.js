@@ -38,7 +38,7 @@ class SessionView extends Component {
                         <TalkCard talk={this.props.talk}/>
                     </Col>
                     <Col xs={10}>
-                        {this.props.talk.speakers.map(speaker => <SpeakerCard speaker={speaker}/>)}
+                        {this.props.talk.speakers.map(speaker => <SpeakerCard key={speaker.name} speaker={speaker}/>)}
                     </Col>
                 </Row>
             </Window>
