@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 
 import testImage from './images/test-image.jpeg';
 
-const talkDetail =
+let talkDetail =
     {
         dayNo: 'One',
         sTime: '10:00',
@@ -53,7 +53,7 @@ test('app component', () => {
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
+    ReactDOM.render(<App reportStats={reportStatsData}  talk={talkDetail}/>, div);
   });
 
 });
