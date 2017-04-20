@@ -189,6 +189,68 @@ exports[`test Report component snapshot 1`] = `
         </div>
       </div>
     </div>
+    <div
+      className="col-xs-10">
+      <div
+        className="lluTUT row">
+        <div
+          className="kblate">
+          <div
+            className="row">
+            <div
+              className="">
+              <img
+                className="fOjFzA"
+                src="defaultIcon.png" />
+            </div>
+            <div
+              className="col-xs">
+              <div>
+                <h3>
+                  Test Speaker
+                </h3>
+                <p>
+                  Capgemini
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="row">
+            <div
+              className="">
+              <div>
+                Personal Blog:
+              </div>
+              <div
+                className="fYLUow">
+                personalblog.com
+              </div>
+            </div>
+          </div>
+          <div
+            className="row">
+            <div
+              className="">
+              <div>
+                Other Talks:
+              </div>
+              <ul>
+                <div
+                  className="fYLUow">
+                  <li>
+                    Intro to Devoxx (Room 1 - 11:45)
+                  </li>
+                  <li>
+                    Intro to Devoxx 2 (Room 2 - 13:45)
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

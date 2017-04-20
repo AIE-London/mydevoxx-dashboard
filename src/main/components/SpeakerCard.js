@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Row, Col} from 'react-flexbox-grid';
 import Title from './SpeakerTitle';
 import Default from './defaultIcon.png';
@@ -43,7 +43,7 @@ class SpeakerCard extends Component {
         let {name, company, blog, talks} = this.props.speaker;
 
         return (
-            <Card>
+            <Card2>
                 <Container>
                     <Row>
                         <Col>
@@ -75,7 +75,7 @@ class SpeakerCard extends Component {
                         </Col>
                     </Row>
                 </Container>
-            </Card>
+            </Card2>
         );
     }
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'react-flexbox-grid';
 import TalkCard from './TalkCard';
+import SpeakerCard from './SpeakerCard';
 import ReportStats from './ReportStats';
 
 import testImage from '../../test/snapshot/images/test-image.jpeg';
@@ -26,14 +27,13 @@ const talkDetail = {
 };
 
 const speakerDetail = {
-    speaker: {
         name: 'Test Speaker',
         company: 'Capgemini',
         blog: 'personalblog.com',
         talks: [
-            'Intro to Devoxx (Room 1 - 11:45)'
+            'Intro to Devoxx (Room 1 - 11:45)',
+            'Intro to Devoxx 2 (Room 2 - 13:45)'
         ]
-    }
 };
 
 const reportStatsData =
@@ -62,6 +62,8 @@ class Report extends Component {
                 <Row center="xs">
                     <Col xs={10}>
                         <TalkCard talk={talkDetail}/>
+                    </Col>
+                    <Col xs={10}>
                         <SpeakerCard speaker={speakerDetail}/>
                     </Col>
                 </Row>

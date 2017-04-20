@@ -2,7 +2,7 @@ exports[`test SpeakerCard component with title snapshot 1`] = `
 <div
   className="lluTUT row">
   <div
-    className="euoSBq">
+    className="kblate">
     <div
       className="row">
       <div
@@ -15,10 +15,10 @@ exports[`test SpeakerCard component with title snapshot 1`] = `
         className="col-xs">
         <div>
           <h3>
-            Testy
+            Test Speaker
           </h3>
           <p>
-            Testy Inc.
+            Capgemini
           </p>
         </div>
       </div>
@@ -32,7 +32,7 @@ exports[`test SpeakerCard component with title snapshot 1`] = `
         </div>
         <div
           className="fYLUow">
-          blogname.com
+          personalblog.com
         </div>
       </div>
     </div>
@@ -47,13 +47,10 @@ exports[`test SpeakerCard component with title snapshot 1`] = `
           <div
             className="fYLUow">
             <li>
-              Talk 1 is One
+              Intro to Devoxx (Room 1 - 11:45)
             </li>
             <li>
-              Talk 2 is Two
-            </li>
-            <li>
-              Talk 3 is Three
+              Intro to Devoxx 2 (Room 2 - 13:45)
             </li>
           </div>
         </ul>
