@@ -56,7 +56,7 @@ const ReviewContainer = styled(Row)`
 
 class TalkCard extends Component {
   render() {
-    let {title, rating, description, topTracks, notes, review} = this.props.route.talk;
+    let {title, rating, description, topTracks, notes, review} = this.props.talk;
     return (
       <Card start="xs">
         <LeftPartition xs={6}>

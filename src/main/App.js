@@ -22,8 +22,11 @@ const muiTheme = getMuiTheme({
     }
 });
 
-let talkDetail =
+const talkDetail =
     {
+        dayNo: 'One',
+        sTime: '10:00',
+        room: 'Mezzanine',
         title: 'Welcome to Devoxx 2017',
         description: 'Join the organisers of Devoxx UK and great keynote ' +
         'speakers for inspring stories in 20 minute segments.',
@@ -40,21 +43,22 @@ let talkDetail =
             name: 'Test User',
             comment: 'Great session, thanks for organising. Looking forward to the next one!',
             image: testImage
-        }
-    };
-
-let speakerDetail =
-    {
-        name: 'Test Speaker',
-        company: 'Capgemini',
-        blog: 'personalblog.com',
-        talks: [
-            'Intro to Devoxx (Room 1 - 11:45)',
-            'Intro to Devoxx 2 (Room 2 - 13:45)'
+        },
+        speakers: [
+            {
+                name: 'Test Speaker',
+                company: 'Capgemini',
+                blog: 'personalblog.com',
+                talks: [
+                    'Intro to Devoxx (Room 1 - 11:45)',
+                    'Intro to Devoxx 2 (Room 2 - 13:45)'
+                ]
+            }
         ]
     };
 
-let reportStatsData =
+
+const reportStatsData =
     {
         minutes: 455,
         talks: 10,
@@ -74,11 +78,9 @@ class App extends Component {
                             <AppBar
                                 title="MyDevoxx"
                                 iconElementRight={<NavButtons />}/>
-                            <Route path='/' component={Dashboard}
-                                   reportStats={reportStatsData}
-                                   talk={talkDetail}
-                                   speaker={speakerDetail}/>
-                            <Route path='/report' component={Report}/>
+                            <Route path='/' component={Dashboard}/>
+                            <Route path='/report' render={props => <Report reportStats={reportStatsData}
+                                                                                      talk={talkDetail} />}/>
                             <Route path='/talk/:id' component={Talk}/>
                             <Route path='/top-rated' component={TopRated}/>
                         </div>

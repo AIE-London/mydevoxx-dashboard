@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'react-flexbox-grid';
 import styled from 'styled-components';
-import Report from './Report';
+import TalkCard from './TalkCard';
+import SpeakerCard from './SpeakerCard';
 
 // Styles for the different elements of the page
 const DayText = styled.h2`
@@ -27,13 +28,17 @@ class SessionView extends Component {
         return (
             <Window>
 
-                <DayText>Day {this.props.dayNo}</DayText>
+                <DayText>Day {this.props.talk.dayNo}</DayText>
 
-                <WhiteText>{this.props.sTime} - {this.props.room}</WhiteText>
+                <WhiteText>{this.props.talk.sTime} - {this.props.talk.room}</WhiteText>
+
 
                 <Row center="xs">
                     <Col xs={10}>
-                        <Report>{this.props.report}</Report>
+                        <TalkCard talk={this.props.talk}/>
+                    </Col>
+                    <Col xs={10}>
+                        {this.props.talk.speakers.map(speaker => <SpeakerCard speaker={speaker}/>)}
                     </Col>
                 </Row>
             </Window>

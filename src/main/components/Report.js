@@ -3,11 +3,13 @@ import {Row, Col} from 'react-flexbox-grid';
 import TalkCard from './TalkCard';
 import SpeakerCard from './SpeakerCard';
 import ReportStats from './ReportStats';
+import SessionView from "./SessionView";
 
 class Report extends Component {
 
   render() {
-        let {minutes, talks, learning, attendees} = this.props.route.reportStats;
+      console.log(this.props);
+        let {minutes, talks, learning, attendees} = this.props.reportStats;
 
         return (
             <div className="Report">
@@ -17,14 +19,7 @@ class Report extends Component {
                                      attendees={attendees}/>
                     </Col>
                 </Row>
-                <Row center="xs">
-                    <Col xs={10}>
-                        <TalkCard talk={this.props.route.talk}/>
-                    </Col>
-                    <Col xs={10}>
-                        <SpeakerCard speaker={this.props.route.speaker}/>
-                    </Col>
-                </Row>
+                <SessionView talk={this.props.talk}/>
             </div>
         );
     }
