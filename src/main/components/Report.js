@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'react-flexbox-grid';
-import TalkCard from './TalkCard';
-import SpeakerCard from './SpeakerCard';
 import ReportStats from './ReportStats';
 import SessionView from "./SessionView";
 

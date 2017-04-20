@@ -30,6 +30,14 @@ const Blog = styled.div`
     margin-bottom: 17px;
 `;
 
+const Talks = styled.div`
+    paddingLeft: 30px;
+    paddingBottom: 10px;
+    paddingTop: 2px;
+    opacity: 0.6; 
+    margin-bottom: 17px;
+`;
+
 const Container = styled.div`
     width: 70%;
     paddingBottom: 10px;
@@ -64,13 +72,13 @@ class SpeakerCard extends Component {
                         <Col>
                             <div>Other Talks:</div>
                             <ul>
-                                <Blog>
+                                <Talks>
                                     {
                                         talks.map(function (talk) {
                                             return <li key={talk}>{talk}</li>
                                         })
                                     }
-                                </Blog>
+                                </Talks>
                             </ul>
                         </Col>
                     </Row>
