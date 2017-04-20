@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import SessionView from '../../../../main/components/SessionView';
 import renderer from 'react-test-renderer';
 
-
-
-
 test('app component', () => {
 
     it('renders without crashing', () => {

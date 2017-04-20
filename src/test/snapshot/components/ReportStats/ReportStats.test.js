@@ -3,11 +3,8 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReportStats from '../../../../main/components/ReportStats/';
+import ReportStats from '../../../../main/components/ReportStats';
 import renderer from 'react-test-renderer';
-
-
-
 
 test('ReportStats component', () => {
 
