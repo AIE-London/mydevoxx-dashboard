@@ -1,12 +1,13 @@
 /**
  * Created by DLINDSAY on 03-Apr-17.
  */
-import React from 'react';
+import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Title from './SpeakerTitle';
 import Card from './Card';
 import Default from './defaultIcon.png';
 import styled from 'styled-components';
+
 
 const ImgCircle = styled.img`
     borderRadius: 50%;
@@ -22,7 +23,7 @@ const Blog = styled.div`
     paddingTop: 2px;
 `;
 
-class speakerCard extends React.Component {
+class SpeakerCard extends Component {
 
     render() {
         return <Card><Grid fluid>
@@ -60,4 +61,4 @@ class speakerCard extends React.Component {
 }
 
 
-export default speakerCard;
+export default SpeakerCard;

@@ -43,7 +43,6 @@ class Report extends Component {
 
         return (
             <div className="Report">
-
                 <Row center="xs">
                     <Col xs={10}>
                         <ReportStats minutes={minutes} talks={talks} learning={learning}

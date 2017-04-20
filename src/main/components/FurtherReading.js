@@ -1,7 +1,7 @@
 /**
  * Created by tsadler on 07/04/2017.
  */
-import React from 'react';
+import React, { Component } from 'react';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import styled from 'styled-components';
 import Card from './Card';
@@ -34,7 +34,7 @@ const LinkValue = styled.p`
      margin-bottom: 0px;
 `;
 
-class FurtherReading extends React.Component {
+class FurtherReading extends Component {
     render() {
         return <Container>
         <Card>

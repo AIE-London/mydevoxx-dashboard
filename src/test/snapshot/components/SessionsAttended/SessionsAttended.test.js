@@ -3,10 +3,10 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SessionsAttended from '../../../../main/components/SessionsAttended/';
+import SessionsAttended from '../../../../main/components/SessionsAttended';
 import renderer from 'react-test-renderer';
 
-test('sessionsAttended component', () => {
+test('SessionsAttended component', () => {
 
     it('renders without crashing', () => {
         const div = document.createElement('div');
@@ -14,7 +14,7 @@ test('sessionsAttended component', () => {
     });
 });
 
-test('sessionsAttended component with title snapshot', () => {
+test('SessionsAttended component with title snapshot', () => {
 
     const tree = renderer.create(
         <SessionsAttended mainHeader="MySessions" title="Polymer - Web Standards"
