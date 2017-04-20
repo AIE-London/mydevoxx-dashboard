@@ -3,18 +3,8 @@
  */
 
 import retrieveUuid from "../../../main/api/retrieveUuid";
-import wiremockAPI from "./wiremock/wiremockApi";
-import uuidMapping from "./wiremock/mappings/uuidMapping";
-import notFound from "./wiremock/mappings/notFoundSpeaker.json";
 import {UnexpectedErrorException, UnexpectedSuccessException, MappingSetupException} from "./testingErrors";
 import {raiseOrPassError, expectNotFoundOrRethrowError} from "./testingHelpers";
-
-/**
- * Set up wiremock with normal speaker api response
- */
-let normalSetup = () => {
-    return wiremockAPI.postMapping(uuidMapping);
-};
 
 
 describe('getUUID', () => {

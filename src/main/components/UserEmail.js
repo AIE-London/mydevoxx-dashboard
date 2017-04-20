@@ -17,13 +17,9 @@ class UserEmail extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    //     handleChange(event) {
-    //     this.setState({value: event.target.value});
-    // }
-
     handleSubmit(event) {
         alert('An email was submitted: ' + this.state.value);
-        return retrieveUuid(this.state.value);
+        return retrieveUuid.getUUID(this.state.value);
     }
 
     render() {

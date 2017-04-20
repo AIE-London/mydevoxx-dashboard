@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FurtherReading from '../../../../main/components/FurtherReading/';
+import FurtherReading from '../../../../main/components/FurtherReading';
 import renderer from 'react-test-renderer';
 
 test('FurtherReading component', () => {
