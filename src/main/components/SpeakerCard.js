@@ -40,7 +40,7 @@ const Container = styled.div`
 class SpeakerCard extends Component {
     render() {
 
-        let {name, company, blog, talks} = this.props.speaker;
+        let {name, company, blog, talks} = this.props.route.speaker;
 
         return (
             <Card2>
