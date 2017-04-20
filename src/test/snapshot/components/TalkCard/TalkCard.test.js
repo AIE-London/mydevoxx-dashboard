@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TalkCard from '../../../../main/components/TalkCard/';
+import TalkCard from '../../../../main/components/TalkCard';
 import renderer from 'react-test-renderer';
 import testImage from '../../images/test-image.jpeg';
 

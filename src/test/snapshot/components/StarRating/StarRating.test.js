@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import StarRating from '../../../../main/components/StarRating/';
+import StarRating from '../../../../main/components/StarRating';
 import renderer from 'react-test-renderer';
 
 test('StarRating', () => {

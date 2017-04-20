@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Stats from '../../../../main/components/Stats/';
+import Stats from '../../../../main/components/Stats';
 import renderer from 'react-test-renderer';
 
 
