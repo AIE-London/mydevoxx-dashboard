@@ -1,6 +1,3 @@
-/**
- * Created by DLINDSAY on 07-Apr-17.
- */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Stats from '../../../../main/components/Stats';
