@@ -5,8 +5,8 @@ import SessionView from "./SessionView";
 
 class Report extends Component {
 
-  render() {
-      console.log(this.props);
+    render() {
+
         let {minutes, talks, learning, attendees} = this.props.reportStats;
 
         return (
@@ -14,7 +14,7 @@ class Report extends Component {
                 <Row center="xs">
                     <Col xs={10}>
                         <ReportStats minutes={minutes} talks={talks} learning={learning}
-                                     attendees={attendees}/>
+                                     attendees={attendees}></ReportStats>
                     </Col>
                 </Row>
                 <SessionView talk={this.props.talk}/>
@@ -22,5 +22,4 @@ class Report extends Component {
         );
     }
 }
-
 export default Report;
