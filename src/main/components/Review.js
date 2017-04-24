@@ -1,9 +1,3 @@
-/**
- * Created by dan on 05/04/2017.
- */
-/**
- * Created by dan on 04/04/2017.
- */
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import {Col, Row} from 'react-flexbox-grid';
