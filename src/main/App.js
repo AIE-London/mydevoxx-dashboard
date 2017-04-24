@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard';
 import Report from './components/Report';
 import Talk from './components/Talk';
 import TopRated from './components/TopRated';
+import UserEmail from './components/UserEmail';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -78,7 +79,8 @@ class App extends Component {
                             <AppBar
                                 title="MyDevoxx"
                                 iconElementRight={<NavButtons />}/>
-                            <Route path='/' component={Dashboard}/>
+                            <Route path='/' component={UserEmail}/>
+                            <Route path="/Dashboard" component={Dashboard}/>
                             <Route path='/report' render={function (props) {
                                     return <Report reportStats={reportStatsData} talk={talkDetail} />
                                 }

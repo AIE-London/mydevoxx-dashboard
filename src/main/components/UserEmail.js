@@ -1,11 +1,5 @@
-/**
- * Created by SCMORETO on 19/04/2017.
- */
-
 import React, {Component} from 'react';
 import {FormInput} from 'react-form'
-import Select from 'react-select'
-import UUID from "/../api/retrieveUuid";
 import retrieveUuid from "../api/retrieveUuid"
 
 class UserEmail extends Component {
@@ -39,3 +33,5 @@ ReactDOM.render(
     <NameForm />,
     document.getElementById('root')
 );
+
+export default UserEmail;
