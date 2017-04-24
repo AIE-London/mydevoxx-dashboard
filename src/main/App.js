@@ -94,6 +94,7 @@ class App extends Component {
         );
     }
 }
+
 injectTapEventPlugin();
 
 export default App;
