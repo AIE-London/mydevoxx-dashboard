@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import {Row} from 'react-flexbox-grid';
 
-const topRated = styled(Row)`
+const TopRatedComponent = styled(Row)`
   background: #FAFAFA;
   border-radius: 2px;
   padding: 0;
@@ -14,9 +14,9 @@ const topRated = styled(Row)`
 class TopRated extends Component {
     render() {
         return (
-            <div>
+            <TopRatedComponent>
                 Top Rated
-            </div>
+            </TopRatedComponent>
         )
     }
 }

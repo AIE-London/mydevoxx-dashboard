@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import {Row} from 'react-flexbox-grid';
 
-const dashboard = styled(Row)`
+const DashboardComponent = styled(Row)`
   background: #FAFAFA;
   border-radius: 2px;
   padding: 0;
@@ -14,9 +14,9 @@ const dashboard = styled(Row)`
 class Dashboard extends Component {
     render() {
         return (
-            <div>
+            <DashboardComponent>
                 Dashboard
-            </div>
+            </DashboardComponent>
         )
     }
 }

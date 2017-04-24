@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import {Row} from 'react-flexbox-grid';
 
-const talk = styled(Row)`
+const TalkComponent = styled(Row)`
   background: #FAFAFA;
   border-radius: 2px;
   padding: 0;
@@ -14,9 +14,9 @@ const talk = styled(Row)`
 class Talk extends Component {
     render() {
         return (
-            <div>
+            <TalkComponent>
                 Talk
-            </div>
+            </TalkComponent>
         )
     }
 }
