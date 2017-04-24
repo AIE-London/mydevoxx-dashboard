@@ -1,12 +1,19 @@
-/**
- * Created by DLINDSAY on 05-Apr-17.
- */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Speaker from '../../main/components/SpeakerCard';
+import Speaker from '../../../../main/components/SpeakerCard';
 import renderer from 'react-test-renderer';
 
-test('app component', () => {
+const speakerDetail = {
+    name: 'Test Speaker',
+    company: 'Capgemini',
+    blog: 'personalblog.com',
+    talks: [
+        'Intro to Devoxx (Room 1 - 11:45)',
+        'Intro to Devoxx 2 (Room 2 - 13:45)'
+    ]
+};
+
+test('SpeakerCard component', () => {
 
     it('renders without crashing', () => {
         const div = document.createElement('div');
@@ -17,9 +24,9 @@ test('app component', () => {
 
 });
 
-test('reportStats component with title snapshot', () => {
+test('SpeakerCard component with title snapshot', () => {
     const tree = renderer.create(
-        <Speaker  name="Testy" company="Testy Inc." blog="blogname.com" talks={["Talk 1 is One", "Talk 2 is Two", "Talk 3 is Three"]} />
+        <Speaker  speaker={speakerDetail} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
 });

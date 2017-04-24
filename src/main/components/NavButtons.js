@@ -1,11 +1,11 @@
 /**
  * Created by dan on 07/04/2017.
  */
-import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 
-class NavButtons extends React.Component {
+class NavButtons extends Component {
   render() {
 
     return <div>

@@ -1,12 +1,18 @@
-/**
- * Created by DLINDSAY on 03-Apr-17.
- */
-import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import React, {Component} from 'react';
+import {Row, Col} from 'react-flexbox-grid';
 import Title from './SpeakerTitle';
-import Card from './Card';
 import Default from './defaultIcon.png';
 import styled from 'styled-components';
+
+const Card2 = styled(Row)`
+  background: #FAFAFA;
+  border-radius: 2px;
+  padding: 0;
+  font-family: Helvetica;
+  box-sizing: border-box;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin-bottom: 50px;
+`;
 
 const ImgCircle = styled.img`
     borderRadius: 50%;
@@ -18,46 +24,68 @@ const ImgCircle = styled.img`
 
 const Blog = styled.div`
     paddingLeft: 30px;
-    paddingBottom: 10px,;
+    paddingBottom: 10px;
     paddingTop: 2px;
+    opacity: 0.6; 
+    margin-bottom: 17px;
 `;
 
-class speakerCard extends React.Component {
+const Talks = styled.div`
+    paddingLeft: 30px;
+    paddingBottom: 10px;
+    paddingTop: 2px;
+    opacity: 0.6; 
+    margin-bottom: 17px;
+`;
 
+const Container = styled.div`
+    width: 70%;
+    paddingBottom: 10px;
+    text-align: left;
+    margin-left : 20px;
+`;
+
+class SpeakerCard extends Component {
     render() {
-        return <Card><Grid fluid>
-            <Row>
-                <Col>
-                    <ImgCircle src={Default} ></ImgCircle>
-                </Col>
-                <Col xs>
-                    <Title name={this.props.name} company={this.props.company}/>
-                </Col>
-            </Row>
-            <Row>
-                <Col md={3}>
-                    <div>Personal Blog:</div>
-                    <Blog>{this.props.blog}</Blog>
-                </Col>
-            </Row>
-            <Row>
-                <Col md={3}>
-                    <div>Other Talks:</div>
-                    <ul>
-                        {
-                            this.props.talks.map( function(talk) {
-                                return <li key={talk}>{talk}</li>
-                            })
-                        }
 
-                    </ul>
-                </Col>
-            </Row>
+        let {name, company, blog, talks} = this.props.speaker;
 
-        </Grid> </Card>;
+        return (
+            <Card2>
+                <Container>
+                    <Row>
+                        <Col>
+                            <ImgCircle src={Default}></ImgCircle>
+                        </Col>
+                        <Col xs>
+                            <Title name={name} company={company}/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <div>Personal Blog:</div>
+                            <Blog>{blog}</Blog>
+                        </Col>
+                    </Row>
 
+                    <Row>
+                        <Col>
+                            <div>Other Talks:</div>
+                            <ul>
+                                <Talks>
+                                    {
+                                        talks.map(function (talk) {
+                                            return <li key={talk}>{talk}</li>
+                                        })
+                                    }
+                                </Talks>
+                            </ul>
+                        </Col>
+                    </Row>
+                </Container>
+            </Card2>
+        );
     }
 }
 
-
-export default speakerCard;
+export default SpeakerCard;

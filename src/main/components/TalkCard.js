@@ -88,7 +88,7 @@ class TalkCard extends Component {
             <CardNotes>{notes}</CardNotes>
           </Row>
           <Row start="xs">
-            <CardSubhead id="notesHeader">My Reviews</CardSubhead>
+            <CardSubhead id="reviewHeader">My Reviews</CardSubhead>
           </Row>
           <ReviewContainer start="xs">
             <Review review={review}></Review>
