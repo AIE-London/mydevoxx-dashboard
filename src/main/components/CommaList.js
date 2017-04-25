@@ -1,7 +1,7 @@
 /**
  * Created by dan on 04/04/2017.
  */
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CommaList = styled.ul`
   opacity: 0.6;

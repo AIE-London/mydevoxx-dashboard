@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import {Col, Row} from 'react-flexbox-grid';
+import React, { Component } from "react";
+import styled from "styled-components";
+import { Col, Row } from "react-flexbox-grid";
 
 /**
  *  Styled Components
@@ -32,11 +32,11 @@ const ProfileImg = styled.img`
 class Review extends Component {
   render() {
     try {
-      let {image, name, comment} = this.props.review;
+      let { image, name, comment } = this.props.review;
       return (
         <Row start="xs">
           <Col>
-            { image && <ProfileImg src={ image } />}
+            {image && <ProfileImg src={image} />}
           </Col>
           <Col xs>
             <Name>{name}</Name>
@@ -45,7 +45,7 @@ class Review extends Component {
         </Row>
       );
     } catch (error) {
-      return (<Row></Row>)
+      return <Row />;
     }
   }
 }

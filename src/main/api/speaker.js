@@ -1,13 +1,14 @@
-import request from 'then-request';
+import request from "then-request";
 
 let speakerEndpoint = "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/";
-const mockSpeakerEndpoint = "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/speakers/";
+const mockSpeakerEndpoint =
+  "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/speakers/";
 
 /**
  * Use mock endpoint outside of live
  */
 if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
-    speakerEndpoint = mockSpeakerEndpoint;
+  speakerEndpoint = mockSpeakerEndpoint;
 }
 
 /**
@@ -16,22 +17,20 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
  * @param speakerId
  * @returns {bio, firstName, lastName, avatarUrl, company, twitter, blog, talkId}
  */
-let getSpeaker = (speakerId) => {
-
-    return request('GET', speakerEndpoint + speakerId).then((response) => {
-
-        let body = JSON.parse(response.getBody());
-        return {
-            uuid: body.uuid,
-            firstName: body.firstName,
-            lastName: body.lastName,
-            avatarURL: body.avatarURL,
-            company: body.company,
-            twitter: body.twitter,
-            blog: body.blog,
-            talkId: parseTalkId(body.acceptedTalks[0].id)
-        };
-    });
+let getSpeaker = speakerId => {
+  return request("GET", speakerEndpoint + speakerId).then(response => {
+    let body = JSON.parse(response.getBody());
+    return {
+      uuid: body.uuid,
+      firstName: body.firstName,
+      lastName: body.lastName,
+      avatarURL: body.avatarURL,
+      company: body.company,
+      twitter: body.twitter,
+      blog: body.blog,
+      talkId: parseTalkId(body.acceptedTalks[0].id)
+    };
+  });
 };
 
 /**
@@ -40,17 +39,17 @@ let getSpeaker = (speakerId) => {
  * @param talkId
  * @returns {Array}
  */
-let parseTalkId = (talkId) => {
-    let result = [];
-    if (talkId) {
-        result = talkId.split(",").map((item) => {
-            return item.trim()
-        });
-    }
-    return result;
+let parseTalkId = talkId => {
+  let result = [];
+  if (talkId) {
+    result = talkId.split(",").map(item => {
+      return item.trim();
+    });
+  }
+  return result;
 };
 
 export default {
-    getSpeaker: getSpeaker,
-    parseTalkId: parseTalkId
+  getSpeaker: getSpeaker,
+  parseTalkId: parseTalkId
 };
