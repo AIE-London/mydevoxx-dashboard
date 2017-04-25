@@ -3,20 +3,18 @@
  */
 jest.mock('then-request', () => {
   return jest.fn(() => {
+    let responder = require('http-response-object');
     return new Promise(resolve => {
-      resolve({
-        getBody: () => {
-          return JSON.stringify({
-            rooms: [{
-              id: 'a_test_room',
-              name: 'Test Room',
-              capacity: 1500,
-              setup: 'special',
-              recorded: undefined
-            }]
-          });
-        }
-      })})
+      resolve(new responder(200, {'Content-Type': 'application/json'}, new Buffer(JSON.stringify({
+        rooms: [{
+          id: 'a_test_room',
+          name: 'Test Room',
+          capacity: 1500,
+          setup: 'special',
+          recorded: undefined
+        }]
+      })), 'http://example.com'));
+    });
   });
 });
 import room from "../../../../main/api/rooms";
