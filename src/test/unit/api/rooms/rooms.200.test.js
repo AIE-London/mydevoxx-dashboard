@@ -1,5 +1,7 @@
 /**
  * Created by dan on 25/04/2017.
+ *
+ * Setup in-process mock.
  */
 jest.mock('then-request', () => {
   return jest.fn(() => {
@@ -17,16 +19,17 @@ jest.mock('then-request', () => {
     });
   });
 });
+// Import API module now we've mocked then-request
 import room from "../../../../main/api/rooms";
 
-
 /**
- * <if> wiremock is trained with a room response list -> returns room list
- * <else> wiremock is trained with a 404 response -> returns 404
+ * Returns room-list by calling then-request. Then-request
+ * will respond with a HTTP Response Object with a
+ * pre-defined payload. This payload should be transformed
+ * and the promise should be resolved with its updated value
  */
 describe('getRooms from in-process', () => {
-  it('should return room data & handle 404 case using in-process mock', () => {
-
+  it('should return room data using in-process mock', () => {
     let apiCall = room.getRooms();
 
     return apiCall.then((result) => {
@@ -41,16 +44,5 @@ describe('getRooms from in-process', () => {
       console.error(error);
       throw new Error("Unexpected error when retrieving speakers after \"Normal\" setup", error);
     });
-    // remove test causing concurrency.
-    /*.then(notFoundSetup).then(room.getRooms).then((result) => {
-     throw new UnexpectedSuccessException("Unexpected success when retrieving speakers after \"Not Found\" setup");
-     }).catch((error) => {
-     if (error.statusCode) {
-     expect(error.statusCode).toBe(404);
-     } else {
-     console.error(error);
-     throw error;
-     }
-     });*/
   });
 });
