@@ -1,24 +1,24 @@
 exports[`test SpeakerCard component with title snapshot 1`] = `
 <div
-  className="bvnlUe row">
+  className="lluTUT row">
   <div
-    className="container-fluid">
+    className="kblate">
     <div
       className="row">
       <div
         className="">
         <img
-          className="fOjFzA"
+          className="jmFtVx"
           src="defaultIcon.png" />
       </div>
       <div
         className="col-xs">
         <div>
           <h3>
-            Testy
+            Test Speaker
           </h3>
           <p>
-            Testy Inc.
+            Capgemini
           </p>
         </div>
       </div>
@@ -26,37 +26,36 @@ exports[`test SpeakerCard component with title snapshot 1`] = `
     <div
       className="row">
       <div
-        className="col-md-3">
+        className="">
         <div>
           Personal Blog:
         </div>
         <div
-          className="gqPtzL">
-          blogname.com
+          className="fYLUow">
+          personalblog.com
         </div>
       </div>
     </div>
     <div
       className="row">
       <div
-        className="col-md-3">
+        className="">
         <div>
           Other Talks:
         </div>
         <ul>
-          <li>
-            Talk 1 is One
-          </li>
-          <li>
-            Talk 2 is Two
-          </li>
-          <li>
-            Talk 3 is Three
-          </li>
+          <div
+            className="fYLUow">
+            <li>
+              Intro to Devoxx (Room 1 - 11:45)
+            </li>
+            <li>
+              Intro to Devoxx 2 (Room 2 - 13:45)
+            </li>
+          </div>
         </ul>
       </div>
     </div>
   </div>
-   
 </div>
 `;

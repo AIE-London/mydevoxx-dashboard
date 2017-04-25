@@ -1,6 +1,3 @@
-/**
- * Created by dan on 04/04/2017.
- */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import StarRating from '../../../../main/components/StarRating';

@@ -16,7 +16,7 @@ const StatMainHeader = styled.h1`
     font-size: 2em;
     font-family: helvetica;
     margin-left: 15px;
-    margin-bottom:0px;
+    margin-bottom: 0px;
 `;
 
 const StatValue = styled.p`
@@ -30,8 +30,8 @@ const LinkValue = styled.p`
     color: #fff;
     font-family: helvetica;
      margin-left: 30px;
-     margin-top:0px;
-     margin-bottom:0px;
+     margin-top: 0px;
+     margin-bottom: 0px;
 `;
 
 class FurtherReading extends Component {
