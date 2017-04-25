@@ -1,4 +1,3 @@
-jest.unmock('then-request');
 import room from "../../../main/api/rooms";
 import wiremockAPI from "./wiremock/wiremockApi";
 import roomMapping from "./wiremock/mappings/rooms"
@@ -13,8 +12,8 @@ let normalSetup = () => {
 };
 
 /**
- * <if> wiremock is trained with a room response list -> returns room list
- * <else> wiremock is trained with a 404 response -> returns 404
+ * Wiremock is trained with a room response list, api
+ * should returns room list post transformation.
  */
 describe('getRooms from external', () => {
   it('should return room data from external mock', () => {
