@@ -1,14 +1,13 @@
 /**
  * Created by dan on 25/04/2017.
  */
+
+
 jest.mock('then-request', () => {
+  let responder = require('http-response-object');
   return jest.fn(() => {
     return new Promise(resolve => {
-      resolve({
-        getBody: () => {
-          throw new Error("404");
-        }
-      })})
+      resolve(new responder(404, {'Content-Type': 'application/json'}, new Buffer(JSON.stringify({ reason: "Not Found" })), 'http://example.com'))})
   });
 });
 import room from "../../../../main/api/rooms";
@@ -26,7 +25,7 @@ describe('getRooms from in-process', () => {
     return apiCall.then((result) => {
       expect(!result);
     }, (error) => {
-      expect(error.message).toEqual("404");
+      expect(error.statusCode).toBe(404);
     });
     // remove test causing concurrency.
     /*.then(notFoundSetup).then(room.getRooms).then((result) => {
