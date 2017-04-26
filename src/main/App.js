@@ -19,7 +19,7 @@ const muiTheme = getMuiTheme({
         textColor: '#fff'
     },
     appBar: {
-        height: '75'
+        height: '75px'
     }
 });
 
@@ -69,8 +69,15 @@ const reportStatsData =
 
 class App extends Component {
 
-    render() {
+    uuidExists = () => {
+        if(!this.props.uuid) {
+            return UserEmail;
+        } else {
+            return Dashboard;
+        }
+    };
 
+    render() {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
@@ -78,13 +85,11 @@ class App extends Component {
                         <div>
                             <AppBar
                                 title="MyDevoxx"
-                                iconElementRight={<NavButtons />}/>
-                            <Route path='/' component={UserEmail}/>
+                                iconElementRight={<NavButtons/>}/>
+                            <Route path='/' component={this.uuidExists()}/>
                             <Route path="/Dashboard" component={Dashboard}/>
-                            <Route path='/report' render={function (props) {
-                                    return <Report reportStats={reportStatsData} talk={talkDetail} />
-                                }
-                            }/>
+                            <Route path='/report' render={(props) => {
+                                return <Report reportStats={reportStatsData} talk={talkDetail}/>}}/>
                             <Route path='/talk/:id' component={Talk}/>
                             <Route path='/top-rated' component={TopRated}/>
                         </div>

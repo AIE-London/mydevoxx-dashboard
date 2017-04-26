@@ -29,7 +29,7 @@ class NavButtons extends Component {
 
         return <InlineList>
             <LinkText>
-                <Link to="/">
+                <Link to="/Dashboard">
                     Home
                 </Link>
             </LinkText>
@@ -44,7 +44,6 @@ class NavButtons extends Component {
                 </Link>
             </LinkText>
         </InlineList>
-
     }
 }
 
