@@ -1,11 +1,11 @@
 /**
  * Created by tsadler on 06/04/2017.
  */
-import {Grid, Row, Col} from 'react-flexbox-grid';
-import styled from 'styled-components';
-import Card from './Card';
-import Default from './defaultIcon.png';
-import React, { Component } from 'react';
+import { Grid, Row, Col } from "react-flexbox-grid";
+import styled from "styled-components";
+import Card from "./Card";
+import Default from "./defaultIcon.png";
+import React, { Component } from "react";
 
 const Container = styled.div`
   width: 400px;
@@ -40,41 +40,43 @@ const Image = styled.img`
 `;
 
 class SessionsAttended extends Component {
-    render() {
-        return <Container>
-            <Card>
-                <Col xs={12}>
-                    <Col xs={10}>
-                        <Row start="xs">
-                            <StatMainHeader>{this.props.mainHeader}</StatMainHeader>
-                        </Row>
-                    </Col>
+  render() {
+    return (
+      <Container>
+        <Card>
+          <Col xs={12}>
+            <Col xs={10}>
+              <Row start="xs">
+                <StatMainHeader>{this.props.mainHeader}</StatMainHeader>
+              </Row>
+            </Col>
 
-                    <Row center="xs">
-                        <Col xs={10}>
-                            <Row start="xs" middle="xs">
-                                <Col xs>
-                                    <CardHeader>{this.props.title}</CardHeader>
-                                    <p>{this.props.cardContent}</p>
-                                </Col>
-                                <Col xs={2}><Image src={Default}></Image></Col>
-                            </Row>
-                        </Col>
-                    </Row>
+            <Row center="xs">
+              <Col xs={10}>
+                <Row start="xs" middle="xs">
+                  <Col xs>
+                    <CardHeader>{this.props.title}</CardHeader>
+                    <p>{this.props.cardContent}</p>
+                  </Col>
+                  <Col xs={2}><Image src={Default} /></Col>
+                </Row>
+              </Col>
+            </Row>
 
-                    <Row center="xs">
-                        <Col xs={10}>
-                            <Row start="xs" middle="xs">
-                                <Col xs>
-                                    <CardSubhead>{this.props.subHeader}</CardSubhead>
-                                    <p>{this.props.name}</p>
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
-                </Col>
-            </Card>
-        </Container>
-    }
+            <Row center="xs">
+              <Col xs={10}>
+                <Row start="xs" middle="xs">
+                  <Col xs>
+                    <CardSubhead>{this.props.subHeader}</CardSubhead>
+                    <p>{this.props.name}</p>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Col>
+        </Card>
+      </Container>
+    );
+  }
 }
 export default SessionsAttended;
