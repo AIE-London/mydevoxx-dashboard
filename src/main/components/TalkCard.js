@@ -1,14 +1,14 @@
 /**
  * Created by dan on 04/04/2017.
  */
-import React, { Component } from 'react';
-import Card from './Card';
-import styled from 'styled-components';
-import {Col, Row} from 'react-flexbox-grid';
+import React, { Component } from "react";
+import Card from "./Card";
+import styled from "styled-components";
+import { Col, Row } from "react-flexbox-grid";
 
-import {CommaList, CommaListItem} from './CommaList';
-import StarRating from './StarRating';
-import Review from './Review';
+import { CommaList, CommaListItem } from "./CommaList";
+import StarRating from "./StarRating";
+import Review from "./Review";
 
 /**
  *  Styled Components
@@ -56,7 +56,14 @@ const ReviewContainer = styled(Row)`
 
 class TalkCard extends Component {
   render() {
-    let {title, rating, description, topTracks, notes, review} = this.props.talk;
+    let {
+      title,
+      rating,
+      description,
+      topTracks,
+      notes,
+      review
+    } = this.props.talk;
     return (
       <Card start="xs">
         <LeftPartition xs={6}>
@@ -64,7 +71,7 @@ class TalkCard extends Component {
             <CardHeader id="title">{title}</CardHeader>
           </Row>
           <Row end="xs">
-            <StarRating rating={rating}></StarRating>
+            <StarRating rating={rating} />
           </Row>
           <CardParagraph>
             {description}
@@ -91,7 +98,7 @@ class TalkCard extends Component {
             <CardSubhead id="reviewHeader">My Reviews</CardSubhead>
           </Row>
           <ReviewContainer start="xs">
-            <Review review={review}></Review>
+            <Review review={review} />
           </ReviewContainer>
         </RightPartition>
       </Card>

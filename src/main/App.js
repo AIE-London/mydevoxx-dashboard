@@ -12,7 +12,7 @@ import AppBar from 'material-ui/AppBar';
 import NavButtons from './components/NavButtons';
 import db from './components/UserEmail';
 
-import testImage from '../test/snapshot/images/test-image.jpeg';
+import testImage from "../test/snapshot/images/test-image.jpeg";
 
 const muiTheme = getMuiTheme({
     palette: {
@@ -24,52 +24,44 @@ const muiTheme = getMuiTheme({
     }
 });
 
-const talkDetail =
+const talkDetail = {
+  dayNo: "One",
+  sTime: "10:00",
+  room: "Mezzanine",
+  title: "Welcome to Devoxx 2017",
+  description: "Join the organisers of Devoxx UK and great keynote " +
+    "speakers for inspring stories in 20 minute segments.",
+  rating: 4,
+  topTracks: ["Java", "Devoxx", "Spring"],
+  notes: "Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos " +
+    "volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer" +
+    " nec. Feugiat qualisque quo an. Labores officiis te nam.",
+  review: {
+    name: "Test User",
+    comment: "Great session, thanks for organising. Looking forward to the next one!",
+    image: testImage
+  },
+  speakers: [
     {
-        dayNo: 'One',
-        sTime: '10:00',
-        room: 'Mezzanine',
-        title: 'Welcome to Devoxx 2017',
-        description: 'Join the organisers of Devoxx UK and great keynote ' +
-        'speakers for inspring stories in 20 minute segments.',
-        rating: 4,
-        topTracks: [
-            'Java',
-            'Devoxx',
-            'Spring',
-        ],
-        notes: 'Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos ' +
-        'volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer' +
-        ' nec. Feugiat qualisque quo an. Labores officiis te nam.',
-        review: {
-            name: 'Test User',
-            comment: 'Great session, thanks for organising. Looking forward to the next one!',
-            image: testImage
-        },
-        speakers: [
-            {
-                name: 'Test Speaker',
-                company: 'Capgemini',
-                blog: 'personalblog.com',
-                talks: [
-                    'Intro to Devoxx (Room 1 - 11:45)',
-                    'Intro to Devoxx 2 (Room 2 - 13:45)'
-                ]
-            }
-        ]
-    };
+      name: "Test Speaker",
+      company: "Capgemini",
+      blog: "personalblog.com",
+      talks: [
+        "Intro to Devoxx (Room 1 - 11:45)",
+        "Intro to Devoxx 2 (Room 2 - 13:45)"
+      ]
+    }
+  ]
+};
 
-
-const reportStatsData =
-    {
-        minutes: 455,
-        talks: 10,
-        learning: "Spring, Java",
-        attendees: 435
-    };
+const reportStatsData = {
+  minutes: 455,
+  talks: 10,
+  learning: "Spring, Java",
+  attendees: 435
+};
 
 class App extends Component {
-
     uuidExists = () => {
         //open connection to indexeddb - display error if connection failed
         db.open().catch((error => {

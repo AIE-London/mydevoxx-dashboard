@@ -1,12 +1,12 @@
 /**
  * Created by tsadler on 07/04/2017.
  */
-import React, { Component } from 'react';
-import {Grid, Row, Col} from 'react-flexbox-grid';
-import styled from 'styled-components';
-import Card from './Card';
+import React, { Component } from "react";
+import { Grid, Row, Col } from "react-flexbox-grid";
+import styled from "styled-components";
+import Card from "./Card";
 
-const Container  = styled.div`
+const Container = styled.div`
   width: 400px;
   height: 400px;
 `;
@@ -35,29 +35,31 @@ const LinkValue = styled.p`
 `;
 
 class FurtherReading extends Component {
-    render() {
-        return <Container>
+  render() {
+    return (
+      <Container>
         <Card>
-            <Row center="xs">
-                    <Col xs={12}>
-                        <Col xs={10}>
-                            <Row start="xs">
-                                <StatMainHeader>{this.props.mainHeader}</StatMainHeader>
-                                <LinkValue>
-                                    <a href={this.props.url}>{this.props.urlText}</a>
-                                </LinkValue>
-                            </Row>
-                        </Col>
-                        <Row center="xs">
-                            <Col xs={10}>
-                                <StatValue>{this.props.text}</StatValue>
-                            </Col>
-                        </Row>
-                    </Col>
+          <Row center="xs">
+            <Col xs={12}>
+              <Col xs={10}>
+                <Row start="xs">
+                  <StatMainHeader>{this.props.mainHeader}</StatMainHeader>
+                  <LinkValue>
+                    <a href={this.props.url}>{this.props.urlText}</a>
+                  </LinkValue>
                 </Row>
-            </Card>
-        </Container>
-    }
+              </Col>
+              <Row center="xs">
+                <Col xs={10}>
+                  <StatValue>{this.props.text}</StatValue>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Card>
+      </Container>
+    );
+  }
 }
 
 export default FurtherReading;
