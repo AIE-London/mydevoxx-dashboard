@@ -10,6 +10,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import NavButtons from './components/NavButtons';
+import db from './components/UserEmail';
 
 import testImage from '../test/snapshot/images/test-image.jpeg';
 
@@ -70,7 +71,12 @@ const reportStatsData =
 class App extends Component {
 
     uuidExists = () => {
-        if(!this.props.uuid) {
+        //open connection to indexeddb - display error if connection failed
+        db.open().catch((error => {
+            alert('uuidDb could not be accessed: ' + error);
+        }));
+        let uuidPresent = db.uuid.get('uuid');
+        if(!this.props.uuid || !uuidPresent) {
             return UserEmail;
         } else {
             return Dashboard;
