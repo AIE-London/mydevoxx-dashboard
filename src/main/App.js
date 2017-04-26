@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, browserHistory} from 'react-router-dom';
+import {BrowserRouter as Router, Route, browserHistory, Redirect} from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Report from './components/Report';
 import Talk from './components/Talk';
@@ -74,7 +74,7 @@ class App extends Component {
 
     constructor () {
         super();
-        this.state = { uuidPresent: false };
+        this.state = { uuidPresent: true };
         //Define indexeddb instance/version
         db = new Dexie('devoxx-db');
         db.version(1).stores({record: 'id,uuid'});
@@ -106,11 +106,7 @@ class App extends Component {
     };
 
     rootComponent() {
-        if(!this.state.uuidPresent) {
-            return <UserEmail db={db} />;
-        } else {
-            return <Dashboard />;
-        }
+        return <UserEmail db={db} />;
     }
 
     render() {
@@ -119,10 +115,12 @@ class App extends Component {
                 <div>
                     <Router history={browserHistory}>
                         <div>
+                            { !this.state.uuidPresent && <Redirect to="/login" />}
                             <AppBar
                                 title="MyDevoxx"
                                 iconElementRight={<NavButtons/>}/>
-                            <Route path='/' render={this.rootComponent}/>
+                            <Route path='/' exact component={Dashboard}/>
+                            <Route path='/login'  render={this.rootComponent}/>
                             <Route path="/Dashboard" component={Dashboard}/>
                             <Route path='/report' render={(props) => {
                                 return <Report reportStats={reportStatsData} talk={talkDetail}/>}}/>
