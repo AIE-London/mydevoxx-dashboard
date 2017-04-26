@@ -1,13 +1,14 @@
-import request from 'then-request';
+import request from "then-request";
 
 let roomEndpoint = "http://cfp.devoxx.co.uk/api/conferences/DV17/rooms/";
-const mockRoomEndpoint = "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/rooms/";
+const mockRoomEndpoint =
+  "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/rooms/";
 
 /**
  * Use mock endpoint outside of live
  */
 if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
-    roomEndpoint = mockRoomEndpoint;
+  roomEndpoint = mockRoomEndpoint;
 }
 
 /**
@@ -16,24 +17,23 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
  * @returns {Array}
  */
 let getRooms = () => {
-  return request('GET', roomEndpoint).then((response) => {
+  return request("GET", roomEndpoint).then(response => {
+    let body = JSON.parse(response.getBody());
 
-      let body = JSON.parse(response.getBody());
+    var roomMappingResult = body.rooms.map(item => {
+      return {
+        id: item.id,
+        name: item.name,
+        capacity: item.capacity,
+        setup: item.setup,
+        recorded: item.recorded
+      };
+    });
 
-      var roomMappingResult = body.rooms.map((item) => {
-          return {
-              id: item.id,
-              name: item.name,
-              capacity: item.capacity,
-              setup: item.setup,
-              recorded: item.recorded
-          }
-      });
-
-      return roomMappingResult;
+    return roomMappingResult;
   });
 };
 
 export default {
-    getRooms: getRooms
-}
+  getRooms: getRooms
+};

@@ -1,9 +1,9 @@
 /**
  * Created by TSADLER on 03/04/2017.
  */
-import { Row, Col } from 'react-flexbox-grid';
-import styled from 'styled-components';
-import React, { Component } from 'react';
+import { Row, Col } from "react-flexbox-grid";
+import styled from "styled-components";
+import React, { Component } from "react";
 
 const StatMainHeader = styled.h1`
     text-align: left;
@@ -30,39 +30,45 @@ const Orange = styled.span`
 `;
 
 class ReportStats extends Component {
-    render() {
+  render() {
+    return (
+      <Row center="xs">
+        <Col xs={10}>
 
-        return <Row center="xs">
+          <Col xs={2}>
+            <Row start="xs">
+              <StatMainHeader>MyReport</StatMainHeader>
+            </Row>
+          </Col>
+
+          <Row center="xs">
             <Col xs={10}>
 
+              <StatHeader>
+                I spent <Orange>{this.props.minutes} minutes</Orange>
+              </StatHeader>
 
-                <Col xs={2}>
-                    <Row start="xs">
-                        <StatMainHeader>MyReport</StatMainHeader>
-                    </Row>
-                </Col>
+              <StatValue>
+                Attending <Orange>{this.props.talks} talks</Orange>
+              </StatValue>
 
-                <Row center="xs">
-                    <Col xs={10}>
+              <StatHeader>Learning what's new in...</StatHeader>
 
-                        <StatHeader>I spent <Orange>{this.props.minutes} minutes</Orange></StatHeader>
+              <StatValue>{this.props.learning} </StatValue>
 
-                        <StatValue>Attending <Orange>{this.props.talks} talks</Orange></StatValue>
+              <StatHeader>Networking with</StatHeader>
 
-                        <StatHeader>Learning what's new in...</StatHeader>
+              <StatValue>
+                {" "}<Orange>{this.props.attendees}</Orange> Attendees
+              </StatValue>
 
-                        <StatValue>{this.props.learning} </StatValue>
-
-                        <StatHeader>Networking with</StatHeader>
-
-                        <StatValue> <Orange>{this.props.attendees}</Orange> Attendees</StatValue>
-
-                    </Col>
-                </Row>
             </Col>
+          </Row>
+        </Col>
 
-        </Row>
-    }
+      </Row>
+    );
+  }
 }
 
 export default ReportStats;

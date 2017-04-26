@@ -17,12 +17,24 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
+    "husky": "^0.13.3",
+    "lint-staged": "^3.4.0",
+    "prettier": "^1.2.2",
     "react-scripts": "0.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test:coverage": "react-scripts test --env=jsdom --coverage",
+    "test:dev": "react-scripts test --env=jsdom --testPathPattern='src\/test\/(unit|snapshot)\/.*$'",
+    "eject": "react-scripts eject",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
