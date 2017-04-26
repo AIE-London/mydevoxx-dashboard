@@ -129,7 +129,7 @@ exports[`test App component snapshot 1`] = `
           <li
             className="kumMTW">
             <a
-              href="/Dashboard"
+              href="/dashboard"
               onClick={[Function]}>
               Home
             </a>
