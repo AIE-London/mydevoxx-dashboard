@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const LinkText = styled.li`
   font-family: Helvetica;
@@ -25,27 +25,27 @@ export const InlineList = styled.ul`
 `;
 
 class NavButtons extends Component {
-    render() {
-
-        return <InlineList>
-            <LinkText>
-                <Link to="/">
-                    Home
-                </Link>
-            </LinkText>
-            <LinkText>
-                <Link to="/report">
-                    Report
-                </Link>
-            </LinkText>
-            <LinkText>
-                <Link to="/top-rated">
-                    Top Rated
-                </Link>
-            </LinkText>
-        </InlineList>
-
-    }
+  render() {
+    return (
+      <InlineList>
+        <LinkText>
+          <Link to="/">
+            Home
+          </Link>
+        </LinkText>
+        <LinkText>
+          <Link to="/report">
+            Report
+          </Link>
+        </LinkText>
+        <LinkText>
+          <Link to="/top-rated">
+            Top Rated
+          </Link>
+        </LinkText>
+      </InlineList>
+    );
+  }
 }
 
 export default NavButtons;

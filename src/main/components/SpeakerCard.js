@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Row, Col} from 'react-flexbox-grid';
-import Title from './SpeakerTitle';
-import Default from './defaultIcon.png';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import { Row, Col } from "react-flexbox-grid";
+import Title from "./SpeakerTitle";
+import Default from "./defaultIcon.png";
+import styled from "styled-components";
 
 const Card2 = styled(Row)`
   background: #FAFAFA;
@@ -46,46 +46,43 @@ const Container = styled.div`
 `;
 
 class SpeakerCard extends Component {
-    render() {
+  render() {
+    let { name, company, blog, talks } = this.props.speaker;
 
-        let {name, company, blog, talks} = this.props.speaker;
+    return (
+      <Card2>
+        <Container>
+          <Row>
+            <Col>
+              <ImgCircle src={Default} />
+            </Col>
+            <Col xs>
+              <Title name={name} company={company} />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <div>Personal Blog:</div>
+              <Blog>{blog}</Blog>
+            </Col>
+          </Row>
 
-        return (
-            <Card2>
-                <Container>
-                    <Row>
-                        <Col>
-                            <ImgCircle src={Default}></ImgCircle>
-                        </Col>
-                        <Col xs>
-                            <Title name={name} company={company}/>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <div>Personal Blog:</div>
-                            <Blog>{blog}</Blog>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col>
-                            <div>Other Talks:</div>
-                            <ul>
-                                <Talks>
-                                    {
-                                        talks.map(function (talk) {
-                                            return <li key={talk}>{talk}</li>
-                                        })
-                                    }
-                                </Talks>
-                            </ul>
-                        </Col>
-                    </Row>
-                </Container>
-            </Card2>
-        );
-    }
+          <Row>
+            <Col>
+              <div>Other Talks:</div>
+              <ul>
+                <Talks>
+                  {talks.map(function(talk) {
+                    return <li key={talk}>{talk}</li>;
+                  })}
+                </Talks>
+              </ul>
+            </Col>
+          </Row>
+        </Container>
+      </Card2>
+    );
+  }
 }
 
 export default SpeakerCard;

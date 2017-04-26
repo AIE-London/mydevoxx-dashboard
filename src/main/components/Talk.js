@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import {Row} from 'react-flexbox-grid';
+import React, { Component } from "react";
+import styled from "styled-components";
+import { Row } from "react-flexbox-grid";
 
 const TalkComponent = styled(Row)`
   background: #FAFAFA;
@@ -12,13 +12,13 @@ const TalkComponent = styled(Row)`
 `;
 
 class Talk extends Component {
-    render() {
-        return (
-            <TalkComponent>
-                Talk
-            </TalkComponent>
-        )
-    }
+  render() {
+    return (
+      <TalkComponent>
+        Talk
+      </TalkComponent>
+    );
+  }
 }
 
 export default Talk;
