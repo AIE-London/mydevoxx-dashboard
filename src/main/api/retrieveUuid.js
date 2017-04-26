@@ -1,6 +1,3 @@
-/**
- * Created by SCMORETO on 19/04/2017.
- */
 import request from 'then-request';
 
 let UuidEndpoint = "http://cfp.devoxx.co.uk/uuid?email=";

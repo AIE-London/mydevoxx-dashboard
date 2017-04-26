@@ -10,7 +10,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import NavButtons from './components/NavButtons';
-import db from './components/UserEmail';
+import Dexie from 'dexie';
 
 import testImage from '../test/snapshot/images/test-image.jpeg';
 
@@ -68,20 +68,50 @@ const reportStatsData =
         attendees: 435
     };
 
+let db;
+
 class App extends Component {
 
-    uuidExists = () => {
+    constructor () {
+        super();
+        this.state = { uuidPresent: false };
+        //Define indexeddb instance/version
+        db = new Dexie('devoxx-db');
+        db.version(1).stores({record: 'id,uuid'});
+
         //open connection to indexeddb - display error if connection failed
         db.open().catch((error => {
             alert('uuidDb could not be accessed: ' + error);
         }));
-        let uuidPresent = db.uuid.get('uuid');
-        if(!this.props.uuid || !uuidPresent) {
-            return UserEmail;
-        } else {
-            return Dashboard;
-        }
+
+        this.rootComponent = this.rootComponent.bind(this);
+        this.uuidExists = this.uuidExists.bind(this);
+        this.uuidExists();
+    }
+
+    uuidExists = () => {
+        //open connection to indexeddb - display error if connection failed
+        db.open('devoxx-db').catch((error => {
+            alert('uuidDb could not be accessed: ' + error);
+        }));
+        db.record && db.record.get('0').then((resolution) => {
+            if (resolution) {
+                this.setState({ uuidPresent: true });
+            } else {
+                throw new Error("No UUID");
+            }
+        }).catch(error => {
+            this.setState({ uuidPresent: false })
+        });
     };
+
+    rootComponent() {
+        if(!this.state.uuidPresent) {
+            return <UserEmail db={db} />;
+        } else {
+            return <Dashboard />;
+        }
+    }
 
     render() {
         return (
@@ -92,7 +122,7 @@ class App extends Component {
                             <AppBar
                                 title="MyDevoxx"
                                 iconElementRight={<NavButtons/>}/>
-                            <Route path='/' component={this.uuidExists()}/>
+                            <Route path='/' render={this.rootComponent}/>
                             <Route path="/Dashboard" component={Dashboard}/>
                             <Route path='/report' render={(props) => {
                                 return <Report reportStats={reportStatsData} talk={talkDetail}/>}}/>
