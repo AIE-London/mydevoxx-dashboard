@@ -28,7 +28,7 @@ class NavButtons extends Component {
     render() {
         return <InlineList>
             <LinkText>
-                <Link to="/Dashboard">
+                <Link to="/dashboard">
                     Home
                 </Link>
             </LinkText>

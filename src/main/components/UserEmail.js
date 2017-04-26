@@ -38,10 +38,4 @@ class UserEmail extends Component {
     }
 }
 
-/**
-ReactDOM.render(
-    <NameForm />,
-    document.getElementById('root')
-);
-*/
 export default UserEmail;

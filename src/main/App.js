@@ -121,7 +121,7 @@ class App extends Component {
                                 iconElementRight={<NavButtons/>}/>
                             <Route path='/' exact component={Dashboard}/>
                             <Route path='/login'  render={this.rootComponent}/>
-                            <Route path="/Dashboard" component={Dashboard}/>
+                            <Route path="/dashboard" component={Dashboard}/>
                             <Route path='/report' render={(props) => {
                                 return <Report reportStats={reportStatsData} talk={talkDetail}/>}}/>
                             <Route path='/talk/:id' component={Talk}/>
