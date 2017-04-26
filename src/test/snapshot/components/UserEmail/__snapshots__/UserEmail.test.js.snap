@@ -1,0 +1,16 @@
+exports[`test user email component with snapshot 1`] = `
+<form
+  onSubmit={[Function]}>
+  <label>
+    Please Enter Your Email Address :
+    <input
+      name="email"
+      onChange={[Function]}
+      placeholder="Email"
+      type="text" />
+  </label>
+  <input
+    type="submit"
+    value="Submit" />
+</form>
+`;
