@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Row, Col} from 'react-flexbox-grid';
-import styled from 'styled-components';
-import TalkCard from './TalkCard';
-import SpeakerCard from './SpeakerCard';
+import React, { Component } from "react";
+import { Row, Col } from "react-flexbox-grid";
+import styled from "styled-components";
+import TalkCard from "./TalkCard";
+import SpeakerCard from "./SpeakerCard";
 
 // Styles for the different elements of the page
 const DayText = styled.h2`
@@ -24,26 +24,27 @@ const Window = styled.div`
 `;
 
 class SessionView extends Component {
-    render() {
-        return (
-            <Window>
+  render() {
+    return (
+      <Window>
 
-                <DayText>Day {this.props.talk.dayNo}</DayText>
+        <DayText>Day {this.props.talk.dayNo}</DayText>
 
-                <WhiteText>{this.props.talk.sTime} - {this.props.talk.room}</WhiteText>
+        <WhiteText>{this.props.talk.sTime} - {this.props.talk.room}</WhiteText>
 
-
-                <Row center="xs">
-                    <Col xs={10}>
-                        <TalkCard talk={this.props.talk}/>
-                    </Col>
-                    <Col xs={10}>
-                        {this.props.talk.speakers.map(speaker => <SpeakerCard key={speaker.name} speaker={speaker}/>)}
-                    </Col>
-                </Row>
-            </Window>
-        );
-    }
+        <Row center="xs">
+          <Col xs={10}>
+            <TalkCard talk={this.props.talk} />
+          </Col>
+          <Col xs={10}>
+            {this.props.talk.speakers.map(speaker => (
+              <SpeakerCard key={speaker.name} speaker={speaker} />
+            ))}
+          </Col>
+        </Row>
+      </Window>
+    );
+  }
 }
 
 export default SessionView;

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import {Row} from 'react-flexbox-grid';
+import React, { Component } from "react";
+import styled from "styled-components";
+import { Row } from "react-flexbox-grid";
 
 const DashboardComponent = styled(Row)`
   background: #FAFAFA;
@@ -12,13 +12,13 @@ const DashboardComponent = styled(Row)`
 `;
 
 class Dashboard extends Component {
-    render() {
-        return (
-            <DashboardComponent>
-                Dashboard
-            </DashboardComponent>
-        )
-    }
+  render() {
+    return (
+      <DashboardComponent>
+        Dashboard
+      </DashboardComponent>
+    );
+  }
 }
 
 export default Dashboard;
