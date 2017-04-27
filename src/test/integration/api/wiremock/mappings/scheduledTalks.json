@@ -1,0 +1,20 @@
+{
+  "request":{
+    "method":"GET",
+    "url":"/scheduled/?uuid=26667c9fdcc603ee93b43fb3e780b07378695a86"
+  },
+  "response":{
+    "status":200,
+    "jsonBody":{
+      "scheduled":[
+        {
+          "id":"MXR-2678"
+        }
+      ]
+    },
+    "headers":{
+      "Content-Type":"application/json; charset=utf-8",
+      "Access-Control-Allow-Origin": "*"
+    }
+  }
+}
