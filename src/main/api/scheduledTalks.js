@@ -25,7 +25,7 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
 let getScheduledTalks = (uuid) => {
     return request('GET', ScheduledTalksEndpoint + uuid + '/scheduled').then((response) => {
         let body = response.getBody();
-        return body.toString();
+        return JSON.parse(body);
     });
 };
 

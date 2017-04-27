@@ -16,7 +16,7 @@ describe('getScheduledTalks', () => {
         return scheduledTalks.getScheduledTalks("26667c9fdcc603ee93b43fb3e780b07378695a86")
             .then((result) => {
                 expect(result).toEqual(
-                    '{"scheduled":[{"id":"MXR-2678"}]}'
+                    {"scheduled":[{"id":"MXR-2678"}]}
                 )
             }, (error) => {
                 raiseOrPassError("UnexpectedErrorException", "Unexpected error on \"getScheduledTalks\" ", error);
