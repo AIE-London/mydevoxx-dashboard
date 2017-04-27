@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import retrieveUuid from "../api/retrieveUuid";
 
 class UserEmail extends Component {
@@ -16,7 +17,9 @@ class UserEmail extends Component {
         throw new Error("Missing UUID");
       }
       this.props.db.record.add({ id: "0", uuid: uuid });
-      this.setState({ redirect: true });
+      this.props.onSignIn().then(() => {
+        this.setState({ redirect: true });
+      });
     });
     event.preventDefault();
     return false;
@@ -25,6 +28,7 @@ class UserEmail extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        {this.state.redirect && <Redirect to="/" />}
         <label>
           Please Enter Your Email Address :
           <input

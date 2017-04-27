@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 //import {BrowserRouter as Router, Route, browserHistory} from 'react-router-dom';
-import { NativeRouter, Route, Redirect } from "react-router-native";
+import {
+  BrowserRouter as Router,
+  Route,
+  browserHistory,
+  Redirect
+} from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
 import Talk from "./components/Talk";
@@ -64,17 +69,28 @@ const reportStatsData = {
 
 let db;
 
-const PrivateRoute = ({ component: Component, render: Render }) => (
+const PrivateRoute = ({
+  uuidPresent,
+  component: Component,
+  render: Render,
+  ...rest
+}) => (
   <Route
-    render={Render =>
-      (this.state.uuidPresent
-        ? <Component {...this.props} />
-        : <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: this.props.location }
-            }}
-          />)}
+    {...rest}
+    render={props => {
+      console.log(uuidPresent);
+      if (uuidPresent) {
+        if (Component) {
+          return <Component {...props} />;
+        } else if (Render) {
+          return Render(props);
+        } else {
+          return <div>Error</div>;
+        }
+      } else {
+        return <Redirect to="/login" />;
+      }
+    }}
   />
 );
 
@@ -97,40 +113,54 @@ class App extends Component {
   }
 
   uuidExists = () => {
-    //open connection to indexeddb - display error if connection failed
-    db.open("devoxx-db").catch(error => {
-      alert("uuidDb could not be accessed: " + error);
+    return new Promise((resolve, reject) => {
+      //open connection to indexeddb - display error if connection failed
+      db.open("devoxx-db").catch(error => {
+        alert("uuidDb could not be accessed: " + error);
+      });
+      db.record &&
+        db.record
+          .get("0")
+          .then(resolution => {
+            if (resolution) {
+              this.setState({ uuidPresent: true });
+              resolve();
+            } else {
+              throw new Error("No UUID");
+            }
+          })
+          .catch(error => {
+            this.setState({ uuidPresent: false });
+            reject(error);
+          });
     });
-    db.record &&
-      db.record
-        .get("0")
-        .then(resolution => {
-          if (resolution) {
-            this.setState({ uuidPresent: true });
-          } else {
-            throw new Error("No UUID");
-          }
-        })
-        .catch(error => {
-          this.setState({ uuidPresent: false });
-        });
   };
 
   rootComponent() {
-    return <UserEmail db={db} />;
+    return <UserEmail onSignIn={this.uuidExists} db={db} />;
   }
 
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <NativeRouter>
+          <Router>
             <div>
               <AppBar title="MyDevoxx" iconElementRight={<NavButtons />} />
-              <PrivateRoute path="/" component={Dashboard} />
-              <PrivateRoute path="/login" render={this.rootComponent} />
-              <PrivateRoute path="/dashboard" component={Dashboard} />
               <PrivateRoute
+                path="/"
+                exact
+                uuidPresent={this.state.uuidPresent}
+                component={Dashboard}
+              />
+              <Route path="/login" render={this.rootComponent} />
+              <PrivateRoute
+                path="/dashboard"
+                uuidPresent={this.state.uuidPresent}
+                component={Dashboard}
+              />
+              <PrivateRoute
+                uuidPresent={this.state.uuidPresent}
                 path="/report"
                 render={props => {
                   return (
@@ -138,10 +168,18 @@ class App extends Component {
                   );
                 }}
               />
-              <PrivateRoute path="/talk/:id" component={Talk} />
-              <PrivateRoute path="/top-rated" component={TopRated} />
+              <PrivateRoute
+                path="/talk/:id"
+                uuidPresent={this.state.uuidPresent}
+                component={Talk}
+              />
+              <PrivateRoute
+                path="/top-rated"
+                uuidPresent={this.state.uuidPresent}
+                component={TopRated}
+              />
             </div>
-          </NativeRouter>
+          </Router>
         </div>
       </MuiThemeProvider>
     );
