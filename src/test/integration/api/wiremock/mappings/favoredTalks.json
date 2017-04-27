@@ -1,15 +1,17 @@
 {
   "request": {
     "method": "GET",
-    "url": "/favored",
-    "basicAuthCredentials":{
-      "username":"test@test.com",
-      "password":"test"
-    }
+    "url": "/favored/?uuid=26667c9fdcc603ee93b43fb3e780b07378695a86"
   },
   "response": {
     "status": 200,
-    "jsonBody": {"favored":[{"id":"MXR-2678"}]},
+    "jsonBody": {
+      "favored": [
+        {
+          "id": "MXR-2678"
+        }
+      ]
+    },
     "headers": {
       "Content-Type": "application/json; charset=utf-8",
       "Access-Control-Allow-Origin": "*"
