@@ -1,12 +1,8 @@
 /**
- * Created by SCMORETO on 27/04/2017.
- */
-
-/**
  * Created by SCMORETO on 19/04/2017.
  */
 
-import scheduledTalks from "../../../main/api/ScheduledTalks";
+import scheduledTalks from "../../../main/api/scheduledTalks";
 import {UnexpectedErrorException, UnexpectedSuccessException, MappingSetupException} from "./testingErrors";
 import {raiseOrPassError, expectNotFoundOrRethrowError} from "./testingHelpers";
 
