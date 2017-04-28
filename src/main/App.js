@@ -108,7 +108,9 @@ class App extends Component {
 
     this.signInPage = this.signInPage.bind(this);
     this.uuidExists = this.uuidExists.bind(this);
-    this.uuidExists();
+    this.uuidExists().catch(error => {
+      this.setState({ error: error });
+    });
   }
 
   uuidExists = () => {
@@ -118,19 +120,20 @@ class App extends Component {
         alert("uuidDb could not be accessed: " + error);
       });
       db.record &&
-        db.record.get("0").then(
-          (resolution => {
+        db.record
+          .get("0")
+          .then(resolution => {
             if (resolution) {
               this.setState({ uuidPresent: true });
               resolve();
             } else {
               throw new Error("No UUID");
             }
-          }).catch(error => {
+          })
+          .catch(error => {
             this.setState({ uuidPresent: false });
             reject(error);
-          })
-        );
+          });
     });
   };
 
