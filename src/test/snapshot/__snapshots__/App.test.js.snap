@@ -51,7 +51,7 @@ exports[`test App component snapshot 1`] = `
             "margin": 0,
             "marginLeft": -16,
             "marginRight": 8,
-            "marginTop": NaN,
+            "marginTop": 13.5,
             "muiPrepared": true,
             "outline": "none",
             "overflow": "visible",
@@ -102,9 +102,9 @@ exports[`test App component snapshot 1`] = `
             "flex": "1",
             "fontSize": 24,
             "fontWeight": 400,
-            "height": "75px",
+            "height": "75",
             "letterSpacing": 0,
-            "lineHeight": "75pxpx",
+            "lineHeight": "75px",
             "margin": 0,
             "muiPrepared": true,
             "overflow": "hidden",
@@ -120,7 +120,7 @@ exports[`test App component snapshot 1`] = `
           Object {
             "marginLeft": "auto",
             "marginRight": -16,
-            "marginTop": NaN,
+            "marginTop": 13.5,
             "muiPrepared": true,
           }
         }>
@@ -129,9 +129,9 @@ exports[`test App component snapshot 1`] = `
           <li
             className="kumMTW">
             <a
-              href="/dashboard"
+              href="/"
               onClick={[Function]}>
-              Home
+              Dashboard
             </a>
           </li>
           <li

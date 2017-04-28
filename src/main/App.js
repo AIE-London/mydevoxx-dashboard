@@ -25,7 +25,8 @@ const muiTheme = getMuiTheme({
     textColor: "#fff"
   },
   appBar: {
-    height: "75px"
+    height: "75",
+    marginTop: "13.5"
   }
 });
 
@@ -77,7 +78,6 @@ const PrivateRoute = ({
   <Route
     {...rest}
     render={props => {
-      console.log(uuidPresent);
       if (uuidPresent) {
         if (Component) {
           return <Component {...props} />;
@@ -106,7 +106,7 @@ class App extends Component {
       alert("uuidDb could not be accessed: " + error);
     });
 
-    this.rootComponent = this.rootComponent.bind(this);
+    this.signInPage = this.signInPage.bind(this);
     this.uuidExists = this.uuidExists.bind(this);
     this.uuidExists();
   }
@@ -118,24 +118,23 @@ class App extends Component {
         alert("uuidDb could not be accessed: " + error);
       });
       db.record &&
-        db.record
-          .get("0")
-          .then(resolution => {
+        db.record.get("0").then(
+          (resolution => {
             if (resolution) {
               this.setState({ uuidPresent: true });
               resolve();
             } else {
               throw new Error("No UUID");
             }
-          })
-          .catch(error => {
+          }).catch(error => {
             this.setState({ uuidPresent: false });
             reject(error);
-          });
+          })
+        );
     });
   };
 
-  rootComponent() {
+  signInPage() {
     return <UserEmail onSignIn={this.uuidExists} db={db} />;
   }
 
@@ -152,12 +151,7 @@ class App extends Component {
                 uuidPresent={this.state.uuidPresent}
                 component={Dashboard}
               />
-              <Route path="/login" render={this.rootComponent} />
-              <PrivateRoute
-                path="/dashboard"
-                uuidPresent={this.state.uuidPresent}
-                component={Dashboard}
-              />
+              <Route path="/login" render={this.signInPage} />
               <PrivateRoute
                 uuidPresent={this.state.uuidPresent}
                 path="/report"

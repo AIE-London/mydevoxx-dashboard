@@ -12,15 +12,20 @@ class UserEmail extends Component {
   handleSubmit(event) {
     alert("An email was submitted: " + this.state.value);
 
-    retrieveUuid.getUUID(this.state.value).then(uuid => {
-      if (!uuid || uuid.length === 0) {
-        throw new Error("Missing UUID");
-      }
-      this.props.db.record.add({ id: "0", uuid: uuid });
-      this.props.onSignIn().then(() => {
-        this.setState({ redirect: true });
+    retrieveUuid
+      .getUUID(this.state.value)
+      .then(uuid => {
+        if (!uuid || uuid.length === 0) {
+          throw new Error("Missing UUID");
+        }
+        this.props.db.record.add({ id: "0", uuid: uuid });
+        this.props.onSignIn().then(() => {
+          this.setState({ redirect: true });
+        });
+      })
+      .catch(error => {
+        this.setState({ error: error });
       });
-    });
     event.preventDefault();
     return false;
   }
@@ -39,6 +44,7 @@ class UserEmail extends Component {
           />
         </label>
         <input type="submit" value="Submit" />
+        {this.state.error && <p>Error: UUID not found</p>}
       </form>
     );
   }

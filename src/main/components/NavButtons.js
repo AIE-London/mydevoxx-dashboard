@@ -25,25 +25,27 @@ export const InlineList = styled.ul`
 `;
 
 class NavButtons extends Component {
-    render() {
-        return <InlineList>
-            <LinkText>
-                <Link to="/dashboard">
-                    Home
-                </Link>
-            </LinkText>
-            <LinkText>
-                <Link to="/report">
-                    Report
-                </Link>
-            </LinkText>
-            <LinkText>
-                <Link to="/top-rated">
-                    Top Rated
-                </Link>
-            </LinkText>
-        </InlineList>
-    }
+  render() {
+    return (
+      <InlineList>
+        <LinkText>
+          <Link to="/">
+            Dashboard
+          </Link>
+        </LinkText>
+        <LinkText>
+          <Link to="/report">
+            Report
+          </Link>
+        </LinkText>
+        <LinkText>
+          <Link to="/top-rated">
+            Top Rated
+          </Link>
+        </LinkText>
+      </InlineList>
+    );
+  }
 }
 
 export default NavButtons;
