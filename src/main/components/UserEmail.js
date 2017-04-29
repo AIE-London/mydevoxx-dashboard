@@ -38,20 +38,26 @@ const LoginCard = styled(Card)`
 class UserEmail extends Component {
   constructor(props) {
     super(props);
-    this.state = { redirect: false, value: null };
+    this.state = {
+      redirect: false,
+      value: null,
+      loading: false
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
+    this.setState({ loading: true });
     retrieveUuid
       .getUUID(this.state.value)
       .then(uuid => {
         if (!uuid || uuid.length === 0) {
+          this.setState({ loading: false });
           throw new Error("Missing UUID");
         }
         this.props.db.record.add({ id: "0", uuid: uuid });
         this.props.onSignIn().then(() => {
-          this.setState({ redirect: true });
+          this.setState({ redirect: true, loading: false });
         });
       })
       .catch(error => {
@@ -79,7 +85,9 @@ class UserEmail extends Component {
               />
               {this.state.error &&
                 <p>Error: UUID not found, please try again.</p>}
-              <Button type="submit">Submit</Button>
+              <Button disabled={this.state.loading} type="submit">
+                Submit
+              </Button>
             </Form>
           </LoginCard>
         </LoginPage>
