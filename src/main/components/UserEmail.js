@@ -43,8 +43,6 @@ class UserEmail extends Component {
   }
 
   handleSubmit(event) {
-    alert("An email was submitted: " + this.state.value);
-
     retrieveUuid
       .getUUID(this.state.value)
       .then(uuid => {
