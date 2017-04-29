@@ -79,7 +79,7 @@ class StarRating extends Component {
 
   render() {
     return (
-      <Row left="xs">
+      <Row start="xs">
         {this.getStars(this.props.rating)}
       </Row>
     );

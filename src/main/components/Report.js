@@ -19,7 +19,10 @@ class Report extends Component {
             />
           </Col>
         </Row>
-        <SessionView talk={this.props.talk} />
+        {this.props.talks.map((talk, index) => (
+          <SessionView key={index} talk={talk} />
+        ))}
+
       </div>
     );
   }
