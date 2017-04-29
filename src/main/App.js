@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Route,
+  Link,
   browserHistory
 } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
@@ -11,8 +12,7 @@ import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
 import Talk from "./components/Talk";
 import TopRated from "./components/TopRated";
-import getMuiTheme from "material-ui/styles/getMuiTheme";
-import NavButtons from "./components/NavButtons";
+import NavButtons, { NavItems } from "./components/NavButtons";
 
 import testImage from "../test/snapshot/images/test-image.jpeg";
 
@@ -96,25 +96,24 @@ class App extends Component {
             />
             <Route path="/talk/:id" component={Talk} />
             <Route path="/top-rated" component={TopRated} />
+            <SideNav
+              className="mobileOnly"
+              showNav={this.state.navVisible}
+              onHideNav={() => this.setState({ navVisible: false })}
+              title={<div>MyDevoxx Report 2017</div>}
+              titleStyle={{ backgroundColor: "#ff9e19" }}
+              items={NavItems.map(item => (
+                <Link
+                  to={item.link}
+                  key={item.name}
+                  onClick={e => this.setState({ navVisible: false })}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            />
           </div>
         </Router>
-        <SideNav
-          showNav={!this.state.navVisible}
-          onHideNav={() => this.setState({ navVisible: false })}
-          title={<div>Hello octo <img src="git-mark.png" width="26" /></div>}
-          titleStyle={{ backgroundColor: "#2196F3" }}
-          items={[
-            <a href="https://github.com/gauravchl/react-simple-sidenav">
-              View Source on github
-            </a>,
-            <a href="https://www.npmjs.com/package/react-simple-sidenav">
-              Install via npm
-            </a>,
-            <a href="https://gauravchl.github.io/react-simple-sidenav/example">
-              demo
-            </a>
-          ]}
-        />
       </div>
     );
   }

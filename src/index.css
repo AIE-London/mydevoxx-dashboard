@@ -4,3 +4,24 @@ body {
   font-family: sans-serif;
   background: #424242;
 }
+
+.mobileOnly {
+  display: block;
+}
+@media screen and (min-width: 575px) {
+  .mobileOnly {
+    display: none;
+  }
+  aside {
+    display: none;
+  }
+}
+
+.desktopOnly {
+  display: none;
+}
+@media screen and (min-width: 575px) {
+  .desktopOnly {
+    display: block;
+  }
+}

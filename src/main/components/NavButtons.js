@@ -42,7 +42,7 @@ export const NavItems = [
 class NavButtons extends Component {
   render() {
     return (
-      <InlineList>
+      <InlineList className="desktopOnly">
         {NavItems.map(item => (
           <LinkText key={item.name}>
             <Link to={item.link}>
