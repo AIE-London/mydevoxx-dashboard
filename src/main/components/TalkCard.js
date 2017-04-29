@@ -36,6 +36,7 @@ const RightPartition = styled(Col)`
   padding-top: 1em;
   background: #EEEEEE;
   border-left: solid 1px #BDBDBD;
+  border-top: solid 1px #BDBDBD;
   text-align: left;
 `;
 
@@ -66,7 +67,7 @@ class TalkCard extends Component {
     } = this.props.talk;
     return (
       <Card start="xs">
-        <LeftPartition xs={6}>
+        <LeftPartition md={6}>
           <Row start="xs">
             <CardHeader id="title">{title}</CardHeader>
           </Row>
@@ -87,7 +88,7 @@ class TalkCard extends Component {
             </CommaList>
           </Row>
         </LeftPartition>
-        <RightPartition xs={6}>
+        <RightPartition md={6}>
           <Row start="xs">
             <CardSubhead id="notesHeader">My Notes</CardSubhead>
           </Row>

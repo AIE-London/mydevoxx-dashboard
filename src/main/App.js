@@ -61,8 +61,8 @@ const talkDetail = [
 const reportStatsData = {
   minutes: 455,
   talks: 10,
-  learning: "Spring, Java",
-  attendees: 435
+  learning: ["Spring", "Java"],
+  attendees: "~1000"
 };
 
 class App extends Component {
