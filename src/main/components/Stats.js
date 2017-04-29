@@ -22,7 +22,7 @@ class Stats extends Component {
     return (
       <Container>
         <Card center="xs">
-          {" "}{/* Wraps the Card component within the Container component */}
+          {/* Wraps the Card component within the Container component */}
           <Col xs={10}>
             <Col xs={6}>
               <Row start="xs">
@@ -35,7 +35,6 @@ class Stats extends Component {
                 <StatHeader>Top Tracks:</StatHeader>
                 <div style={{ textAlign: "center" }}>
                   <CommaList>
-                    {" "}
                     {/* creates a ul element using the CommaList styled ul format */}
                     {this.props.tracks.map(function(track) {
                       return <CommaListItem key={track}>{track}</CommaListItem>;

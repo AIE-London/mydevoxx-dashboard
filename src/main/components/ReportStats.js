@@ -5,6 +5,8 @@ import { Row, Col } from "react-flexbox-grid";
 import styled from "styled-components";
 import React, { Component } from "react";
 
+import { CommaList, CommaListItem } from "./CommaList";
+
 const StatMainHeader = styled.h1`
     text-align: left;
     font-size: 2.5em;
@@ -24,6 +26,13 @@ const StatValue = styled.p`
     font-size: 2em;
     color: #fff;
     font-family: helvetica;
+`;
+
+const StatListValue = styled.div`
+    text-align: center;
+    font-size: 2em;
+    opacity: 1;
+    color: #fff;
 `;
 const Orange = styled.span`
     color: #ff9e19;
@@ -54,7 +63,13 @@ class ReportStats extends Component {
 
               <StatHeader>Learning what's new in...</StatHeader>
 
-              <StatValue>{this.props.learning} </StatValue>
+              <StatListValue>
+                <CommaList>
+                  {this.props.learning.map(track => (
+                    <CommaListItem key={track}>{track}</CommaListItem>
+                  ))}
+                </CommaList>
+              </StatListValue>
 
               <StatHeader>Networking with</StatHeader>
 

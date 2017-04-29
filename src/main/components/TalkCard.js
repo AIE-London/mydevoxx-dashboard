@@ -55,6 +55,10 @@ const ReviewContainer = styled(Row)`
   padding: 0.5em 1em;
 `;
 
+const TrackList = styled(CommaList)`
+  opacity: 0.6;
+`;
+
 class TalkCard extends Component {
   render() {
     let {
@@ -81,11 +85,11 @@ class TalkCard extends Component {
             <CardSubhead>Top Tracks</CardSubhead>
           </Row>
           <Row>
-            <CommaList>
+            <TrackList>
               {topTracks.map(trackName => (
                 <CommaListItem key={trackName}>{trackName}</CommaListItem>
               ))}
-            </CommaList>
+            </TrackList>
           </Row>
         </LeftPartition>
         <RightPartition md={6}>
