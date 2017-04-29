@@ -70,7 +70,11 @@ class App extends Component {
         <div>
           <Router history={browserHistory}>
             <div>
-              <AppBar title="MyDevoxx" iconElementRight={<NavButtons />} />
+              <AppBar
+                title="MyDevoxx"
+                iconElementLeft={<div />}
+                iconElementRight={<NavButtons />}
+              />
               <Route path="/" component={Dashboard} />
               <Route
                 path="/report"
