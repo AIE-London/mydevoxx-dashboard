@@ -18,7 +18,7 @@ test("ReportStats component with title snapshot", () => {
       <ReportStats
         minutes="455"
         talks="10"
-        learning="JS, Java, Polymer"
+        learning={["Spring", "Java"]}
         attendees="345"
       />
     )
