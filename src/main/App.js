@@ -70,6 +70,24 @@ const reportStatsData = {
   attendees: "~1000"
 };
 
+const NavLink = styled(Link)`
+  display: block;
+  box-sizing: border-box;
+  padding: 1em;
+  width: 100%;
+  &:hover {
+    background: rgba(255, 156, 25, 0.2);
+  }
+`;
+
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  & h1 {
+    margin-left: 0.5em;
+  }
+`;
+
 class App extends Component {
   constructor() {
     super();
@@ -82,7 +100,14 @@ class App extends Component {
         <Router history={browserHistory}>
           <div>
             <NavBar>
-              <h1>MyDevoxxReport</h1>
+              <TitleContainer>
+                <h2
+                  id="nav-icon"
+                  onClick={() => this.setState({ navVisible: true })}
+                  className="mobileOnly"
+                />
+                <h1>MyDevoxxReport</h1>
+              </TitleContainer>
               <NavButtons />
             </NavBar>
             <Route path="/" component={Dashboard} />
@@ -102,14 +127,15 @@ class App extends Component {
               onHideNav={() => this.setState({ navVisible: false })}
               title={<div>MyDevoxx Report 2017</div>}
               titleStyle={{ backgroundColor: "#ff9e19" }}
+              itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
               items={NavItems.map(item => (
-                <Link
+                <NavLink
                   to={item.link}
                   key={item.name}
                   onClick={e => this.setState({ navVisible: false })}
                 >
                   {item.name}
-                </Link>
+                </NavLink>
               ))}
             />
           </div>
