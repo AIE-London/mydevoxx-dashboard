@@ -4,27 +4,32 @@ import {
   Route,
   browserHistory
 } from "react-router-dom";
+import SideNav from "react-simple-sidenav";
+import styled from "styled-components";
+
 import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
 import Talk from "./components/Talk";
 import TopRated from "./components/TopRated";
-import injectTapEventPlugin from "react-tap-event-plugin";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import AppBar from "material-ui/AppBar";
 import NavButtons from "./components/NavButtons";
 
 import testImage from "../test/snapshot/images/test-image.jpeg";
 
-const muiTheme = getMuiTheme({
-  palette: {
-    primary1Color: "#ff9e19",
-    textColor: "#fff"
-  },
-  appBar: {
-    height: 75
+const NavBar = styled.div`
+  background: #ff9e19;
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2em;
+  & h1 {
+    color: #fff;
+    font-weight: 200;
+    font-size: 25px;
   }
-});
+`;
 
 const talkDetail = [
   {
@@ -66,36 +71,52 @@ const reportStatsData = {
 };
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = { navVisible: true };
+  }
+
   render() {
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div>
-          <Router history={browserHistory}>
-            <div>
-              <AppBar
-                title="MyDevoxx"
-                iconElementLeft={<div />}
-                iconElementRight={<NavButtons />}
-              />
-              <Route path="/" component={Dashboard} />
-              <Route
-                path="/report"
-                render={function(props) {
-                  return (
-                    <Report reportStats={reportStatsData} talks={talkDetail} />
-                  );
-                }}
-              />
-              <Route path="/talk/:id" component={Talk} />
-              <Route path="/top-rated" component={TopRated} />
-            </div>
-          </Router>
-        </div>
-      </MuiThemeProvider>
+      <div>
+        <Router history={browserHistory}>
+          <div>
+            <NavBar>
+              <h1>MyDevoxxReport</h1>
+              <NavButtons />
+            </NavBar>
+            <Route path="/" component={Dashboard} />
+            <Route
+              path="/report"
+              render={function(props) {
+                return (
+                  <Report reportStats={reportStatsData} talks={talkDetail} />
+                );
+              }}
+            />
+            <Route path="/talk/:id" component={Talk} />
+            <Route path="/top-rated" component={TopRated} />
+          </div>
+        </Router>
+        <SideNav
+          showNav={!this.state.navVisible}
+          onHideNav={() => this.setState({ navVisible: false })}
+          title={<div>Hello octo <img src="git-mark.png" width="26" /></div>}
+          titleStyle={{ backgroundColor: "#2196F3" }}
+          items={[
+            <a href="https://github.com/gauravchl/react-simple-sidenav">
+              View Source on github
+            </a>,
+            <a href="https://www.npmjs.com/package/react-simple-sidenav">
+              Install via npm
+            </a>,
+            <a href="https://gauravchl.github.io/react-simple-sidenav/example">
+              demo
+            </a>
+          ]}
+        />
+      </div>
     );
   }
 }
-
-injectTapEventPlugin();
-
 export default App;
