@@ -21,6 +21,7 @@ const WhiteText = styled.h2`
 
 const Window = styled.div`
   text-align: left;
+  margin-top: 4em;
 `;
 
 const SpeakerSection = styled(Row)`
