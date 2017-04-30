@@ -10,10 +10,10 @@ body {
 }
 @media screen and (min-width: 575px) {
   .mobileOnly {
-    display: none;
+    display: none!important;
   }
   aside {
-    display: none;
+    display: none!important;
   }
 }
 
@@ -22,7 +22,7 @@ body {
 }
 @media screen and (min-width: 575px) {
   .desktopOnly {
-    display: block;
+    display: block!important;
   }
 }
 
