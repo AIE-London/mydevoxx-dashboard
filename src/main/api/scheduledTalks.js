@@ -2,16 +2,17 @@
  * Created by SCMORETO on 26/04/2017.
  */
 
-import request from 'then-request';
+import request from "then-request";
 
-let scheduledTalksEndpoint = "http://mydevoxx-capgemini-api-router.eu-gb.mybluemix.net/scheduled";
+let scheduledTalksEndpoint =
+  "https://mydevoxx-capgemini-api-router.eu-gb.mybluemix.net/scheduled";
 const mockUuidEndpoint = "https://aston-wiremock.eu-gb.mybluemix.net/scheduled";
 
 /**
  * Use mock endpoint outside of live
  */
 if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
-    scheduledTalksEndpoint = mockUuidEndpoint;
+  scheduledTalksEndpoint = mockUuidEndpoint;
 }
 
 /**
@@ -19,13 +20,16 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
  * @Params uuid
  * @returns {UUID}
  */
-let getScheduledTalks = (uuid) => {
-    return request('GET', scheduledTalksEndpoint + '/?uuid=' + uuid).then((response) => {
-        let body = response.getBody();
-        return JSON.parse(body);
-    });
+let getScheduledTalks = uuid => {
+  return request(
+    "GET",
+    scheduledTalksEndpoint + "/?uuid=" + uuid
+  ).then(response => {
+    let body = response.getBody();
+    return JSON.parse(body);
+  });
 };
 
 export default {
-    getScheduledTalks
+  getScheduledTalks
 };

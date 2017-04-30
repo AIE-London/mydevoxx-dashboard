@@ -1,6 +1,6 @@
 import request from "then-request";
 
-let endpoint = "http://cfp.devoxx.co.uk/api/conferences/DV17/talks/";
+let endpoint = "https://cfp.devoxx.co.uk/api/conferences/DV17/talks/";
 const mockEndpoint =
   "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/talks/"; // Expect JWG-0522 as talkId
 

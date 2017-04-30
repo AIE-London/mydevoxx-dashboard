@@ -1,7 +1,7 @@
 import request from "then-request";
 
 let schedulesEndpoint =
-  "http://cfp.devoxx.co.uk/api/conferences/DV17/schedules/";
+  "https://cfp.devoxx.co.uk/api/conferences/DV17/schedules/";
 const mockSchedulesEndpoint =
   "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/schedules/";
 

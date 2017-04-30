@@ -1,7 +1,7 @@
 import request from "then-request";
 
 let UuidEndpoint =
-  "http://mydevoxx-capgemini-api-router.eu-gb.mybluemix.net/uuid?email=";
+  "https://mydevoxx-capgemini-api-router.eu-gb.mybluemix.net/uuid?email=";
 const mockUuidEndpoint =
   "https://aston-wiremock.eu-gb.mybluemix.net/uuid?email=";
 
