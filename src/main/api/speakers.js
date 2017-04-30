@@ -3,7 +3,7 @@
  */
 import request from "then-request";
 
-let endpoint = "http://cfp.devoxx.co.uk/api/conferences/DV17/speakers/";
+let endpoint = "https://cfp.devoxx.co.uk/api/conferences/DV17/speakers/";
 const mockEndpoint =
   "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/speakers/";
 

@@ -1,6 +1,6 @@
 import request from "then-request";
 
-let roomEndpoint = "http://cfp.devoxx.co.uk/api/conferences/DV17/rooms/";
+let roomEndpoint = "https://cfp.devoxx.co.uk/api/conferences/DV17/rooms/";
 const mockRoomEndpoint =
   "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/rooms/";
 

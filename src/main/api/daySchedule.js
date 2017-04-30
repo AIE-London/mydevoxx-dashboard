@@ -3,7 +3,7 @@
  */
 import request from "then-request";
 
-let endpoint = "http://http://cfp.devoxx.co.uk/api/conferences/DV17/schedules/"; //Needs day of the week to return an array of slots for all rooms for a day
+let endpoint = "https://cfp.devoxx.co.uk/api/conferences/DV17/schedules/"; //Needs day of the week to return an array of slots for all rooms for a day
 const mockEndpoint =
   "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/schedules/"; // Expect thursday as params
 
