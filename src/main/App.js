@@ -35,6 +35,29 @@ const NavBar = styled.div`
   }
 `;
 
+const globalRecommendations = [
+  {
+    name: "Intro to Devoxx",
+    url: "http://devoxx.co.uk",
+    source: "tracks"
+  },
+  {
+    name: "Intro to Devoxx2",
+    url: "http://devoxx.co.uk",
+    source: "tracks"
+  },
+  {
+    name: "Intro to Devoxx3",
+    url: "http://devoxx.co.uk",
+    source: "tracks"
+  },
+  {
+    name: "Intro to Devoxx4",
+    url: "http://devoxx.co.uk",
+    source: "tracks"
+  }
+];
+
 const talkDetail = [
   {
     dayNo: "One",
@@ -67,11 +90,12 @@ const talkDetail = [
   }
 ];
 
-const reportStatsData = {
+const statsData = {
   minutes: 455,
   talks: 10,
   learning: ["Spring", "Java"],
-  attendees: "~1000"
+  attendees: "~1000",
+  speakers: ["Person One", "Person Two", "Person Three"]
 };
 
 let db;
@@ -115,6 +139,18 @@ const TitleContainer = styled.div`
   & h1 {
     margin-left: 0.5em;
   }
+`;
+
+const DevoxxRouter = styled(Router)`
+  flex: 1;
+  display: flex;
+`;
+
+const Page = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 class App extends Component {
@@ -167,67 +203,69 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Router history={browserHistory}>
-          <div>
-            <NavBar>
-              <TitleContainer>
-                <h2
-                  id="nav-icon"
-                  onClick={() => this.setState({ navVisible: true })}
-                  className="mobileOnly"
-                />
-                <h1>MyDevoxxReport</h1>
-              </TitleContainer>
-              <NavButtons />
-            </NavBar>
-            <PrivateRoute
-              path="/"
-              exact
-              uuidPresent={this.state.uuidPresent}
-              component={Dashboard}
-            />
-            <Route path="/login" render={this.signInPage} />
-            <PrivateRoute
-              uuidPresent={this.state.uuidPresent}
-              path="/report"
-              render={props => {
-                return (
-                  <Report reportStats={reportStatsData} talk={talkDetail} />
-                );
-              }}
-            />
-            <PrivateRoute
-              path="/talk/:id"
-              uuidPresent={this.state.uuidPresent}
-              component={Talk}
-            />
-            <PrivateRoute
-              path="/top-rated"
-              uuidPresent={this.state.uuidPresent}
-              component={TopRated}
-            />
-            <SideNav
-              className="mobileOnly"
-              showNav={this.state.navVisible}
-              onHideNav={() => this.setState({ navVisible: false })}
-              title={<div>MyDevoxx Report 2017</div>}
-              titleStyle={{ backgroundColor: "#ff9e19" }}
-              itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
-              items={NavItems.map(item => (
-                <NavLink
-                  to={item.link}
-                  key={item.name}
-                  onClick={e => this.setState({ navVisible: false })}
-                >
-                  {item.name}
-                </NavLink>
-              ))}
-            />
-          </div>
-        </Router>
-
-      </div>
+      <DevoxxRouter history={browserHistory}>
+        <Page>
+          <NavBar>
+            <TitleContainer>
+              <h2
+                id="nav-icon"
+                onClick={() => this.setState({ navVisible: true })}
+                className="mobileOnly"
+              />
+              <h1>MyDevoxxReport</h1>
+            </TitleContainer>
+            <NavButtons />
+          </NavBar>
+          <PrivateRoute
+            path="/"
+            exact
+            uuidPresent={this.state.uuidPresent}
+            render={props => (
+              <Dashboard
+                sessions={talkDetail}
+                recommendations={globalRecommendations}
+                stats={statsData}
+                {...props}
+              />
+            )}
+          />
+          <Route path="/login" render={this.signInPage} />
+          <PrivateRoute
+            uuidPresent={this.state.uuidPresent}
+            path="/report"
+            render={props => {
+              return <Report reportStats={statsData} talk={talkDetail} />;
+            }}
+          />
+          <PrivateRoute
+            path="/talk/:id"
+            uuidPresent={this.state.uuidPresent}
+            component={Talk}
+          />
+          <PrivateRoute
+            path="/top-rated"
+            uuidPresent={this.state.uuidPresent}
+            component={TopRated}
+          />
+          <SideNav
+            className="mobileOnly"
+            showNav={this.state.navVisible}
+            onHideNav={() => this.setState({ navVisible: false })}
+            title={<div>MyDevoxx Report 2017</div>}
+            titleStyle={{ backgroundColor: "#ff9e19" }}
+            itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
+            items={NavItems.map(item => (
+              <NavLink
+                to={item.link}
+                key={item.name}
+                onClick={e => this.setState({ navVisible: false })}
+              >
+                {item.name}
+              </NavLink>
+            ))}
+          />
+        </Page>
+      </DevoxxRouter>
     );
   }
 }

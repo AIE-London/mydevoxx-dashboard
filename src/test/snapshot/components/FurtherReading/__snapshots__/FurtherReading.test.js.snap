@@ -1,41 +1,74 @@
 exports[`test FurtherReading component with title snapshot 1`] = `
-<div
-  className="coDiMZ">
-  <div
-    className="bvnlUe row">
+<section
+  className="eieVzi"
+  id="recommended-reading">
+  <h2
+    className="fcdRkU">
+    Recommendations
+  </h2>
+  <a
+    href="http://devoxx.co.uk">
     <div
-      className="row center-xs">
-      <div
-        className="col-xs-12">
-        <div
-          className="col-xs-10">
-          <div
-            className="row start-xs">
-            <h1
-              className="uzFDR">
-              Advanced Reading
-            </h1>
-            <p
-              className="fWPlXB">
-              <a
-                href="http://www.bbc.co.uk">
-                Link to advanced reading
-              </a>
-            </p>
-          </div>
-        </div>
-        <div
-          className="row center-xs">
-          <div
-            className="col-xs-10">
-            <p
-              className="hBDBjN">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at gravida neque.Lacus eget tellus facilisis....
-            </p>
-          </div>
-        </div>
-      </div>
+      className="dqPIpN row">
+      <h3>
+        Intro to Devoxx
+      </h3>
+      <h4>
+        http://devoxx.co.uk
+      </h4>
+      <p>
+        Based on your 
+        tracks
+      </p>
     </div>
-  </div>
-</div>
+  </a>
+  <a
+    href="http://devoxx.co.uk">
+    <div
+      className="dqPIpN row">
+      <h3>
+        Intro to Devoxx2
+      </h3>
+      <h4>
+        http://devoxx.co.uk
+      </h4>
+      <p>
+        Based on your 
+        tracks
+      </p>
+    </div>
+  </a>
+  <a
+    href="http://devoxx.co.uk">
+    <div
+      className="dqPIpN row">
+      <h3>
+        Intro to Devoxx3
+      </h3>
+      <h4>
+        http://devoxx.co.uk
+      </h4>
+      <p>
+        Based on your 
+        tracks
+      </p>
+    </div>
+  </a>
+  <a
+    href="http://devoxx.co.uk">
+    <div
+      className="dqPIpN row">
+      <h3>
+        Intro to Devoxx4
+      </h3>
+      <h4>
+        http://devoxx.co.uk
+      </h4>
+      <p>
+        Based on your 
+        tracks
+      </p>
+    </div>
+  </a>
+</section>
 `;

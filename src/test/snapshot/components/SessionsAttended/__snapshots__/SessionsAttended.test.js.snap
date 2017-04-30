@@ -1,65 +1,31 @@
-exports[`test SessionsAttended component with title snapshot 1`] = `
+exports[`test SessionsAttended component with snapshot 1`] = `
 <div
-  className="coDiMZ">
+  className="iCnvCe row"
+  id="attended-sessions">
+  <h2
+    className="jaIYAq">
+    My Sessions
+  </h2>
   <div
-    className="bvnlUe row">
-    <div
-      className="col-xs-12">
-      <div
-        className="col-xs-10">
-        <div
-          className="row start-xs">
-          <h1
-            className="dEhMDz">
-            MySessions
-          </h1>
-        </div>
-      </div>
-      <div
-        className="row center-xs">
-        <div
-          className="col-xs-10">
-          <div
-            className="row start-xs middle-xs">
-            <div
-              className="col-xs">
-              <h2
-                className="gkGJEX">
-                Polymer - Web Standards
-              </h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget libero mi. Ut vulputate leo in velit porta sollicitudin. Pellentesque vitae felis maximus, gravida mauris sed, bibendum turpis.
-              </p>
-            </div>
-            <div
-              className="col-xs-2">
-              <img
-                className="gosEQ"
-                src="defaultIcon.png" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="row center-xs">
-        <div
-          className="col-xs-10">
-          <div
-            className="row start-xs middle-xs">
-            <div
-              className="col-xs">
-              <h3
-                className="jJURiy">
-                Speaker:
-              </h3>
-              <p>
-                Dan Cotton
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    className="kgeHuu">
+    <div>
+      <h3>
+        Welcome to Devoxx 2017
+      </h3>
+      <h4>
+        Speakers: 
+      </h4>
+      <ul
+        className="bGhaQW">
+        <li
+          className="cLQKgI">
+          Test Speaker
+        </li>
+      </ul>
     </div>
+    <img
+      alt="Java"
+      src="https://ignite.apache.org/images/java.png" />
   </div>
 </div>
 `;
