@@ -14,7 +14,7 @@ exports[`test App component snapshot 1`] = `
         </h1>
       </div>
       <ul
-        className="desktopOnly gqYLQE">
+        className="desktopOnly fhPHro">
         <li
           className="bdhwFl">
           <a
@@ -51,7 +51,7 @@ exports[`test App component snapshot 1`] = `
           "height": "100%",
           "left": 0,
           "overflow": "hidden",
-          "pointerEvents": "auto",
+          "pointerEvents": "none",
           "position": "fixed",
           "top": 0,
           "width": "100%",
@@ -65,7 +65,7 @@ exports[`test App component snapshot 1`] = `
             "background": "rgba(0,0,0,0.4)",
             "height": "100%",
             "left": 0,
-            "opacity": 1,
+            "opacity": 0,
             "position": "absolute",
             "top": 0,
             "transition": "opacity 0.3s cubic-bezier(0, 0, 0.3, 1)",
@@ -88,7 +88,7 @@ exports[`test App component snapshot 1`] = `
             "height": "100%",
             "maxWidth": 400,
             "position": "relative",
-            "transform": "none",
+            "transform": "translateX(-102%)",
             "width": "90%",
             "willChange": "transform",
           }
@@ -170,71 +170,6 @@ exports[`test App component snapshot 1`] = `
             </li>
           </ul>
         </div>
-      </button>
-      <h1
-        onTouchTap={[Function]}
-        style={
-          Object {
-            "boxFlex": 1,
-            "color": "#ffffff",
-            "flex": "1",
-            "fontSize": 24,
-            "fontWeight": 400,
-            "height": "75",
-            "letterSpacing": 0,
-            "lineHeight": "75px",
-            "margin": 0,
-            "muiPrepared": true,
-            "overflow": "hidden",
-            "paddingTop": 0,
-            "textOverflow": "ellipsis",
-            "whiteSpace": "nowrap",
-          }
-        }>
-        MyDevoxx
-      </h1>
-      <div
-        style={
-          Object {
-            "marginLeft": "auto",
-            "marginRight": -16,
-            "marginTop": 13.5,
-            "muiPrepared": true,
-          }
-        }>
-        <ul
-          className="hJKnQv">
-          <li
-            className="kumMTW">
-            <a
-              href="/"
-              onClick={[Function]}>
-              Dashboard
-            </a>
-          </li>
-          <li
-            className="kumMTW">
-            <a
-              href="/report"
-              onClick={[Function]}>
-              Report
-            </a>
-          </li>
-          <li
-            className="kumMTW">
-            <a
-              href="/top-rated"
-              onClick={[Function]}>
-              Top Rated
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div
-      className="bvnlUe row">
-      Dashboard
-    </div>
       </nav>
     </aside>
   </div>

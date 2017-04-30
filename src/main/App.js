@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
+  Redirect,
   browserHistory
 } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
@@ -165,7 +166,8 @@ class App extends Component {
   }
 
   render() {
-    return (<div>
+    return (
+      <div>
         <Router history={browserHistory}>
           <div>
             <NavBar>
@@ -180,11 +182,11 @@ class App extends Component {
               <NavButtons />
             </NavBar>
             <PrivateRoute
-                path="/"
-                exact
-                uuidPresent={this.state.uuidPresent}
-                component={Dashboard}
-              />
+              path="/"
+              exact
+              uuidPresent={this.state.uuidPresent}
+              component={Dashboard}
+            />
             <Route path="/login" render={this.signInPage} />
             <PrivateRoute
               uuidPresent={this.state.uuidPresent}
