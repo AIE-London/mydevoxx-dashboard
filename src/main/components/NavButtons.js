@@ -7,6 +7,7 @@ const LinkText = styled.li`
   font-weight: 500;
   display: inline-block;
   font-size: 1.5em;
+  padding-left: 0.25em;
   &:after {
     content: " - ";
   }
@@ -18,31 +19,37 @@ const LinkText = styled.li`
 export const InlineList = styled.ul`
   opacity: 0.6;
   padding: 0;
-  margin-top: 0.5px;
   padding-left: 0.5em;
   display: inline;
   list-style: none;
 `;
 
+export const NavItems = [
+  {
+    link: "/",
+    name: "Home"
+  },
+  {
+    link: "/report",
+    name: "Report"
+  },
+  {
+    link: "/",
+    name: "Top Rated"
+  }
+];
+
 class NavButtons extends Component {
   render() {
     return (
-      <InlineList>
-        <LinkText>
-          <Link to="/">
-            Dashboard
-          </Link>
-        </LinkText>
-        <LinkText>
-          <Link to="/report">
-            Report
-          </Link>
-        </LinkText>
-        <LinkText>
-          <Link to="/top-rated">
-            Top Rated
-          </Link>
-        </LinkText>
+      <InlineList className="desktopOnly">
+        {NavItems.map(item => (
+          <LinkText key={item.name}>
+            <Link to={item.link}>
+              {item.name}
+            </Link>
+          </LinkText>
+        ))}
       </InlineList>
     );
   }

@@ -39,11 +39,20 @@ exports[`test ReportStats component with title snapshot 1`] = `
           className="eUofwH">
           Learning what\'s new in...
         </h2>
-        <p
-          className="jlawfx">
-          JS, Java, Polymer
-           
-        </p>
+        <div
+          className="ieDItR">
+          <ul
+            className="bGhaQW">
+            <li
+              className="cLQKgI">
+              Spring
+            </li>
+            <li
+              className="cLQKgI">
+              Java
+            </li>
+          </ul>
+        </div>
         <h2
           className="eUofwH">
           Networking with

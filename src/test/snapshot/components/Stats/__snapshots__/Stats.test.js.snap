@@ -3,7 +3,6 @@ exports[`test stats component with all properties filled 1`] = `
   className="dRQkYN">
   <div
     className="bvnlUe row center-xs">
-     
     <div
       className="col-xs-10">
       <div
@@ -30,8 +29,7 @@ exports[`test stats component with all properties filled 1`] = `
               }
             }>
             <ul
-              className="izGhAk">
-               
+              className="bGhaQW">
               <li
                 className="cLQKgI">
                 Agile
@@ -58,7 +56,7 @@ exports[`test stats component with all properties filled 1`] = `
               }
             }>
             <ul
-              className="izGhAk">
+              className="bGhaQW">
               <li
                 className="cLQKgI">
                 Person One

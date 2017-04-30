@@ -1,65 +1,76 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  browserHistory
+} from "react-router-dom";
+import SideNav from "react-simple-sidenav";
+import styled from "styled-components";
+
 import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
 import Talk from "./components/Talk";
 import TopRated from "./components/TopRated";
 import UserEmail from "./components/UserEmail";
-import injectTapEventPlugin from "react-tap-event-plugin";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import getMuiTheme from "material-ui/styles/getMuiTheme";
-import AppBar from "material-ui/AppBar";
-import NavButtons from "./components/NavButtons";
 import Dexie from "dexie";
+
+import NavButtons, { NavItems } from "./components/NavButtons";
 
 import testImage from "../test/snapshot/images/test-image.jpeg";
 
-const muiTheme = getMuiTheme({
-  palette: {
-    primary1Color: "#ff9e19",
-    textColor: "#fff"
-  },
-  appBar: {
-    height: "75",
-    marginTop: "13.5"
+const NavBar = styled.div`
+  background: #ff9e19;
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2em;
+  & h1 {
+    color: #fff;
+    font-weight: 200;
+    font-size: 25px;
   }
-});
+`;
 
-const talkDetail = {
-  dayNo: "One",
-  sTime: "10:00",
-  room: "Mezzanine",
-  title: "Welcome to Devoxx 2017",
-  description: "Join the organisers of Devoxx UK and great keynote " +
-    "speakers for inspring stories in 20 minute segments.",
-  rating: 4,
-  topTracks: ["Java", "Devoxx", "Spring"],
-  notes: "Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos " +
-    "volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer" +
-    " nec. Feugiat qualisque quo an. Labores officiis te nam.",
-  review: {
-    name: "Test User",
-    comment: "Great session, thanks for organising. Looking forward to the next one!",
-    image: testImage
-  },
-  speakers: [
-    {
-      name: "Test Speaker",
-      company: "Capgemini",
-      blog: "personalblog.com",
-      talks: [
-        "Intro to Devoxx (Room 1 - 11:45)",
-        "Intro to Devoxx 2 (Room 2 - 13:45)"
-      ]
-    }
-  ]
-};
+const talkDetail = [
+  {
+    dayNo: "One",
+    sTime: "10:00",
+    room: "Mezzanine",
+    title: "Welcome to Devoxx 2017",
+    description: "Join the organisers of Devoxx UK and great keynote " +
+      "speakers for inspring stories in 20 minute segments.",
+    rating: 4,
+    topTracks: ["Java", "Devoxx", "Spring"],
+    notes: "Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos " +
+      "volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer" +
+      " nec. Feugiat qualisque quo an. Labores officiis te nam.",
+    review: {
+      name: "Test User",
+      comment: "Great session, thanks for organising. Looking forward to the next one!",
+      image: testImage
+    },
+    speakers: [
+      {
+        name: "Test Speaker",
+        company: "Capgemini",
+        blog: "personalblog.com",
+        talks: [
+          "Intro to Devoxx (Room 1 - 11:45)",
+          "Intro to Devoxx 2 (Room 2 - 13:45)"
+        ]
+      }
+    ]
+  }
+];
 
 const reportStatsData = {
   minutes: 455,
   talks: 10,
-  learning: "Spring, Java",
-  attendees: 435
+  learning: ["Spring", "Java"],
+  attendees: "~1000"
 };
 
 let db;
@@ -87,11 +98,28 @@ const PrivateRoute = ({
     }}
   />
 );
+const NavLink = styled(Link)`
+  display: block;
+  box-sizing: border-box;
+  padding: 1em;
+  width: 100%;
+  &:hover {
+    background: rgba(255, 156, 25, 0.2);
+  }
+`;
+
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  & h1 {
+    margin-left: 0.5em;
+  }
+`;
 
 class App extends Component {
   constructor() {
     super();
-    this.state = { uuidPresent: true };
+    this.state = { uuidPresent: true, navVisible: false };
     //Define indexeddb instance/version
     db = new Dexie("devoxx-db");
     db.version(1).stores({ record: "id,uuid" });
@@ -137,46 +165,68 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div>
-          <Router>
-            <div>
-              <AppBar title="MyDevoxx" iconElementRight={<NavButtons />} />
-              <PrivateRoute
+    return (<div>
+        <Router history={browserHistory}>
+          <div>
+            <NavBar>
+              <TitleContainer>
+                <h2
+                  id="nav-icon"
+                  onClick={() => this.setState({ navVisible: true })}
+                  className="mobileOnly"
+                />
+                <h1>MyDevoxxReport</h1>
+              </TitleContainer>
+              <NavButtons />
+            </NavBar>
+            <PrivateRoute
                 path="/"
                 exact
                 uuidPresent={this.state.uuidPresent}
                 component={Dashboard}
               />
-              <Route path="/login" render={this.signInPage} />
-              <PrivateRoute
-                uuidPresent={this.state.uuidPresent}
-                path="/report"
-                render={props => {
-                  return (
-                    <Report reportStats={reportStatsData} talk={talkDetail} />
-                  );
-                }}
-              />
-              <PrivateRoute
-                path="/talk/:id"
-                uuidPresent={this.state.uuidPresent}
-                component={Talk}
-              />
-              <PrivateRoute
-                path="/top-rated"
-                uuidPresent={this.state.uuidPresent}
-                component={TopRated}
-              />
-            </div>
-          </Router>
-        </div>
-      </MuiThemeProvider>
+            <Route path="/login" render={this.signInPage} />
+            <PrivateRoute
+              uuidPresent={this.state.uuidPresent}
+              path="/report"
+              render={props => {
+                return (
+                  <Report reportStats={reportStatsData} talk={talkDetail} />
+                );
+              }}
+            />
+            <PrivateRoute
+              path="/talk/:id"
+              uuidPresent={this.state.uuidPresent}
+              component={Talk}
+            />
+            <PrivateRoute
+              path="/top-rated"
+              uuidPresent={this.state.uuidPresent}
+              component={TopRated}
+            />
+            <SideNav
+              className="mobileOnly"
+              showNav={this.state.navVisible}
+              onHideNav={() => this.setState({ navVisible: false })}
+              title={<div>MyDevoxx Report 2017</div>}
+              titleStyle={{ backgroundColor: "#ff9e19" }}
+              itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
+              items={NavItems.map(item => (
+                <NavLink
+                  to={item.link}
+                  key={item.name}
+                  onClick={e => this.setState({ navVisible: false })}
+                >
+                  {item.name}
+                </NavLink>
+              ))}
+            />
+          </div>
+        </Router>
+
+      </div>
     );
   }
 }
-
-injectTapEventPlugin();
-
 export default App;

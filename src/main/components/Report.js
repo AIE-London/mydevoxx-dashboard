@@ -8,9 +8,9 @@ class Report extends Component {
     let { minutes, talks, learning, attendees } = this.props.reportStats;
 
     return (
-      <div className="Report">
+      <div className="report">
         <Row center="xs">
-          <Col xs={10}>
+          <Col xs={12}>
             <ReportStats
               minutes={minutes}
               talks={talks}
@@ -19,7 +19,9 @@ class Report extends Component {
             />
           </Col>
         </Row>
-        <SessionView talk={this.props.talk} />
+        {this.props.talks.map((talk, index) => (
+          <SessionView key={index} talk={talk} />
+        ))}
       </div>
     );
   }
