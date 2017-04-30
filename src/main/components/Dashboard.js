@@ -32,29 +32,26 @@ const Widgets = styled(Row)`
   }
 `;
 
+const VerticalContainer = styled(Col)`
+  display: flex;
+  flex-direction: column;
+`;
+
 class Dashboard extends Component {
   render() {
     return (
       <DashboardComponent>
         <h1>MyDashboard</h1>
         <Widgets>
+          <VerticalContainer xs={12} sm={6} md={4}>
+            <TwitterFeed />
+            <TwitterFeed />
+          </VerticalContainer>
+          <Col xs={12} sm={6} md={4}>
+            <TwitterFeed />
+          </Col>
           <Col xs={12} sm={6} md={4}>
             <FurtherReading recommendations={this.props.recommendations} />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <TwitterFeed />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <TwitterFeed />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <TwitterFeed />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <TwitterFeed />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <TwitterFeed />
           </Col>
         </Widgets>
       </DashboardComponent>

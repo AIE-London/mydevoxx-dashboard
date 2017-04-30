@@ -6,25 +6,25 @@ import styled from "styled-components";
 import Card from "./Card";
 
 const Container = styled.section`
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
-  height: 405px;
+  height: 100%;
   width: 100%;
   max-width: 520px;
   padding-right: 0.5em;
 `;
 
 const Header = styled.h2`
-    text-align: left;
-    font-size: 2em;
-    font-family: helvetica;
-    margin-left: 0;
-    padding-left: 0;
-    margin-bottom: 0.5em;
+  text-align: left;
+  font-size: 2em;
+  font-family: helvetica;
+  margin-left: 0;
+  padding-left: 0;
+  margin-bottom: 0.5em;
 `;
 
 const Recommendation = styled(Card)`
-  padding: 0.25em 1em;
+  padding: 1em 1em;
   display: flex;
   flex-direction: column;
   & > h3 {
@@ -41,7 +41,7 @@ const Recommendation = styled(Card)`
     color: #000;
     text-align: right;
   }
-  margin-bottom: 0.25em;
+  margin-bottom: 0.75em;
 `;
 
 class FurtherReading extends Component {
