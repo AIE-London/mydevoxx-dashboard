@@ -10,19 +10,22 @@ body {
 }
 @media screen and (min-width: 575px) {
   .mobileOnly {
-    display: none!important;
+    display: none;
   }
   aside {
-    display: none!important;
+    display: none;
   }
 }
 
-.desktopOnly {
+.desktopOnly, .desktopOnlyInline {
   display: none;
 }
 @media screen and (min-width: 575px) {
   .desktopOnly {
-    display: block!important;
+    display: block;
+  }
+  .desktopOnlyInline {
+    display: inline;
   }
 }
 
