@@ -4,3 +4,7 @@ body {
   font-family: sans-serif;
   background: #424242;
 }
+a {
+  color: #fff;
+  opacity: 0.9;
+}
