@@ -2,29 +2,34 @@ import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Route,
+  Link,
   browserHistory
 } from "react-router-dom";
+import SideNav from "react-simple-sidenav";
+import styled from "styled-components";
+
 import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
 import Talk from "./components/Talk";
 import TopRated from "./components/TopRated";
-import injectTapEventPlugin from "react-tap-event-plugin";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import getMuiTheme from "material-ui/styles/getMuiTheme";
-import AppBar from "material-ui/AppBar";
-import NavButtons from "./components/NavButtons";
+import NavButtons, { NavItems } from "./components/NavButtons";
 
 import testImage from "../test/snapshot/images/test-image.jpeg";
 
-const muiTheme = getMuiTheme({
-  palette: {
-    primary1Color: "#ff9e19",
-    textColor: "#fff"
-  },
-  appBar: {
-    height: 75
+const NavBar = styled.div`
+  background: #ff9e19;
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2em;
+  & h1 {
+    color: #fff;
+    font-weight: 200;
+    font-size: 25px;
   }
-});
+`;
 
 const talkDetail = [
   {
@@ -65,37 +70,78 @@ const reportStatsData = {
   attendees: "~1000"
 };
 
+const NavLink = styled(Link)`
+  display: block;
+  box-sizing: border-box;
+  padding: 1em;
+  width: 100%;
+  &:hover {
+    background: rgba(255, 156, 25, 0.2);
+  }
+`;
+
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  & h1 {
+    margin-left: 0.5em;
+  }
+`;
+
 class App extends Component {
+  constructor() {
+    super();
+    this.state = { navVisible: true };
+  }
+
   render() {
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div>
-          <Router history={browserHistory}>
-            <div>
-              <AppBar
-                title="MyDevoxx"
-                iconElementLeft={<div />}
-                iconElementRight={<NavButtons />}
-              />
-              <Route path="/" component={Dashboard} />
-              <Route
-                path="/report"
-                render={function(props) {
-                  return (
-                    <Report reportStats={reportStatsData} talks={talkDetail} />
-                  );
-                }}
-              />
-              <Route path="/talk/:id" component={Talk} />
-              <Route path="/top-rated" component={TopRated} />
-            </div>
-          </Router>
-        </div>
-      </MuiThemeProvider>
+      <div>
+        <Router history={browserHistory}>
+          <div>
+            <NavBar>
+              <TitleContainer>
+                <h2
+                  id="nav-icon"
+                  onClick={() => this.setState({ navVisible: true })}
+                  className="mobileOnly"
+                />
+                <h1>MyDevoxxReport</h1>
+              </TitleContainer>
+              <NavButtons />
+            </NavBar>
+            <Route path="/" component={Dashboard} />
+            <Route
+              path="/report"
+              render={function(props) {
+                return (
+                  <Report reportStats={reportStatsData} talks={talkDetail} />
+                );
+              }}
+            />
+            <Route path="/talk/:id" component={Talk} />
+            <Route path="/top-rated" component={TopRated} />
+            <SideNav
+              className="mobileOnly"
+              showNav={this.state.navVisible}
+              onHideNav={() => this.setState({ navVisible: false })}
+              title={<div>MyDevoxx Report 2017</div>}
+              titleStyle={{ backgroundColor: "#ff9e19" }}
+              itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
+              items={NavItems.map(item => (
+                <NavLink
+                  to={item.link}
+                  key={item.name}
+                  onClick={e => this.setState({ navVisible: false })}
+                >
+                  {item.name}
+                </NavLink>
+              ))}
+            />
+          </div>
+        </Router>
+      </div>
     );
   }
 }
-
-injectTapEventPlugin();
-
 export default App;
