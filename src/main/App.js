@@ -150,7 +150,7 @@ const Page = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100%;
 `;
 
 class App extends Component {
@@ -234,7 +234,7 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             path="/report"
             render={props => {
-              return <Report reportStats={statsData} talk={talkDetail} />;
+              return <Report reportStats={statsData} talks={talkDetail} />;
             }}
           />
           <PrivateRoute
