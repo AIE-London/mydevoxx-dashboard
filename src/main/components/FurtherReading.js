@@ -7,8 +7,11 @@ import Card from "./Card";
 
 const Container = styled.section`
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 405px;
   width: 100%;
+  max-width: 520px;
+  padding-right: 0.5em;
 `;
 
 const Header = styled.h2`
