@@ -17,12 +17,15 @@ body {
   }
 }
 
-.desktopOnly {
+.desktopOnly, .desktopOnlyInline {
   display: none;
 }
 @media screen and (min-width: 575px) {
   .desktopOnly {
     display: block;
+  }
+  .desktopOnlyInline {
+    display: inline;
   }
 }
 
