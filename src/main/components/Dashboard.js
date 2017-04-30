@@ -13,7 +13,6 @@ const DashboardComponent = styled(Row)`
   height: 100%;
   font-family: Helvetica;
   box-sizing: border-box;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   flex: 1;
   display: flex;
   flex-direction: column;
