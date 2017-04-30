@@ -17,11 +17,14 @@ const LinkText = styled.li`
 `;
 
 export const InlineList = styled.ul`
-  opacity: 0.6;
+  opacity: 1;
   padding: 0;
   padding-left: 0.5em;
   display: inline;
   list-style: none;
+  & * {
+    color: #fff;
+  }
 `;
 
 export const NavItems = [

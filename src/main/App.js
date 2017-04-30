@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
+  Redirect,
   browserHistory
 } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
@@ -12,6 +13,9 @@ import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
 import Talk from "./components/Talk";
 import TopRated from "./components/TopRated";
+import UserEmail from "./components/UserEmail";
+import Dexie from "dexie";
+
 import NavButtons, { NavItems } from "./components/NavButtons";
 
 import testImage from "../test/snapshot/images/test-image.jpeg";
@@ -70,6 +74,31 @@ const reportStatsData = {
   attendees: "~1000"
 };
 
+let db;
+
+const PrivateRoute = ({
+  uuidPresent,
+  component: Component,
+  render: Render,
+  ...rest
+}) => (
+  <Route
+    {...rest}
+    render={props => {
+      if (uuidPresent) {
+        if (Component) {
+          return <Component {...props} />;
+        } else if (Render) {
+          return Render(props);
+        } else {
+          return <div>Error</div>;
+        }
+      } else {
+        return <Redirect to="/login" />;
+      }
+    }}
+  />
+);
 const NavLink = styled(Link)`
   display: block;
   box-sizing: border-box;
@@ -91,7 +120,49 @@ const TitleContainer = styled.div`
 class App extends Component {
   constructor() {
     super();
-    this.state = { navVisible: true };
+    this.state = { uuidPresent: true, navVisible: false };
+    //Define indexeddb instance/version
+    db = new Dexie("devoxx-db");
+    db.version(1).stores({ record: "id,uuid" });
+
+    //open connection to indexeddb - display error if connection failed
+    db.open().catch(error => {
+      alert("uuidDb could not be accessed: " + error);
+    });
+
+    this.signInPage = this.signInPage.bind(this);
+    this.uuidExists = this.uuidExists.bind(this);
+    this.uuidExists().catch(error => {
+      this.setState({ error: error });
+    });
+  }
+
+  uuidExists = () => {
+    return new Promise((resolve, reject) => {
+      //open connection to indexeddb - display error if connection failed
+      db.open("devoxx-db").catch(error => {
+        alert("uuidDb could not be accessed: " + error);
+      });
+      db.record &&
+        db.record
+          .get("0")
+          .then(resolution => {
+            if (resolution) {
+              this.setState({ uuidPresent: true });
+              resolve();
+            } else {
+              throw new Error("No UUID");
+            }
+          })
+          .catch(error => {
+            this.setState({ uuidPresent: false });
+            reject(error);
+          });
+    });
+  };
+
+  signInPage() {
+    return <UserEmail onSignIn={this.uuidExists} db={db} />;
   }
 
   render() {
@@ -110,17 +181,32 @@ class App extends Component {
               </TitleContainer>
               <NavButtons />
             </NavBar>
-            <Route path="/" component={Dashboard} />
-            <Route
+            <PrivateRoute
+              path="/"
+              exact
+              uuidPresent={this.state.uuidPresent}
+              component={Dashboard}
+            />
+            <Route path="/login" render={this.signInPage} />
+            <PrivateRoute
+              uuidPresent={this.state.uuidPresent}
               path="/report"
-              render={function(props) {
+              render={props => {
                 return (
-                  <Report reportStats={reportStatsData} talks={talkDetail} />
+                  <Report reportStats={reportStatsData} talk={talkDetail} />
                 );
               }}
             />
-            <Route path="/talk/:id" component={Talk} />
-            <Route path="/top-rated" component={TopRated} />
+            <PrivateRoute
+              path="/talk/:id"
+              uuidPresent={this.state.uuidPresent}
+              component={Talk}
+            />
+            <PrivateRoute
+              path="/top-rated"
+              uuidPresent={this.state.uuidPresent}
+              component={TopRated}
+            />
             <SideNav
               className="mobileOnly"
               showNav={this.state.navVisible}
@@ -140,6 +226,7 @@ class App extends Component {
             />
           </div>
         </Router>
+
       </div>
     );
   }
