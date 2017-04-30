@@ -14,7 +14,7 @@ exports[`test App component snapshot 1`] = `
         </h1>
       </div>
       <ul
-        className="desktopOnly fhPHro">
+        className="desktopOnlyInline hsTZOj">
         <li
           className="bdhwFl">
           <a
