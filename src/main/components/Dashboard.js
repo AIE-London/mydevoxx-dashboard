@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Row } from "react-flexbox-grid";
+import { Row, Col } from "react-flexbox-grid";
 
 import TwitterFeed from "./TwitterFeed";
+import FurtherReading from "./FurtherReading";
 
 const DashboardComponent = styled(Row)`
   border-radius: 2px;
@@ -18,14 +19,13 @@ const DashboardComponent = styled(Row)`
   color: #fff;
 `;
 
-const Widgets = styled.div`
+const Widgets = styled(Row)`
   display: flex;
   flex-direction: row;
   width: 100%;
   flex: 1;
   flex-wrap: wrap;
-  & * {
-    width: 33%;
+  & > * {
     margin-bottom: 0;
     padding: 0.5em;
     box-sizing: border-box;
@@ -38,12 +38,24 @@ class Dashboard extends Component {
       <DashboardComponent>
         <h1>MyDashboard</h1>
         <Widgets>
-          <TwitterFeed />
-          <TwitterFeed />
-          <TwitterFeed />
-          <TwitterFeed />
-          <TwitterFeed />
-          <TwitterFeed />
+          <Col xs={12} sm={6} md={4}>
+            <FurtherReading recommendations={this.props.recommendations} />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <TwitterFeed />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <TwitterFeed />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <TwitterFeed />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <TwitterFeed />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <TwitterFeed />
+          </Col>
         </Widgets>
       </DashboardComponent>
     );

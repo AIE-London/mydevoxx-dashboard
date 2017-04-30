@@ -2,61 +2,59 @@
  * Created by tsadler on 07/04/2017.
  */
 import React, { Component } from "react";
-import { Grid, Row, Col } from "react-flexbox-grid";
 import styled from "styled-components";
 import Card from "./Card";
 
-const Container = styled.div`
-  width: 400px;
-  height: 400px;
+const Container = styled.section`
+  overflow-y: scroll;
+  height: 405px;
+  width: 100%;
 `;
 
-const StatMainHeader = styled.h1`
+const Header = styled.h2`
     text-align: left;
     font-size: 2em;
     font-family: helvetica;
-    margin-left: 15px;
-    margin-bottom: 0px;
+    margin-left: 0;
+    padding-left: 0;
+    margin-bottom: 0.5em;
 `;
 
-const StatValue = styled.p`
-    text-align: center;
-    font-size: 1em;
-    font-family: helvetica;
-`;
-
-const LinkValue = styled.p`
-    font-size: 0.75em;
-    color: #fff;
-    font-family: helvetica;
-     margin-left: 30px;
-     margin-top: 0px;
-     margin-bottom: 0px;
+const Recommendation = styled(Card)`
+  padding: 0.25em 1em;
+  display: flex;
+  flex-direction: column;
+  & > h3 {
+    color: #000;
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+  & > h4 {
+    color: #ff9e19;
+    margin-top: 5px;
+  }
+  & > p {
+    opacity: 0.5;
+    color: #000;
+    text-align: right;
+  }
+  margin-bottom: 0.25em;
 `;
 
 class FurtherReading extends Component {
   render() {
     return (
-      <Container>
-        <Card>
-          <Row center="xs">
-            <Col xs={12}>
-              <Col xs={10}>
-                <Row start="xs">
-                  <StatMainHeader>{this.props.mainHeader}</StatMainHeader>
-                  <LinkValue>
-                    <a href={this.props.url}>{this.props.urlText}</a>
-                  </LinkValue>
-                </Row>
-              </Col>
-              <Row center="xs">
-                <Col xs={10}>
-                  <StatValue>{this.props.text}</StatValue>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Card>
+      <Container id="recommended-reading">
+        <Header>Recommendations</Header>
+        {this.props.recommendations.map(recommendation => (
+          <a key={recommendation.name} href={recommendation.url}>
+            <Recommendation>
+              <h3>{recommendation.name}</h3>
+              <h4>{recommendation.url}</h4>
+              <p>Based on your {recommendation.source}</p>
+            </Recommendation>
+          </a>
+        ))}
       </Container>
     );
   }

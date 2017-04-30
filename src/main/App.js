@@ -35,6 +35,29 @@ const NavBar = styled.div`
   }
 `;
 
+const globalRecommendations = [
+  {
+    name: "Intro to Devoxx",
+    url: "http://devoxx.co.uk",
+    source: "tracks"
+  },
+  {
+    name: "Intro to Devoxx2",
+    url: "http://devoxx.co.uk",
+    source: "tracks"
+  },
+  {
+    name: "Intro to Devoxx3",
+    url: "http://devoxx.co.uk",
+    source: "tracks"
+  },
+  {
+    name: "Intro to Devoxx4",
+    url: "http://devoxx.co.uk",
+    source: "tracks"
+  }
+];
+
 const talkDetail = [
   {
     dayNo: "One",
@@ -196,7 +219,9 @@ class App extends Component {
             path="/"
             exact
             uuidPresent={this.state.uuidPresent}
-            component={Dashboard}
+            render={props => (
+              <Dashboard recommendations={globalRecommendations} {...props} />
+            )}
           />
           <Route path="/login" render={this.signInPage} />
           <PrivateRoute
