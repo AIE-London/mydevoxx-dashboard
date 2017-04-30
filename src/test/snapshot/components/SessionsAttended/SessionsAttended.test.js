@@ -1,29 +1,55 @@
 /**
- * Created by tsadler on 07/04/2017.
+ * Created by dcotton on 30/04/2017.
  */
 import React from "react";
 import ReactDOM from "react-dom";
 import SessionsAttended from "../../../../main/components/SessionsAttended";
 import renderer from "react-test-renderer";
 
+import testImage from "../../images/test-image.jpeg";
+
+const talkDetail = [
+  {
+    dayNo: "One",
+    sTime: "10:00",
+    room: "Mezzanine",
+    title: "Welcome to Devoxx 2017",
+    description: "Join the organisers of Devoxx UK and great keynote " +
+      "speakers for inspring stories in 20 minute segments.",
+    rating: 4,
+    topTracks: ["Java", "Devoxx", "Spring"],
+    notes: "Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos " +
+      "volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer" +
+      " nec. Feugiat qualisque quo an. Labores officiis te nam.",
+    review: {
+      name: "Test User",
+      comment: "Great session, thanks for organising. Looking forward to the next one!",
+      image: testImage
+    },
+    speakers: [
+      {
+        name: "Test Speaker",
+        company: "Capgemini",
+        blog: "personalblog.com",
+        talks: [
+          "Intro to Devoxx (Room 1 - 11:45)",
+          "Intro to Devoxx 2 (Room 2 - 13:45)"
+        ]
+      }
+    ]
+  }
+];
+
 test("SessionsAttended component", () => {
   it("renders without crashing", () => {
     const div = document.createElement("div");
-    ReactDOM.render(<SessionsAttended title="Welcome to Devoxx" />, div);
+    ReactDOM.render(<SessionsAttended sessions={talkDetail} />, div);
   });
 });
 
-test("SessionsAttended component with title snapshot", () => {
+test("SessionsAttended component with snapshot", () => {
   const tree = renderer
-    .create(
-      <SessionsAttended
-        mainHeader="MySessions"
-        title="Polymer - Web Standards"
-        cardContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget libero mi. Ut vulputate leo in velit porta sollicitudin. Pellentesque vitae felis maximus, gravida mauris sed, bibendum turpis."
-        subHeader="Speaker:"
-        name="Dan Cotton"
-      />
-    )
+    .create(<SessionsAttended sessions={talkDetail} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
