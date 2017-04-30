@@ -90,11 +90,12 @@ const talkDetail = [
   }
 ];
 
-const reportStatsData = {
+const statsData = {
   minutes: 455,
   talks: 10,
   learning: ["Spring", "Java"],
-  attendees: "~1000"
+  attendees: "~1000",
+  speakers: ["Person One", "Person Two", "Person Three"]
 };
 
 let db;
@@ -223,6 +224,7 @@ class App extends Component {
               <Dashboard
                 sessions={talkDetail}
                 recommendations={globalRecommendations}
+                stats={statsData}
                 {...props}
               />
             )}
@@ -232,7 +234,7 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             path="/report"
             render={props => {
-              return <Report reportStats={reportStatsData} talk={talkDetail} />;
+              return <Report reportStats={statsData} talk={talkDetail} />;
             }}
           />
           <PrivateRoute

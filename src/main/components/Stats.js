@@ -1,15 +1,22 @@
 /**
  * Created by DLINDSAY on 05-Apr-17.
  */
-import { Grid, Row, Col } from "react-flexbox-grid";
+import { Row, Col } from "react-flexbox-grid";
 import Card from "./Card";
 import styled from "styled-components";
 import { CommaList, CommaListItem } from "./CommaList";
 import React, { Component } from "react";
 
-const Container = styled.div` 
-    width: 400px;
-    height: 400px;
+const Container = styled.div`
+  color: #000;
+  height: 100%;
+  margin-bottom: 1em;
+  max-width: 520px;
+  height: 100%;
+`;
+
+const StatsCard = styled(Card)`
+  height: 100%;
 `;
 
 const StatHeader = styled.h2`
@@ -21,9 +28,9 @@ class Stats extends Component {
   render() {
     return (
       <Container>
-        <Card center="xs">
+        <StatsCard center="xs">
           {/* Wraps the Card component within the Container component */}
-          <Col xs={10}>
+          <Col xs={11}>
             <Col xs={6}>
               <Row start="xs">
                 <h1>My Stats</h1>
@@ -57,7 +64,7 @@ class Stats extends Component {
             </Row>
           </Col>
 
-        </Card>
+        </StatsCard>
       </Container>
     );
   }

@@ -77,7 +77,10 @@ class SessionsAttended extends Component {
                 ))}
               </CommaList>
             </div>
-            <img src="https://ignite.apache.org/images/java.png" />
+            <img
+              alt={session.topTracks[0]}
+              src="https://ignite.apache.org/images/java.png"
+            />
           </Session>
         ))}
       </Container>

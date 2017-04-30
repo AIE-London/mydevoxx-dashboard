@@ -5,6 +5,7 @@ import { Row, Col } from "react-flexbox-grid";
 import TwitterFeed from "./TwitterFeed";
 import FurtherReading from "./FurtherReading";
 import SessionsAttended from "./SessionsAttended";
+import Stats from "./Stats";
 
 const DashboardComponent = styled(Row)`
   border-radius: 2px;
@@ -35,7 +36,12 @@ const Widgets = styled(Row)`
 
 const VerticalContainer = styled(Col)`
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
+  & > * {
+    flex: 1;
+    padding: 0.5em - ;
+  }
 `;
 
 class Dashboard extends Component {
@@ -45,7 +51,10 @@ class Dashboard extends Component {
         <h1>MyDashboard</h1>
         <Widgets>
           <VerticalContainer xs={12} sm={6} md={4}>
-            <TwitterFeed />
+            <Stats
+              tracks={this.props.stats.learning}
+              speakers={this.props.stats.speakers}
+            />
             <TwitterFeed />
           </VerticalContainer>
           <Col xs={12} sm={6} md={4}>
