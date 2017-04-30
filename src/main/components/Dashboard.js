@@ -4,6 +4,7 @@ import { Row, Col } from "react-flexbox-grid";
 
 import TwitterFeed from "./TwitterFeed";
 import FurtherReading from "./FurtherReading";
+import SessionsAttended from "./SessionsAttended";
 
 const DashboardComponent = styled(Row)`
   border-radius: 2px;
@@ -48,7 +49,7 @@ class Dashboard extends Component {
             <TwitterFeed />
           </VerticalContainer>
           <Col xs={12} sm={6} md={4}>
-            <TwitterFeed />
+            <SessionsAttended sessions={this.props.sessions} />
           </Col>
           <Col xs={12} sm={6} md={4}>
             <FurtherReading recommendations={this.props.recommendations} />

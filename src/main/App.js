@@ -220,7 +220,11 @@ class App extends Component {
             exact
             uuidPresent={this.state.uuidPresent}
             render={props => (
-              <Dashboard recommendations={globalRecommendations} {...props} />
+              <Dashboard
+                sessions={talkDetail}
+                recommendations={globalRecommendations}
+                {...props}
+              />
             )}
           />
           <Route path="/login" render={this.signInPage} />
