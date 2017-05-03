@@ -159,7 +159,12 @@ const Page = styled.div`
 class App extends Component {
   constructor() {
     super();
-    this.state = { uuidPresent: true, navVisible: false, scheduledTalks: [] };
+    this.state = {
+      uuidPresent: true,
+      navVisible: false,
+      scheduledTalks: [],
+      favouredTalks: []
+    };
     //Define indexeddb instance/version
     db = new Dexie("devoxx-db");
     db.version(1).stores({ record: "id,uuid" });
