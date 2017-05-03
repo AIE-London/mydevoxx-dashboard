@@ -56,7 +56,7 @@ class UserEmail extends Component {
           throw new Error("Missing UUID");
         }
         this.props.db.record.add({ id: "0", uuid: uuid });
-        this.props.onSignIn().then(() => {
+        this.props.onSignIn(uuid).then(() => {
           this.setState({ redirect: true, loading: false });
         });
       })

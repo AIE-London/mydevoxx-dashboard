@@ -16,6 +16,9 @@ import TopRated from "./components/TopRated";
 import UserEmail from "./components/UserEmail";
 import Dexie from "dexie";
 
+import FavoredTalk from "./api/favoredTalks";
+import ScheduledTalk from "./api/scheduledTalks";
+
 import NavButtons, { NavItems } from "./components/NavButtons";
 
 import testImage from "../test/snapshot/images/test-image.jpeg";
@@ -156,7 +159,12 @@ const Page = styled.div`
 class App extends Component {
   constructor() {
     super();
-    this.state = { uuidPresent: true, navVisible: false };
+    this.state = {
+      uuidPresent: true,
+      navVisible: false,
+      scheduledTalks: [],
+      favouredTalks: []
+    };
     //Define indexeddb instance/version
     db = new Dexie("devoxx-db");
     db.version(1).stores({ record: "id,uuid" });
@@ -166,6 +174,7 @@ class App extends Component {
       alert("uuidDb could not be accessed: " + error);
     });
 
+    this.userSignedIn = this.userSignedIn.bind(this);
     this.signInPage = this.signInPage.bind(this);
     this.uuidExists = this.uuidExists.bind(this);
     this.uuidExists().catch(error => {
@@ -197,8 +206,22 @@ class App extends Component {
     });
   };
 
+  userSignedIn(uuid) {
+    FavoredTalk.getFavoredTalks(uuid).then(results => {
+      console.log(results);
+      this.setState({ favouredTalks: results });
+    });
+
+    ScheduledTalk.getScheduledTalks(uuid).then(results => {
+      console.log(results);
+      this.setState({ scheduledTalks: results });
+    });
+
+    return this.uuidExists();
+  }
+
   signInPage() {
-    return <UserEmail onSignIn={this.uuidExists} db={db} />;
+    return <UserEmail onSignIn={this.userSignedIn} db={db} />;
   }
 
   render() {
