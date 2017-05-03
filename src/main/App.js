@@ -19,6 +19,7 @@ import Dexie from "dexie";
 import NavButtons, { NavItems } from "./components/NavButtons";
 
 import testImage from "../test/snapshot/images/test-image.jpeg";
+import Branding from "./components/Branding";
 
 const NavBar = styled.div`
   background: #ff9e19;
@@ -247,6 +248,9 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             component={TopRated}
           />
+
+          <Branding />
+
           <SideNav
             className="mobileOnly"
             showNav={this.state.navVisible}
