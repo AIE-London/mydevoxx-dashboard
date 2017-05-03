@@ -213,11 +213,6 @@ class App extends Component {
     });
 
     return this.uuidExists();
-    // get favoured using uuid
-    // then store favoured in state (thi.setState)
-    // then get scheduled
-    // store in state
-    // then check if uuid exists.
   }
 
   signInPage() {
