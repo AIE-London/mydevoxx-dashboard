@@ -28,7 +28,6 @@ import ScheduledTalk from "./api/scheduledTalks";
 
 import Talk from "./model/talk";
 import Speaker from "./model/speaker";
-import testImage from "../test/snapshot/images/test-image.jpeg";
 
 const NavBar = styled.div`
   background: #ff9e19;
@@ -111,37 +110,7 @@ const DevoxxTalks = {
   "MXR-2678": gitTalk
 };
 
-const talkDetail = [
-  {
-    dayNo: "One",
-    sTime: "10:00",
-    room: "Mezzanine",
-    title: "Welcome to Devoxx 2017",
-    description: "Join the organisers of Devoxx UK and great keynote " +
-      "speakers for inspring stories in 20 minute segments.",
-    rating: 4,
-    topTracks: ["Java", "Devoxx", "Spring"],
-    notes: "Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos " +
-      "volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer" +
-      " nec. Feugiat qualisque quo an. Labores officiis te nam.",
-    review: {
-      name: "Test User",
-      comment: "Great session, thanks for organising. Looking forward to the next one!",
-      image: testImage
-    },
-    speakers: [
-      {
-        name: "Test Speaker",
-        company: "Capgemini",
-        blog: "personalblog.com",
-        talks: [
-          "Intro to Devoxx (Room 1 - 11:45)",
-          "Intro to Devoxx 2 (Room 2 - 13:45)"
-        ]
-      }
-    ]
-  }
-];
+const UserScheduledFavoured = ["MXR-2678"];
 
 const statsData = {
   minutes: 455,
@@ -295,7 +264,9 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             render={props => (
               <Dashboard
-                sessions={devoxxTalks}
+                talkData={DevoxxTalks}
+                speakerData={DevoxxSpeakers}
+                talkIDs={UserScheduledFavoured}
                 recommendations={globalRecommendations}
                 stats={statsData}
                 {...props}
@@ -307,7 +278,14 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             path="/report"
             render={props => {
-              return <Report reportStats={statsData} talks={devoxxTalks} />;
+              return (
+                <Report
+                  reportStats={statsData}
+                  speakerData={DevoxxSpeakers}
+                  talkData={DevoxxTalks}
+                  talks={UserScheduledFavoured}
+                />
+              );
             }}
           />
           <PrivateRoute

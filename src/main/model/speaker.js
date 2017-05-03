@@ -33,28 +33,28 @@ export default class Speaker {
     this._avatarURL = avatarURL;
     this._twitter = twitter;
   }
-  uuid() {
+  get uuid() {
     return this._uuid;
   }
-  bio() {
+  get bio() {
     return this._bio;
   }
-  acceptedTalkIDs() {
+  get acceptedTalkIDs() {
     return this._acceptedTalkIDs;
   }
-  company() {
+  get company() {
     return this._company;
   }
-  name() {
+  get name() {
     return this._firstName + " " + this._lastName;
   }
-  blog() {
+  get blog() {
     return this._blog;
   }
-  avatarURL() {
+  get avatarURL() {
     return this._avatarURL;
   }
-  twitter() {
+  get twitter() {
     return this._twitter;
   }
 }

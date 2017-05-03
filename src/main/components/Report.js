@@ -4,6 +4,10 @@ import ReportStats from "./ReportStats";
 import SessionView from "./SessionView";
 
 class Report extends Component {
+  getTalk(id) {
+    return this.props.talkData[id];
+  }
+
   render() {
     let { minutes, talks, learning, attendees } = this.props.reportStats;
 
@@ -19,8 +23,8 @@ class Report extends Component {
             />
           </Col>
         </Row>
-        {this.props.talks.map((talk, index) => (
-          <SessionView key={index} talk={talk} />
+        {this.props.talks.map((talkId, index) => (
+          <SessionView key={index} talk={this.getTalk(talkId)} />
         ))}
       </div>
     );
