@@ -27,6 +27,7 @@ import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
 
 import Talk from "./model/talk";
+import Speaker from "./model/speaker";
 import testImage from "../test/snapshot/images/test-image.jpeg";
 
 const NavBar = styled.div`
@@ -67,27 +68,48 @@ const globalRecommendations = [
   }
 ];
 
-const devoxxTalks = [
-  new Talk(
-    "MXR-2678",
-    "Git Workflow Strategies for Technical Debt Management",
-    ["method_archi"],
-    "en",
-    "The technical debt metaphor is gaining significant traction in " +
-      "the agile development community as a way to understand and communicate " +
-      "those issues related to accepting bad programming practices in order to " +
-      "achieve fast results (e.g a deadline). However, the idea of getting fast " +
-      "results becomes an illusion, since the cost of building software increases " +
-      "over the time.  \r\n\r\nIn order to achieve a good technical debt management, " +
-      "agile methodologies suggest to measure it and add an specific entry in the sprint " +
-      "backlog to fix it incrementally and to apply continuous inspection to block " +
-      "new code quality issues. In this session, we will explore the different " +
-      "categories of technical debt and how can we benefit from Git workflow to " +
-      "reduce part of it incrementally and safely.",
-    [{}],
-    null
-  )
-];
+let speaker1 = new Speaker(
+  "da2efaefc17e080c53baff7e6525e65e87ab9774",
+  "I have almost 10 years of experience programming in Java. " +
+    "I have also a long experience in big data and recommendation " +
+    "systems. Currently, I am the project leader of Walkmod, an open " +
+    "source tool to apply Java code conventions and also the organizer " +
+    "of Legacy Code Rocks Barcelona meetup.",
+  ["MXR-2678"],
+  "Walkmod",
+  "Pau Fernández",
+  "Raquel",
+  "http://www.walkmod.com",
+  "https://lh5.googleusercontent.com/-gpyd1u760zw/AAAAAAAAAAI/AAAAAAAAAAA/40NTLE5649A/photo.jpg",
+  "@raquelpau"
+);
+
+let gitTalk = new Talk(
+  "MXR-2678",
+  "Git Workflow Strategies for Technical Debt Management",
+  ["method_archi"],
+  "en",
+  "The technical debt metaphor is gaining significant traction in " +
+    "the agile development community as a way to understand and communicate " +
+    "those issues related to accepting bad programming practices in order to " +
+    "achieve fast results (e.g a deadline). However, the idea of getting fast " +
+    "results becomes an illusion, since the cost of building software increases " +
+    "over the time.  \r\n\r\nIn order to achieve a good technical debt management, " +
+    "agile methodologies suggest to measure it and add an specific entry in the sprint " +
+    "backlog to fix it incrementally and to apply continuous inspection to block " +
+    "new code quality issues. In this session, we will explore the different " +
+    "categories of technical debt and how can we benefit from Git workflow to " +
+    "reduce part of it incrementally and safely.",
+  ["da2efaefc17e080c53baff7e6525e65e87ab9774"],
+  null
+);
+
+const DevoxxSpeakers = {
+  da2efaefc17e080c53baff7e6525e65e87ab9774: speaker1
+};
+const DevoxxTalks = {
+  "MXR-2678": gitTalk
+};
 
 const talkDetail = [
   {
