@@ -61,14 +61,13 @@ const TrackList = styled(CommaList)`
 
 class TalkCard extends Component {
   render() {
-    let {
-      title,
-      rating,
-      description,
-      topTracks,
-      notes,
-      review
-    } = this.props.talk;
+    // [TODO] Allow the user to take notes & store in indexed DB
+    let notes = "";
+    // [TODO] Allow the user to review & store in indexed DB
+    let review = "";
+    // [TODO] Allow the user to rate & store in indexed DB
+    let rating = 0;
+    let { title, summary, tracks } = this.props.talk;
     return (
       <Card start="xs">
         <LeftPartition md={6}>
@@ -79,14 +78,14 @@ class TalkCard extends Component {
             <StarRating rating={rating} />
           </Row>
           <CardParagraph>
-            {description}
+            {summary}
           </CardParagraph>
           <Row>
             <CardSubhead>Top Tracks</CardSubhead>
           </Row>
           <Row>
             <TrackList>
-              {topTracks.map(trackName => (
+              {tracks.map(trackName => (
                 <CommaListItem key={trackName}>{trackName}</CommaListItem>
               ))}
             </TrackList>

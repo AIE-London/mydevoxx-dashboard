@@ -64,21 +64,22 @@ class SessionsAttended extends Component {
     return (
       <Container id="attended-sessions">
         <Header>My Sessions</Header>
-        {this.props.sessions.map(session => (
-          <Session key={session.title}>
+        {this.props.sessions.map(talk => (
+          <Session key={talk.title}>
             <div>
-              <h3>{session.title}</h3>
+              <h3>{talk.title}</h3>
               <h4>Speakers: </h4>
               <CommaList>
-                {session.speakers.map(speaker => (
+                {talk.speakers.map(speaker => (
                   <CommaListItem key={speaker.name}>
                     {speaker.name}
                   </CommaListItem>
                 ))}
               </CommaList>
             </div>
+            {/* [TODO] Make these images DYNAMIC */}
             <img
-              alt={session.topTracks[0]}
+              alt={talk.tracks[0]}
               src="https://ignite.apache.org/images/java.png"
             />
           </Session>

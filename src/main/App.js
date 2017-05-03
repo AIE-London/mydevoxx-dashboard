@@ -8,19 +8,25 @@ import {
 } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
 import styled from "styled-components";
+import Dexie from "dexie";
+
+/*
+  UI Components
+ */
 
 import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
-import Talk from "./components/Talk";
 import TopRated from "./components/TopRated";
 import UserEmail from "./components/UserEmail";
-import Dexie from "dexie";
+import NavButtons, { NavItems } from "./components/NavButtons";
 
+/*
+  API Integration pieces
+ */
 import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
 
-import NavButtons, { NavItems } from "./components/NavButtons";
-
+import Talk from "./model/talk";
 import testImage from "../test/snapshot/images/test-image.jpeg";
 
 const NavBar = styled.div`
@@ -59,6 +65,28 @@ const globalRecommendations = [
     url: "http://devoxx.co.uk",
     source: "tracks"
   }
+];
+
+const devoxxTalks = [
+  new Talk(
+    "MXR-2678",
+    "Git Workflow Strategies for Technical Debt Management",
+    ["method_archi"],
+    "en",
+    "The technical debt metaphor is gaining significant traction in " +
+      "the agile development community as a way to understand and communicate " +
+      "those issues related to accepting bad programming practices in order to " +
+      "achieve fast results (e.g a deadline). However, the idea of getting fast " +
+      "results becomes an illusion, since the cost of building software increases " +
+      "over the time.  \r\n\r\nIn order to achieve a good technical debt management, " +
+      "agile methodologies suggest to measure it and add an specific entry in the sprint " +
+      "backlog to fix it incrementally and to apply continuous inspection to block " +
+      "new code quality issues. In this session, we will explore the different " +
+      "categories of technical debt and how can we benefit from Git workflow to " +
+      "reduce part of it incrementally and safely.",
+    [{}],
+    null
+  )
 ];
 
 const talkDetail = [
@@ -245,7 +273,7 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             render={props => (
               <Dashboard
-                sessions={talkDetail}
+                sessions={devoxxTalks}
                 recommendations={globalRecommendations}
                 stats={statsData}
                 {...props}
@@ -257,7 +285,7 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             path="/report"
             render={props => {
-              return <Report reportStats={statsData} talks={talkDetail} />;
+              return <Report reportStats={statsData} talks={devoxxTalks} />;
             }}
           />
           <PrivateRoute

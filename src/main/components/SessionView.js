@@ -37,9 +37,12 @@ class SessionView extends Component {
     return (
       <Window>
 
-        <DayText>Day {this.props.talk.dayNo}</DayText>
-
-        <WhiteText>{this.props.talk.sTime} - {this.props.talk.room}</WhiteText>
+        {/* [TODO] Re-instate once we've added in a means of calculating
+          day/time/room */}
+        {/*
+         <DayText>Day {this.props.talk.dayNo}</DayText>
+         <WhiteText>{this.props.talk.sTime} - {this.props.talk.room}</WhiteText>
+         */}
 
         <Row center="xs">
           <Col xs={10}>
