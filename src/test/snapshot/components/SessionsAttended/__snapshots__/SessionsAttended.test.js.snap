@@ -10,7 +10,7 @@ exports[`test SessionsAttended component with snapshot 1`] = `
     className="kgeHuu">
     <div>
       <h3>
-        Welcome to Devoxx 2017
+        Test talk title
       </h3>
       <h4>
         Speakers: 
@@ -19,12 +19,12 @@ exports[`test SessionsAttended component with snapshot 1`] = `
         className="bGhaQW">
         <li
           className="cLQKgI">
-          Test Speaker
+          Daan Cotton
         </li>
       </ul>
     </div>
     <img
-      alt="Java"
+      alt="method_architecture"
       src="https://ignite.apache.org/images/java.png" />
   </div>
 </div>

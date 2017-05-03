@@ -8,20 +8,26 @@ import {
 } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
 import styled from "styled-components";
+import Dexie from "dexie";
+
+/*
+  UI Components
+ */
 
 import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
-import Talk from "./components/Talk";
 import TopRated from "./components/TopRated";
 import UserEmail from "./components/UserEmail";
-import Dexie from "dexie";
+import NavButtons, { NavItems } from "./components/NavButtons";
 
+/*
+  API Integration pieces
+ */
 import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
 
-import NavButtons, { NavItems } from "./components/NavButtons";
-
-import testImage from "../test/snapshot/images/test-image.jpeg";
+import Talk from "./model/talk";
+import Speaker from "./model/speaker";
 
 const NavBar = styled.div`
   background: #ff9e19;
@@ -61,37 +67,50 @@ const globalRecommendations = [
   }
 ];
 
-const talkDetail = [
-  {
-    dayNo: "One",
-    sTime: "10:00",
-    room: "Mezzanine",
-    title: "Welcome to Devoxx 2017",
-    description: "Join the organisers of Devoxx UK and great keynote " +
-      "speakers for inspring stories in 20 minute segments.",
-    rating: 4,
-    topTracks: ["Java", "Devoxx", "Spring"],
-    notes: "Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos " +
-      "volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer" +
-      " nec. Feugiat qualisque quo an. Labores officiis te nam.",
-    review: {
-      name: "Test User",
-      comment: "Great session, thanks for organising. Looking forward to the next one!",
-      image: testImage
-    },
-    speakers: [
-      {
-        name: "Test Speaker",
-        company: "Capgemini",
-        blog: "personalblog.com",
-        talks: [
-          "Intro to Devoxx (Room 1 - 11:45)",
-          "Intro to Devoxx 2 (Room 2 - 13:45)"
-        ]
-      }
-    ]
-  }
-];
+let speaker1 = new Speaker(
+  "da2efaefc17e080c53baff7e6525e65e87ab9774",
+  "I have almost 10 years of experience programming in Java. " +
+    "I have also a long experience in big data and recommendation " +
+    "systems. Currently, I am the project leader of Walkmod, an open " +
+    "source tool to apply Java code conventions and also the organizer " +
+    "of Legacy Code Rocks Barcelona meetup.",
+  ["MXR-2678"],
+  "Walkmod",
+  "Pau Fernández",
+  "Raquel",
+  "http://www.walkmod.com",
+  "https://lh5.googleusercontent.com/-gpyd1u760zw/AAAAAAAAAAI/AAAAAAAAAAA/40NTLE5649A/photo.jpg",
+  "@raquelpau"
+);
+
+let gitTalk = new Talk(
+  "MXR-2678",
+  "Git Workflow Strategies for Technical Debt Management",
+  ["method_archi"],
+  "en",
+  "The technical debt metaphor is gaining significant traction in " +
+    "the agile development community as a way to understand and communicate " +
+    "those issues related to accepting bad programming practices in order to " +
+    "achieve fast results (e.g a deadline). However, the idea of getting fast " +
+    "results becomes an illusion, since the cost of building software increases " +
+    "over the time.  \r\n\r\nIn order to achieve a good technical debt management, " +
+    "agile methodologies suggest to measure it and add an specific entry in the sprint " +
+    "backlog to fix it incrementally and to apply continuous inspection to block " +
+    "new code quality issues. In this session, we will explore the different " +
+    "categories of technical debt and how can we benefit from Git workflow to " +
+    "reduce part of it incrementally and safely.",
+  ["da2efaefc17e080c53baff7e6525e65e87ab9774"],
+  null
+);
+
+const DevoxxSpeakers = {
+  da2efaefc17e080c53baff7e6525e65e87ab9774: speaker1
+};
+const DevoxxTalks = {
+  "MXR-2678": gitTalk
+};
+
+const UserScheduledFavoured = ["MXR-2678"];
 
 const statsData = {
   minutes: 455,
@@ -245,7 +264,9 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             render={props => (
               <Dashboard
-                sessions={talkDetail}
+                talkData={DevoxxTalks}
+                speakerData={DevoxxSpeakers}
+                talkIDs={UserScheduledFavoured}
                 recommendations={globalRecommendations}
                 stats={statsData}
                 {...props}
@@ -257,7 +278,14 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             path="/report"
             render={props => {
-              return <Report reportStats={statsData} talks={talkDetail} />;
+              return (
+                <Report
+                  reportStats={statsData}
+                  speakerData={DevoxxSpeakers}
+                  talkData={DevoxxTalks}
+                  talks={UserScheduledFavoured}
+                />
+              );
             }}
           />
           <PrivateRoute

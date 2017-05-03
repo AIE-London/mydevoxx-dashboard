@@ -9,13 +9,13 @@ exports[`test SpeakerCard component with title snapshot 1`] = `
         className="">
         <img
           className="jmFtVx"
-          src="defaultIcon.png" />
+          src="http://avatar.url" />
       </div>
       <div
         className="col-xs">
         <div>
           <h3>
-            Test Speaker
+            Dan Cotton
           </h3>
           <p>
             Capgemini
@@ -32,7 +32,7 @@ exports[`test SpeakerCard component with title snapshot 1`] = `
         </div>
         <div
           className="fYLUow">
-          personalblog.com
+          http://daniel-cotton.co.uk
         </div>
       </div>
     </div>
@@ -47,10 +47,7 @@ exports[`test SpeakerCard component with title snapshot 1`] = `
           <div
             className="fYLUow">
             <li>
-              Intro to Devoxx (Room 1 - 11:45)
-            </li>
-            <li>
-              Intro to Devoxx 2 (Room 2 - 13:45)
+              Talk Title Tester
             </li>
           </div>
         </ul>
