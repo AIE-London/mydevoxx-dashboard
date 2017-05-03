@@ -73,9 +73,7 @@ class SessionsAttended extends Component {
                 <h4>Speakers: </h4>
                 <CommaList>
                   {talk.speakers.map(speakerId => {
-                    console.log(speakerId);
                     let speaker = this.props.speakerData[speakerId];
-                    console.log(speaker);
                     return (
                       <CommaListItem key={speaker.name}>
                         {speaker.name}
