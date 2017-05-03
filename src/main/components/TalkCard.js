@@ -70,7 +70,7 @@ class TalkCard extends Component {
     let { title, summary, tracks } = this.props.talk;
     return (
       <Card start="xs">
-        <LeftPartition md={6}>
+        <LeftPartition xs={12} md={6}>
           <Row start="xs">
             <CardHeader id="title">{title}</CardHeader>
           </Row>
@@ -91,7 +91,7 @@ class TalkCard extends Component {
             </TrackList>
           </Row>
         </LeftPartition>
-        <RightPartition md={6}>
+        <RightPartition xs={12} md={6}>
           <Row start="xs">
             <CardSubhead id="notesHeader">My Notes</CardSubhead>
           </Row>

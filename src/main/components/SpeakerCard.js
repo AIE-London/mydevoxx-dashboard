@@ -47,7 +47,7 @@ const Container = styled.div`
 
 class SpeakerCard extends Component {
   render() {
-    let { name, company, blog, talks } = this.props.speaker;
+    let { name, company, blog, _acceptedTalkIDs } = this.props.speaker;
 
     return (
       <Card2>
@@ -72,8 +72,9 @@ class SpeakerCard extends Component {
               <div>Other Talks:</div>
               <ul>
                 <Talks>
-                  {talks.map(function(talk) {
-                    return <li key={talk}>{talk}</li>;
+                  {_acceptedTalkIDs.map(talkId => {
+                    let talk = this.props.talkData[talkId];
+                    return <li key={talk.id}>{talk.title}</li>;
                   })}
                 </Talks>
               </ul>

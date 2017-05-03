@@ -34,6 +34,7 @@ const SpeakerCardContainer = styled(Col)`
 
 class SessionView extends Component {
   render() {
+    let talk = this.props.talkData[this.props.talkId];
     return (
       <Window>
 
@@ -47,20 +48,20 @@ class SessionView extends Component {
         <Row center="xs">
           <Col xs={10}>
             <Row>
-              <TalkCard talk={this.props.talk} />
+              <TalkCard talk={talk} />
             </Row>
             <SpeakerSection center="xs">
-              {this.props.talk.speakers.map(speaker => (
-                <SpeakerCardContainer md={6} xs={12} key={speaker.name}>
-                  <SpeakerCard speaker={speaker} />
-                </SpeakerCardContainer>
-              ))}
-              <SpeakerCardContainer md={6} xs={12}>
-                <SpeakerCard speaker={this.props.talk.speakers[0]} />
-              </SpeakerCardContainer>
-              <SpeakerCardContainer md={6} xs={12}>
-                <SpeakerCard speaker={this.props.talk.speakers[0]} />
-              </SpeakerCardContainer>
+              {talk.speakers.map(speakerID => {
+                let speaker = this.props.speakerData[speakerID];
+                return (
+                  <SpeakerCardContainer md={6} xs={12} key={speaker.name}>
+                    <SpeakerCard
+                      speaker={speaker}
+                      talkData={this.props.talkData}
+                    />
+                  </SpeakerCardContainer>
+                );
+              })}
             </SpeakerSection>
           </Col>
         </Row>
