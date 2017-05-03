@@ -47,14 +47,20 @@ const Container = styled.div`
 
 class SpeakerCard extends Component {
   render() {
-    let { name, company, blog, _acceptedTalkIDs } = this.props.speaker;
+    let {
+      name,
+      company,
+      blog,
+      acceptedTalkIDs,
+      avatarURL
+    } = this.props.speaker;
 
     return (
       <Card2>
         <Container>
           <Row>
             <Col>
-              <ImgCircle src={Default} />
+              <ImgCircle src={avatarURL || Default} />
             </Col>
             <Col xs>
               <Title name={name} company={company} />
@@ -72,7 +78,7 @@ class SpeakerCard extends Component {
               <div>Other Talks:</div>
               <ul>
                 <Talks>
-                  {_acceptedTalkIDs.map(talkId => {
+                  {acceptedTalkIDs.map(talkId => {
                     let talk = this.props.talkData[talkId];
                     return <li key={talk.id}>{talk.title}</li>;
                   })}
