@@ -19,6 +19,7 @@ import Report from "./components/Report";
 import TopRated from "./components/TopRated";
 import UserEmail from "./components/UserEmail";
 import NavButtons, { NavItems } from "./components/NavButtons";
+import Branding from "./components/Branding";
 
 /*
   API Integration pieces
@@ -298,6 +299,9 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             component={TopRated}
           />
+
+          <Branding />
+
           <SideNav
             className="mobileOnly"
             showNav={this.state.navVisible}
