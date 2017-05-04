@@ -26,6 +26,7 @@ class Branding extends Component {
             height: 150
           }}
           src={require("../../../public/caplogo.svg")}
+          alt="Capgemini Logo"
         />
 
         <img
@@ -34,6 +35,7 @@ class Branding extends Component {
             height: 125
           }}
           src={require("../../../public/Aie-logo-nolocation.svg")}
+          alt="Capgemini AIE Logo"
         />
       </Container>
     );
