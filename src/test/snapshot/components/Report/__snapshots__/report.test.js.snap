@@ -80,17 +80,6 @@ exports[`test Report component snapshot 1`] = `
   </div>
   <div
     className="fGsKVL">
-    <h2
-      className="dzXVgj">
-      Day 
-      One
-    </h2>
-    <h2
-      className="iHLkzq">
-      10:00
-       - 
-      Mezzanine
-    </h2>
     <div
       className="row center-xs">
       <div
@@ -100,13 +89,13 @@ exports[`test Report component snapshot 1`] = `
           <div
             className="bvnlUe row start-xs">
             <div
-              className="col-md-6 fteZLe">
+              className="col-xs-12 col-md-6 fteZLe">
               <div
                 className="row start-xs">
                 <h2
                   className="Axdp"
                   id="title">
-                  Welcome to Devoxx 2017
+                  Test talk title
                 </h2>
               </div>
               <div
@@ -114,20 +103,20 @@ exports[`test Report component snapshot 1`] = `
                 <div
                   className="row start-xs">
                   <div
-                    className="kmDnAn" />
+                    className="cWcebC" />
                   <div
-                    className="kmDnAn" />
+                    className="cWcebC" />
                   <div
-                    className="kmDnAn" />
+                    className="cWcebC" />
                   <div
-                    className="kmDnAn" />
+                    className="cWcebC" />
                   <div
                     className="cWcebC" />
                 </div>
               </div>
               <p
                 className="jLJUnn">
-                Join the organisers of Devoxx UK and great keynote speakers for inspring stories in 20 minute segments.
+                Talk Overview over the time..
               </p>
               <div
                 className="row">
@@ -142,21 +131,13 @@ exports[`test Report component snapshot 1`] = `
                   className="gvIwUo">
                   <li
                     className="cLQKgI">
-                    Java
-                  </li>
-                  <li
-                    className="cLQKgI">
-                    Devoxx
-                  </li>
-                  <li
-                    className="cLQKgI">
-                    Spring
+                    method_architecture
                   </li>
                 </ul>
               </div>
             </div>
             <div
-              className="col-md-6 hkfHMw">
+              className="col-xs-12 col-md-6 hkfHMw">
               <div
                 className="row start-xs">
                 <h3
@@ -169,7 +150,7 @@ exports[`test Report component snapshot 1`] = `
                 className="row start-xs">
                 <p
                   className="bKHqKP">
-                  Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer nec. Feugiat qualisque quo an. Labores officiis te nam.
+                  
                 </p>
               </div>
               <div
@@ -185,21 +166,13 @@ exports[`test Report component snapshot 1`] = `
                 <div
                   className="row start-xs">
                   <div
-                    className="">
-                    <img
-                      className="imhmHM"
-                      src="test-image.jpeg" />
-                  </div>
+                    className="" />
                   <div
                     className="col-xs">
                     <h3
-                      className="jPwRym">
-                      Test User
-                    </h3>
+                      className="jPwRym" />
                     <p
-                      className="ZxTsc">
-                      Great session, thanks for organising. Looking forward to the next one!
-                    </p>
+                      className="ZxTsc" />
                   </div>
                 </div>
               </div>
@@ -220,16 +193,16 @@ exports[`test Report component snapshot 1`] = `
                     className="">
                     <img
                       className="jmFtVx"
-                      src="defaultIcon.png" />
+                      src="https://images.net/photo.jpg" />
                   </div>
                   <div
                     className="col-xs">
                     <div>
                       <h3>
-                        Test Speaker
+                        Daan Cotton
                       </h3>
                       <p>
-                        Capgemini
+                        Cap AIE
                       </p>
                     </div>
                   </div>
@@ -243,7 +216,7 @@ exports[`test Report component snapshot 1`] = `
                     </div>
                     <div
                       className="fYLUow">
-                      personalblog.com
+                      http://www.danco.com
                     </div>
                   </div>
                 </div>
@@ -258,134 +231,7 @@ exports[`test Report component snapshot 1`] = `
                       <div
                         className="fYLUow">
                         <li>
-                          Intro to Devoxx (Room 1 - 11:45)
-                        </li>
-                        <li>
-                          Intro to Devoxx 2 (Room 2 - 13:45)
-                        </li>
-                      </div>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="col-md-6 col-xs-12 gWwfhI">
-            <div
-              className="lluTUT row">
-              <div
-                className="kblate">
-                <div
-                  className="row">
-                  <div
-                    className="">
-                    <img
-                      className="jmFtVx"
-                      src="defaultIcon.png" />
-                  </div>
-                  <div
-                    className="col-xs">
-                    <div>
-                      <h3>
-                        Test Speaker
-                      </h3>
-                      <p>
-                        Capgemini
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="row">
-                  <div
-                    className="">
-                    <div>
-                      Personal Blog:
-                    </div>
-                    <div
-                      className="fYLUow">
-                      personalblog.com
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="row">
-                  <div
-                    className="">
-                    <div>
-                      Other Talks:
-                    </div>
-                    <ul>
-                      <div
-                        className="fYLUow">
-                        <li>
-                          Intro to Devoxx (Room 1 - 11:45)
-                        </li>
-                        <li>
-                          Intro to Devoxx 2 (Room 2 - 13:45)
-                        </li>
-                      </div>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="col-md-6 col-xs-12 gWwfhI">
-            <div
-              className="lluTUT row">
-              <div
-                className="kblate">
-                <div
-                  className="row">
-                  <div
-                    className="">
-                    <img
-                      className="jmFtVx"
-                      src="defaultIcon.png" />
-                  </div>
-                  <div
-                    className="col-xs">
-                    <div>
-                      <h3>
-                        Test Speaker
-                      </h3>
-                      <p>
-                        Capgemini
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="row">
-                  <div
-                    className="">
-                    <div>
-                      Personal Blog:
-                    </div>
-                    <div
-                      className="fYLUow">
-                      personalblog.com
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="row">
-                  <div
-                    className="">
-                    <div>
-                      Other Talks:
-                    </div>
-                    <ul>
-                      <div
-                        className="fYLUow">
-                        <li>
-                          Intro to Devoxx (Room 1 - 11:45)
-                        </li>
-                        <li>
-                          Intro to Devoxx 2 (Room 2 - 13:45)
+                          Test talk title
                         </li>
                       </div>
                     </ul>

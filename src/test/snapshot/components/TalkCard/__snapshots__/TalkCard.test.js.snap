@@ -2,7 +2,7 @@ exports[`test card component with title snapshot 1`] = `
 <div
   className="bvnlUe row start-xs">
   <div
-    className="col-md-6 fteZLe">
+    className="col-xs-12 col-md-6 fteZLe">
     <div
       className="row start-xs">
       <h2
@@ -16,11 +16,11 @@ exports[`test card component with title snapshot 1`] = `
       <div
         className="row start-xs">
         <div
-          className="kmDnAn" />
+          className="cWcebC" />
         <div
-          className="kmDnAn" />
+          className="cWcebC" />
         <div
-          className="kmDnAn" />
+          className="cWcebC" />
         <div
           className="cWcebC" />
         <div
@@ -29,7 +29,7 @@ exports[`test card component with title snapshot 1`] = `
     </div>
     <p
       className="jLJUnn">
-      Join the organisers of Devoxx UK and great keynote speakers for inspring stories in 20 minutes.
+      This is a talk about devoxx
     </p>
     <div
       className="row">
@@ -44,17 +44,17 @@ exports[`test card component with title snapshot 1`] = `
         className="gvIwUo">
         <li
           className="cLQKgI">
-          Devoxx
+          track1
         </li>
         <li
           className="cLQKgI">
-          SpringBoot
+          track2
         </li>
       </ul>
     </div>
   </div>
   <div
-    className="col-md-6 hkfHMw">
+    className="col-xs-12 col-md-6 hkfHMw">
     <div
       className="row start-xs">
       <h3
@@ -67,7 +67,7 @@ exports[`test card component with title snapshot 1`] = `
       className="row start-xs">
       <p
         className="bKHqKP">
-        Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer nec. Feugiat qualisque quo an. Labores officii.
+        
       </p>
     </div>
     <div
@@ -83,21 +83,13 @@ exports[`test card component with title snapshot 1`] = `
       <div
         className="row start-xs">
         <div
-          className="">
-          <img
-            className="imhmHM"
-            src="test-image.jpeg" />
-        </div>
+          className="" />
         <div
           className="col-xs">
           <h3
-            className="jPwRym">
-            Test User 123
-          </h3>
+            className="jPwRym" />
           <p
-            className="ZxTsc">
-            123 Great session, thanks for organising. Looking forward to the next one!
-          </p>
+            className="ZxTsc" />
         </div>
       </div>
     </div>
