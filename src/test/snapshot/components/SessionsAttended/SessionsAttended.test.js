@@ -6,50 +6,72 @@ import ReactDOM from "react-dom";
 import SessionsAttended from "../../../../main/components/SessionsAttended";
 import renderer from "react-test-renderer";
 
-import testImage from "../../images/test-image.jpeg";
+import Talk from "../../../../main/model/talk";
+import Speaker from "../../../../main/model/speaker";
 
-const talkDetail = [
-  {
-    dayNo: "One",
-    sTime: "10:00",
-    room: "Mezzanine",
-    title: "Welcome to Devoxx 2017",
-    description: "Join the organisers of Devoxx UK and great keynote " +
-      "speakers for inspring stories in 20 minute segments.",
-    rating: 4,
-    topTracks: ["Java", "Devoxx", "Spring"],
-    notes: "Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos " +
-      "volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer" +
-      " nec. Feugiat qualisque quo an. Labores officiis te nam.",
-    review: {
-      name: "Test User",
-      comment: "Great session, thanks for organising. Looking forward to the next one!",
-      image: testImage
-    },
-    speakers: [
-      {
-        name: "Test Speaker",
-        company: "Capgemini",
-        blog: "personalblog.com",
-        talks: [
-          "Intro to Devoxx (Room 1 - 11:45)",
-          "Intro to Devoxx 2 (Room 2 - 13:45)"
-        ]
-      }
-    ]
+const routeData = {
+  reportStats: {
+    minutes: 455,
+    talks: 10,
+    learning: ["Spring", "Java"],
+    attendees: 435
   }
-];
+};
+
+let speaker1 = new Speaker(
+  "da2efaefc17e080c53baff7e6525e65e87ab9774b",
+  "Test_Description_2",
+  ["MXR-2678a"],
+  "Capgeminiaie",
+  "Cotton",
+  "Daan",
+  "http://www.danco.com",
+  "https://images.net/photo.jpg",
+  "@twitter"
+);
+
+let gitTalk = new Talk(
+  "MXR-2678b",
+  "Test talk title",
+  ["method_architecture"],
+  "en",
+  "Talk Overview over the time..",
+  ["da2efaefc17e080c53baff7e6525e65e87ab9774b"],
+  null
+);
+
+const DevoxxSpeakers = {
+  da2efaefc17e080c53baff7e6525e65e87ab9774b: speaker1
+};
+const DevoxxTalks = {
+  "MXR-2678b": gitTalk
+};
+
+const UserScheduledFavoured = ["MXR-2678b"];
 
 test("SessionsAttended component", () => {
   it("renders without crashing", () => {
     const div = document.createElement("div");
-    ReactDOM.render(<SessionsAttended sessions={talkDetail} />, div);
+    ReactDOM.render(
+      <SessionsAttended
+        speakerData={DevoxxSpeakers}
+        talkData={DevoxxTalks}
+        talkIDs={UserScheduledFavoured}
+      />,
+      div
+    );
   });
 });
 
 test("SessionsAttended component with snapshot", () => {
   const tree = renderer
-    .create(<SessionsAttended sessions={talkDetail} />)
+    .create(
+      <SessionsAttended
+        speakerData={DevoxxSpeakers}
+        talkData={DevoxxTalks}
+        talkIDs={UserScheduledFavoured}
+      />
+    )
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
