@@ -18,6 +18,7 @@ import Dexie from "dexie";
 
 import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
+import TalkApi from "./api/talk";
 
 import NavButtons, { NavItems } from "./components/NavButtons";
 
@@ -207,6 +208,7 @@ class App extends Component {
   };
 
   userSignedIn(uuid) {
+    /*
     FavoredTalk.getFavoredTalks(uuid).then(results => {
       console.log(results);
       this.setState({ favouredTalks: results });
@@ -216,7 +218,36 @@ class App extends Component {
       console.log(results);
       this.setState({ scheduledTalks: results });
     });
+    */
 
+    let favTalkPromise = new Promise((resolve, reject) => {
+      resolve(
+        FavoredTalk.getFavoredTalks(uuid).then(results => {
+          console.log(results);
+          this.setState({ favouredTalks: results });
+        })
+      );
+    });
+
+    let schedTalkPromise = new Promise((resolve, reject) => {
+      resolve(
+        ScheduledTalk.getScheduledTalks(uuid).then(results => {
+          console.log(results);
+          this.setState({ scheduledTalks: results });
+        })
+      );
+    });
+
+    Promise.all([favTalkPromise, schedTalkPromise]).then(() => {
+      /*
+      TalkApi.getTalk(this.state.scheduledTalks.id).then( results => {
+        console.log(results);
+      })
+      */
+      this.state.scheduledTalks.forEach(id => {
+        console.log(id);
+      });
+    });
     return this.uuidExists();
   }
 
