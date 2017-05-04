@@ -223,8 +223,8 @@ class App extends Component {
     let favTalkPromise = new Promise((resolve, reject) => {
       resolve(
         FavoredTalk.getFavoredTalks(uuid).then(results => {
-          console.log(results);
-          this.setState({ favouredTalks: results });
+          console.log(results.favored);
+          this.setState({ favouredTalks: results.favored });
         })
       );
     });
@@ -232,8 +232,8 @@ class App extends Component {
     let schedTalkPromise = new Promise((resolve, reject) => {
       resolve(
         ScheduledTalk.getScheduledTalks(uuid).then(results => {
-          console.log(results);
-          this.setState({ scheduledTalks: results });
+          console.log(results.scheduled);
+          this.setState({ scheduledTalks: results.scheduled });
         })
       );
     });
@@ -244,8 +244,12 @@ class App extends Component {
         console.log(results);
       })
       */
-      this.state.scheduledTalks.forEach(id => {
-        console.log(id);
+
+      this.state.scheduledTalks.forEach(talk => {
+        console.log(talk.id);
+        TalkApi.getTalk(talk.id).then(result => {
+          console.log(result);
+        });
       });
     });
     return this.uuidExists();
