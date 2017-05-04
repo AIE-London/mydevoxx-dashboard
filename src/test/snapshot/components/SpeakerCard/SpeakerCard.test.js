@@ -3,36 +3,45 @@ import ReactDOM from "react-dom";
 import Speaker from "../../../../main/components/SpeakerCard";
 import renderer from "react-test-renderer";
 
-const speakerDetail = {
-  name: "Test Speaker",
-  company: "Capgemini",
-  blog: "personalblog.com",
-  talks: [
-    "Intro to Devoxx (Room 1 - 11:45)",
-    "Intro to Devoxx 2 (Room 2 - 13:45)"
-  ]
+import SpeakerData from "../../../../main/model/speaker";
+import Talk from "../../../../main/model/talk";
+
+const speakerDetail = new SpeakerData(
+  "SPEAKER-123",
+  "I have a bio, it goes like this....",
+  ["TALK-113"],
+  "Capgemini",
+  "Cotton",
+  "Dan",
+  "http://daniel-cotton.co.uk",
+  "http://avatar.url",
+  "@danielcottondev"
+);
+
+const talkData = {
+  "TALK-113": new Talk(
+    "TALK-113",
+    "Talk Title Tester",
+    ["java", "junit"],
+    "fr",
+    "Git workflow, Java - words to pad out the test overview....",
+    ["SPEAKER-123"]
+  )
 };
 
 test("SpeakerCard component", () => {
   it("renders without crashing", () => {
     const div = document.createElement("div");
     ReactDOM.render(
-      <Speaker
-        name="Testy MacTest"
-        company="Testy Inc."
-        blog="forsomereasonihaveablog.com"
-        talks={[
-          "The Importance of Jazz in modern society",
-          "Rory's Roaring Apps: An M.Night Shayamalan production",
-          "That other talk"
-        ]}
-      />,
+      <Speaker speaker={speakerDetail} talkData={talkData} />,
       div
     );
   });
 });
 
 test("SpeakerCard component with title snapshot", () => {
-  const tree = renderer.create(<Speaker speaker={speakerDetail} />).toJSON();
+  const tree = renderer
+    .create(<Speaker speaker={speakerDetail} talkData={talkData} />)
+    .toJSON();
   expect(tree).toMatchSnapshot();
 });
