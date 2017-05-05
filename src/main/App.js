@@ -139,38 +139,41 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      uuidPresent: true,
+      uuidPresent: false,
       navVisible: false,
       scheduledTalks: [],
       favouredTalks: [],
       talks: {},
-      speakers: {}
+      speakers: {},
+      redirectLogin: false
     };
     //Define indexeddb instance/version
     db = new Dexie("devoxx-db");
     db.version(1).stores({ record: "id,uuid" });
 
     //open connection to indexeddb - display error if connection failed
-    db.open().catch(error => {
-      alert("uuidDb could not be accessed: " + error);
-    });
+    db
+      .open("devoxx-db")
+      .then(() => {
+        this.uuidExists().catch(error => {
+          this.setState({ error: error });
+        });
+      })
+      .catch(error => {
+        alert("uuidDb could not be accessed: " + error);
+      });
 
     this.userSignedIn = this.userSignedIn.bind(this);
     this.signInPage = this.signInPage.bind(this);
     this.uuidExists = this.uuidExists.bind(this);
     this.speakerInfo = this.speakerInfo.bind(this);
+    this.logOut = this.logOut.bind(this);
     this.storeTalkDataInState = this.storeTalkDataInState.bind(this);
-    this.uuidExists().catch(error => {
-      this.setState({ error: error });
-    });
   }
 
   uuidExists = () => {
     return new Promise((resolve, reject) => {
       //open connection to indexeddb - display error if connection failed
-      db.open("devoxx-db").catch(error => {
-        alert("uuidDb could not be accessed: " + error);
-      });
       db.record &&
         db.record
           .get("0")
@@ -261,6 +264,12 @@ class App extends Component {
     return this.uuidExists();
   }
 
+  logOut() {
+    Dexie.delete("devoxx-db").then(() => {
+      return this.uuidExists();
+    });
+  }
+
   // [TODO] Make inline
   signInPage() {
     return <LoginForm onSignIn={this.userSignedIn} db={db} />;
@@ -294,7 +303,10 @@ class App extends Component {
               />
               <h1>MyDevoxxReport</h1>
             </TitleContainer>
-            <NavButtons />
+            <div>
+              <NavButtons />
+              <button onClick={this.logOut}>Log Out</button>
+            </div>
           </NavBar>
           <PrivateRoute
             path="/"
