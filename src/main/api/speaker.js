@@ -23,13 +23,14 @@ let getSpeaker = speakerId => {
     let body = JSON.parse(response.getBody());
     return {
       uuid: body.uuid,
+      bio: body.bio,
       firstName: body.firstName,
       lastName: body.lastName,
       avatarURL: body.avatarURL,
       company: body.company,
       twitter: body.twitter,
       blog: body.blog,
-      talkId: body.acceptedTalks.map(talk => {
+      acceptedTalkIDs: body.acceptedTalks.map(talk => {
         return talk.id;
       })
     };

@@ -87,10 +87,6 @@ let speaker1 = new Speaker(
   "@raquelpau"
 );
 
-const DevoxxSpeakers = {
-  da2efaefc17e080c53baff7e6525e65e87ab9774: speaker1
-};
-
 const statsData = {
   minutes: 455,
   talks: 10,
@@ -162,7 +158,8 @@ class App extends Component {
       navVisible: false,
       scheduledTalks: [],
       favouredTalks: [],
-      talks: {}
+      talks: {},
+      speakers: {}
     };
     //Define indexeddb instance/version
     db = new Dexie("devoxx-db");
@@ -176,6 +173,7 @@ class App extends Component {
     this.userSignedIn = this.userSignedIn.bind(this);
     this.signInPage = this.signInPage.bind(this);
     this.uuidExists = this.uuidExists.bind(this);
+    this.speakerInfo = this.speakerInfo.bind(this);
     this.storeTalkDataInState = this.storeTalkDataInState.bind(this);
     this.uuidExists().catch(error => {
       this.setState({ error: error });
@@ -209,36 +207,32 @@ class App extends Component {
   };
 
   speakerInfo(speakers) {
-    console.log(speakers);
-    console.log(speakers.forEach);
     speakers.forEach(spkr => {
-      console.log(spkr);
-      //      if (!this.state.speakers[spkr.id]) {
-      console.log(SpeakerApi);
-      SpeakerApi.getSpeaker(spkr.id).then(result => {
-        console.log(result);
-        let speaker = new Speaker(
-          result.uuid,
-          result.bio,
-          result.acceptedTalkIDs,
-          result.company,
-          result.lastName,
-          result.firstName,
-          result.blog,
-          result.avatarURL,
-          result.twitter
-        );
-        let newSpeaker = {};
-        newSpeaker[spkr.id] = speaker;
-        this.setState({
-          speakers: Object.assign({}, this.state.speakers, newSpeaker)
+      if (!this.state.speakers[spkr.id]) {
+        SpeakerApi.getSpeaker(spkr.id).then(result => {
+          console.log(result);
+          let speaker = new Speaker(
+            result.uuid,
+            result.bio,
+            result.acceptedTalkIDs,
+            result.company,
+            result.lastName,
+            result.firstName,
+            result.blog,
+            result.avatarURL,
+            result.twitter
+          );
+          let newSpeaker = {};
+          newSpeaker[spkr.id] = speaker;
+          this.setState({
+            speakers: Object.assign({}, this.state.speakers, newSpeaker)
+          });
+          console.log(this.state.speakers);
         });
-        console.log(this.state.speakers);
-      });
-      // } else {
-      console.debug("ALREADY EXISTING");
-      console.debug(spkr);
-      //}
+      } else {
+        console.debug("ALREADY EXISTING");
+        console.debug(spkr);
+      }
     });
   }
 
@@ -276,22 +270,23 @@ class App extends Component {
           this.setState({
             talks: Object.assign({}, this.state.talks, newTalk)
           });
-          console.log("CALLING SPEAKER INFO");
           this.speakerInfo(result.speakers);
-          console.log("CALLED SPEAKER INFO");
         });
       });
     });
   }
 
+  // Is this necessary? [TODO] Remove
   userSignedIn() {
     return this.uuidExists();
   }
 
+  // [TODO] Make inline
   signInPage() {
     return <UserEmail onSignIn={this.userSignedIn} db={db} />;
   }
 
+  // [TODO] Move to a utilities class
   mergeUniqueArray(firstArray, secondArray) {
     let mergedArray = firstArray.concat([secondArray]);
     return mergedArray
@@ -307,6 +302,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.speakers);
     return (
       <DevoxxRouter history={browserHistory}>
         <Page>
