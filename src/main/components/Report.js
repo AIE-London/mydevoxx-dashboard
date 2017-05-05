@@ -19,8 +19,13 @@ class Report extends Component {
             />
           </Col>
         </Row>
-        {this.props.talks.map((talk, index) => (
-          <SessionView key={index} talk={talk} />
+        {this.props.talks.map((talkId, index) => (
+          <SessionView
+            key={index}
+            talkId={talkId}
+            talkData={this.props.talkData}
+            speakerData={this.props.speakerData}
+          />
         ))}
       </div>
     );

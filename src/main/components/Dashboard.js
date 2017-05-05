@@ -57,7 +57,11 @@ class Dashboard extends Component {
             <TwitterFeed />
           </VerticalContainer>
           <Col xs={12} sm={6} md={4}>
-            <SessionsAttended sessions={this.props.sessions} />
+            <SessionsAttended
+              speakerData={this.props.speakerData}
+              talkData={this.props.talkData}
+              talkIDs={this.props.talkIDs}
+            />
           </Col>
           <Col xs={12} sm={6} md={4}>
             <FurtherReading recommendations={this.props.recommendations} />

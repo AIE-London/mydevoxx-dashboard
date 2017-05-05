@@ -137,27 +137,6 @@ exports[`test App component snapshot 1`] = `
             className="jaIYAq">
             My Sessions
           </h2>
-          <div
-            className="kgeHuu">
-            <div>
-              <h3>
-                Welcome to Devoxx 2017
-              </h3>
-              <h4>
-                Speakers: 
-              </h4>
-              <ul
-                className="bGhaQW">
-                <li
-                  className="cLQKgI">
-                  Test Speaker
-                </li>
-              </ul>
-            </div>
-            <img
-              alt="Java"
-              src="https://ignite.apache.org/images/java.png" />
-          </div>
         </div>
       </div>
       <div
@@ -236,6 +215,27 @@ exports[`test App component snapshot 1`] = `
         </section>
       </div>
     </div>
+  </div>
+  <div
+    className="ghgTfl row">
+    <img
+      alt="Capgemini Logo"
+      src="caplogo.svg"
+      style={
+        Object {
+          "height": 150,
+          "width": 250,
+        }
+      } />
+    <img
+      alt="Capgemini AIE Logo"
+      src="Aie-logo-nolocation.svg"
+      style={
+        Object {
+          "height": 125,
+          "width": 300,
+        }
+      } />
   </div>
   <aside
     style={

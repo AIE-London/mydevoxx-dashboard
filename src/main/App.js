@@ -8,17 +8,29 @@ import {
 } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
 import styled from "styled-components";
+import Dexie from "dexie";
+
+/*
+  UI Components
+ */
 
 import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
-import Talk from "./components/Talk";
 import TopRated from "./components/TopRated";
 import LoginForm from "./components/LoginForm";
-import Dexie from "dexie";
 
 import NavButtons, { NavItems } from "./components/NavButtons";
+import Branding from "./components/Branding";
 
-import testImage from "../test/snapshot/images/test-image.jpeg";
+/*
+  API Integration pieces
+ */
+import FavoredTalk from "./api/favoredTalks";
+import ScheduledTalk from "./api/scheduledTalks";
+import TalkApi from "./api/talk";
+
+import Talk from "./model/talk";
+import Speaker from "./model/speaker";
 
 const NavBar = styled.div`
   background: #ff9e19;
@@ -58,37 +70,25 @@ const globalRecommendations = [
   }
 ];
 
-const talkDetail = [
-  {
-    dayNo: "One",
-    sTime: "10:00",
-    room: "Mezzanine",
-    title: "Welcome to Devoxx 2017",
-    description: "Join the organisers of Devoxx UK and great keynote " +
-      "speakers for inspring stories in 20 minute segments.",
-    rating: 4,
-    topTracks: ["Java", "Devoxx", "Spring"],
-    notes: "Lorem ipsum dolor sit amet, everti quaestio mel ea. Ex eos " +
-      "volutpat qualisque. Sale tantas cotidieque quo ut, ad nostro consectetuer" +
-      " nec. Feugiat qualisque quo an. Labores officiis te nam.",
-    review: {
-      name: "Test User",
-      comment: "Great session, thanks for organising. Looking forward to the next one!",
-      image: testImage
-    },
-    speakers: [
-      {
-        name: "Test Speaker",
-        company: "Capgemini",
-        blog: "personalblog.com",
-        talks: [
-          "Intro to Devoxx (Room 1 - 11:45)",
-          "Intro to Devoxx 2 (Room 2 - 13:45)"
-        ]
-      }
-    ]
-  }
-];
+let speaker1 = new Speaker(
+  "da2efaefc17e080c53baff7e6525e65e87ab9774",
+  "I have almost 10 years of experience programming in Java. " +
+    "I have also a long experience in big data and recommendation " +
+    "systems. Currently, I am the project leader of Walkmod, an open " +
+    "source tool to apply Java code conventions and also the organizer " +
+    "of Legacy Code Rocks Barcelona meetup.",
+  ["MXR-2678"],
+  "Walkmod",
+  "Pau Fernández",
+  "Raquel",
+  "http://www.walkmod.com",
+  "https://lh5.googleusercontent.com/-gpyd1u760zw/AAAAAAAAAAI/AAAAAAAAAAA/40NTLE5649A/photo.jpg",
+  "@raquelpau"
+);
+
+const DevoxxSpeakers = {
+  da2efaefc17e080c53baff7e6525e65e87ab9774: speaker1
+};
 
 const statsData = {
   minutes: 455,
@@ -156,7 +156,13 @@ const Page = styled.div`
 class App extends Component {
   constructor() {
     super();
-    this.state = { uuidPresent: true, navVisible: false };
+    this.state = {
+      uuidPresent: true,
+      navVisible: false,
+      scheduledTalks: [],
+      favouredTalks: [],
+      talks: {}
+    };
     //Define indexeddb instance/version
     db = new Dexie("devoxx-db");
     db.version(1).stores({ record: "id,uuid" });
@@ -166,8 +172,10 @@ class App extends Component {
       alert("uuidDb could not be accessed: " + error);
     });
 
+    this.userSignedIn = this.userSignedIn.bind(this);
     this.signInPage = this.signInPage.bind(this);
     this.uuidExists = this.uuidExists.bind(this);
+    this.storeTalkDataInState = this.storeTalkDataInState.bind(this);
     this.uuidExists().catch(error => {
       this.setState({ error: error });
     });
@@ -185,6 +193,8 @@ class App extends Component {
           .then(resolution => {
             if (resolution) {
               this.setState({ uuidPresent: true });
+
+              this.storeTalkDataInState(resolution.uuid);
               resolve();
             } else {
               throw new Error("No UUID");
@@ -197,8 +207,65 @@ class App extends Component {
     });
   };
 
+  storeTalkDataInState(uuid) {
+    let favTalkPromise = FavoredTalk.getFavoredTalks(uuid).then(results => {
+      this.setState({ favouredTalks: results.favored });
+    });
+
+    let schedTalkPromise = ScheduledTalk.getScheduledTalks(
+      uuid
+    ).then(results => {
+      this.setState({ scheduledTalks: results.scheduled });
+    });
+
+    Promise.all([favTalkPromise, schedTalkPromise]).then(() => {
+      let uniqueTalks = this.mergeUniqueArray(
+        this.state.favouredTalks,
+        this.state.scheduledTalks
+      );
+
+      uniqueTalks.forEach(id => {
+        TalkApi.getTalk(id).then(result => {
+          let talk = new Talk(
+            result.id,
+            result.name,
+            result.tracks,
+            "en",
+            result.description,
+            result.speakers,
+            result.videoURL
+          );
+
+          let newTalk = {};
+          newTalk[talk.id] = talk;
+          this.setState({
+            talks: Object.assign({}, this.state.talks, newTalk)
+          });
+        });
+      });
+    });
+  }
+
+  userSignedIn() {
+    return this.uuidExists();
+  }
+
   signInPage() {
-    return <LoginForm />;
+    return <LoginForm onSignIn={this.userSignedIn} db={db} />;
+  }
+
+  mergeUniqueArray(firstArray, secondArray) {
+    let mergedArray = firstArray.concat([secondArray]);
+    return mergedArray
+      .map(id => {
+        return id.id;
+      })
+      .reduce((result, current) => {
+        if (current && result.indexOf(current) < 0) {
+          result.push(current);
+        }
+        return result;
+      }, []);
   }
 
   render() {
@@ -222,7 +289,12 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             render={props => (
               <Dashboard
-                sessions={talkDetail}
+                talkData={this.state.talks}
+                speakerData={DevoxxSpeakers}
+                talkIDs={this.mergeUniqueArray(
+                  this.state.favouredTalks,
+                  this.state.scheduledTalks
+                )}
                 recommendations={globalRecommendations}
                 stats={statsData}
                 {...props}
@@ -234,7 +306,17 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             path="/report"
             render={props => {
-              return <Report reportStats={statsData} talks={talkDetail} />;
+              return (
+                <Report
+                  reportStats={statsData}
+                  speakerData={DevoxxSpeakers}
+                  talkData={this.state.talks}
+                  talks={this.mergeUniqueArray(
+                    this.state.favouredTalks,
+                    this.state.scheduledTalks
+                  )}
+                />
+              );
             }}
           />
           <PrivateRoute
@@ -247,6 +329,9 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             component={TopRated}
           />
+
+          <Branding />
+
           <SideNav
             className="mobileOnly"
             showNav={this.state.navVisible}

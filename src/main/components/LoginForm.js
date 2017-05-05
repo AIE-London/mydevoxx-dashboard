@@ -4,7 +4,7 @@ import retrieveUuid from "../api/retrieveUuid";
 
 import { Row } from "react-flexbox-grid";
 import styled from "styled-components";
-
+import { Redirect } from "react-router-dom";
 import firebaseui from "firebaseui";
 import * as firebase from "firebase";
 
@@ -34,6 +34,7 @@ const LoginCard = styled(Card)`
   & form {
     width: 100%;
   }
+  margin-bottom: 4em;
 `;
 
 if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
@@ -131,9 +132,10 @@ class LoginForm extends Component {
   render() {
     return (
       <section>
+        {this.state.redirect && <Redirect to="/" />}
         <LoginPage center="xs" middle="xs">
           <LoginCard>
-            <h3> Please login with your email </h3>
+            <h3> Please login to Personal Devoxx </h3>
             {this.state.loginError &&
               <p>Error loading login, please try again later.</p>}
             <div id="firebaseui-auth-container" />
