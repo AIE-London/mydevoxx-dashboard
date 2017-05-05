@@ -3,9 +3,9 @@ exports[`test user email component with snapshot 1`] = `
   <div
     className="jElMWD row center-xs middle-xs">
     <div
-      className="aRpXU row">
+      className="kMFmgp row">
       <h3>
-         Please login with your email 
+         Please login to Personal Devoxx 
       </h3>
       <p>
         Error loading login, please try again later.
