@@ -18,6 +18,7 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
  * @returns {bio, firstName, lastName, avatarUrl, company, twitter, blog, talkId}
  */
 let getSpeaker = speakerId => {
+  console.debug("[API-CALL] Getting speaker ID");
   return request("GET", speakerEndpoint + speakerId).then(response => {
     let body = JSON.parse(response.getBody());
     return {

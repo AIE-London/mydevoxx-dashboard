@@ -27,7 +27,7 @@ import Branding from "./components/Branding";
 import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
 
-import SpeakerApi from "./api/speakers";
+import SpeakerApi from "./api/speaker";
 import TalkApi from "./api/talk";
 
 import Talk from "./model/talk";
@@ -209,29 +209,36 @@ class App extends Component {
   };
 
   speakerInfo(speakers) {
-    speakers.forEach(id => {
-      if (!this.state.speakers[id]) {
-        SpeakerApi.getSpeaker(id).then(result => {
-          console.log(result);
-          let speaker = new Speaker(
-            result.uuid,
-            result.bio,
-            result.acceptedTalkIDs,
-            result.company,
-            result.lastName,
-            result.firstName,
-            result.blog,
-            result.avatarURL,
-            result.twitter
-          );
-          let newSpeaker = {};
-          newSpeaker[id] = speaker;
-          this.setState({
-            speakers: Object.assign({}, this.state.speakers, newSpeaker)
-          });
-          console.log(this.state.speakers);
+    console.log(speakers);
+    console.log(speakers.forEach);
+    speakers.forEach(spkr => {
+      console.log(spkr);
+      //      if (!this.state.speakers[spkr.id]) {
+      console.log(SpeakerApi);
+      SpeakerApi.getSpeaker(spkr.id).then(result => {
+        console.log(result);
+        let speaker = new Speaker(
+          result.uuid,
+          result.bio,
+          result.acceptedTalkIDs,
+          result.company,
+          result.lastName,
+          result.firstName,
+          result.blog,
+          result.avatarURL,
+          result.twitter
+        );
+        let newSpeaker = {};
+        newSpeaker[spkr.id] = speaker;
+        this.setState({
+          speakers: Object.assign({}, this.state.speakers, newSpeaker)
         });
-      }
+        console.log(this.state.speakers);
+      });
+      // } else {
+      console.debug("ALREADY EXISTING");
+      console.debug(spkr);
+      //}
     });
   }
 
@@ -269,6 +276,9 @@ class App extends Component {
           this.setState({
             talks: Object.assign({}, this.state.talks, newTalk)
           });
+          console.log("CALLING SPEAKER INFO");
+          this.speakerInfo(result.speakers);
+          console.log("CALLED SPEAKER INFO");
         });
       });
     });

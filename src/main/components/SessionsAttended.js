@@ -96,7 +96,6 @@ class SessionsAttended extends Component {
               </Session>
             );
           } catch (error) {
-            console.error(error);
             return <div>Loading...</div>;
           }
         })}
