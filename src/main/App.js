@@ -85,31 +85,9 @@ let speaker1 = new Speaker(
   "@raquelpau"
 );
 
-let gitTalk = new Talk(
-  "MXR-2678",
-  "Git Workflow Strategies for Technical Debt Management",
-  ["method_archi"],
-  "en",
-  "The technical debt metaphor is gaining significant traction in " +
-    "the agile development community as a way to understand and communicate " +
-    "those issues related to accepting bad programming practices in order to " +
-    "achieve fast results (e.g a deadline). However, the idea of getting fast " +
-    "results becomes an illusion, since the cost of building software increases " +
-    "over the time.  \r\n\r\nIn order to achieve a good technical debt management, " +
-    "agile methodologies suggest to measure it and add an specific entry in the sprint " +
-    "backlog to fix it incrementally and to apply continuous inspection to block " +
-    "new code quality issues. In this session, we will explore the different " +
-    "categories of technical debt and how can we benefit from Git workflow to " +
-    "reduce part of it incrementally and safely.",
-  ["da2efaefc17e080c53baff7e6525e65e87ab9774"],
-  null
-);
-
 const DevoxxSpeakers = {
   da2efaefc17e080c53baff7e6525e65e87ab9774: speaker1
 };
-
-const UserScheduledFavoured = ["MXR-2678"];
 
 const statsData = {
   minutes: 455,
@@ -229,20 +207,14 @@ class App extends Component {
   };
 
   storeTalkDataInState(uuid) {
-    let favTalkPromise = new Promise((resolve, reject) => {
-      resolve(
-        FavoredTalk.getFavoredTalks(uuid).then(results => {
-          this.setState({ favouredTalks: results.favored });
-        })
-      );
+    let favTalkPromise = FavoredTalk.getFavoredTalks(uuid).then(results => {
+      this.setState({ favouredTalks: results.favored });
     });
 
-    let schedTalkPromise = new Promise((resolve, reject) => {
-      resolve(
-        ScheduledTalk.getScheduledTalks(uuid).then(results => {
-          this.setState({ scheduledTalks: results.scheduled });
-        })
-      );
+    let schedTalkPromise = ScheduledTalk.getScheduledTalks(
+      uuid
+    ).then(results => {
+      this.setState({ scheduledTalks: results.scheduled });
     });
 
     Promise.all([favTalkPromise, schedTalkPromise]).then(() => {
