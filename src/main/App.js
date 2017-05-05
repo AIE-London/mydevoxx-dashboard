@@ -17,7 +17,8 @@ import Dexie from "dexie";
 import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
 import TopRated from "./components/TopRated";
-import UserEmail from "./components/UserEmail";
+import LoginForm from "./components/LoginForm";
+
 import NavButtons, { NavItems } from "./components/NavButtons";
 import Branding from "./components/Branding";
 
@@ -250,7 +251,7 @@ class App extends Component {
   }
 
   signInPage() {
-    return <UserEmail onSignIn={this.userSignedIn} db={db} />;
+    return <LoginForm onSignIn={this.userSignedIn} db={db} />;
   }
 
   mergeUniqueArray(firstArray, secondArray) {
