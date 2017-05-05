@@ -59,6 +59,10 @@ const TrackList = styled(CommaList)`
   opacity: 0.6;
 `;
 
+const FullWidthCard = styled(Card)`
+  flex: 1;
+`;
+
 class TalkCard extends Component {
   render() {
     // [TODO] Allow the user to take notes & store in indexed DB
@@ -69,7 +73,7 @@ class TalkCard extends Component {
     let rating = 0;
     let { title, summary, tracks } = this.props.talk;
     return (
-      <Card start="xs">
+      <FullWidthCard start="xs">
         <LeftPartition xs={12} md={6}>
           <Row start="xs">
             <CardHeader id="title">{title}</CardHeader>
@@ -105,7 +109,7 @@ class TalkCard extends Component {
             <Review review={review} />
           </ReviewContainer>
         </RightPartition>
-      </Card>
+      </FullWidthCard>
     );
   }
 }
