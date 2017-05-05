@@ -18,17 +18,22 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
  * @returns {bio, firstName, lastName, avatarUrl, company, twitter, blog, talkId}
  */
 let getSpeaker = speakerId => {
+  // [TODO] Move logging to console.debug once we can fix it running in node (test)
+  console.log("[API-CALL] Getting speaker ID");
   return request("GET", speakerEndpoint + speakerId).then(response => {
     let body = JSON.parse(response.getBody());
     return {
       uuid: body.uuid,
+      bio: body.bio,
       firstName: body.firstName,
       lastName: body.lastName,
       avatarURL: body.avatarURL,
       company: body.company,
       twitter: body.twitter,
       blog: body.blog,
-      talkId: parseTalkId(body.acceptedTalks[0].id)
+      acceptedTalkIDs: body.acceptedTalks.map(talk => {
+        return talk.id;
+      })
     };
   });
 };
@@ -39,17 +44,7 @@ let getSpeaker = speakerId => {
  * @param talkId
  * @returns {Array}
  */
-let parseTalkId = talkId => {
-  let result = [];
-  if (talkId) {
-    result = talkId.split(",").map(item => {
-      return item.trim();
-    });
-  }
-  return result;
-};
 
 export default {
-  getSpeaker: getSpeaker,
-  parseTalkId: parseTalkId
+  getSpeaker: getSpeaker
 };

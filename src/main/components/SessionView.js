@@ -5,6 +5,8 @@ import TalkCard from "./TalkCard";
 import SpeakerCard from "./SpeakerCard";
 
 // Styles for the different elements of the page
+// [TODO] Re-instate the below once we can identify time
+/*
 const DayText = styled.h2`
    font-size: xx-large;
    text-indent: 50px;
@@ -18,6 +20,7 @@ const WhiteText = styled.h2`
   font-weight: 100;
   color: white;
 `;
+ */
 
 const Window = styled.div`
   text-align: left;

@@ -12,22 +12,20 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
 }
 
 /**
- * Get a talk by it's Id
- * @param talkId
- * @returns (Object) {id, name, description, tracks[track], speakers[{id, name}])
+ * Take the url from a speaker and return the id
+ * @param url
+ * @returns {string} id
+ * @throws InvalidURLException
  */
-let getTalk = talkId => {
-  /*endpoint + talkId*/
-  return request("GET", endpoint + talkId).then(response => {
-    let body = JSON.parse(response.getBody());
-    return {
-      id: body.id,
-      name: body.title,
-      description: body.summary,
-      tracks: parseTracks(body.track),
-      speakers: parseSpeakers(body.speakers)
-    };
-  });
+let getSpeakerIdFromUrl = url => {
+  let result = "";
+
+  if (url) {
+    result = url.slice(url.lastIndexOf("/") + 1).trim();
+  } else {
+    throw new InvalidURLException();
+  }
+  return result;
 };
 
 /**
@@ -61,6 +59,25 @@ let parseSpeakers = speakers => {
 };
 
 /**
+ * Get a talk by it's Id
+ * @param talkId
+ * @returns (Object) {id, name, description, tracks[track], speakers[{id, name}])
+ */
+let getTalk = talkId => {
+  /*endpoint + talkId*/
+  return request("GET", endpoint + talkId).then(response => {
+    let body = JSON.parse(response.getBody());
+    return {
+      id: body.id,
+      name: body.title,
+      description: body.summary,
+      tracks: parseTracks(body.track),
+      speakers: parseSpeakers(body.speakers)
+    };
+  });
+};
+
+/**
  * InvalidURLException
  * For when a invalid URL is given
  */
@@ -70,23 +87,6 @@ function InvalidURLException(message) {
 }
 
 InvalidURLException.prototype = Error.prototype;
-
-/**
- * Take the url from a speaker and return the id
- * @param url
- * @returns {string} id
- * @throws InvalidURLException
- */
-let getSpeakerIdFromUrl = url => {
-  let result = "";
-
-  if (url) {
-    result = url.slice(url.lastIndexOf("/") + 1).trim();
-  } else {
-    throw new InvalidURLException();
-  }
-  return result;
-};
 
 export default {
   getTalk: getTalk,

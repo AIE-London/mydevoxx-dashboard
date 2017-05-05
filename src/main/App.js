@@ -27,6 +27,8 @@ import Branding from "./components/Branding";
  */
 import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
+
+import SpeakerApi from "./api/speaker";
 import TalkApi from "./api/talk";
 
 import Talk from "./model/talk";
@@ -69,26 +71,6 @@ const globalRecommendations = [
     source: "tracks"
   }
 ];
-
-let speaker1 = new Speaker(
-  "da2efaefc17e080c53baff7e6525e65e87ab9774",
-  "I have almost 10 years of experience programming in Java. " +
-    "I have also a long experience in big data and recommendation " +
-    "systems. Currently, I am the project leader of Walkmod, an open " +
-    "source tool to apply Java code conventions and also the organizer " +
-    "of Legacy Code Rocks Barcelona meetup.",
-  ["MXR-2678"],
-  "Walkmod",
-  "Pau Fernández",
-  "Raquel",
-  "http://www.walkmod.com",
-  "https://lh5.googleusercontent.com/-gpyd1u760zw/AAAAAAAAAAI/AAAAAAAAAAA/40NTLE5649A/photo.jpg",
-  "@raquelpau"
-);
-
-const DevoxxSpeakers = {
-  da2efaefc17e080c53baff7e6525e65e87ab9774: speaker1
-};
 
 const statsData = {
   minutes: 455,
@@ -161,7 +143,8 @@ class App extends Component {
       navVisible: false,
       scheduledTalks: [],
       favouredTalks: [],
-      talks: {}
+      talks: {},
+      speakers: {}
     };
     //Define indexeddb instance/version
     db = new Dexie("devoxx-db");
@@ -175,6 +158,7 @@ class App extends Component {
     this.userSignedIn = this.userSignedIn.bind(this);
     this.signInPage = this.signInPage.bind(this);
     this.uuidExists = this.uuidExists.bind(this);
+    this.speakerInfo = this.speakerInfo.bind(this);
     this.storeTalkDataInState = this.storeTalkDataInState.bind(this);
     this.uuidExists().catch(error => {
       this.setState({ error: error });
@@ -207,6 +191,31 @@ class App extends Component {
     });
   };
 
+  speakerInfo(speakers) {
+    speakers.forEach(spkr => {
+      if (!this.state.speakers[spkr.id]) {
+        SpeakerApi.getSpeaker(spkr.id).then(result => {
+          let speaker = new Speaker(
+            result.uuid,
+            result.bio,
+            result.acceptedTalkIDs,
+            result.company,
+            result.lastName,
+            result.firstName,
+            result.blog,
+            result.avatarURL,
+            result.twitter
+          );
+          let newSpeaker = {};
+          newSpeaker[spkr.id] = speaker;
+          this.setState({
+            speakers: Object.assign({}, this.state.speakers, newSpeaker)
+          });
+        });
+      }
+    });
+  }
+
   storeTalkDataInState(uuid) {
     let favTalkPromise = FavoredTalk.getFavoredTalks(uuid).then(results => {
       this.setState({ favouredTalks: results.favored });
@@ -232,7 +241,7 @@ class App extends Component {
             result.tracks,
             "en",
             result.description,
-            result.speakers,
+            result.speakers.map(speaker => speaker.id),
             result.videoURL
           );
 
@@ -241,19 +250,23 @@ class App extends Component {
           this.setState({
             talks: Object.assign({}, this.state.talks, newTalk)
           });
+          this.speakerInfo(result.speakers);
         });
       });
     });
   }
 
+  // Is this necessary? [TODO] Remove
   userSignedIn() {
     return this.uuidExists();
   }
 
+  // [TODO] Make inline
   signInPage() {
     return <LoginForm onSignIn={this.userSignedIn} db={db} />;
   }
 
+  // [TODO] Move to a utilities class
   mergeUniqueArray(firstArray, secondArray) {
     let mergedArray = firstArray.concat([secondArray]);
     return mergedArray
@@ -289,8 +302,8 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             render={props => (
               <Dashboard
+                speakerData={this.state.speakers}
                 talkData={this.state.talks}
-                speakerData={DevoxxSpeakers}
                 talkIDs={this.mergeUniqueArray(
                   this.state.favouredTalks,
                   this.state.scheduledTalks
@@ -309,7 +322,7 @@ class App extends Component {
               return (
                 <Report
                   reportStats={statsData}
-                  speakerData={DevoxxSpeakers}
+                  speakerData={this.state.speakers}
                   talkData={this.state.talks}
                   talks={this.mergeUniqueArray(
                     this.state.favouredTalks,
