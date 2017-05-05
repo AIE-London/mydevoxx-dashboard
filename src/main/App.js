@@ -108,9 +108,6 @@ let gitTalk = new Talk(
 const DevoxxSpeakers = {
   da2efaefc17e080c53baff7e6525e65e87ab9774: speaker1
 };
-const DevoxxTalks = {
-  "MXR-2678": gitTalk
-};
 
 const UserScheduledFavoured = ["MXR-2678"];
 
@@ -184,7 +181,8 @@ class App extends Component {
       uuidPresent: true,
       navVisible: false,
       scheduledTalks: [],
-      favouredTalks: []
+      favouredTalks: [],
+      talks: {}
     };
     //Define indexeddb instance/version
     db = new Dexie("devoxx-db");
@@ -228,18 +226,6 @@ class App extends Component {
   };
 
   userSignedIn(uuid) {
-    /*
-    FavoredTalk.getFavoredTalks(uuid).then(results => {
-      console.log(results);
-      this.setState({ favouredTalks: results });
-    });
-
-    ScheduledTalk.getScheduledTalks(uuid).then(results => {
-      console.log(results);
-      this.setState({ scheduledTalks: results });
-    });
-    */
-
     let favTalkPromise = new Promise((resolve, reject) => {
       resolve(
         FavoredTalk.getFavoredTalks(uuid).then(results => {
@@ -259,24 +245,55 @@ class App extends Component {
     });
 
     Promise.all([favTalkPromise, schedTalkPromise]).then(() => {
-      /*
-      TalkApi.getTalk(this.state.scheduledTalks.id).then( results => {
-        console.log(results);
-      })
-      */
+      let uniqueTalks = this.mergeUniqueArray(
+        this.state.favouredTalks,
+        this.state.scheduledTalks
+      );
 
-      this.state.scheduledTalks.forEach(talk => {
-        console.log(talk.id);
-        TalkApi.getTalk(talk.id).then(result => {
+      console.log(uniqueTalks);
+      uniqueTalks.forEach(id => {
+        console.log(id);
+
+        TalkApi.getTalk(id).then(result => {
           console.log(result);
+          let talk = new Talk(
+            result.id,
+            result.name,
+            result.tracks,
+            "en",
+            result.description,
+            result.speakers,
+            result.videoURL
+          );
+          let newTalk = {};
+          newTalk[talk.id] = talk;
+          this.setState({
+            talks: Object.assign({}, this.state.talks, newTalk)
+          });
+          console.log(this.state.talks);
         });
       });
     });
+
     return this.uuidExists();
   }
 
   signInPage() {
     return <UserEmail onSignIn={this.userSignedIn} db={db} />;
+  }
+
+  mergeUniqueArray(firstArray, secondArray) {
+    let mergedArray = firstArray.concat([secondArray]);
+    return mergedArray
+      .map(id => {
+        return id.id;
+      })
+      .reduce((result, current) => {
+        if (current && result.indexOf(current) < 0) {
+          result.push(current);
+        }
+        return result;
+      }, []);
   }
 
   render() {
@@ -300,9 +317,12 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             render={props => (
               <Dashboard
-                talkData={DevoxxTalks}
+                talkData={this.state.talks}
                 speakerData={DevoxxSpeakers}
-                talkIDs={UserScheduledFavoured}
+                talkIDs={this.mergeUniqueArray(
+                  this.state.favouredTalks,
+                  this.state.scheduledTalks
+                )}
                 recommendations={globalRecommendations}
                 stats={statsData}
                 {...props}
@@ -318,8 +338,11 @@ class App extends Component {
                 <Report
                   reportStats={statsData}
                   speakerData={DevoxxSpeakers}
-                  talkData={DevoxxTalks}
-                  talks={UserScheduledFavoured}
+                  talkData={this.state.talks}
+                  talks={this.mergeUniqueArray(
+                    this.state.favouredTalks,
+                    this.state.scheduledTalks
+                  )}
                 />
               );
             }}
