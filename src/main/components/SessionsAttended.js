@@ -61,11 +61,10 @@ const Session = styled.div`
 
 class SessionsAttended extends Component {
   render() {
-    console.log(this.props.talkData);
     return (
       <Container id="attended-sessions">
         <Header>My Sessions</Header>
-        {this.props.talkIDs.map(talkID => {
+        {this.props.talkIDs.map((talkID, index) => {
           try {
             let talk = this.props.talkData[talkID];
             return (
@@ -74,7 +73,7 @@ class SessionsAttended extends Component {
                   <h3>{talk.title}</h3>
                   <h4>Speakers: </h4>
                   <CommaList>
-                    {talk.speakers.map(speakerId => {
+                    {talk.speakers.map((speakerId, index) => {
                       try {
                         let speaker = this.props.speakerData[speakerId];
                         return (
@@ -83,7 +82,7 @@ class SessionsAttended extends Component {
                           </CommaListItem>
                         );
                       } catch (error) {
-                        return <span />;
+                        return <span key={index} />;
                       }
                     })}
                   </CommaList>
@@ -96,7 +95,7 @@ class SessionsAttended extends Component {
               </Session>
             );
           } catch (error) {
-            return <div>Loading...</div>;
+            return <div key={index}>Loading...</div>;
           }
         })}
       </Container>

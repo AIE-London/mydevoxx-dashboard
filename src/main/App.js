@@ -71,22 +71,6 @@ const globalRecommendations = [
   }
 ];
 
-let speaker1 = new Speaker(
-  "da2efaefc17e080c53baff7e6525e65e87ab9774",
-  "I have almost 10 years of experience programming in Java. " +
-    "I have also a long experience in big data and recommendation " +
-    "systems. Currently, I am the project leader of Walkmod, an open " +
-    "source tool to apply Java code conventions and also the organizer " +
-    "of Legacy Code Rocks Barcelona meetup.",
-  ["MXR-2678"],
-  "Walkmod",
-  "Pau Fernández",
-  "Raquel",
-  "http://www.walkmod.com",
-  "https://lh5.googleusercontent.com/-gpyd1u760zw/AAAAAAAAAAI/AAAAAAAAAAA/40NTLE5649A/photo.jpg",
-  "@raquelpau"
-);
-
 const statsData = {
   minutes: 455,
   talks: 10,
@@ -210,7 +194,6 @@ class App extends Component {
     speakers.forEach(spkr => {
       if (!this.state.speakers[spkr.id]) {
         SpeakerApi.getSpeaker(spkr.id).then(result => {
-          console.log(result);
           let speaker = new Speaker(
             result.uuid,
             result.bio,
@@ -227,11 +210,7 @@ class App extends Component {
           this.setState({
             speakers: Object.assign({}, this.state.speakers, newSpeaker)
           });
-          console.log(this.state.speakers);
         });
-      } else {
-        console.debug("ALREADY EXISTING");
-        console.debug(spkr);
       }
     });
   }
@@ -302,7 +281,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.speakers);
     return (
       <DevoxxRouter history={browserHistory}>
         <Page>
