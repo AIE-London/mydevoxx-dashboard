@@ -13,7 +13,7 @@ import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
 import Talk from "./components/Talk";
 import TopRated from "./components/TopRated";
-import UserEmail from "./components/UserEmail";
+import LoginForm from "./components/LoginForm";
 import Dexie from "dexie";
 
 import NavButtons, { NavItems } from "./components/NavButtons";
@@ -198,7 +198,7 @@ class App extends Component {
   };
 
   signInPage() {
-    return <UserEmail onSignIn={this.uuidExists} db={db} />;
+    return <LoginForm />;
   }
 
   render() {

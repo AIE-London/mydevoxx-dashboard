@@ -1,0 +1,18 @@
+exports[`test user email component with snapshot 1`] = `
+<section>
+  <div
+    className="jElMWD row center-xs middle-xs">
+    <div
+      className="aRpXU row">
+      <h3>
+         Please login with your email 
+      </h3>
+      <p>
+        Error loading login, please try again later.
+      </p>
+      <div
+        id="firebaseui-auth-container" />
+    </div>
+  </div>
+</section>
+`;
