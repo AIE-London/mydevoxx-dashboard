@@ -61,34 +61,44 @@ const Session = styled.div`
 
 class SessionsAttended extends Component {
   render() {
+    console.log(this.props.talkData);
     return (
       <Container id="attended-sessions">
         <Header>My Sessions</Header>
         {this.props.talkIDs.map(talkID => {
-          let talk = this.props.talkData[talkID];
-          return (
-            <Session key={talk.title}>
-              <div>
-                <h3>{talk.title}</h3>
-                <h4>Speakers: </h4>
-                <CommaList>
-                  {talk.speakers.map(speakerId => {
-                    let speaker = this.props.speakerData[speakerId];
-                    return (
-                      <CommaListItem key={speaker.name}>
-                        {speaker.name}
-                      </CommaListItem>
-                    );
-                  })}
-                </CommaList>
-              </div>
-              {/* [TODO] Make these images DYNAMIC */}
-              <img
-                alt={talk.tracks[0]}
-                src="https://ignite.apache.org/images/java.png"
-              />
-            </Session>
-          );
+          try {
+            let talk = this.props.talkData[talkID];
+            return (
+              <Session key={talk.title}>
+                <div>
+                  <h3>{talk.title}</h3>
+                  <h4>Speakers: </h4>
+                  <CommaList>
+                    {talk.speakers.map(speakerId => {
+                      try {
+                        let speaker = this.props.speakerData[speakerId];
+                        return (
+                          <CommaListItem key={speaker.name}>
+                            {speaker.name}
+                          </CommaListItem>
+                        );
+                      } catch (error) {
+                        return <span />;
+                      }
+                    })}
+                  </CommaList>
+                </div>
+                {/* [TODO] Make these images DYNAMIC */}
+                <img
+                  alt={talk.tracks[0]}
+                  src="https://ignite.apache.org/images/java.png"
+                />
+              </Session>
+            );
+          } catch (error) {
+            console.error(error);
+            return <div>Loading...</div>;
+          }
         })}
       </Container>
     );

@@ -26,7 +26,9 @@ import Branding from "./components/Branding";
  */
 import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
+
 import SpeakerApi from "./api/speakers";
+import TalkApi from "./api/talk";
 
 import Talk from "./model/talk";
 import Speaker from "./model/speaker";
@@ -85,34 +87,9 @@ let speaker1 = new Speaker(
   "@raquelpau"
 );
 
-let gitTalk = new Talk(
-  "MXR-2678",
-  "Git Workflow Strategies for Technical Debt Management",
-  ["method_archi"],
-  "en",
-  "The technical debt metaphor is gaining significant traction in " +
-    "the agile development community as a way to understand and communicate " +
-    "those issues related to accepting bad programming practices in order to " +
-    "achieve fast results (e.g a deadline). However, the idea of getting fast " +
-    "results becomes an illusion, since the cost of building software increases " +
-    "over the time.  \r\n\r\nIn order to achieve a good technical debt management, " +
-    "agile methodologies suggest to measure it and add an specific entry in the sprint " +
-    "backlog to fix it incrementally and to apply continuous inspection to block " +
-    "new code quality issues. In this session, we will explore the different " +
-    "categories of technical debt and how can we benefit from Git workflow to " +
-    "reduce part of it incrementally and safely.",
-  ["da2efaefc17e080c53baff7e6525e65e87ab9774"],
-  null
-);
-
 const DevoxxSpeakers = {
   da2efaefc17e080c53baff7e6525e65e87ab9774: speaker1
 };
-const DevoxxTalks = {
-  "MXR-2678": gitTalk
-};
-
-const UserScheduledFavoured = ["MXR-2678"];
 
 const statsData = {
   minutes: 455,
@@ -184,7 +161,8 @@ class App extends Component {
       uuidPresent: true,
       navVisible: false,
       scheduledTalks: [],
-      favouredTalks: []
+      favouredTalks: [],
+      talks: {}
     };
     //Define indexeddb instance/version
     db = new Dexie("devoxx-db");
@@ -198,6 +176,7 @@ class App extends Component {
     this.userSignedIn = this.userSignedIn.bind(this);
     this.signInPage = this.signInPage.bind(this);
     this.uuidExists = this.uuidExists.bind(this);
+    this.storeTalkDataInState = this.storeTalkDataInState.bind(this);
     this.uuidExists().catch(error => {
       this.setState({ error: error });
     });
@@ -215,6 +194,8 @@ class App extends Component {
           .then(resolution => {
             if (resolution) {
               this.setState({ uuidPresent: true });
+
+              this.storeTalkDataInState(resolution.uuid);
               resolve();
             } else {
               throw new Error("No UUID");
@@ -254,22 +235,65 @@ class App extends Component {
     });
   }
 
-  userSignedIn(uuid) {
-    FavoredTalk.getFavoredTalks(uuid).then(results => {
-      console.log(results);
-      this.setState({ favouredTalks: results });
+  storeTalkDataInState(uuid) {
+    let favTalkPromise = FavoredTalk.getFavoredTalks(uuid).then(results => {
+      this.setState({ favouredTalks: results.favored });
     });
 
-    ScheduledTalk.getScheduledTalks(uuid).then(results => {
-      console.log(results);
-      this.setState({ scheduledTalks: results });
+    let schedTalkPromise = ScheduledTalk.getScheduledTalks(
+      uuid
+    ).then(results => {
+      this.setState({ scheduledTalks: results.scheduled });
     });
 
+    Promise.all([favTalkPromise, schedTalkPromise]).then(() => {
+      let uniqueTalks = this.mergeUniqueArray(
+        this.state.favouredTalks,
+        this.state.scheduledTalks
+      );
+
+      uniqueTalks.forEach(id => {
+        TalkApi.getTalk(id).then(result => {
+          let talk = new Talk(
+            result.id,
+            result.name,
+            result.tracks,
+            "en",
+            result.description,
+            result.speakers,
+            result.videoURL
+          );
+
+          let newTalk = {};
+          newTalk[talk.id] = talk;
+          this.setState({
+            talks: Object.assign({}, this.state.talks, newTalk)
+          });
+        });
+      });
+    });
+  }
+
+  userSignedIn() {
     return this.uuidExists();
   }
 
   signInPage() {
     return <UserEmail onSignIn={this.userSignedIn} db={db} />;
+  }
+
+  mergeUniqueArray(firstArray, secondArray) {
+    let mergedArray = firstArray.concat([secondArray]);
+    return mergedArray
+      .map(id => {
+        return id.id;
+      })
+      .reduce((result, current) => {
+        if (current && result.indexOf(current) < 0) {
+          result.push(current);
+        }
+        return result;
+      }, []);
   }
 
   render() {
@@ -293,9 +317,12 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             render={props => (
               <Dashboard
-                talkData={DevoxxTalks}
                 speakerData={this.state.speakers}
-                talkIDs={UserScheduledFavoured}
+                talkData={this.state.talks}
+                talkIDs={this.mergeUniqueArray(
+                  this.state.favouredTalks,
+                  this.state.scheduledTalks
+                )}
                 recommendations={globalRecommendations}
                 stats={statsData}
                 {...props}
@@ -311,8 +338,11 @@ class App extends Component {
                 <Report
                   reportStats={statsData}
                   speakerData={this.state.speakers}
-                  talkData={DevoxxTalks}
-                  talks={UserScheduledFavoured}
+                  talkData={this.state.talks}
+                  talks={this.mergeUniqueArray(
+                    this.state.favouredTalks,
+                    this.state.scheduledTalks
+                  )}
                 />
               );
             }}

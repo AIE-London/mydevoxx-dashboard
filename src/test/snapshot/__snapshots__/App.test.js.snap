@@ -137,27 +137,6 @@ exports[`test App component snapshot 1`] = `
             className="jaIYAq">
             My Sessions
           </h2>
-          <div
-            className="kgeHuu">
-            <div>
-              <h3>
-                Git Workflow Strategies for Technical Debt Management
-              </h3>
-              <h4>
-                Speakers: 
-              </h4>
-              <ul
-                className="bGhaQW">
-                <li
-                  className="cLQKgI">
-                  Raquel Pau Fernández
-                </li>
-              </ul>
-            </div>
-            <img
-              alt="method_archi"
-              src="https://ignite.apache.org/images/java.png" />
-          </div>
         </div>
       </div>
       <div
