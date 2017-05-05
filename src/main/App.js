@@ -196,6 +196,7 @@ class App extends Component {
     this.userSignedIn = this.userSignedIn.bind(this);
     this.signInPage = this.signInPage.bind(this);
     this.uuidExists = this.uuidExists.bind(this);
+    this.storeTalkDataInState = this.storeTalkDataInState.bind(this);
     this.uuidExists().catch(error => {
       this.setState({ error: error });
     });
@@ -213,6 +214,8 @@ class App extends Component {
           .then(resolution => {
             if (resolution) {
               this.setState({ uuidPresent: true });
+
+              this.storeTalkDataInState(resolution.uuid);
               resolve();
             } else {
               throw new Error("No UUID");
@@ -225,11 +228,10 @@ class App extends Component {
     });
   };
 
-  userSignedIn(uuid) {
+  storeTalkDataInState(uuid) {
     let favTalkPromise = new Promise((resolve, reject) => {
       resolve(
         FavoredTalk.getFavoredTalks(uuid).then(results => {
-          console.log(results.favored);
           this.setState({ favouredTalks: results.favored });
         })
       );
@@ -238,7 +240,6 @@ class App extends Component {
     let schedTalkPromise = new Promise((resolve, reject) => {
       resolve(
         ScheduledTalk.getScheduledTalks(uuid).then(results => {
-          console.log(results.scheduled);
           this.setState({ scheduledTalks: results.scheduled });
         })
       );
@@ -250,12 +251,8 @@ class App extends Component {
         this.state.scheduledTalks
       );
 
-      console.log(uniqueTalks);
       uniqueTalks.forEach(id => {
-        console.log(id);
-
         TalkApi.getTalk(id).then(result => {
-          console.log(result);
           let talk = new Talk(
             result.id,
             result.name,
@@ -271,11 +268,12 @@ class App extends Component {
           this.setState({
             talks: Object.assign({}, this.state.talks, newTalk)
           });
-          console.log(this.state.talks);
         });
       });
     });
+  }
 
+  userSignedIn() {
     return this.uuidExists();
   }
 
