@@ -28,29 +28,20 @@ let notFoundSetup = () => {
 
 describe("getSpeaker", () => {
   it("should return speaker data", () => {
-    return normalSetup()
-      .then(
-        () => "695b40d928dd0a905b7ab1b900b5a5752870a7d8",
-        error => {
-          raiseOrPassError(
-            "MappingSetupException",
-            'Wiremock mapping failed for "normalSetup"',
-            error
-          );
-        }
-      )
-      .then(speaker.getSpeaker)
+    return speaker
+      .getSpeaker("695b40d928dd0a905b7ab1b900b5a5752870a7d8")
       .then(
         result => {
           expect(result).toEqual({
             uuid: "695b40d928dd0a905b7ab1b900b5a5752870a7d8",
             firstName: "Helen",
+            bio: "Helen has 20 years’ experience working in the technology industry with a focus on the Software Development Lifecycle for a wealth of cross industry clients in the UK and abroad. Helen is passionate about DevOps and is the creator of the Ranger4 DevOps LiftOff Workshop and the Ranger4 DevOps Maturity Assessment - winner of the IBM Beacon Award 2015 for Outstanding DevOps Solution. She also started Ranger4’s #DevOpsFriday5 initiative and is on the Board of Regents at the DevOps Institute (Ranger4 are also a Registered Education Provider for the DOI’s DevOps training courses). Helen is also a novelist and ecologist. She once saw a flamingo lay an egg.",
             lastName: "Beal",
             avatarURL: "https://media.licdn.com/media/p/2/000/10f/320/3b9da1f.jpg",
             company: "Ranger4",
             twitter: "@helenranger4",
             blog: "www.ranger4.com",
-            talkId: ["IBN-5679"]
+            acceptedTalkIDs: ["IBN-5679"]
           });
         },
         error => {
@@ -68,18 +59,8 @@ describe("getSpeaker", () => {
   });
 
   it("handles a 404", () => {
-    return notFoundSetup()
-      .then(
-        () => "idonotexist",
-        error => {
-          raiseOrPassError(
-            "MappingSetupException",
-            'Wiremock mapping failed for "notFoundSetup"',
-            error
-          );
-        }
-      )
-      .then(speaker.getSpeaker)
+    return speaker
+      .getSpeaker("695b40d928dd0a905b7ab1b900b5a5752870a7d8404")
       .then(
         result => {
           console.log("RESULT");
