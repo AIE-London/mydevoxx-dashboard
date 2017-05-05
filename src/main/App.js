@@ -26,6 +26,7 @@ import Branding from "./components/Branding";
  */
 import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
+import SpeakerApi from "./api/speakers";
 
 import Talk from "./model/talk";
 import Speaker from "./model/speaker";
@@ -226,6 +227,33 @@ class App extends Component {
     });
   };
 
+  speakerInfo(speakers) {
+    speakers.forEach(id => {
+      if (!this.state.speakers[id]) {
+        SpeakerApi.getSpeaker(id).then(result => {
+          console.log(result);
+          let speaker = new Speaker(
+            result.uuid,
+            result.bio,
+            result.acceptedTalkIDs,
+            result.company,
+            result.lastName,
+            result.firstName,
+            result.blog,
+            result.avatarURL,
+            result.twitter
+          );
+          let newSpeaker = {};
+          newSpeaker[id] = speaker;
+          this.setState({
+            speakers: Object.assign({}, this.state.speakers, newSpeaker)
+          });
+          console.log(this.state.speakers);
+        });
+      }
+    });
+  }
+
   userSignedIn(uuid) {
     FavoredTalk.getFavoredTalks(uuid).then(results => {
       console.log(results);
@@ -266,7 +294,7 @@ class App extends Component {
             render={props => (
               <Dashboard
                 talkData={DevoxxTalks}
-                speakerData={DevoxxSpeakers}
+                speakerData={this.state.speakers}
                 talkIDs={UserScheduledFavoured}
                 recommendations={globalRecommendations}
                 stats={statsData}
@@ -282,7 +310,7 @@ class App extends Component {
               return (
                 <Report
                   reportStats={statsData}
-                  speakerData={DevoxxSpeakers}
+                  speakerData={this.state.speakers}
                   talkData={DevoxxTalks}
                   talks={UserScheduledFavoured}
                 />

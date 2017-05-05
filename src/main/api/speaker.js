@@ -28,7 +28,9 @@ let getSpeaker = speakerId => {
       company: body.company,
       twitter: body.twitter,
       blog: body.blog,
-      talkId: parseTalkId(body.acceptedTalks[0].id)
+      talkId: body.acceptedTalks.map(talk => {
+        return talk.id;
+      })
     };
   });
 };
@@ -39,17 +41,7 @@ let getSpeaker = speakerId => {
  * @param talkId
  * @returns {Array}
  */
-let parseTalkId = talkId => {
-  let result = [];
-  if (talkId) {
-    result = talkId.split(",").map(item => {
-      return item.trim();
-    });
-  }
-  return result;
-};
 
 export default {
-  getSpeaker: getSpeaker,
-  parseTalkId: parseTalkId
+  getSpeaker: getSpeaker
 };
