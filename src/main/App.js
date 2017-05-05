@@ -265,6 +265,7 @@ class App extends Component {
             result.speakers,
             result.videoURL
           );
+
           let newTalk = {};
           newTalk[talk.id] = talk;
           this.setState({

@@ -35,38 +35,46 @@ const SpeakerCardContainer = styled(Col)`
 class SessionView extends Component {
   render() {
     let talk = this.props.talkData[this.props.talkId];
-    return (
-      <Window>
+    try {
+      return (
+        <Window>
 
-        {/* [TODO] Re-instate once we've added in a means of calculating
-          day/time/room */}
-        {/*
-         <DayText>Day {this.props.talk.dayNo}</DayText>
-         <WhiteText>{this.props.talk.sTime} - {this.props.talk.room}</WhiteText>
-         */}
+          {/* [TODO] Re-instate once we've added in a means of calculating
+                 day/time/room */}
+          {/*
+                 <DayText>Day {this.props.talk.dayNo}</DayText>
+                 <WhiteText>{this.props.talk.sTime} - {this.props.talk.room}</WhiteText>
+                 */}
 
-        <Row center="xs">
-          <Col xs={10}>
-            <Row>
-              <TalkCard talk={talk} />
-            </Row>
-            <SpeakerSection center="xs">
-              {talk.speakers.map(speakerID => {
-                let speaker = this.props.speakerData[speakerID];
-                return (
-                  <SpeakerCardContainer md={6} xs={12} key={speaker.name}>
-                    <SpeakerCard
-                      speaker={speaker}
-                      talkData={this.props.talkData}
-                    />
-                  </SpeakerCardContainer>
-                );
-              })}
-            </SpeakerSection>
-          </Col>
-        </Row>
-      </Window>
-    );
+          <Row center="xs">
+            <Col xs={10}>
+              <Row>
+                <TalkCard talk={talk} />
+              </Row>
+              <SpeakerSection center="xs">
+                {talk.speakers.map(speakerID => {
+                  try {
+                    let speaker = this.props.speakerData[speakerID];
+                    return (
+                      <SpeakerCardContainer md={6} xs={12} key={speaker.name}>
+                        <SpeakerCard
+                          speaker={speaker}
+                          talkData={this.props.talkData}
+                        />
+                      </SpeakerCardContainer>
+                    );
+                  } catch (error) {
+                    return <span />;
+                  }
+                })}
+              </SpeakerSection>
+            </Col>
+          </Row>
+        </Window>
+      );
+    } catch (error) {
+      return <h3>Loading</h3>;
+    }
   }
 }
 
