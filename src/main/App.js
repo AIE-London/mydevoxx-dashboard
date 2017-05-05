@@ -240,7 +240,7 @@ class App extends Component {
             result.tracks,
             "en",
             result.description,
-            result.speakers,
+            result.speakers.map(speaker => speaker.id),
             result.videoURL
           );
 

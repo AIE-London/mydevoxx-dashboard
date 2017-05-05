@@ -75,10 +75,10 @@ class SessionsAttended extends Component {
                   <CommaList>
                     {talk.speakers.map((speakerId, index) => {
                       try {
-                        let speaker = this.props.speakerData[speakerId];
+                        let speakerProfile = this.props.speakerData[speakerId];
                         return (
-                          <CommaListItem key={speaker.name}>
-                            {speaker.name}
+                          <CommaListItem key={speakerProfile.name}>
+                            {speakerProfile.name}
                           </CommaListItem>
                         );
                       } catch (error) {
