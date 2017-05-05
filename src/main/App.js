@@ -135,6 +135,20 @@ const Page = styled.div`
   min-height: 100%;
 `;
 
+const LogoutButton = styled.button`
+  background: transparent;
+  border: none;
+  padding: 0;
+  padding-left: 10px;
+  font-size: 21px;
+  color: #fff;
+  &::before {
+    content: '-'
+    width: 20px;
+    margin-right: 10px;
+  }
+`;
+
 class App extends Component {
   constructor() {
     super();
@@ -305,7 +319,7 @@ class App extends Component {
             </TitleContainer>
             <div>
               <NavButtons />
-              <button onClick={this.logOut}>Log Out</button>
+              <LogoutButton onClick={this.logOut}>Log Out</LogoutButton>
             </div>
           </NavBar>
           <PrivateRoute
