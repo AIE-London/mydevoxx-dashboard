@@ -306,7 +306,10 @@ class App extends Component {
         db.record.clear().then(() => {
           console.log("DELETING");
           return this.uuidExists().catch(error => {
-            this.setState({ redirectLogin: true });
+            this.setState({
+              redirectLogin: true,
+              navVisible: false
+            });
           });
         });
       },
