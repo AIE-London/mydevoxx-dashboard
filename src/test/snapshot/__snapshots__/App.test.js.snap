@@ -13,209 +13,57 @@ exports[`test App component snapshot 1`] = `
         MyDevoxxReport
       </h1>
     </div>
-    <ul
-      className="desktopOnlyInline hsTZOj">
-      <li
-        className="bdhwFl">
-        <a
-          href="/"
-          onClick={[Function]}>
-          Home
-        </a>
-      </li>
-      <li
-        className="bdhwFl">
-        <a
-          href="/report"
-          onClick={[Function]}>
-          Report
-        </a>
-      </li>
-      <li
-        className="bdhwFl">
-        <a
-          href="/"
-          onClick={[Function]}>
-          Top Rated
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div
-    className="bwOBAk row">
-    <h1>
-      MyDashboard
-    </h1>
-    <div
-      className="bKYhwN row">
-      <div
-        className="col-xs-12 col-sm-6 col-md-4 dEUoDN">
-        <div
-          className="jYdOvw">
-          <div
-            className="cKmykB row center-xs">
-            <div
-              className="col-xs-11">
-              <div
-                className="col-xs-6">
-                <div
-                  className="row start-xs">
-                  <h1>
-                    My Stats
-                  </h1>
-                </div>
-              </div>
-              <div
-                className="row start-xs">
-                <div
-                  className="col-xs-12">
-                  <h2
-                    className="eIkKGg">
-                    Top Tracks:
-                  </h2>
-                  <div
-                    style={
-                      Object {
-                        "textAlign": "center",
-                      }
-                    }>
-                    <ul
-                      className="bGhaQW">
-                      <li
-                        className="cLQKgI">
-                        Spring
-                      </li>
-                      <li
-                        className="cLQKgI">
-                        Java
-                      </li>
-                    </ul>
-                  </div>
-                  <h2
-                    className="eIkKGg">
-                    Top Speakers:
-                  </h2>
-                  <div
-                    style={
-                      Object {
-                        "paddingBottom": 15,
-                        "textAlign": "center",
-                      }
-                    }>
-                    <ul
-                      className="bGhaQW">
-                      <li
-                        className="cLQKgI">
-                        Person One
-                      </li>
-                      <li
-                        className="cLQKgI">
-                        Person Two
-                      </li>
-                      <li
-                        className="cLQKgI">
-                        Person Three
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="fSVTfK">
-          <div />
-        </div>
-      </div>
-      <div
-        className="col-xs-12 col-sm-6 col-md-4">
-        <div
-          className="iCnvCe row"
-          id="attended-sessions">
-          <h2
-            className="jaIYAq">
-            My Sessions
-          </h2>
-        </div>
-      </div>
-      <div
-        className="col-xs-12 col-sm-6 col-md-4">
-        <section
-          className="eieVzi"
-          id="recommended-reading">
-          <h2
-            className="fcdRkU">
-            Recommendations
-          </h2>
+    <div>
+      <ul
+        className="desktopOnlyInline hsTZOj">
+        <li
+          className="bdhwFl">
           <a
-            href="http://devoxx.co.uk">
-            <div
-              className="dqPIpN row">
-              <h3>
-                Intro to Devoxx
-              </h3>
-              <h4>
-                http://devoxx.co.uk
-              </h4>
-              <p>
-                Based on your 
-                tracks
-              </p>
-            </div>
+            href="/"
+            onClick={[Function]}>
+            Home
           </a>
+        </li>
+        <li
+          className="bdhwFl">
           <a
-            href="http://devoxx.co.uk">
-            <div
-              className="dqPIpN row">
-              <h3>
-                Intro to Devoxx2
-              </h3>
-              <h4>
-                http://devoxx.co.uk
-              </h4>
-              <p>
-                Based on your 
-                tracks
-              </p>
-            </div>
+            href="/report"
+            onClick={[Function]}>
+            Report
           </a>
+        </li>
+        <li
+          className="bdhwFl">
           <a
-            href="http://devoxx.co.uk">
-            <div
-              className="dqPIpN row">
-              <h3>
-                Intro to Devoxx3
-              </h3>
-              <h4>
-                http://devoxx.co.uk
-              </h4>
-              <p>
-                Based on your 
-                tracks
-              </p>
-            </div>
+            href="/"
+            onClick={[Function]}>
+            Top Rated
           </a>
-          <a
-            href="http://devoxx.co.uk">
-            <div
-              className="dqPIpN row">
-              <h3>
-                Intro to Devoxx4
-              </h3>
-              <h4>
-                http://devoxx.co.uk
-              </h4>
-              <p>
-                Based on your 
-                tracks
-              </p>
-            </div>
-          </a>
-        </section>
-      </div>
+        </li>
+      </ul>
+      <button
+        className="desktopOnlyInline fCgKay"
+        onClick={[Function]}>
+        Log Out
+      </button>
     </div>
   </div>
+  <section>
+    <div
+      className="jElMWD row center-xs middle-xs">
+      <div
+        className="kMFmgp row">
+        <h3>
+           Please login to Personal Devoxx 
+        </h3>
+        <p>
+          Error loading login, please try again later.
+        </p>
+        <div
+          id="firebaseui-auth-container" />
+      </div>
+    </div>
+  </section>
   <div
     className="ghgTfl row">
     <img
@@ -359,6 +207,24 @@ exports[`test App component snapshot 1`] = `
               onClick={[Function]}>
               Top Rated
             </a>
+          </li>
+          <li
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "cursor": "pointer",
+                "listStyle": "none",
+                "margin": 0,
+                "padding": 0,
+              }
+            }>
+            <button
+              className="hJgbwt"
+              onClick={[Function]}>
+              Log Out
+            </button>
           </li>
         </ul>
       </div>
