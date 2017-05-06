@@ -9,6 +9,8 @@ import {
 import SideNav from "react-simple-sidenav";
 import styled from "styled-components";
 import Dexie from "dexie";
+import * as firebase from "firebase";
+import firebaseui from "firebaseui";
 
 /*
   UI Components
@@ -81,6 +83,9 @@ const statsData = {
 };
 
 let db;
+//Define indexeddb instance/version
+db = new Dexie("devoxx-db");
+db.version(1).stores({ record: "id,uuid" });
 
 const PrivateRoute = ({
   uuidPresent,
@@ -135,48 +140,82 @@ const Page = styled.div`
   min-height: 100%;
 `;
 
+const LogoutMobile = styled.button`
+  background: transparent;
+  border: none;
+  padding: 1em;
+  color: #2196F3;
+`;
+
+const LogoutButton = styled.button`
+  background: transparent;
+  border: none;
+  padding: 0;
+  padding-left: 10px;
+  font-size: 21px;
+  color: #fff;
+  &::before {
+    content: '-'
+    width: 20px;
+    margin-right: 10px;
+  }
+`;
+
+const fbConfig = {
+  apiKey: "AIzaSyC2U3FefH8JEC6403QqM-igdtuM2LGy1y8",
+  authDomain: "devoxx-dashboard.firebaseapp.com",
+  databaseURL: "https://devoxx-dashboard.firebaseio.com",
+  projectId: "devoxx-dashboard",
+  storageBucket: "devoxx-dashboard.appspot.com",
+  messagingSenderId: "594341536588"
+};
+
+firebase.initializeApp(fbConfig);
+
+let fbui = new firebaseui.auth.AuthUI(firebase.auth());
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      uuidPresent: true,
+      uuidPresent: false,
       navVisible: false,
       scheduledTalks: [],
       favouredTalks: [],
       talks: {},
-      speakers: {}
+      speakers: {},
+      redirectLogin: false
     };
-    //Define indexeddb instance/version
-    db = new Dexie("devoxx-db");
-    db.version(1).stores({ record: "id,uuid" });
-
     //open connection to indexeddb - display error if connection failed
-    db.open().catch(error => {
-      alert("uuidDb could not be accessed: " + error);
-    });
+    db
+      .open("devoxx-db")
+      .then(() => {
+        this.uuidExists().catch(error => {
+          this.setState({ error: error });
+        });
+      })
+      .catch(error => {
+        alert("uuidDb could not be accessed: " + error);
+      });
 
     this.userSignedIn = this.userSignedIn.bind(this);
     this.signInPage = this.signInPage.bind(this);
     this.uuidExists = this.uuidExists.bind(this);
     this.speakerInfo = this.speakerInfo.bind(this);
+    this.logOut = this.logOut.bind(this);
     this.storeTalkDataInState = this.storeTalkDataInState.bind(this);
-    this.uuidExists().catch(error => {
-      this.setState({ error: error });
-    });
   }
 
   uuidExists = () => {
     return new Promise((resolve, reject) => {
       //open connection to indexeddb - display error if connection failed
-      db.open("devoxx-db").catch(error => {
-        alert("uuidDb could not be accessed: " + error);
-      });
       db.record &&
         db.record
           .get("0")
           .then(resolution => {
             if (resolution) {
-              this.setState({ uuidPresent: true });
+              console.log(resolution);
+              this.setState({ uuidPresent: true, redirectLogin: false });
 
               this.storeTalkDataInState(resolution.uuid);
               resolve();
@@ -261,9 +300,33 @@ class App extends Component {
     return this.uuidExists();
   }
 
+  logOut() {
+    firebase.auth().signOut().then(
+      () => {
+        db.record.clear().then(() => {
+          console.log("DELETING");
+          return this.uuidExists().catch(error => {
+            this.setState({
+              redirectLogin: true,
+              navVisible: false
+            });
+          });
+        });
+      },
+      error => {}
+    );
+  }
+
   // [TODO] Make inline
   signInPage() {
-    return <LoginForm onSignIn={this.userSignedIn} db={db} />;
+    return (
+      <LoginForm
+        onSignIn={this.userSignedIn}
+        db={db}
+        fbui={fbui}
+        firebase={firebase}
+      />
+    );
   }
 
   // [TODO] Move to a utilities class
@@ -294,7 +357,12 @@ class App extends Component {
               />
               <h1>MyDevoxxReport</h1>
             </TitleContainer>
-            <NavButtons />
+            <div>
+              <NavButtons />
+              <LogoutButton className="desktopOnlyInline" onClick={this.logOut}>
+                Log Out
+              </LogoutButton>
+            </div>
           </NavBar>
           <PrivateRoute
             path="/"
@@ -314,6 +382,7 @@ class App extends Component {
               />
             )}
           />
+          {this.state.redirectLogin && <Redirect to="/login" />}
           <Route path="/login" render={this.signInPage} />
           <PrivateRoute
             uuidPresent={this.state.uuidPresent}
@@ -360,7 +429,9 @@ class App extends Component {
               >
                 {item.name}
               </NavLink>
-            ))}
+            )).concat([
+              <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
+            ])}
           />
         </Page>
       </DevoxxRouter>

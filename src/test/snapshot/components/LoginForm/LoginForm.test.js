@@ -11,6 +11,18 @@ test("user email component", () => {
 });
 
 test("user email component with snapshot", () => {
-  const tree = renderer.create(<LoginForm />).toJSON();
+  const tree = renderer
+    .create(
+      <LoginForm
+        firebase={{
+          auth: function() {
+            return {
+              onAuthStateChanged: function() {}
+            };
+          }
+        }}
+      />
+    )
+    .toJSON();
   expect(tree).toMatchSnapshot();
 });
