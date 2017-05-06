@@ -135,6 +135,13 @@ const Page = styled.div`
   min-height: 100%;
 `;
 
+const LogoutMobile = styled.button`
+  background: transparent;
+  border: none;
+  padding: 1em;
+  color: #2196F3;
+`;
+
 const LogoutButton = styled.button`
   background: transparent;
   border: none;
@@ -319,7 +326,9 @@ class App extends Component {
             </TitleContainer>
             <div>
               <NavButtons />
-              <LogoutButton onClick={this.logOut}>Log Out</LogoutButton>
+              <LogoutButton className="desktopOnlyInline" onClick={this.logOut}>
+                Log Out
+              </LogoutButton>
             </div>
           </NavBar>
           <PrivateRoute
@@ -386,7 +395,9 @@ class App extends Component {
               >
                 {item.name}
               </NavLink>
-            ))}
+            )).concat([
+              <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
+            ])}
           />
         </Page>
       </DevoxxRouter>
