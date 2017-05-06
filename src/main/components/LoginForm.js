@@ -5,7 +5,6 @@ import retrieveUuid from "../api/retrieveUuid";
 import { Row } from "react-flexbox-grid";
 import styled from "styled-components";
 import { Redirect } from "react-router-dom";
-import firebaseui from "firebaseui";
 import * as firebase from "firebase";
 
 import Card from "./Card";
@@ -40,7 +39,6 @@ const LoginCard = styled(Card)`
 if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
   successURL = mockSuccessURL;
 }
-
 // Initialize the FirebaseUI Widget using Firebase.
 
 // The start method will wait until the DOM is loaded.
@@ -58,15 +56,6 @@ class LoginForm extends Component {
     tosUrl: "https://mydevoxx-dashboard.eu-gb.mybluemix.net/"
   };
 
-  fbConfig = {
-    apiKey: "AIzaSyC2U3FefH8JEC6403QqM-igdtuM2LGy1y8",
-    authDomain: "devoxx-dashboard.firebaseapp.com",
-    databaseURL: "https://devoxx-dashboard.firebaseio.com",
-    projectId: "devoxx-dashboard",
-    storageBucket: "devoxx-dashboard.appspot.com",
-    messagingSenderId: "594341536588"
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -75,8 +64,6 @@ class LoginForm extends Component {
       loading: false,
       loginError: false
     };
-    firebase.initializeApp(this.fbConfig);
-    this.ui = new firebaseui.auth.AuthUI(firebase.auth());
     this.goFetchUUID = this.goFetchUUID.bind(this);
     this.logIn = this.logIn.bind(this);
     this.registerListeners = this.registerListeners.bind(this);
@@ -84,7 +71,7 @@ class LoginForm extends Component {
   }
 
   logIn() {
-    this.ui.start("#firebaseui-auth-container", this.uiConfig);
+    this.props.fbui.start("#firebaseui-auth-container", this.uiConfig);
   }
 
   goFetchUUID(email) {
@@ -96,9 +83,10 @@ class LoginForm extends Component {
           this.setState({ loading: false });
           throw new Error("Missing UUID");
         }
-        this.props.db.record.add({ id: "0", uuid: uuid });
-        this.props.onSignIn().then(() => {
-          this.setState({ redirect: true, loading: false });
+        this.props.db.record.put({ id: "0", uuid: uuid }).then(() => {
+          this.props.onSignIn().then(() => {
+            this.setState({ redirect: true, loading: false });
+          });
         });
       })
       .catch(error => {
@@ -107,7 +95,7 @@ class LoginForm extends Component {
   }
 
   registerListeners() {
-    firebase.auth().onAuthStateChanged(user => {
+    this.props.firebase.auth().onAuthStateChanged(user => {
       if (user) {
         // User is signed in.
 

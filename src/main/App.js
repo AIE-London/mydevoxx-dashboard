@@ -9,6 +9,8 @@ import {
 import SideNav from "react-simple-sidenav";
 import styled from "styled-components";
 import Dexie from "dexie";
+import * as firebase from "firebase";
+import firebaseui from "firebaseui";
 
 /*
   UI Components
@@ -81,6 +83,9 @@ const statsData = {
 };
 
 let db;
+//Define indexeddb instance/version
+db = new Dexie("devoxx-db");
+db.version(1).stores({ record: "id,uuid" });
 
 const PrivateRoute = ({
   uuidPresent,
@@ -156,6 +161,19 @@ const LogoutButton = styled.button`
   }
 `;
 
+const fbConfig = {
+  apiKey: "AIzaSyC2U3FefH8JEC6403QqM-igdtuM2LGy1y8",
+  authDomain: "devoxx-dashboard.firebaseapp.com",
+  databaseURL: "https://devoxx-dashboard.firebaseio.com",
+  projectId: "devoxx-dashboard",
+  storageBucket: "devoxx-dashboard.appspot.com",
+  messagingSenderId: "594341536588"
+};
+
+firebase.initializeApp(fbConfig);
+
+let fbui = new firebaseui.auth.AuthUI(firebase.auth());
+
 class App extends Component {
   constructor() {
     super();
@@ -168,10 +186,6 @@ class App extends Component {
       speakers: {},
       redirectLogin: false
     };
-    //Define indexeddb instance/version
-    db = new Dexie("devoxx-db");
-    db.version(1).stores({ record: "id,uuid" });
-
     //open connection to indexeddb - display error if connection failed
     db
       .open("devoxx-db")
@@ -200,7 +214,8 @@ class App extends Component {
           .get("0")
           .then(resolution => {
             if (resolution) {
-              this.setState({ uuidPresent: true });
+              console.log(resolution);
+              this.setState({ uuidPresent: true, redirectLogin: false });
 
               this.storeTalkDataInState(resolution.uuid);
               resolve();
@@ -286,14 +301,29 @@ class App extends Component {
   }
 
   logOut() {
-    Dexie.delete("devoxx-db").then(() => {
-      return this.uuidExists();
-    });
+    firebase.auth().signOut().then(
+      () => {
+        db.record.clear().then(() => {
+          console.log("DELETING");
+          return this.uuidExists().catch(error => {
+            this.setState({ redirectLogin: true });
+          });
+        });
+      },
+      error => {}
+    );
   }
 
   // [TODO] Make inline
   signInPage() {
-    return <LoginForm onSignIn={this.userSignedIn} db={db} />;
+    return (
+      <LoginForm
+        onSignIn={this.userSignedIn}
+        db={db}
+        fbui={fbui}
+        firebase={firebase}
+      />
+    );
   }
 
   // [TODO] Move to a utilities class
@@ -349,6 +379,7 @@ class App extends Component {
               />
             )}
           />
+          {this.state.redirectLogin && <Redirect to="/login" />}
           <Route path="/login" render={this.signInPage} />
           <PrivateRoute
             uuidPresent={this.state.uuidPresent}
