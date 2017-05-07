@@ -308,7 +308,7 @@ class App extends Component {
 
       thursSchedule.concat(friSchedule).forEach(event => {
         scheduleByTalk[event.talkId] = {
-          room: event.roomId,
+          room: event.roomName,
           fromTime: event.fromTimeMillis,
           toTime: event.toTimeMillis
         };
@@ -337,7 +337,7 @@ class App extends Component {
               );
 
               if (scheduleByTalk[id]) {
-                talk.room = scheduleByTalk[id].roomId;
+                talk.room = scheduleByTalk[id].room;
                 talk.startTime = new Date(scheduleByTalk[id].fromTime);
                 talk.endTime = new Date(scheduleByTalk[id].toTime);
               }
