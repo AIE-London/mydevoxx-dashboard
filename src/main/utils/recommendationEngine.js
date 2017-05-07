@@ -5,13 +5,7 @@
 import Recommendation from "../model/recommendation";
 import { getVideos } from "../api/videoSearch";
 
-/*
-  Utilities
- */
-import { getTopTracks } from "./talkUtils";
-
-export function recommendGlobal(talks, speakers) {
-  let topTracks = getTopTracks(talks);
+export function recommendGlobal(topTracks, speakers) {
   let speakerLimit = 3;
 
   /*

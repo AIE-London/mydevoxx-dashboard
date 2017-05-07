@@ -37,7 +37,7 @@ import Speaker from "./model/speaker";
 /*
   Utilities
  */
-import { getTimeForTalk } from "./utils/talkUtils";
+import { getTimeForTalk, getTopTracks } from "./utils/talkUtils";
 import { recommendGlobal } from "./utils/recommendationEngine";
 
 /*
@@ -323,6 +323,7 @@ class App extends Component {
 
         Promise.all(talkRequests).then(() => {
           // get top tracks
+          let topTracks = getTopTracks(Object.values(this.state.talks));
 
           // get top speakers
           let topSpeakers = Object.values(this.state.speakers)
@@ -332,21 +333,20 @@ class App extends Component {
             }))
             .sort((speakera, speakerb) => speakerb.count - speakera.count);
 
+          console.log(topTracks);
+
           this.setState({
             stats: {
               minutes: timeMinutes,
               talks: talkRequests.length,
-              learning: ["Spring", "Java"],
+              learning: topTracks.map(track => track.name),
               attendees: "~1000",
               speakers: topSpeakers.map(speaker => speaker.speaker.name)
             }
           });
 
           // fetch recommendations by feeding array of talks/speakers in.
-          recommendGlobal(
-            Object.values(this.state.talks),
-            topSpeakers
-          ).then(result => {
+          recommendGlobal(topTracks, topSpeakers).then(result => {
             this.setState({
               globalRecommendations: result
             });
