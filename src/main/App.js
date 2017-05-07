@@ -31,6 +31,11 @@ import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
 import SpeakerApi from "./api/speaker";
 import TalkApi from "./api/talk";
+import DaySchedule from "./api/daySchedule";
+
+/*
+  Model
+ */
 import Talk from "./model/talk";
 import Speaker from "./model/speaker";
 
@@ -57,14 +62,6 @@ const NavBar = styled.div`
     font-size: 25px;
   }
 `;
-
-const statsData = {
-  minutes: 455,
-  talks: 10,
-  learning: ["Spring", "Java"],
-  attendees: "~1000",
-  speakers: ["Person One", "Person Two", "Person Three"]
-};
 
 let db;
 //Define indexeddb instance/version
@@ -281,7 +278,35 @@ class App extends Component {
       this.setState({ scheduledTalks: results.scheduled });
     });
 
-    Promise.all([favTalkPromise, schedTalkPromise]).then(() => {
+    let thursSchedule = [];
+    let friSchedule = [];
+
+    let scheduleRequests = Promise.all([
+      DaySchedule.getSlots("thursday").then(result => {
+        thursSchedule = result;
+      }),
+      DaySchedule.getSlots("friday").then(result => {
+        friSchedule = result;
+      })
+    ]).catch(error => {
+      console.log("[ERROR] Recieving schedules. Carrying on.");
+    });
+
+    Promise.all([
+      favTalkPromise,
+      schedTalkPromise,
+      scheduleRequests
+    ]).then(() => {
+      let scheduleByTalk = {};
+
+      thursSchedule.concat(friSchedule).forEach(event => {
+        scheduleByTalk[event.talkId] = {
+          room: event.roomName,
+          fromTime: event.fromTimeMillis,
+          toTime: event.toTimeMillis
+        };
+      });
+
       let uniqueTalks = this.mergeUniqueArray(
         this.state.favouredTalks,
         this.state.scheduledTalks
@@ -316,9 +341,31 @@ class App extends Component {
               } else {
                 speakerCounts[speaker] = 1;
               }
-            });
-            return this.speakerInfo(result.speakers);
-          })
+              
+              if (scheduleByTalk[id]) {
+                talk.room = scheduleByTalk[id].room;
+                talk.startTime = new Date(scheduleByTalk[id].fromTime);
+                talk.endTime = new Date(scheduleByTalk[id].toTime);
+              }
+
+              let newTalk = {};
+              newTalk[talk.id] = talk;
+              this.setState({
+                talks: Object.assign({}, this.state.talks, newTalk)
+              });
+              result.speakers.forEach(speaker => {
+                if (speakerCounts[speaker]) {
+                  speakerCounts[speaker]++;
+                } else {
+                  speakerCounts[speaker] = 1;
+                }
+              });
+              return this.speakerInfo(result.speakers);
+            },
+            error => {
+              console.log("[TALK] request failed - continuing");
+            }
+          )
         );
 
         Promise.all(talkRequests).then(() => {

@@ -23,16 +23,14 @@ let getSlots = day => {
   return request("GET", endpoint + day).then(response => {
     let body = JSON.parse(response.getBody());
 
-    let result = body.slots.map(item => {
-      if (item.talk) {
-        return {
-          roomId: item.roomId,
-          fromTimeMillis: item.fromTimeMillis,
-          talkId: item.talk.id,
-          toTimeMillis: item.toTimeMillis,
-          roomName: item.roomName
-        };
-      }
+    let result = body.slots.filter(item => item.talk).map(item => {
+      return {
+        roomId: item.roomId,
+        fromTimeMillis: item.fromTimeMillis,
+        talkId: item.talk.id,
+        toTimeMillis: item.toTimeMillis,
+        roomName: item.roomName
+      };
     });
     return result;
   });
