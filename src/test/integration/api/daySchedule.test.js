@@ -53,6 +53,7 @@ let emptyArraySetup = () => {
 /**
  * <if> wiremock is trained with a daySched response list -> returns a day schedule array list
  * <else> wiremock is trained with a 404 response -> returns 404
+ *
  */
 describe("getSlots", () => {
   it("should work return data and handles a 404", () => {
@@ -63,9 +64,9 @@ describe("getSlots", () => {
         results => {
           expect(results[0]).toEqual({
             roomId: "a_gallery_hall",
-            fromTimeMillis: 1494493200000,
-            talkId: "JWG-0522",
-            toTimeMillis: 1494494400000,
+            fromTimeMillis: 1494489600000,
+            talkId: "JIV-7695",
+            toTimeMillis: 1494490800000,
             roomName: "Gallery Hall"
           });
         },
