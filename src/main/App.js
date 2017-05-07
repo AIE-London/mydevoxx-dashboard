@@ -305,11 +305,13 @@ class App extends Component {
             .sort((speakera, speakerb) => speakerb.count - speakera.count);
 
           // fetch recommendations by feeding array of talks/speakers in.
-          this.setState({
-            globalRecommendations: recommendGlobal(
-              Object.values(this.state.talks),
-              topSpeakers
-            )
+          recommendGlobal(
+            Object.values(this.state.talks),
+            topSpeakers
+          ).then(result => {
+            this.setState({
+              globalRecommendations: result
+            });
           });
         });
       });

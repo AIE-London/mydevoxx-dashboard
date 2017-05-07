@@ -48,7 +48,7 @@ class Dashboard extends Component {
     return (
       <DashboardComponent>
         <h1>MyDashboard</h1>
-        <Widgets>
+        <Widgets className="desktopOnly75">
           <VerticalContainer xs={12} sm={6} md={4}>
             <Stats
               tracks={this.props.stats.learning}

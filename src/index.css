@@ -38,6 +38,12 @@ html, body {
   }
 }
 
+@media screen and (min-width: 1080px) {
+  .desktopOnly75 {
+    max-height: 75vh;
+  }
+}
+
 ul {
   margin: 0;
   padding: 0;

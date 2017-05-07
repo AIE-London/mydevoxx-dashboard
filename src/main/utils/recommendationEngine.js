@@ -3,6 +3,7 @@
  */
 
 import Recommendation from "../model/recommendation";
+import { getVideos } from "../api/videoSearch";
 
 /*
   Utilities
@@ -32,13 +33,42 @@ export function recommendGlobal(talks, speakers) {
    Recommend based on talks
    */
   let talkRecommendations = [];
-  let youtubeRequests = speakers
-    .filter(speaker => speakerLimit-- > 0)
-    .map(speaker => {
-      // fire off request to YT api.
+  let youtubeRequests = topTracks.map(track => {
+    // fire off request to YT api.
+    return getVideos(track.name).then(result => {
+      console.log(result);
+      talkRecommendations = talkRecommendations.concat(
+        result.map(
+          recommendation =>
+            new Recommendation(
+              recommendation.title,
+              recommendation.link,
+              recommendation.imageurl,
+              recommendation.kind,
+              "tracks"
+            )
+        )
+      );
     });
+  });
 
-  Promise.all(youtubeRequests).then(() => {});
+  return Promise.all(youtubeRequests).then(() => {
+    console.log(talkRecommendations);
+    return shuffleArray(
+      [].concat(speakerRecommendations).concat(talkRecommendations)
+    );
+  });
+}
 
-  return [].concat(speakerRecommendations).concat();
+/**
+ *
+ */
+export function shuffleArray(o) {
+  let arrayLimit = 6;
+  for (
+    var j, x, i = o.length;
+    i;
+    (j = parseInt(Math.random() * i)), (x = o[--i]), (o[i] = o[j]), (o[j] = x)
+  );
+  return o.filter(() => arrayLimit-- > 0);
 }

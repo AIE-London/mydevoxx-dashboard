@@ -1,0 +1,190 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/videos/topic/DevOps"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "kind": "youtube#searchListResponse",
+      "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/sQb5Ky1xPM5jKC55A29iItm24VE\"",
+      "nextPageToken": "CAUQAA",
+      "regionCode": "GB",
+      "pageInfo": {
+        "totalResults": 20,
+        "resultsPerPage": 5
+      },
+      "items": [
+        {
+          "kind": "youtube#searchResult",
+          "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/H6JzIzKGYIPkamLOcfj5kWNHUp4\"",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "TrjeyRAEp48"
+          },
+          "snippet": {
+            "publishedAt": "2016-06-16T16:51:10.000Z",
+            "channelId": "UCxIamwHotqAAdmecaKT9WpA",
+            "title": "DevOps - Microservices, containers, platforms, tooling... Oh yeah, and people",
+            "description": "by Daniel Bryant & Steve Poole Two years ago at Devoxx UK we talked about DevOps, what it was, why it was important and how to get started. Boy, was it scary ...",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/TrjeyRAEp48/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/TrjeyRAEp48/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/TrjeyRAEp48/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "Devoxx UK",
+            "liveBroadcastContent": "none"
+          }
+        },
+        {
+          "kind": "youtube#searchResult",
+          "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/kagtrxy0TYppu4k0Jvxv0ZC2GQI\"",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "tIYPATalcGs"
+          },
+          "snippet": {
+            "publishedAt": "2016-06-16T16:49:53.000Z",
+            "channelId": "UCxIamwHotqAAdmecaKT9WpA",
+            "title": "Dev versus Ops by Dan Hardiker & Henry Whincup",
+            "description": "DevOps has become a buzz word, it's talked about in many different ways but so often the point about people is quickly forgotten over the technical ...",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/tIYPATalcGs/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/tIYPATalcGs/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/tIYPATalcGs/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "Devoxx UK",
+            "liveBroadcastContent": "none"
+          }
+        },
+        {
+          "kind": "youtube#searchResult",
+          "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/hnSpqiTH1Tj1XlOSRYxou8V3hD8\"",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "c9uvV4ChIXw"
+          },
+          "snippet": {
+            "publishedAt": "2016-06-16T16:53:13.000Z",
+            "channelId": "UCxIamwHotqAAdmecaKT9WpA",
+            "title": "Cybercrime and the Developer. How to start defending against the darker side of the web",
+            "description": "by Steve Poole In the world of DevOps and the Cloud most developers have to learn new technologies and methodologies. The focus tends to be on adding ...",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/c9uvV4ChIXw/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/c9uvV4ChIXw/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/c9uvV4ChIXw/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "Devoxx UK",
+            "liveBroadcastContent": "none"
+          }
+        },
+        {
+          "kind": "youtube#searchResult",
+          "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/qjw7Yle71ECW-Qi5yLVvVP85SpU\"",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "yLg-LPSRjho"
+          },
+          "snippet": {
+            "publishedAt": "2016-06-16T16:53:15.000Z",
+            "channelId": "UCxIamwHotqAAdmecaKT9WpA",
+            "title": "Building microservices with Vert.x by Bert Jan Schrijver",
+            "description": "Vert.x is a toolkit for building reactive applications on the JVM. It was awarded for \"Most Innovative Java Technology\" at the JAX Innovation awards. Vert.x is ...",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/yLg-LPSRjho/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/yLg-LPSRjho/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/yLg-LPSRjho/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "Devoxx UK",
+            "liveBroadcastContent": "none"
+          }
+        },
+        {
+          "kind": "youtube#searchResult",
+          "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/T6pA_UUQlFOSKquDw5hUGfi6Vqo\"",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "a6lZWaqKSmY"
+          },
+          "snippet": {
+            "publishedAt": "2016-06-16T16:49:55.000Z",
+            "channelId": "UCxIamwHotqAAdmecaKT9WpA",
+            "title": "Docker and Kubernetes Recipes for Java Developers by Arun Gupta",
+            "description": "Containers are enabling developers to package their applications in new ways that are portable and work consistently everywhere. Docker has become the de ...",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/a6lZWaqKSmY/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/a6lZWaqKSmY/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/a6lZWaqKSmY/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "Devoxx UK",
+            "liveBroadcastContent": "none"
+          }
+        }
+      ]
+    },
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "Access-Control-Allow-Origin": "*"
+    }
+  }
+}
