@@ -9,6 +9,9 @@ export default class Talk {
   _summary;
   _speakers;
   _videoUrl;
+  _room;
+  _startTime;
+  _endTime;
 
   constructor(talkId, title, tracks, language, summary, speakers, videoUrl) {
     this._talkId = talkId;
@@ -46,5 +49,29 @@ export default class Talk {
 
   get speakers() {
     return this._speakers;
+  }
+
+  set room(room) {
+    this._room = room;
+  }
+
+  set startTime(start) {
+    this._startTime = start;
+  }
+
+  set endTime(end) {
+    this._endTime = end;
+  }
+
+  get room() {
+    return this._room;
+  }
+
+  get startTime() {
+    return this._startTime;
+  }
+
+  get endTime() {
+    return this._endTime;
   }
 }
