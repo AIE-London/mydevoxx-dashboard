@@ -45,6 +45,7 @@ const Recommendation = styled(Card)`
     border-radius: 50%;
     height: 5em;
     width: 5em;
+    flex-shrink: 0;
   }
   & > p {
     opacity: 0.5;
@@ -67,7 +68,8 @@ class FurtherReading extends Component {
                   <h3>{recommendation.title}</h3>
                   <h4>{recommendation.link}</h4>
                 </div>
-                <img src={recommendation.imageurl} />
+                {recommendation.imageurl &&
+                  <img src={recommendation.imageurl} />}
               </div>
               <p>Based on your {recommendation.source}</p>
             </Recommendation>
