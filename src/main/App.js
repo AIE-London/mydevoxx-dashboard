@@ -237,6 +237,31 @@ class App extends Component {
             this.setState({
               speakers: Object.assign({}, this.state.speakers, newSpeaker)
             });
+            let promiseArray = speaker.acceptedTalkIDs.map(talkId => {
+              if (!this.state.talks[talkId]) {
+                return TalkApi.getTalk(talkId).then(result => {
+                  let talk = new Talk(
+                    result.id,
+                    result.name,
+                    result.tracks,
+                    "en",
+                    result.description,
+                    result.speakers.map(speaker => speaker.id),
+                    result.videoURL
+                  );
+
+                  let newTalk = {};
+                  newTalk[talk.id] = talk;
+                  this.setState({
+                    talks: Object.assign({}, this.state.talks, newTalk)
+                  });
+                  return this.speakerInfo(result.speakers);
+                });
+              } else {
+                return new Promise(resolve => resolve());
+              }
+            });
+            return Promise.all(promiseArray);
           })
         );
       }
