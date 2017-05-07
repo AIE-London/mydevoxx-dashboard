@@ -29,13 +29,20 @@ import Branding from "./components/Branding";
  */
 import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
-
 import SpeakerApi from "./api/speaker";
 import TalkApi from "./api/talk";
-
 import Talk from "./model/talk";
 import Speaker from "./model/speaker";
 
+/*
+  Utilities
+ */
+
+import { recommendGlobal } from "./utils/recommendationEngine";
+
+/*
+  Styled Components
+ */
 const NavBar = styled.div`
   background: #ff9e19;
   height: 75px;
@@ -51,28 +58,7 @@ const NavBar = styled.div`
   }
 `;
 
-const globalRecommendations = [
-  {
-    name: "Intro to Devoxx",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  },
-  {
-    name: "Intro to Devoxx2",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  },
-  {
-    name: "Intro to Devoxx3",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  },
-  {
-    name: "Intro to Devoxx4",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  }
-];
+const globalRecommendations = recommendGlobal([], []);
 
 const statsData = {
   minutes: 455,

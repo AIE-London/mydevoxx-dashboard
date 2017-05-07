@@ -50,10 +50,10 @@ class FurtherReading extends Component {
       <Container id="recommended-reading">
         <Header>Recommendations</Header>
         {this.props.recommendations.map(recommendation => (
-          <a key={recommendation.name} href={recommendation.url}>
+          <a key={recommendation.title} href={recommendation.link}>
             <Recommendation>
-              <h3>{recommendation.name}</h3>
-              <h4>{recommendation.url}</h4>
+              <h3>{recommendation.title}</h3>
+              <h4>{recommendation.link}</h4>
               <p>Based on your {recommendation.source}</p>
             </Recommendation>
           </a>
