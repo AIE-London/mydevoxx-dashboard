@@ -9,13 +9,17 @@ exports[`test FurtherReading component with title snapshot 1`] = `
   <a
     href="http://devoxx.co.uk">
     <div
-      className="dqPIpN row">
-      <h3>
-        Intro to Devoxx
-      </h3>
-      <h4>
-        http://devoxx.co.uk
-      </h4>
+      className="cjLgcJ row">
+      <div>
+        <div>
+          <h3>
+            Intro to Devoxx
+          </h3>
+          <h4>
+            http://devoxx.co.uk
+          </h4>
+        </div>
+      </div>
       <p>
         Based on your 
         tracks
@@ -25,13 +29,17 @@ exports[`test FurtherReading component with title snapshot 1`] = `
   <a
     href="http://devoxx.co.uk">
     <div
-      className="dqPIpN row">
-      <h3>
-        Intro to Devoxx2
-      </h3>
-      <h4>
-        http://devoxx.co.uk
-      </h4>
+      className="cjLgcJ row">
+      <div>
+        <div>
+          <h3>
+            Intro to Devoxx2
+          </h3>
+          <h4>
+            http://devoxx.co.uk
+          </h4>
+        </div>
+      </div>
       <p>
         Based on your 
         tracks
@@ -41,29 +49,17 @@ exports[`test FurtherReading component with title snapshot 1`] = `
   <a
     href="http://devoxx.co.uk">
     <div
-      className="dqPIpN row">
-      <h3>
-        Intro to Devoxx3
-      </h3>
-      <h4>
-        http://devoxx.co.uk
-      </h4>
-      <p>
-        Based on your 
-        tracks
-      </p>
-    </div>
-  </a>
-  <a
-    href="http://devoxx.co.uk">
-    <div
-      className="dqPIpN row">
-      <h3>
-        Intro to Devoxx4
-      </h3>
-      <h4>
-        http://devoxx.co.uk
-      </h4>
+      className="cjLgcJ row">
+      <div>
+        <div>
+          <h3>
+            Intro to Devoxx4
+          </h3>
+          <h4>
+            http://devoxx.co.uk
+          </h4>
+        </div>
+      </div>
       <p>
         Based on your 
         tracks
