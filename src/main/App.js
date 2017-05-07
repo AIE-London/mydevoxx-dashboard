@@ -37,7 +37,7 @@ import Speaker from "./model/speaker";
 /*
   Utilities
  */
-
+import { getTimeForTalk } from "./utils/talkUtils";
 import { recommendGlobal } from "./utils/recommendationEngine";
 
 /*
@@ -169,7 +169,8 @@ class App extends Component {
       talks: {},
       speakers: {},
       redirectLogin: false,
-      globalRecommendations: []
+      globalRecommendations: [],
+      stats: {}
     };
     //open connection to indexeddb - display error if connection failed
     db
@@ -289,6 +290,8 @@ class App extends Component {
       let talkRequests = [];
       let speakerCounts = {};
 
+      let timeMinutes = 0;
+
       uniqueTalks.forEach(id => {
         talkRequests.push(
           TalkApi.getTalk(id).then(result => {
@@ -301,7 +304,7 @@ class App extends Component {
               result.speakers.map(speaker => speaker.id),
               result.videoURL
             );
-
+            timeMinutes += getTimeForTalk(result);
             let newTalk = {};
             newTalk[talk.id] = talk;
             this.setState({
@@ -328,6 +331,16 @@ class App extends Component {
               count: speakerCounts[speaker]
             }))
             .sort((speakera, speakerb) => speakerb.count - speakera.count);
+
+          this.setState({
+            stats: {
+              minutes: timeMinutes,
+              talks: talkRequests.length,
+              learning: ["Spring", "Java"],
+              attendees: "~1000",
+              speakers: topSpeakers.map(speaker => speaker.speaker.name)
+            }
+          });
 
           // fetch recommendations by feeding array of talks/speakers in.
           recommendGlobal(
@@ -425,7 +438,7 @@ class App extends Component {
                   this.state.scheduledTalks
                 )}
                 recommendations={this.state.globalRecommendations}
-                stats={statsData}
+                stats={this.state.stats}
                 {...props}
               />
             )}
@@ -438,7 +451,7 @@ class App extends Component {
             render={props => {
               return (
                 <Report
-                  reportStats={statsData}
+                  reportStats={this.state.stats}
                   speakerData={this.state.speakers}
                   talkData={this.state.talks}
                   talks={this.mergeUniqueArray(
