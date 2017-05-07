@@ -323,7 +323,9 @@ class App extends Component {
 
         Promise.all(talkRequests).then(() => {
           // get top tracks
-          let topTracks = getTopTracks(Object.values(this.state.talks));
+          let topTracks = getTopTracks(
+            uniqueTalks.map(talkId => this.state.talks[talkId])
+          );
 
           // get top speakers
           let topSpeakers = Object.values(this.state.speakers)
