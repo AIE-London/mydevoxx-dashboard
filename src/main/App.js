@@ -517,11 +517,6 @@ class App extends Component {
             uuidPresent={this.state.uuidPresent}
             component={Talk}
           />
-          <PrivateRoute
-            path="/top-rated"
-            uuidPresent={this.state.uuidPresent}
-            component={TopRated}
-          />
 
           <Branding />
 
