@@ -11,10 +11,18 @@ export default class Recommendation {
 
   constructor(title, link, imageurl, type, source) {
     this._title = title + "";
-    this._link = link + "";
+    this._link = this._parseUrl(link) + "";
     this._imageurl = imageurl;
     this._type = type + "";
     this._source = source + "";
+  }
+
+  _parseUrl(url) {
+    if (!url.startsWith("http")) {
+      return "http://" + url;
+    } else {
+      return url;
+    }
   }
 
   get title() {

@@ -11,14 +11,17 @@ import { getTopTracks } from "./talkUtils";
 
 export function recommendGlobal(talks, speakers) {
   let topTracks = getTopTracks(talks);
-  let topSpeakers = [];
-  return [
-    new Recommendation(
-      "Welcome to Devoxx",
-      "http://devoxx.co.uk",
-      null,
-      "talk",
-      "tracks"
-    )
-  ];
+  /*
+    Recommend based on speakers
+   */
+  let speakerRecommendations = speakers.map(speaker => {
+    return new Recommendation(
+      speaker.speaker.name + "'s Blog",
+      speaker.speaker.blog,
+      speaker.speaker.imageurl,
+      "blog",
+      "speakers"
+    );
+  });
+  return speakerRecommendations;
 }
