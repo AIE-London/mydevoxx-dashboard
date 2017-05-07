@@ -2,7 +2,7 @@
  * Created by dan on 07/05/2017.
  */
 
-import { getKindId } from "../../../main/api/videoSearch";
+import { getKindId, getUrl } from "../../../main/api/videoSearch";
 
 let sampleVideoResult = {
   kind: "youtube#searchResult",
@@ -84,4 +84,24 @@ test("Should return correct id & kind for a playlist.", () => {
     id: "PLKuh52zVrL6l8RfKkezmHSMCcVqb2_NCC",
     kind: "playlist"
   });
+});
+
+test("Should generate valid URL for a video.", () => {
+  expect(
+    getUrl({
+      id: "7FsJ7CKG-DM",
+      kind: "video"
+    })
+  ).toEqual("https://youtube.com/watch?v=7FsJ7CKG-DM");
+});
+
+test("Should generate valid URL for a playlist.", () => {
+  expect(
+    getUrl({
+      id: "PLKuh52zVrL6l8RfKkezmHSMCcVqb2_NCC",
+      kind: "playlist"
+    })
+  ).toEqual(
+    "https://youtube.com/playlist?list=PLKuh52zVrL6l8RfKkezmHSMCcVqb2_NCC"
+  );
 });
