@@ -32,6 +32,9 @@ const Recommendation = styled(Card)`
     flex-direction: row;
     align-items: center;
   }
+  & > div > div {
+    flex: 1;
+  }
   & > div > div > h3 {
     color: #000;
     font-size: 1.5em;
