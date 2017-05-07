@@ -41,7 +41,6 @@ const Orange = styled.span`
 class ReportStats extends Component {
   render() {
     try {
-      throw new Error();
       return (
         <Row center="xs">
           <Col xs={10}>
