@@ -19,14 +19,22 @@ class Report extends Component {
             />
           </Col>
         </Row>
-        {this.props.talks.map((talkId, index) => (
-          <SessionView
-            key={index}
-            talkId={talkId}
-            talkData={this.props.talkData}
-            speakerData={this.props.speakerData}
-          />
-        ))}
+        {this.props.talks
+          .sort((talka, talkb) => {
+            if (talka.startTime && talkb.startTime) {
+              return talkb.startTime - talka.startTime;
+            } else {
+              return 0;
+            }
+          })
+          .map((talkId, index) => (
+            <SessionView
+              key={index}
+              talkId={talkId}
+              talkData={this.props.talkData}
+              speakerData={this.props.speakerData}
+            />
+          ))}
       </div>
     );
   }

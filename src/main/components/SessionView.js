@@ -5,8 +5,6 @@ import TalkCard from "./TalkCard";
 import SpeakerCard from "./SpeakerCard";
 
 // Styles for the different elements of the page
-// [TODO] Re-instate the below once we can identify time
-/*
 const DayText = styled.h2`
    font-size: xx-large;
    text-indent: 50px;
@@ -20,7 +18,6 @@ const WhiteText = styled.h2`
   font-weight: 100;
   color: white;
 `;
- */
 
 const Window = styled.div`
   text-align: left;
@@ -34,20 +31,38 @@ const SpeakerSection = styled(Row)`
 const SpeakerCardContainer = styled(Col)`
   padding: 0 1em;
 `;
+const days = ["One", "Two"];
 
 class SessionView extends Component {
   render() {
     let talk = this.props.talkData[this.props.talkId];
+    let header;
+    try {
+      header = (
+        <div>
+          <DayText>Day {days[talk.startTime.getDay() - 4]}</DayText>
+          <WhiteText>
+            {talk.startTime.getHours()}
+            :
+            {talk.startTime.getMinutes()}
+            {" "}
+            -
+            {" "}
+            {talk.room}
+          </WhiteText>
+        </div>
+      );
+    } catch (error) {
+      console.log("Failed to provide time");
+    }
     try {
       return (
         <Window>
 
           {/* [TODO] Re-instate once we've added in a means of calculating
                  day/time/room */}
-          {/*
-                 <DayText>Day {this.props.talk.dayNo}</DayText>
-                 <WhiteText>{this.props.talk.sTime} - {this.props.talk.room}</WhiteText>
-                 */}
+
+          {header}
 
           <Row center="xs">
             <Col xs={10}>
