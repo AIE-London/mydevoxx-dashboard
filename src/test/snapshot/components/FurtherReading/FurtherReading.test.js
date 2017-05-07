@@ -24,7 +24,7 @@ const globalRecommendations = [
     "tracks"
   ),
   new Recommendation(
-    "Intro to Devoxx4",
+    "Intro to Devoxx3",
     "http://devoxx.co.uk",
     null,
     "blog",
