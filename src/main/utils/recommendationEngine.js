@@ -23,6 +23,7 @@ export function recommendGlobal(talks, speakers) {
       return new Recommendation(
         speaker.speaker.name + "'s Blog",
         speaker.speaker.blog,
+        speaker.speaker.blog,
         speaker.speaker.imageurl,
         "blog",
         "speakers"
@@ -43,6 +44,7 @@ export function recommendGlobal(talks, speakers) {
             new Recommendation(
               recommendation.title,
               recommendation.link,
+              "YouTube " + recommendation.kind,
               recommendation.imageUrl,
               recommendation.kind,
               "tracks"

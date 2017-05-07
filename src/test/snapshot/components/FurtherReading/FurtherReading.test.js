@@ -12,6 +12,7 @@ const globalRecommendations = [
   new Recommendation(
     "Intro to Devoxx",
     "http://devoxx.co.uk",
+    "Devoxx Webpage",
     null,
     "blog",
     "tracks"
@@ -19,6 +20,7 @@ const globalRecommendations = [
   new Recommendation(
     "Intro to Devoxx2",
     "http://devoxx.co.uk",
+    "Devoxx Webpage",
     null,
     "blog",
     "tracks"
@@ -26,6 +28,7 @@ const globalRecommendations = [
   new Recommendation(
     "Intro to Devoxx3",
     "http://devoxx.co.uk",
+    "Devoxx Webpage",
     null,
     "blog",
     "tracks"
@@ -33,6 +36,7 @@ const globalRecommendations = [
   new Recommendation(
     "Intro to Devoxx4",
     "http://devoxx.co.uk",
+    "Devoxx Webpage",
     null,
     "blog",
     "tracks"
