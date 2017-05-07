@@ -1,0 +1,190 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/videos/topic/Agile"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "kind": "youtube#searchListResponse",
+      "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/eSFsE-l1kCPoha1nxK7KkBYuU5Y\"",
+      "nextPageToken": "CAUQAA",
+      "regionCode": "GB",
+      "pageInfo": {
+        "totalResults": 7,
+        "resultsPerPage": 5
+      },
+      "items": [
+        {
+          "kind": "youtube#searchResult",
+          "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/EnhW8kTznq_JnCYXFiBtkMFBYAU\"",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "1ge5Iz9ndTc"
+          },
+          "snippet": {
+            "publishedAt": "2016-06-16T16:50:55.000Z",
+            "channelId": "UCxIamwHotqAAdmecaKT9WpA",
+            "title": "SQL for JSON: Querying with Performance for NoSQL Databases & Applications by Arun Gupta",
+            "description": "In today's world of agile business, developers and organizations benefit when JSON-based NoSQL databases and SQL-based querying come together. NoSQL ...",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/1ge5Iz9ndTc/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/1ge5Iz9ndTc/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/1ge5Iz9ndTc/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "Devoxx UK",
+            "liveBroadcastContent": "none"
+          }
+        },
+        {
+          "kind": "youtube#searchResult",
+          "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/uxVpKYcnvp3m-5jWFrtYWpiq9rE\"",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "kHP6p66qv14"
+          },
+          "snippet": {
+            "publishedAt": "2016-06-16T16:50:58.000Z",
+            "channelId": "UCxIamwHotqAAdmecaKT9WpA",
+            "title": "Leveling up your application security program by David Rook",
+            "description": "In this talk, David will relay lessons learned from his time building the application security program and culture at Riot Games. David will give an overview of how ...",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/kHP6p66qv14/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/kHP6p66qv14/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/kHP6p66qv14/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "Devoxx UK",
+            "liveBroadcastContent": "none"
+          }
+        },
+        {
+          "kind": "youtube#searchResult",
+          "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/4WXz8bmY-uZDohBrxP_5EPrWCo8\"",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "z0awdNcFbpE"
+          },
+          "snippet": {
+            "publishedAt": "2016-06-16T16:51:48.000Z",
+            "channelId": "UCxIamwHotqAAdmecaKT9WpA",
+            "title": "Cognitive Cynefin: How Language and Bias keep us Complicated by Liz Keogh",
+            "description": "For millenia, human beings have survived by learning, then applying our learning to different contexts. We're so good at it that we're driven to find those patterns, ...",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/z0awdNcFbpE/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/z0awdNcFbpE/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/z0awdNcFbpE/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "Devoxx UK",
+            "liveBroadcastContent": "none"
+          }
+        },
+        {
+          "kind": "youtube#searchResult",
+          "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/p9XoSxvwYSrRF9MNxrZvW5PeC08\"",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "urF0CHOLQDk"
+          },
+          "snippet": {
+            "publishedAt": "2016-06-16T16:51:04.000Z",
+            "channelId": "UCxIamwHotqAAdmecaKT9WpA",
+            "title": "Microsoft and Open Source? Microsoft and Java? Really? by Giles Davies",
+            "description": "Microsoft is changing and wants to support developers using the languages, tools and platforms that they want to use. This session will take a look at the ...",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/urF0CHOLQDk/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/urF0CHOLQDk/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/urF0CHOLQDk/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "Devoxx UK",
+            "liveBroadcastContent": "none"
+          }
+        },
+        {
+          "kind": "youtube#searchResult",
+          "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/s7tquUBem1NAxwmATyRyptBEXUw\"",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "CwDDZ8nLVVc"
+          },
+          "snippet": {
+            "publishedAt": "2016-06-16T16:51:39.000Z",
+            "channelId": "UCxIamwHotqAAdmecaKT9WpA",
+            "title": "How to defeat feature gluttony? by Kasia Mrowca",
+            "description": "Feature gluttony is a common sin among IT projects. Customers deliver never ending wish list of features they want. However, the key is not to build everything, ...",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/CwDDZ8nLVVc/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/CwDDZ8nLVVc/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/CwDDZ8nLVVc/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "Devoxx UK",
+            "liveBroadcastContent": "none"
+          }
+        }
+      ]
+    },
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "Access-Control-Allow-Origin": "*"
+    }
+  }
+}

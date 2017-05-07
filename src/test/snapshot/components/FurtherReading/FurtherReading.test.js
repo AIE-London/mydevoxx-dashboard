@@ -3,30 +3,40 @@
  */
 import React from "react";
 import ReactDOM from "react-dom";
-import FurtherReading from "../../../../main/components/FurtherReading";
 import renderer from "react-test-renderer";
 
+import FurtherReading from "../../../../main/components/FurtherReading";
+import Recommendation from "../../../../main/model/recommendation";
+
 const globalRecommendations = [
-  {
-    name: "Intro to Devoxx",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  },
-  {
-    name: "Intro to Devoxx2",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  },
-  {
-    name: "Intro to Devoxx3",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  },
-  {
-    name: "Intro to Devoxx4",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  }
+  new Recommendation(
+    "Intro to Devoxx",
+    "http://devoxx.co.uk",
+    null,
+    "blog",
+    "tracks"
+  ),
+  new Recommendation(
+    "Intro to Devoxx2",
+    "http://devoxx.co.uk",
+    null,
+    "blog",
+    "tracks"
+  ),
+  new Recommendation(
+    "Intro to Devoxx3",
+    "http://devoxx.co.uk",
+    null,
+    "blog",
+    "tracks"
+  ),
+  new Recommendation(
+    "Intro to Devoxx4",
+    "http://devoxx.co.uk",
+    null,
+    "blog",
+    "tracks"
+  )
 ];
 
 test("FurtherReading component", () => {

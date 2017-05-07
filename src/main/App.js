@@ -29,13 +29,20 @@ import Branding from "./components/Branding";
  */
 import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
-
 import SpeakerApi from "./api/speaker";
 import TalkApi from "./api/talk";
-
 import Talk from "./model/talk";
 import Speaker from "./model/speaker";
 
+/*
+  Utilities
+ */
+
+import { recommendGlobal } from "./utils/recommendationEngine";
+
+/*
+  Styled Components
+ */
 const NavBar = styled.div`
   background: #ff9e19;
   height: 75px;
@@ -50,29 +57,6 @@ const NavBar = styled.div`
     font-size: 25px;
   }
 `;
-
-const globalRecommendations = [
-  {
-    name: "Intro to Devoxx",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  },
-  {
-    name: "Intro to Devoxx2",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  },
-  {
-    name: "Intro to Devoxx3",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  },
-  {
-    name: "Intro to Devoxx4",
-    url: "http://devoxx.co.uk",
-    source: "tracks"
-  }
-];
 
 const statsData = {
   minutes: 455,
@@ -184,7 +168,8 @@ class App extends Component {
       favouredTalks: [],
       talks: {},
       speakers: {},
-      redirectLogin: false
+      redirectLogin: false,
+      globalRecommendations: []
     };
     //open connection to indexeddb - display error if connection failed
     db
@@ -231,28 +216,57 @@ class App extends Component {
   };
 
   speakerInfo(speakers) {
+    let speakerRequests = [];
     speakers.forEach(spkr => {
       if (!this.state.speakers[spkr.id]) {
-        SpeakerApi.getSpeaker(spkr.id).then(result => {
-          let speaker = new Speaker(
-            result.uuid,
-            result.bio,
-            result.acceptedTalkIDs,
-            result.company,
-            result.lastName,
-            result.firstName,
-            result.blog,
-            result.avatarURL,
-            result.twitter
-          );
-          let newSpeaker = {};
-          newSpeaker[spkr.id] = speaker;
-          this.setState({
-            speakers: Object.assign({}, this.state.speakers, newSpeaker)
-          });
-        });
+        speakerRequests.push(
+          SpeakerApi.getSpeaker(spkr.id).then(result => {
+            let speaker = new Speaker(
+              result.uuid,
+              result.bio,
+              result.acceptedTalkIDs,
+              result.company,
+              result.lastName,
+              result.firstName,
+              result.blog,
+              result.avatarURL,
+              result.twitter
+            );
+            let newSpeaker = {};
+            newSpeaker[spkr.id] = speaker;
+            this.setState({
+              speakers: Object.assign({}, this.state.speakers, newSpeaker)
+            });
+            let promiseArray = speaker.acceptedTalkIDs.map(talkId => {
+              if (!this.state.talks[talkId]) {
+                return TalkApi.getTalk(talkId).then(result => {
+                  let talk = new Talk(
+                    result.id,
+                    result.name,
+                    result.tracks,
+                    "en",
+                    result.description,
+                    result.speakers.map(speaker => speaker.id),
+                    result.videoURL
+                  );
+
+                  let newTalk = {};
+                  newTalk[talk.id] = talk;
+                  this.setState({
+                    talks: Object.assign({}, this.state.talks, newTalk)
+                  });
+                  return this.speakerInfo(result.speakers);
+                });
+              } else {
+                return new Promise(resolve => resolve());
+              }
+            });
+            return Promise.all(promiseArray);
+          })
+        );
       }
     });
+    return Promise.all(speakerRequests);
   }
 
   storeTalkDataInState(uuid) {
@@ -272,24 +286,58 @@ class App extends Component {
         this.state.scheduledTalks
       );
 
-      uniqueTalks.forEach(id => {
-        TalkApi.getTalk(id).then(result => {
-          let talk = new Talk(
-            result.id,
-            result.name,
-            result.tracks,
-            "en",
-            result.description,
-            result.speakers.map(speaker => speaker.id),
-            result.videoURL
-          );
+      let talkRequests = [];
+      let speakerCounts = {};
 
-          let newTalk = {};
-          newTalk[talk.id] = talk;
-          this.setState({
-            talks: Object.assign({}, this.state.talks, newTalk)
+      uniqueTalks.forEach(id => {
+        talkRequests.push(
+          TalkApi.getTalk(id).then(result => {
+            let talk = new Talk(
+              result.id,
+              result.name,
+              result.tracks,
+              "en",
+              result.description,
+              result.speakers.map(speaker => speaker.id),
+              result.videoURL
+            );
+
+            let newTalk = {};
+            newTalk[talk.id] = talk;
+            this.setState({
+              talks: Object.assign({}, this.state.talks, newTalk)
+            });
+            result.speakers.forEach(speaker => {
+              if (speakerCounts[speaker]) {
+                speakerCounts[speaker]++;
+              } else {
+                speakerCounts[speaker] = 1;
+              }
+            });
+            return this.speakerInfo(result.speakers);
+          })
+        );
+
+        Promise.all(talkRequests).then(() => {
+          // get top tracks
+
+          // get top speakers
+          let topSpeakers = Object.values(this.state.speakers)
+            .map(speaker => ({
+              speaker,
+              count: speakerCounts[speaker]
+            }))
+            .sort((speakera, speakerb) => speakerb.count - speakera.count);
+
+          // fetch recommendations by feeding array of talks/speakers in.
+          recommendGlobal(
+            Object.values(this.state.talks),
+            topSpeakers
+          ).then(result => {
+            this.setState({
+              globalRecommendations: result
+            });
           });
-          this.speakerInfo(result.speakers);
         });
       });
     });
@@ -376,7 +424,7 @@ class App extends Component {
                   this.state.favouredTalks,
                   this.state.scheduledTalks
                 )}
-                recommendations={globalRecommendations}
+                recommendations={this.state.globalRecommendations}
                 stats={statsData}
                 {...props}
               />

@@ -80,7 +80,11 @@ class SpeakerCard extends Component {
                 <Talks>
                   {acceptedTalkIDs.map(talkId => {
                     let talk = this.props.talkData[talkId];
-                    return <li key={talk.id}>{talk.title}</li>;
+                    try {
+                      return <li key={talk.id}>{talk.title}</li>;
+                    } catch (error) {
+                      console.log("[SPKR CARD] Unknown talk ID");
+                    }
                   })}
                 </Talks>
               </ul>
