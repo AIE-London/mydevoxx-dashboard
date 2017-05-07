@@ -38,7 +38,7 @@ let parseTracks = tracks => {
   let result = [];
   if (tracks) {
     result = tracks.split(",").map(item => {
-      return item.trim();
+      return item.trim().replace("&amp;", "&");
     });
   }
   return result;
