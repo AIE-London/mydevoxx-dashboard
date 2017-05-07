@@ -32,14 +32,6 @@ exports[`test App component snapshot 1`] = `
             Report
           </a>
         </li>
-        <li
-          className="bdhwFl">
-          <a
-            href="/"
-            onClick={[Function]}>
-            Top Rated
-          </a>
-        </li>
       </ul>
       <button
         className="desktopOnlyInline fCgKay"
@@ -187,25 +179,6 @@ exports[`test App component snapshot 1`] = `
               href="/report"
               onClick={[Function]}>
               Report
-            </a>
-          </li>
-          <li
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#fff",
-                "cursor": "pointer",
-                "listStyle": "none",
-                "margin": 0,
-                "padding": 0,
-              }
-            }>
-            <a
-              className="crtcUq"
-              href="/"
-              onClick={[Function]}>
-              Top Rated
             </a>
           </li>
           <li

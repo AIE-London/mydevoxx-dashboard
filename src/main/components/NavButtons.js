@@ -34,10 +34,6 @@ export const NavItems = [
   {
     link: "/report",
     name: "Report"
-  },
-  {
-    link: "/",
-    name: "Top Rated"
   }
 ];
 
