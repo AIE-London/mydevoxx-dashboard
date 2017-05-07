@@ -63,36 +63,9 @@ exports[`test card component with title snapshot 1`] = `
         My Notes
       </h3>
     </div>
-    <div
-      className="row start-xs">
-      <p
-        className="bKHqKP">
-        
-      </p>
-    </div>
-    <div
-      className="row start-xs">
-      <h3
-        className="jJURiy"
-        id="reviewHeader">
-        My Reviews
-      </h3>
-    </div>
-    <div
-      className="fEZGiH row start-xs">
-      <div
-        className="row start-xs">
-        <div
-          className="" />
-        <div
-          className="col-xs">
-          <h3
-            className="jPwRym" />
-          <p
-            className="ZxTsc" />
-        </div>
-      </div>
-    </div>
+    <textarea
+      className="dBQlNn"
+      placeholder="Write notes here..." />
   </div>
 </div>
 `;
