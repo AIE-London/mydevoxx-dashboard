@@ -35,25 +35,18 @@ export function getTimeForTalk(talk) {
   switch (talk.type) {
     case "Conference":
       return 50;
-      break;
     case "Opening Keynote":
       return 20;
-      break;
     case "Closing Keynote":
       return 45;
-      break;
     case "Hands-on Labs":
       return 120;
-      break;
     case "BOF (Birds of a Feather)":
       return 60;
-      break;
     case "Quickie Sessions":
       return 15;
-      break;
     case "Ignite Sessions":
       return 5;
-      break;
     default:
       return 0;
   }

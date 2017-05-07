@@ -335,39 +335,40 @@ class App extends Component {
             this.setState({
               talks: Object.assign({}, this.state.talks, newTalk)
             });
-            result.speakers.forEach(speaker => {
-              if (speakerCounts[speaker]) {
-                speakerCounts[speaker]++;
-              } else {
-                speakerCounts[speaker] = 1;
-              }
-              
-              if (scheduleByTalk[id]) {
-                talk.room = scheduleByTalk[id].room;
-                talk.startTime = new Date(scheduleByTalk[id].fromTime);
-                talk.endTime = new Date(scheduleByTalk[id].toTime);
-              }
-
-              let newTalk = {};
-              newTalk[talk.id] = talk;
-              this.setState({
-                talks: Object.assign({}, this.state.talks, newTalk)
-              });
-              result.speakers.forEach(speaker => {
+            result.speakers.forEach(
+              speaker => {
                 if (speakerCounts[speaker]) {
                   speakerCounts[speaker]++;
                 } else {
                   speakerCounts[speaker] = 1;
                 }
-              });
-              return this.speakerInfo(result.speakers);
-            },
-            error => {
-              console.log("[TALK] request failed - continuing");
-            }
-          )
-        );
 
+                if (scheduleByTalk[id]) {
+                  talk.room = scheduleByTalk[id].room;
+                  talk.startTime = new Date(scheduleByTalk[id].fromTime);
+                  talk.endTime = new Date(scheduleByTalk[id].toTime);
+                }
+
+                let newTalk = {};
+                newTalk[talk.id] = talk;
+                this.setState({
+                  talks: Object.assign({}, this.state.talks, newTalk)
+                });
+                result.speakers.forEach(speaker => {
+                  if (speakerCounts[speaker]) {
+                    speakerCounts[speaker]++;
+                  } else {
+                    speakerCounts[speaker] = 1;
+                  }
+                });
+                return this.speakerInfo(result.speakers);
+              },
+              error => {
+                console.log("[TALK] request failed - continuing");
+              }
+            );
+          })
+        );
         Promise.all(talkRequests).then(() => {
           // get top tracks
           let topTracks = getTopTracks(
