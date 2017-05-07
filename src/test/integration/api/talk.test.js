@@ -56,7 +56,8 @@ describe("getTalk", () => {
                 name: "Helen Beal"
               }
             ],
-            tracks: ["Agile", "DevOps"]
+            tracks: ["Agile", "DevOps"],
+            type: "Conference"
           });
         },
         error => {

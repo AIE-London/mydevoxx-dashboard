@@ -69,6 +69,7 @@ let getTalk = talkId => {
     let body = JSON.parse(response.getBody());
     return {
       id: body.id,
+      type: body.talkType,
       name: body.title,
       description: body.summary,
       tracks: parseTracks(body.track),

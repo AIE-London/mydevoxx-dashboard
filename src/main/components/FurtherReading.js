@@ -66,7 +66,7 @@ class FurtherReading extends Component {
               <div>
                 <div>
                   <h3>{recommendation.title}</h3>
-                  <h4>{recommendation.link}</h4>
+                  <h4>{recommendation.linkName}</h4>
                 </div>
                 {recommendation.imageurl &&
                   <img src={recommendation.imageurl} />}

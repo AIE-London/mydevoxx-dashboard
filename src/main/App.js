@@ -42,7 +42,7 @@ import Speaker from "./model/speaker";
 /*
   Utilities
  */
-
+import { getTimeForTalk, getTopTracks } from "./utils/talkUtils";
 import { recommendGlobal } from "./utils/recommendationEngine";
 
 /*
@@ -62,14 +62,6 @@ const NavBar = styled.div`
     font-size: 25px;
   }
 `;
-
-const statsData = {
-  minutes: 455,
-  talks: 10,
-  learning: ["Spring", "Java"],
-  attendees: "~1000",
-  speakers: ["Person One", "Person Two", "Person Three"]
-};
 
 let db;
 //Define indexeddb instance/version
@@ -174,7 +166,8 @@ class App extends Component {
       talks: {},
       speakers: {},
       redirectLogin: false,
-      globalRecommendations: []
+      globalRecommendations: [],
+      stats: {}
     };
     //open connection to indexeddb - display error if connection failed
     db
@@ -322,48 +315,65 @@ class App extends Component {
       let talkRequests = [];
       let speakerCounts = {};
 
+      let timeMinutes = 0;
+
       uniqueTalks.forEach(id => {
         talkRequests.push(
-          TalkApi.getTalk(id).then(
-            result => {
-              let talk = new Talk(
-                result.id,
-                result.name,
-                result.tracks,
-                "en",
-                result.description,
-                result.speakers.map(speaker => speaker.id),
-                result.videoURL
-              );
-
-              if (scheduleByTalk[id]) {
-                talk.room = scheduleByTalk[id].room;
-                talk.startTime = new Date(scheduleByTalk[id].fromTime);
-                talk.endTime = new Date(scheduleByTalk[id].toTime);
-              }
-
-              let newTalk = {};
-              newTalk[talk.id] = talk;
-              this.setState({
-                talks: Object.assign({}, this.state.talks, newTalk)
-              });
-              result.speakers.forEach(speaker => {
+          TalkApi.getTalk(id).then(result => {
+            let talk = new Talk(
+              result.id,
+              result.name,
+              result.tracks,
+              "en",
+              result.description,
+              result.speakers.map(speaker => speaker.id),
+              result.videoURL
+            );
+            timeMinutes += getTimeForTalk(result);
+            let newTalk = {};
+            newTalk[talk.id] = talk;
+            this.setState({
+              talks: Object.assign({}, this.state.talks, newTalk)
+            });
+            result.speakers.forEach(
+              speaker => {
                 if (speakerCounts[speaker]) {
                   speakerCounts[speaker]++;
                 } else {
                   speakerCounts[speaker] = 1;
                 }
-              });
-              return this.speakerInfo(result.speakers);
-            },
-            error => {
-              console.log("[TALK] request failed - continuing");
-            }
-          )
-        );
 
+                if (scheduleByTalk[id]) {
+                  talk.room = scheduleByTalk[id].room;
+                  talk.startTime = new Date(scheduleByTalk[id].fromTime);
+                  talk.endTime = new Date(scheduleByTalk[id].toTime);
+                }
+
+                let newTalk = {};
+                newTalk[talk.id] = talk;
+                this.setState({
+                  talks: Object.assign({}, this.state.talks, newTalk)
+                });
+                result.speakers.forEach(speaker => {
+                  if (speakerCounts[speaker]) {
+                    speakerCounts[speaker]++;
+                  } else {
+                    speakerCounts[speaker] = 1;
+                  }
+                });
+                return this.speakerInfo(result.speakers);
+              },
+              error => {
+                console.log("[TALK] request failed - continuing");
+              }
+            );
+          })
+        );
         Promise.all(talkRequests).then(() => {
           // get top tracks
+          let topTracks = getTopTracks(
+            uniqueTalks.map(talkId => this.state.talks[talkId])
+          );
 
           // get top speakers
           let topSpeakers = Object.values(this.state.speakers)
@@ -373,11 +383,20 @@ class App extends Component {
             }))
             .sort((speakera, speakerb) => speakerb.count - speakera.count);
 
+          console.log(topTracks);
+
+          this.setState({
+            stats: {
+              minutes: timeMinutes,
+              talks: talkRequests.length,
+              learning: topTracks.map(track => track.name),
+              attendees: "~1000",
+              speakers: topSpeakers.map(speaker => speaker.speaker.name)
+            }
+          });
+
           // fetch recommendations by feeding array of talks/speakers in.
-          recommendGlobal(
-            Object.values(this.state.talks),
-            topSpeakers
-          ).then(result => {
+          recommendGlobal(topTracks, topSpeakers).then(result => {
             this.setState({
               globalRecommendations: result
             });
@@ -469,7 +488,7 @@ class App extends Component {
                   this.state.scheduledTalks
                 )}
                 recommendations={this.state.globalRecommendations}
-                stats={statsData}
+                stats={this.state.stats}
                 {...props}
               />
             )}
@@ -482,7 +501,7 @@ class App extends Component {
             render={props => {
               return (
                 <Report
-                  reportStats={statsData}
+                  reportStats={this.state.stats}
                   speakerData={this.state.speakers}
                   talkData={this.state.talks}
                   talks={this.mergeUniqueArray(

@@ -5,13 +5,7 @@
 import Recommendation from "../model/recommendation";
 import { getVideos } from "../api/videoSearch";
 
-/*
-  Utilities
- */
-import { getTopTracks } from "./talkUtils";
-
-export function recommendGlobal(talks, speakers) {
-  let topTracks = getTopTracks(talks);
+export function recommendGlobal(topTracks, speakers) {
   let speakerLimit = 3;
 
   /*
@@ -22,6 +16,7 @@ export function recommendGlobal(talks, speakers) {
     .map(speaker => {
       return new Recommendation(
         speaker.speaker.name + "'s Blog",
+        speaker.speaker.blog,
         speaker.speaker.blog,
         speaker.speaker.imageurl,
         "blog",
@@ -43,6 +38,7 @@ export function recommendGlobal(talks, speakers) {
             new Recommendation(
               recommendation.title,
               recommendation.link,
+              "YouTube " + recommendation.kind,
               recommendation.imageUrl,
               recommendation.kind,
               "tracks"

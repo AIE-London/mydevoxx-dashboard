@@ -26,47 +26,75 @@ const StatHeader = styled.h2`
 
 class Stats extends Component {
   render() {
-    return (
-      <Container>
-        <StatsCard center="xs">
-          {/* Wraps the Card component within the Container component */}
-          <Col xs={11}>
-            <Col xs={6}>
+    try {
+      return (
+        <Container>
+          <StatsCard center="xs">
+            {/* Wraps the Card component within the Container component */}
+            <Col xs={11}>
+              <Col xs={6}>
+                <Row start="xs">
+                  <h1>My Stats</h1>
+                </Row>
+              </Col>
+
               <Row start="xs">
-                <h1>My Stats</h1>
+                <Col xs={12}>
+                  <StatHeader>Top Tracks:</StatHeader>
+                  <div style={{ textAlign: "center" }}>
+                    <CommaList>
+                      {/* creates a ul element using the CommaList styled ul format */}
+                      {this.props.tracks.map(function(track) {
+                        return (
+                          <CommaListItem key={track}>{track}</CommaListItem>
+                        );
+                      })}
+                    </CommaList>
+                  </div>
+
+                  <StatHeader>Top Speakers:</StatHeader>
+
+                  <div style={{ textAlign: "center", paddingBottom: 15 }}>
+                    <CommaList>
+                      {this.props.speakers.map(function(speaker) {
+                        return (
+                          <CommaListItem key={speaker}>{speaker}</CommaListItem>
+                        );
+                      })}
+                    </CommaList>
+                  </div>
+                </Col>
               </Row>
             </Col>
 
-            <Row start="xs">
-              <Col xs={12}>
-                <StatHeader>Top Tracks:</StatHeader>
-                <div style={{ textAlign: "center" }}>
-                  <CommaList>
-                    {/* creates a ul element using the CommaList styled ul format */}
-                    {this.props.tracks.map(function(track) {
-                      return <CommaListItem key={track}>{track}</CommaListItem>;
-                    })}
-                  </CommaList>
-                </div>
-
-                <StatHeader>Top Speakers:</StatHeader>
-
-                <div style={{ textAlign: "center", paddingBottom: 15 }}>
-                  <CommaList>
-                    {this.props.speakers.map(function(speaker) {
-                      return (
-                        <CommaListItem key={speaker}>{speaker}</CommaListItem>
-                      );
-                    })}
-                  </CommaList>
-                </div>
+          </StatsCard>
+        </Container>
+      );
+    } catch (error) {
+      return (
+        <Container>
+          <StatsCard center="xs">
+            {/* Wraps the Card component within the Container component */}
+            <Col xs={11}>
+              <Col xs={6}>
+                <Row start="xs">
+                  <h1>My Stats</h1>
+                </Row>
               </Col>
-            </Row>
-          </Col>
 
-        </StatsCard>
-      </Container>
-    );
+              <Row start="xs">
+                <Col xs={12}>
+                  <StatHeader>Top Tracks:</StatHeader>
+
+                  <StatHeader>Top Speakers:</StatHeader>
+                </Col>
+              </Row>
+            </Col>
+
+          </StatsCard>
+        </Container>
+      );
+    }
   }
 }
 
