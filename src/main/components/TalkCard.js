@@ -47,8 +47,14 @@ const CardParagraph = styled.p`
   text-align: left;
 `;
 
-const CardNotes = styled(CardParagraph)`
+const CardNotes = styled.textarea`
   font-size: 0.9em;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  flex: 1;
+  width: 100%;
+  height: 10em;
+  margin-top: 1em;
 `;
 
 const ReviewContainer = styled(Row)`
@@ -99,15 +105,7 @@ class TalkCard extends Component {
           <Row start="xs">
             <CardSubhead id="notesHeader">My Notes</CardSubhead>
           </Row>
-          <Row start="xs">
-            <CardNotes>{notes}</CardNotes>
-          </Row>
-          <Row start="xs">
-            <CardSubhead id="reviewHeader">My Reviews</CardSubhead>
-          </Row>
-          <ReviewContainer start="xs">
-            <Review review={review} />
-          </ReviewContainer>
+          <CardNotes placeholder="Write notes here..." />
         </RightPartition>
       </FullWidthCard>
     );
