@@ -43,7 +43,7 @@ export function recommendGlobal(talks, speakers) {
             new Recommendation(
               recommendation.title,
               recommendation.link,
-              recommendation.imageurl,
+              recommendation.imageUrl,
               recommendation.kind,
               "tracks"
             )
@@ -64,7 +64,7 @@ export function recommendGlobal(talks, speakers) {
  *
  */
 export function shuffleArray(o) {
-  let arrayLimit = 6;
+  let arrayLimit = 5;
   for (
     var j, x, i = o.length;
     i;

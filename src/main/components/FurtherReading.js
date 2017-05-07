@@ -27,21 +27,31 @@ const Recommendation = styled(Card)`
   padding: 1em 1em;
   display: flex;
   flex-direction: column;
-  & > h3 {
+  & > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  & > div > div > h3 {
     color: #000;
-    font-size: 2em;
+    font-size: 1.5em;
     margin-bottom: 0;
   }
-  & > h4 {
+  & > div > div > h4 {
     color: #ff9e19;
     margin-top: 5px;
+  }
+  & > div > img {
+    border-radius: 50%;
+    height: 5em;
+    width: 5em;
   }
   & > p {
     opacity: 0.5;
     color: #000;
     text-align: right;
   }
-  margin-bottom: 0.75em;
+  margin-bottom: 0.5em;
 `;
 
 class FurtherReading extends Component {
@@ -52,8 +62,13 @@ class FurtherReading extends Component {
         {this.props.recommendations.map(recommendation => (
           <a key={recommendation.title} href={recommendation.link}>
             <Recommendation>
-              <h3>{recommendation.title}</h3>
-              <h4>{recommendation.link}</h4>
+              <div>
+                <div>
+                  <h3>{recommendation.title}</h3>
+                  <h4>{recommendation.link}</h4>
+                </div>
+                <img src={recommendation.imageurl} />
+              </div>
               <p>Based on your {recommendation.source}</p>
             </Recommendation>
           </a>
