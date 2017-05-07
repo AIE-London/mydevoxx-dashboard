@@ -61,7 +61,8 @@ export function recommendGlobal(talks, speakers) {
 }
 
 /**
- *
+ *  Shuffles an array and then cuts it down to first 5 items.
+ *  @return {Array}
  */
 export function shuffleArray(o) {
   let arrayLimit = 5;
