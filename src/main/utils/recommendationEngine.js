@@ -55,7 +55,9 @@ export function recommendGlobal(talks, speakers) {
   return Promise.all(youtubeRequests).then(() => {
     console.log(talkRecommendations);
     return shuffleArray(
-      [].concat(speakerRecommendations).concat(talkRecommendations)
+      []
+        .concat(speakerRecommendations)
+        .concat(shuffleArray(talkRecommendations))
     );
   });
 }
