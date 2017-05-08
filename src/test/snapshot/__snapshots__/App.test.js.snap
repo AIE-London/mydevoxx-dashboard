@@ -57,25 +57,44 @@ exports[`test App component snapshot 1`] = `
     </div>
   </section>
   <div
-    className="ghgTfl row">
-    <img
-      alt="Capgemini Logo"
-      src="caplogo.svg"
-      style={
-        Object {
-          "height": 150,
-          "width": 250,
-        }
-      } />
-    <img
-      alt="Capgemini AIE Logo"
-      src="Aie-logo-nolocation.svg"
-      style={
-        Object {
-          "height": 125,
-          "width": 300,
-        }
-      } />
+    className="XuPtA row">
+    <div
+      className="fXKusO">
+      <a
+        href="https://www.uk.capgemini.com/">
+         
+        <img
+          alt="Capgemini Logo"
+          src="caplogo.svg"
+          style={
+            Object {
+              "height": 150,
+              "width": 250,
+            }
+          } />
+      </a>
+      <a
+        href="https://www.capgemini.com/applied-innovation-exchange">
+         
+        <img
+          alt="Capgemini AIE Logo"
+          src="Aie-logo-nolocation.svg"
+          style={
+            Object {
+              "height": 125,
+              "width": 300,
+            }
+          } />
+      </a>
+    </div>
+    <a
+      href="http://www.uk.capgemini.com/careers/apply-now">
+       
+      <h3
+        className="crBpDb">
+        Come work with us
+      </h3>
+    </a>
   </div>
   <aside
     style={
