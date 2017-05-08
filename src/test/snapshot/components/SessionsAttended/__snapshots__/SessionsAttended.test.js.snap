@@ -23,9 +23,6 @@ exports[`test SessionsAttended component with snapshot 1`] = `
         </li>
       </ul>
     </div>
-    <img
-      alt="method_architecture"
-      src="https://ignite.apache.org/images/java.png" />
   </div>
 </div>
 `;
