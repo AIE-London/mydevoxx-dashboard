@@ -37,6 +37,14 @@ class Branding extends Component {
           src={require("../../../public/Aie-logo-nolocation.svg")}
           alt="Capgemini AIE Logo"
         />
+
+        <input
+          type="button"
+          value="button name"
+          href="https://www.uk.capgemini.com/careers/apply-now"
+          onClick="window.open(this.href); return false;"
+          onkeypress="window.open(this.href); return false;"
+        />
       </Container>
     );
   }
