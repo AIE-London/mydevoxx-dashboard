@@ -3,11 +3,11 @@ exports[`test SessionsAttended component with snapshot 1`] = `
   className="iCnvCe row"
   id="attended-sessions">
   <h2
-    className="jaIYAq">
+    className="gzZDMR">
     My Sessions
   </h2>
   <div
-    className="kgeHuu">
+    className="fXfwtB">
     <div>
       <h3>
         Test talk title
@@ -23,9 +23,6 @@ exports[`test SessionsAttended component with snapshot 1`] = `
         </li>
       </ul>
     </div>
-    <img
-      alt="method_architecture"
-      src="https://ignite.apache.org/images/java.png" />
   </div>
 </div>
 `;
