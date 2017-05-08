@@ -442,7 +442,7 @@ class App extends Component {
 
   // [TODO] Move to a utilities class
   mergeUniqueArray(firstArray, secondArray) {
-    let mergedArray = firstArray.concat([secondArray]);
+    let mergedArray = firstArray.concat(secondArray);
     return mergedArray
       .map(id => {
         return id.id;
