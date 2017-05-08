@@ -3,11 +3,11 @@ exports[`test SessionsAttended component with snapshot 1`] = `
   className="iCnvCe row"
   id="attended-sessions">
   <h2
-    className="jaIYAq">
+    className="gzZDMR">
     My Sessions
   </h2>
   <div
-    className="kgeHuu">
+    className="fXfwtB">
     <div>
       <h3>
         Test talk title
