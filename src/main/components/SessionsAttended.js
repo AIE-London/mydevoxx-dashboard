@@ -88,10 +88,7 @@ class SessionsAttended extends Component {
                   </CommaList>
                 </div>
                 {/* [TODO] Make these images DYNAMIC */}
-                <img
-                  alt={talk.tracks[0]}
-                  src="https://ignite.apache.org/images/java.png"
-                />
+
               </Session>
             );
           } catch (error) {
