@@ -1,23 +1,19 @@
-# mydevoxx-dashboard
-This repo will contain the source code for the devoxx react dashboard
+# Personal Devoxx Dashboard
+[![Build Status](https://travis-ci.org/Capgemini-AIE/mydevoxx-dashboard.svg?branch=master)](https://travis-ci.org/Capgemini-AIE/mydevoxx-dashboard)
 
-### Folder Structure
-Below is the candidate folder structure
+This repo contains the source code for the personal Devoxx dashboard, built in react.
 
-- public
-- src
-    - main
-        - actions
-        - components
-        - containers
-        - reducers
-        - store
-        - api
-    - test
-        - integration
-            - api
-        - unit
-            - reducers
-            - api
-        - snapshot
-            - components
+It serves as a personal dashboard for attendees of the Devoxx UK conference. Those with an account can see their scheduled talks, recommended talks, twitter mentions and a report for statistics about the conference.
+
+The dashboard utilizes technologies such as React and Node.js.
+
+## Usage
+Link to the live website: https://mydevoxx-dashboard.eu-gb.mybluemix.net/login
+To run the dashboard locally, clone this repo, then run the following in the repo: 
+```bash
+npm install
+npm start
+```
+Then, navigate to localhost:3000 in your favourite internet browser.
+
+Come and work for us!: https://www.uk.capgemini.com/
