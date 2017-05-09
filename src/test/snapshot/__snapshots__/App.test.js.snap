@@ -10,7 +10,7 @@ exports[`test App component snapshot 1`] = `
         id="nav-icon"
         onClick={[Function]} />
       <h1>
-        PersonalDevoxxReport
+        Personal Devoxx
       </h1>
     </div>
     <div>
@@ -158,7 +158,7 @@ exports[`test App component snapshot 1`] = `
             }
           }>
           <div>
-            PersonalDevoxx Report 2017
+            Personal Devoxx
           </div>
         </h1>
         <ul>
