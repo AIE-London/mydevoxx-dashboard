@@ -6,7 +6,7 @@ exports[`test App component snapshot 1`] = `
     <div
       className="glmvbA">
       <h1>
-        Personal Devoxx
+        PersonalDevoxxReport
       </h1>
     </div>
   </div>
@@ -66,7 +66,5 @@ exports[`test App component snapshot 1`] = `
       </h3>
     </a>
   </div>
-
-
 </div>
 `;
