@@ -459,16 +459,17 @@ class App extends Component {
     return (
       <DevoxxRouter history={browserHistory}>
         <Page>
-          {this.state.uuidPresent &&
-            <NavBar>
-              <TitleContainer>
+          <NavBar>
+            <TitleContainer>
+              {this.state.uuidPresent &&
                 <h2
                   id="nav-icon"
                   onClick={() => this.setState({ navVisible: true })}
                   className="mobileOnly"
-                />
-                <h1>PersonalDevoxxReport</h1>
-              </TitleContainer>
+                />}
+              <h1>PersonalDevoxxReport</h1>
+            </TitleContainer>
+            {this.state.uuidPresent &&
               <div>
                 <NavButtons />
                 <LogoutButton
@@ -477,8 +478,8 @@ class App extends Component {
                 >
                   Log Out
                 </LogoutButton>
-              </div>
-            </NavBar>}
+              </div>}
+          </NavBar>
           <PrivateRoute
             path="/"
             exact

@@ -1,6 +1,15 @@
 exports[`test App component snapshot 1`] = `
 <div
   className="dPaMyZ">
+  <div
+    className="iJXstL">
+    <div
+      className="glmvbA">
+      <h1>
+        PersonalDevoxxReport
+      </h1>
+    </div>
+  </div>
   <section>
     <div
       className="jElMWD row center-xs middle-xs">
