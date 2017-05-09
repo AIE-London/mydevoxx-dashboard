@@ -461,6 +461,7 @@ class App extends Component {
         <Page>
           <NavBar>
             <TitleContainer>
+
               {this.state.uuidPresent &&
                 <h2
                   id="nav-icon"
@@ -468,6 +469,7 @@ class App extends Component {
                   className="mobileOnly"
                 />}
               <h1>PersonalDevoxxReport</h1>
+
             </TitleContainer>
             {this.state.uuidPresent &&
               <div>
@@ -545,6 +547,7 @@ class App extends Component {
                 <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
               ])}
             />}
+
         </Page>
       </DevoxxRouter>
     );
