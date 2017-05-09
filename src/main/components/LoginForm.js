@@ -9,6 +9,8 @@ import * as firebase from "firebase";
 
 import Card from "./Card";
 
+import debugLog from "../utils/debugLog";
+
 let successURL = "https://mydevoxx-dashboard.eu-gb.mybluemix.net/";
 const mockSuccessURL = "http://localhost:3000/report";
 
@@ -106,7 +108,7 @@ class LoginForm extends Component {
         // User is signed out.
       }
     }, function(error) {
-      console.log(error);
+      debugLog.log(error);
     });
   }
 

@@ -11,6 +11,7 @@ import {
   raiseOrPassError,
   expectNotFoundOrRethrowError
 } from "./testingHelpers";
+import debugLog from "../../../main/utils/debugLog";
 
 /**
  * Set up wiremock with normal speaker api response
@@ -63,8 +64,8 @@ describe("getSpeaker", () => {
       .getSpeaker("695b40d928dd0a905b7ab1b900b5a5752870a7d8404")
       .then(
         result => {
-          console.log("RESULT");
-          console.log(result);
+          debugLog.log("RESULT");
+          debugLog.log(result);
           raiseOrPassError(
             "UnexpectedSuccessException",
             'Unexpected success on "getSpeaker" after "notFoundSetup"'
