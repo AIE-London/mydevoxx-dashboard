@@ -466,7 +466,7 @@ class App extends Component {
                 onClick={() => this.setState({ navVisible: true })}
                 className="mobileOnly"
               />
-              <h1>PersonalDevoxxReport</h1>
+              <h1>Personal Devoxx</h1>
             </TitleContainer>
             <div>
               <NavButtons />
@@ -524,7 +524,7 @@ class App extends Component {
             className="mobileOnly"
             showNav={this.state.navVisible}
             onHideNav={() => this.setState({ navVisible: false })}
-            title={<div>PersonalDevoxx Report 2017</div>}
+            title={<div>Personal Devoxx</div>}
             titleStyle={{ backgroundColor: "#ff9e19" }}
             itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
             items={NavItems.map(item => (
