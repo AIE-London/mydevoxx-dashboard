@@ -9,7 +9,7 @@ import * as firebase from "firebase";
 
 import Card from "./Card";
 
-let successURL = "https://mydevoxx-dashboard.eu-gb.mybluemix.net/";
+let successURL = "https://personal.devoxx.co.uk";
 const mockSuccessURL = "http://localhost:3000/report";
 
 const LoginPage = styled(Row)`
