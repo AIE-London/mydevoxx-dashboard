@@ -213,6 +213,7 @@ class App extends Component {
       })
       .catch(error => {
         this.setState({ uuidPresent: false });
+        throw new Error("No UUID - caught error");
       });
   };
 

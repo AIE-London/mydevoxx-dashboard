@@ -24,13 +24,16 @@ function getUUID() {
   return new Promise((resolve, reject) => {
     //open connection to indexeddb - display error if connection failed
     db.record &&
-      db.record.get("0").then(resolution => {
-        if (resolution) {
-          resolve(resolution);
-        } else {
-          throw new Error("No UUID");
-        }
-      });
+      db.record
+        .get("0")
+        .then(resolution => {
+          if (resolution) {
+            resolve(resolution);
+          } else {
+            throw new Error("No UUID");
+          }
+        })
+        .catch(reject);
   });
 }
 
