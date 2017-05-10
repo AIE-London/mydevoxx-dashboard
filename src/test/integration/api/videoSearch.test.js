@@ -1,4 +1,5 @@
 import { getVideos } from "../../../main/api/videoSearch";
+import { raiseOrPassError } from "./testingHelpers";
 
 describe("getVideos", () => {
   it("should return videos for the DevOps track", () => {
@@ -51,7 +52,7 @@ describe("getVideos", () => {
         error => {
           raiseOrPassError(
             "UnexpectedErrorException",
-            'Unexpected error on "getScheduledTalks" ',
+            'Unexpected error on "getVideos" ',
             error
           );
         }
