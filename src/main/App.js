@@ -11,6 +11,7 @@ import styled from "styled-components";
 import Dexie from "dexie";
 import * as firebase from "firebase";
 import firebaseui from "firebaseui";
+import Notifications, { notify } from "react-notify-toast";
 
 /*
   UI Components
@@ -44,6 +45,7 @@ import Speaker from "./model/speaker";
  */
 import { getTimeForTalk, getTopTracks } from "./utils/talkUtils";
 import { recommendGlobal } from "./utils/recommendationEngine";
+import debugLog from "./utils/debugLog";
 
 /*
   Styled Components
@@ -197,7 +199,7 @@ class App extends Component {
           .get("0")
           .then(resolution => {
             if (resolution) {
-              console.log(resolution);
+              debugLog.log(resolution);
               this.setState({ uuidPresent: true, redirectLogin: false });
 
               this.storeTalkDataInState(resolution.uuid);
@@ -268,28 +270,46 @@ class App extends Component {
   }
 
   storeTalkDataInState(uuid) {
-    let favTalkPromise = FavoredTalk.getFavoredTalks(uuid).then(results => {
-      this.setState({ favouredTalks: results.favored });
-    });
+    let favTalkPromise = FavoredTalk.getFavoredTalks(uuid)
+      .then(results => {
+        this.setState({ favouredTalks: results.favored });
+      })
+      .catch(error => {
+        debugLog.log(error.message);
+        notify.show(
+          "Failed to retrieve favoured talks. Refresh to retry.",
+          "error"
+        );
+      });
 
-    let schedTalkPromise = ScheduledTalk.getScheduledTalks(
-      uuid
-    ).then(results => {
-      this.setState({ scheduledTalks: results.scheduled });
-    });
+    let schedTalkPromise = ScheduledTalk.getScheduledTalks(uuid)
+      .then(results => {
+        this.setState({ scheduledTalks: results.scheduled });
+      })
+      .catch(error => {
+        notify.show(
+          "Failed to retrieve scheduled talks. Refresh to retry.",
+          "error"
+        );
+      });
 
     let thursSchedule = [];
     let friSchedule = [];
 
-    let scheduleRequests = Promise.all([
-      DaySchedule.getSlots("thursday").then(result => {
-        thursSchedule = result;
-      }),
-      DaySchedule.getSlots("friday").then(result => {
-        friSchedule = result;
-      })
-    ]).catch(error => {
-      console.log("[ERROR] Recieving schedules. Carrying on.");
+    let scheduleRequests = new Promise((resolve, reject) => {
+      return Promise.all([
+        DaySchedule.getSlots("thursday").then(result => {
+          thursSchedule = result;
+        }),
+        DaySchedule.getSlots("friday").then(result => {
+          friSchedule = result;
+        })
+      ])
+        .then(() => resolve())
+        .catch(error => {
+          debugLog.log("[ERROR] Recieving schedules. Carrying on.");
+          resolve();
+        });
     });
 
     Promise.all([
@@ -364,7 +384,7 @@ class App extends Component {
                 return this.speakerInfo(result.speakers);
               },
               error => {
-                console.log("[TALK] request failed - continuing");
+                debugLog.log("[TALK] request failed - continuing");
               }
             );
           })
@@ -383,7 +403,7 @@ class App extends Component {
             }))
             .sort((speakera, speakerb) => speakerb.count - speakera.count);
 
-          console.log(topTracks);
+          debugLog.log(topTracks);
 
           this.setState({
             stats: {
@@ -406,16 +426,17 @@ class App extends Component {
     });
   }
 
-  // Is this necessary? [TODO] Remove
   userSignedIn() {
-    return this.uuidExists();
+    return this.uuidExists().catch(() => {
+      notify.show("Login persistence failed, please try again.", "error");
+    });
   }
 
   logOut() {
     firebase.auth().signOut().then(
       () => {
         db.record.clear().then(() => {
-          console.log("DELETING");
+          debugLog.log("DELETING");
           return this.uuidExists().catch(error => {
             this.setState({
               redirectLogin: true,
@@ -461,19 +482,26 @@ class App extends Component {
         <Page>
           <NavBar>
             <TitleContainer>
-              <h2
-                id="nav-icon"
-                onClick={() => this.setState({ navVisible: true })}
-                className="mobileOnly"
-              />
+
+              {this.state.uuidPresent &&
+                <h2
+                  id="nav-icon"
+                  onClick={() => this.setState({ navVisible: true })}
+                  className="mobileOnly"
+                />}
               <h1>PersonalDevoxxReport</h1>
+
             </TitleContainer>
-            <div>
-              <NavButtons />
-              <LogoutButton className="desktopOnlyInline" onClick={this.logOut}>
-                Log Out
-              </LogoutButton>
-            </div>
+            {this.state.uuidPresent &&
+              <div>
+                <NavButtons />
+                <LogoutButton
+                  className="desktopOnlyInline"
+                  onClick={this.logOut}
+                >
+                  Log Out
+                </LogoutButton>
+              </div>}
           </NavBar>
           <PrivateRoute
             path="/"
@@ -520,25 +548,28 @@ class App extends Component {
 
           <Branding />
 
-          <SideNav
-            className="mobileOnly"
-            showNav={this.state.navVisible}
-            onHideNav={() => this.setState({ navVisible: false })}
-            title={<div>PersonalDevoxx Report 2017</div>}
-            titleStyle={{ backgroundColor: "#ff9e19" }}
-            itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
-            items={NavItems.map(item => (
-              <NavLink
-                to={item.link}
-                key={item.name}
-                onClick={e => this.setState({ navVisible: false })}
-              >
-                {item.name}
-              </NavLink>
-            )).concat([
-              <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
-            ])}
-          />
+          {this.state.uuidPresent &&
+            <SideNav
+              className="mobileOnly"
+              showNav={this.state.navVisible}
+              onHideNav={() => this.setState({ navVisible: false })}
+              title={<div>PersonalDevoxx Report 2017</div>}
+              titleStyle={{ backgroundColor: "#ff9e19" }}
+              itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
+              items={NavItems.map(item => (
+                <NavLink
+                  to={item.link}
+                  key={item.name}
+                  onClick={e => this.setState({ navVisible: false })}
+                >
+                  {item.name}
+                </NavLink>
+              )).concat([
+                <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
+              ])}
+            />}
+          <Notifications />
+
         </Page>
       </DevoxxRouter>
     );
