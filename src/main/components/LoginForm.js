@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import retrieveUuid from "../api/retrieveUuid";
 
+import { notify } from "react-notify-toast";
 import { Row } from "react-flexbox-grid";
 import styled from "styled-components";
 import { Redirect } from "react-router-dom";
@@ -9,7 +10,10 @@ import * as firebase from "firebase";
 
 import Card from "./Card";
 
+import debugLog from "../utils/debugLog";
+
 let successURL = "https://personal.devoxx.co.uk";
+
 const mockSuccessURL = "http://localhost:3000/report";
 
 const LoginPage = styled(Row)`
@@ -76,22 +80,17 @@ class LoginForm extends Component {
 
   goFetchUUID(email) {
     this.setState({ loading: true });
-    retrieveUuid
-      .getUUID(email)
-      .then(uuid => {
-        if (!uuid || uuid.length === 0) {
-          this.setState({ loading: false });
-          throw new Error("Missing UUID");
-        }
-        this.props.db.record.put({ id: "0", uuid: uuid }).then(() => {
-          this.props.onSignIn().then(() => {
-            this.setState({ redirect: true, loading: false });
-          });
+    return retrieveUuid.getUUID(email).then(uuid => {
+      if (!uuid || uuid.length === 0) {
+        this.setState({ loading: false });
+        throw new Error("Missing UUID");
+      }
+      this.props.db.record.put({ id: "0", uuid: uuid }).then(() => {
+        this.props.onSignIn().then(() => {
+          this.setState({ redirect: true, loading: false });
         });
-      })
-      .catch(error => {
-        this.setState({ error: error });
       });
+    });
   }
 
   registerListeners() {
@@ -101,12 +100,20 @@ class LoginForm extends Component {
 
         let email = user.email;
 
-        this.goFetchUUID(email);
+        this.goFetchUUID(email).catch(error => {
+          debugLog.log(error.message);
+          notify.show(
+            "Login failed, please check you have a MyDevoxx account.",
+            "error"
+          );
+        });
       } else {
+        notify.show("Signed out");
         // User is signed out.
       }
     }, function(error) {
-      console.log(error);
+      notify.show("Login failed, please try again.", "error");
+      debugLog.log(error);
     });
   }
 

@@ -4,6 +4,7 @@
 
 import Recommendation from "../model/recommendation";
 import { getVideos } from "../api/videoSearch";
+import debugLog from "./debugLog";
 
 export function recommendGlobal(topTracks, speakers) {
   let speakerLimit = 3;
@@ -31,7 +32,7 @@ export function recommendGlobal(topTracks, speakers) {
   let youtubeRequests = topTracks.map(track => {
     // fire off request to YT api.
     return getVideos(track.name).then(result => {
-      console.log(result);
+      debugLog.log(result);
       talkRecommendations = talkRecommendations.concat(
         result.map(
           recommendation =>
@@ -49,7 +50,7 @@ export function recommendGlobal(topTracks, speakers) {
   });
 
   return Promise.all(youtubeRequests).then(() => {
-    console.log(talkRecommendations);
+    debugLog.log(talkRecommendations);
     return shuffleArray(
       []
         .concat(speakerRecommendations)

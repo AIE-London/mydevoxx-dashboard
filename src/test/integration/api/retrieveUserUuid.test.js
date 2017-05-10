@@ -55,4 +55,15 @@ describe("getUUID", () => {
         throw error;
       });
   });
+
+  it("should throw an error if unknown user", () => {
+    return retrieveUuid.getUUID("unknown.user@capgemini.com").then(
+      result => {
+        expect(false).toEqual(true);
+      },
+      error => {
+        expect(true).toEqual(true);
+      }
+    );
+  });
 });

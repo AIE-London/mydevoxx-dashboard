@@ -3,6 +3,7 @@ import { Row, Col } from "react-flexbox-grid";
 import Title from "./SpeakerTitle";
 import Default from "./defaultIcon.png";
 import styled from "styled-components";
+import debugLog from "../utils/debugLog";
 
 const Card2 = styled(Row)`
   background: #FAFAFA;
@@ -83,7 +84,7 @@ class SpeakerCard extends Component {
                     try {
                       return <li key={talk.id}>{talk.title}</li>;
                     } catch (error) {
-                      console.log("[SPKR CARD] Unknown talk ID");
+                      debugLog.log("[SPKR CARD] Unknown talk ID");
                     }
                   })}
                 </Talks>
