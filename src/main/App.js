@@ -375,6 +375,8 @@ class App extends Component {
           let topTracks = getTopTracks(
             uniqueTalks.map(talkId => this.state.talks[talkId])
           );
+          //count user to filter top three speaker
+          let count = 3;
 
           // get top speakers
           let topSpeakers = Object.values(this.state.speakers)
@@ -382,7 +384,8 @@ class App extends Component {
               speaker,
               count: speakerCounts[speaker]
             }))
-            .sort((speakera, speakerb) => speakerb.count - speakera.count);
+            .sort((speakera, speakerb) => speakerb.count - speakera.count)
+            .filter(speaker => count-- > 0);
 
           debugLog.log(topTracks);
 
