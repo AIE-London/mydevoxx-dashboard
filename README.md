@@ -28,6 +28,14 @@ Once this is done. Export the WIREMOCK_SERVER environment variable.
 
 Then, navigate to localhost:3000 in your favourite internet browser.
 
+## Testing
+The app is tested via Jest.
+To run these tests clone the repo and run the following command:
+```bash
+    npm install
+    npm test
+`````
+
 ## Capgemini
 
 Come and work with us!
