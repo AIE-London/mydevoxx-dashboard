@@ -3,7 +3,7 @@ import request from "then-request";
 let schedulesEndpoint =
   "https://cfp.devoxx.co.uk/api/conferences/DV17/schedules/";
 const mockSchedulesEndpoint =
-  process.env.WIREMOCK_SERVER + "/api/conferences/DV17/schedules/";
+  process.env.REACT_APP_WIREMOCK_SERVER + "/api/conferences/DV17/schedules/";
 
 /**
  * Use mock endpoint outside of live

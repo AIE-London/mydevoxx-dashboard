@@ -4,7 +4,7 @@
 import request from "then-request";
 
 let host = "https://mydevoxx-capgemini-api-router.eu-gb.mybluemix.net";
-const mockHost = process.env.WIREMOCK_SERVER;
+const mockHost = process.env.REACT_APP_WIREMOCK_SERVER;
 
 /**
  * Use mock endpoint outside of live

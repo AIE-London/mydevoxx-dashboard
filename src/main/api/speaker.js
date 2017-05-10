@@ -3,7 +3,7 @@ import debugLog from "../utils/debugLog";
 
 let speakerEndpoint = "https://cfp.devoxx.co.uk/api/conferences/DV17/speakers/";
 const mockSpeakerEndpoint =
-  process.env.WIREMOCK_SERVER + "/api/conferences/DV17/speakers/";
+  process.env.REACT_APP_WIREMOCK_SERVER + "/api/conferences/DV17/speakers/";
 
 /**
  * Use mock endpoint outside of live

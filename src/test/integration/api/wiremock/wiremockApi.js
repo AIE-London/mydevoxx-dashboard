@@ -3,7 +3,7 @@
  */
 import request from "then-request";
 
-let endpoint = process.env.WIREMOCK_SERVER + "/__admin/mappings";
+let endpoint = process.env.REACT_APP_WIREMOCK_SERVER + "/__admin/mappings";
 
 /**
  * GET a reformatted array of all speakers at the conference

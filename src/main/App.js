@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
 import styled from "styled-components";
-import Dexie from "dexie";
 import * as firebase from "firebase";
 import firebaseui from "firebaseui";
 import Notifications, { notify } from "react-notify-toast";
@@ -46,6 +45,8 @@ import Speaker from "./model/speaker";
 import { getTimeForTalk, getTopTracks } from "./utils/talkUtils";
 import { recommendGlobal } from "./utils/recommendationEngine";
 import debugLog from "./utils/debugLog";
+import uuidStorage from "./utils/uuidStorage";
+uuidStorage.init();
 
 /*
   Styled Components
@@ -64,11 +65,6 @@ const NavBar = styled.div`
     font-size: 25px;
   }
 `;
-
-let db;
-//Define indexeddb instance/version
-db = new Dexie("devoxx-db");
-db.version(1).stores({ record: "id,uuid" });
 
 const PrivateRoute = ({
   uuidPresent,
@@ -176,9 +172,8 @@ class App extends Component {
       ReactGA.initialize("UA-98791923-1");
     }
 
-    //open connection to indexeddb - display error if connection failed
-    db
-      .open("devoxx-db")
+    uuidStorage
+      .openDB()
       .then(() => {
         this.uuidExists().catch(error => {
           this.setState({ error: error });
@@ -204,27 +199,16 @@ class App extends Component {
   }
 
   uuidExists = () => {
-    return new Promise((resolve, reject) => {
-      //open connection to indexeddb - display error if connection failed
-      db.record &&
-        db.record
-          .get("0")
-          .then(resolution => {
-            if (resolution) {
-              debugLog.log(resolution);
-              this.setState({ uuidPresent: true, redirectLogin: false });
-
-              this.storeTalkDataInState(resolution.uuid);
-              resolve();
-            } else {
-              throw new Error("No UUID");
-            }
-          })
-          .catch(error => {
-            this.setState({ uuidPresent: false });
-            reject(error);
-          });
-    });
+    return uuidStorage
+      .getUUID()
+      .then(value => {
+        debugLog.log("Retrieved UUID");
+        this.setState({ uuidPresent: true, redirectLogin: false });
+        this.storeTalkDataInState(value.uuid);
+      })
+      .catch(error => {
+        this.setState({ uuidPresent: false });
+      });
   };
 
   speakerInfo(speakers) {
@@ -450,8 +434,7 @@ class App extends Component {
   logOut() {
     firebase.auth().signOut().then(
       () => {
-        db.record.clear().then(() => {
-          debugLog.log("DELETING");
+        uuidStorage.clear().then(() => {
           return this.uuidExists().catch(error => {
             this.setState({
               redirectLogin: true,
@@ -469,7 +452,7 @@ class App extends Component {
     return (
       <LoginForm
         onSignIn={this.userSignedIn}
-        db={db}
+        storeUUID={uuidStorage.storeUUID}
         fbui={fbui}
         firebase={firebase}
       />

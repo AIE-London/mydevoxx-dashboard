@@ -2,7 +2,7 @@ import request from "then-request";
 
 let UuidEndpoint =
   "https://mydevoxx-capgemini-api-router.eu-gb.mybluemix.net/uuid?email=";
-const mockUuidEndpoint = process.env.WIREMOCK_SERVER + "/uuid?email=";
+const mockUuidEndpoint = process.env.REACT_APP_WIREMOCK_SERVER + "/uuid?email=";
 const uuidRegex = /^[a-zA-Z0-9]+$/;
 
 /**

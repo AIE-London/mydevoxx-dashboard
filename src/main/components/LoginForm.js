@@ -85,8 +85,10 @@ class LoginForm extends Component {
         this.setState({ loading: false });
         throw new Error("Missing UUID");
       }
-      this.props.db.record.put({ id: "0", uuid: uuid }).then(() => {
+      this.props.storeUUID(uuid).then(() => {
+        debugLog.log("UUID STORED");
         this.props.onSignIn().then(() => {
+          debugLog.log("SIGNED IN -- REDIRECTING");
           this.setState({ redirect: true, loading: false });
         });
       });

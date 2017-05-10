@@ -6,7 +6,7 @@ import request from "then-request";
 
 let favoredTalksEndpoint =
   "https://mydevoxx-capgemini-api-router.eu-gb.mybluemix.net/favored";
-const mockUuidEndpoint = process.env.WIREMOCK_SERVER + "/favored";
+const mockUuidEndpoint = process.env.REACT_APP_WIREMOCK_SERVER + "/favored";
 
 /**
  * Use mock endpoint outside of live
