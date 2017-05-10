@@ -36,3 +36,15 @@ test("Should throw an UnexpectedErrorException", () => {
     expect(true).toBe(true);
   }
 });
+
+test("Should rethrow the same error (raiseOrPass version)", () => {
+  let testError = new Error("error message");
+  testError.name = "MappingSetupException";
+
+  try {
+    raiseOrPassError("UnexpectedErrorException", "test message", testError);
+    expect(false).toBe(true);
+  } catch (testError) {
+    expect(true).toBe(true);
+  }
+});
