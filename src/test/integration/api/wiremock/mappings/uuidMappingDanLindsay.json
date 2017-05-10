@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/uuid?email=daniel.lindsay@capgemini.com",
+    "headers": {
+      "Origin": {
+        "equalTo": "http://localhost:3000"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": "26667c9fdcc603ee93b43fb3e780b07378695a97",
+    "headers": {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Access-Control-Allow-Origin": "*"
+    }
+  }
+}
