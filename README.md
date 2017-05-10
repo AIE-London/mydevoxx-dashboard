@@ -15,13 +15,13 @@ To run the dashboard locally, clone this repo and then go through the below pre-
 You will need to setup a local wiremock server. We've provided some sample 'mappings'
 in /src/test/integration/api/wiremock/mappings.
 
-Once this is done. Export the WIREMOCK_SERVER environment variable.
+Once this is done. Export the REACT_APP_WIREMOCK_SERVER environment variable.
 
 ### Running the app
 
 ```bash
     npm install
-    export WIREMOCK_SERVER=http://localhost:1234
+    export REACT_APP_WIREMOCK_SERVER=http://localhost:1234
     # use your wiremock URL
     npm start
 ```

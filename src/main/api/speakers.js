@@ -5,7 +5,7 @@ import request from "then-request";
 
 let endpoint = "https://cfp.devoxx.co.uk/api/conferences/DV17/speakers/";
 const mockEndpoint =
-  process.env.WIREMOCK_SERVER + "/api/conferences/DV17/speakers/";
+  process.env.REACT_APP_WIREMOCK_SERVER + "/api/conferences/DV17/speakers/";
 
 if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
   endpoint = mockEndpoint;

@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
 import styled from "styled-components";
-import Dexie from "dexie";
 import * as firebase from "firebase";
 import firebaseui from "firebaseui";
 import Notifications, { notify } from "react-notify-toast";
@@ -31,7 +30,6 @@ import Branding from "./components/Branding";
 import FavoredTalk from "./api/favoredTalks";
 import ScheduledTalk from "./api/scheduledTalks";
 import SpeakerApi from "./api/speaker";
-import TalkApi from "./api/talk";
 import DaySchedule from "./api/daySchedule";
 
 /*
@@ -43,9 +41,17 @@ import Speaker from "./model/speaker";
 /*
   Utilities
  */
-import { getTimeForTalk, getTopTracks } from "./utils/talkUtils";
+import { mergeUniqueArrayByID } from "./utils/arrayUtils";
+import {
+  getTopTracks,
+  indexScheduleByTalkID,
+  getTimeForTalk
+} from "./utils/talkUtils";
+import { getTalk, mapIDArrayToValue } from "./utils/apiOrchestration";
 import { recommendGlobal } from "./utils/recommendationEngine";
 import debugLog from "./utils/debugLog";
+import uuidStorage from "./utils/uuidStorage";
+uuidStorage.init();
 
 /*
   Styled Components
@@ -64,11 +70,6 @@ const NavBar = styled.div`
     font-size: 25px;
   }
 `;
-
-let db;
-//Define indexeddb instance/version
-db = new Dexie("devoxx-db");
-db.version(1).stores({ record: "id,uuid" });
 
 const PrivateRoute = ({
   uuidPresent,
@@ -176,9 +177,8 @@ class App extends Component {
       ReactGA.initialize("UA-98791923-1");
     }
 
-    //open connection to indexeddb - display error if connection failed
-    db
-      .open("devoxx-db")
+    uuidStorage
+      .openDB()
       .then(() => {
         this.uuidExists().catch(error => {
           this.setState({ error: error });
@@ -204,84 +204,72 @@ class App extends Component {
   }
 
   uuidExists = () => {
-    return new Promise((resolve, reject) => {
-      //open connection to indexeddb - display error if connection failed
-      db.record &&
-        db.record
-          .get("0")
-          .then(resolution => {
-            if (resolution) {
-              debugLog.log(resolution);
-              this.setState({ uuidPresent: true, redirectLogin: false });
-
-              this.storeTalkDataInState(resolution.uuid);
-              resolve();
-            } else {
-              throw new Error("No UUID");
-            }
-          })
-          .catch(error => {
-            this.setState({ uuidPresent: false });
-            reject(error);
-          });
-    });
+    return uuidStorage
+      .getUUID()
+      .then(value => {
+        debugLog.log("Retrieved UUID");
+        this.setState({ uuidPresent: true, redirectLogin: false });
+        this.storeTalkDataInState(value.uuid);
+      })
+      .catch(error => {
+        this.setState({ uuidPresent: false });
+        throw new Error("No UUID - caught error");
+      });
   };
 
   speakerInfo(speakers) {
-    let speakerRequests = [];
-    speakers.forEach(spkr => {
-      if (!this.state.speakers[spkr.id]) {
-        speakerRequests.push(
-          SpeakerApi.getSpeaker(spkr.id).then(result => {
-            let speaker = new Speaker(
-              result.uuid,
-              result.bio,
-              result.acceptedTalkIDs,
-              result.company,
-              result.lastName,
-              result.firstName,
-              result.blog,
-              result.avatarURL,
-              result.twitter
-            );
-            let newSpeaker = {};
-            newSpeaker[spkr.id] = speaker;
-            this.setState({
-              speakers: Object.assign({}, this.state.speakers, newSpeaker)
+    // Go get all the speakers and return a promise for when you're done
+    return Promise.all(
+      speakers.map(speakerId => {
+        // If not already in state
+        if (!this.state.speakers[speakerId]) {
+          // Call API
+          return SpeakerApi.getSpeaker(speakerId)
+            .then(result => {
+              // Take result - construct object
+              return new Speaker(
+                result.uuid,
+                result.bio,
+                result.acceptedTalkIDs,
+                result.company,
+                result.lastName,
+                result.firstName,
+                result.blog,
+                result.avatarURL,
+                result.twitter
+              );
+            })
+            .then(speaker => {
+              // Then - get all of the speaker's
+              // talks and add their data in if we don't have them yet
+              return (
+                this.getTalks(
+                  speaker.acceptedTalkIDs,
+                  this.state.scheduleByTalk
+                )
+                  // Once that's done - pass the speaker object onto the next promise
+                  .then(() => speaker)
+              );
+            })
+            .then(speaker => {
+              // Construct new state.speakers object
+              let newSpeaker = {};
+              // Add speaker at given id
+              newSpeaker[speakerId] = speaker;
+              // Update state
+              this.setState({
+                speakers: Object.assign({}, this.state.speakers, newSpeaker)
+              });
             });
-            let promiseArray = speaker.acceptedTalkIDs.map(talkId => {
-              if (!this.state.talks[talkId]) {
-                return TalkApi.getTalk(talkId).then(result => {
-                  let talk = new Talk(
-                    result.id,
-                    result.name,
-                    result.tracks,
-                    "en",
-                    result.description,
-                    result.speakers.map(speaker => speaker.id),
-                    result.videoURL
-                  );
-
-                  let newTalk = {};
-                  newTalk[talk.id] = talk;
-                  this.setState({
-                    talks: Object.assign({}, this.state.talks, newTalk)
-                  });
-                  return this.speakerInfo(result.speakers);
-                });
-              } else {
-                return new Promise(resolve => resolve());
-              }
-            });
-            return Promise.all(promiseArray);
-          })
-        );
-      }
-    });
-    return Promise.all(speakerRequests);
+        } else {
+          // Just return something to resolve the promise - not a breaking issue
+          return true;
+        }
+      })
+    );
   }
 
-  storeTalkDataInState(uuid) {
+  getTalksByUUID(uuid) {
     let favTalkPromise = FavoredTalk.getFavoredTalks(uuid)
       .then(results => {
         this.setState({ favouredTalks: results.favored });
@@ -305,140 +293,199 @@ class App extends Component {
         );
       });
 
-    let thursSchedule = [];
-    let friSchedule = [];
+    return Promise.all([schedTalkPromise, favTalkPromise]);
+  }
 
-    let scheduleRequests = new Promise((resolve, reject) => {
-      return Promise.all([
-        DaySchedule.getSlots("thursday").then(result => {
-          thursSchedule = result;
-        }),
-        DaySchedule.getSlots("friday").then(result => {
-          friSchedule = result;
-        })
-      ])
-        .then(() => resolve())
-        .catch(error => {
-          debugLog.log("[ERROR] Recieving schedules. Carrying on.");
-          resolve();
-        });
-    });
+  getSchedules() {
+    // Declare empty arrays for each day.
+    let thursday = [];
+    let friday = [];
 
-    Promise.all([
-      favTalkPromise,
-      schedTalkPromise,
-      scheduleRequests
-    ]).then(() => {
-      let scheduleByTalk = {};
-
-      thursSchedule.concat(friSchedule).forEach(event => {
-        scheduleByTalk[event.talkId] = {
-          room: event.roomName,
-          fromTime: event.fromTimeMillis,
-          toTime: event.toTimeMillis
-        };
-      });
-
-      let uniqueTalks = this.mergeUniqueArray(
-        this.state.favouredTalks,
-        this.state.scheduledTalks
-      );
-
-      let talkRequests = [];
-      let speakerCounts = {};
-
-      let timeMinutes = 0;
-
-      uniqueTalks.forEach(id => {
-        talkRequests.push(
-          TalkApi.getTalk(id).then(result => {
-            let talk = new Talk(
-              result.id,
-              result.name,
-              result.tracks,
-              "en",
-              result.description,
-              result.speakers.map(speaker => speaker.id),
-              result.videoURL
-            );
-            timeMinutes += getTimeForTalk(result);
-            let newTalk = {};
-            newTalk[talk.id] = talk;
-            this.setState({
-              talks: Object.assign({}, this.state.talks, newTalk)
-            });
-            result.speakers.forEach(
-              speaker => {
-                if (speakerCounts[speaker]) {
-                  speakerCounts[speaker]++;
-                } else {
-                  speakerCounts[speaker] = 1;
-                }
-
-                if (scheduleByTalk[id]) {
-                  talk.room = scheduleByTalk[id].room;
-                  talk.startTime = new Date(scheduleByTalk[id].fromTime);
-                  talk.endTime = new Date(scheduleByTalk[id].toTime);
-                }
-
-                let newTalk = {};
-                newTalk[talk.id] = talk;
-                this.setState({
-                  talks: Object.assign({}, this.state.talks, newTalk)
-                });
-                result.speakers.forEach(speaker => {
-                  if (speakerCounts[speaker]) {
-                    speakerCounts[speaker]++;
-                  } else {
-                    speakerCounts[speaker] = 1;
-                  }
-                });
-                return this.speakerInfo(result.speakers);
-              },
-              error => {
-                debugLog.log("[TALK] request failed - continuing");
-              }
-            );
+    return (
+      new Promise((resolve, reject) => {
+        // Return a promise that will wait for both schedules to be returned
+        Promise.all([
+          // Get all slots for thursday schedule
+          DaySchedule.getSlots("thursday").then(result => {
+            // replace array above
+            thursday = result;
+          }),
+          // Get all slots for friday schedule
+          DaySchedule.getSlots("friday").then(result => {
+            friday = result;
           })
-        );
-        Promise.all(talkRequests).then(() => {
-          // get top tracks
-          let topTracks = getTopTracks(
-            uniqueTalks.map(talkId => this.state.talks[talkId])
-          );
-          //count user to filter top three speaker
-          let count = 3;
-
-          // get top speakers
-          let topSpeakers = Object.values(this.state.speakers)
-            .map(speaker => ({
-              speaker,
-              count: speakerCounts[speaker]
-            }))
-            .sort((speakera, speakerb) => speakerb.count - speakera.count)
-            .filter(speaker => count-- > 0);
-
-          debugLog.log(topTracks);
-
-          this.setState({
-            stats: {
-              minutes: timeMinutes,
-              talks: talkRequests.length,
-              learning: topTracks.map(track => track.name),
-              attendees: "~1000",
-              speakers: topSpeakers.map(speaker => speaker.speaker.name)
-            }
+        ])
+          .then(resolve)
+          .catch(error => {
+            // Catch any errors that fall out
+            debugLog.log("[ERROR] Recieving schedules. Carrying on.");
+            // As this isn't a critical action - just resolve if a request fails
+            resolve();
           });
+      })
+        // Then return a constructed object with the two schedules in.
+        .then(() => ({
+          thursday,
+          friday
+        }))
+    );
+  }
 
-          // fetch recommendations by feeding array of talks/speakers in.
-          recommendGlobal(topTracks, topSpeakers).then(result => {
-            this.setState({
-              globalRecommendations: result
-            });
-          });
-        });
+  calcStats(talks) {
+    // Declare speaker counts object - for temp usage during
+    // speaker usage counting
+    let speakerCounts = {};
+    // Declare value for minutes - will increment as necessary
+    // during iteration to count total time
+    let timeMinutes = 0;
+
+    // Declare max speaker count as 3
+    let count = 3;
+
+    talks.forEach(talk => {
+      // Iterate through talks. Add each instance of a speaker to their count
+      talk.speakers.forEach(speaker => {
+        // For each speaker - check we've got an entry for them
+        if (speakerCounts[speaker]) {
+          // If so - increment it
+          speakerCounts[speaker]++;
+        } else {
+          // If not - set them up at 1 count for now
+          speakerCounts[speaker] = 1;
+        }
+      });
+      // Whilst we're iterating - get time for talk and add to total time
+      timeMinutes += getTimeForTalk(talk);
+    });
+
+    // Calculate top tracks
+    let topTracks = getTopTracks(talks);
+
+    // Identify top speakers
+    let topSpeakers = Object.values(this.state.speakers)
+      .map(speaker => ({
+        speaker,
+        count: speakerCounts[speaker]
+      }))
+      .sort((speakera, speakerb) => speakerb.count - speakera.count)
+      .filter(speaker => count-- > 0);
+
+    // Update state to contain appropriate stats
+    this.setState({
+      stats: {
+        minutes: timeMinutes,
+        talks: talks.length,
+        learning: topTracks.map(track => track.name),
+        attendees: "~1000",
+        speakers: topSpeakers.map(speaker => speaker.speaker.name)
+      }
+    });
+
+    // fetch recommendations by feeding array of talks/speakers in.
+    recommendGlobal(topTracks, topSpeakers).then(result => {
+      // store our global recommendations in state
+      this.setState({
+        globalRecommendations: result
       });
     });
+  }
+
+  getTalks(arrayOfTalkIDs, schedule) {
+    // Setup empty array to catch promises in
+    let talkRequests = [];
+    // Iterate through and setup a request for each
+    arrayOfTalkIDs.forEach(id => {
+      // Make request
+      let request = getTalk(id)
+        .then(talk => {
+          // try and add scheduling details to talk
+          if (schedule[talk.id]) {
+            talk.room = schedule[talk.id].room;
+            talk.startTime = new Date(schedule[talk.id].fromTime);
+            talk.endTime = new Date(schedule[talk.id].toTime);
+          }
+          // return talk to pass it onto the next function in the promise chain
+          return talk;
+        })
+        // then store talk in state
+        .then(talk => {
+          // Create a blank object
+          let newTalk = {};
+          // Set the value of the id to be the talk
+          newTalk[talk.id] = talk;
+          // Merge object with talks object in state and update state
+          this.setState({
+            talks: Object.assign({}, this.state.talks, newTalk)
+          });
+        });
+      // Push each request into array of requests
+      talkRequests.push(request);
+    });
+    // Return a promise that will resolve when we're done
+    return Promise.all(talkRequests);
+  }
+
+  getSpeakersForTalks(talks) {
+    // Iterate through all talks - fire off requests for speakers
+    return Promise.all(
+      talks.map(talk => {
+        return this.speakerInfo(talk.speakers);
+      })
+    );
+  }
+
+  storeTalkDataInState(uuid) {
+    // Declare empty schedules
+    let thursSchedule, friSchedule;
+
+    // Get all talks given a UUID
+    let talksPromise = this.getTalksByUUID(uuid);
+    // Get whole devoxx 2017 schedule
+    let schedulesPromise = this.getSchedules().then(result => {
+      // Grab the two days schedules from the result and populate our two variables with them
+      thursSchedule = result.thursday;
+      friSchedule = result.friday;
+    });
+    // Once you've got talks and schedules....
+    Promise.all([talksPromise, schedulesPromise])
+      .then(() => {
+        // Join the schedules together
+        let schedule = thursSchedule.concat(friSchedule);
+        // Use existing function to convert array into indexed object
+        let scheduleByTalk = indexScheduleByTalkID(schedule);
+        // Add into state
+        this.setState({ scheduleByTalk });
+
+        // Get just the unique talks by merging the arrays
+        // and filtering out the duplicates by their id
+        let uniqueTalks = mergeUniqueArrayByID(
+          this.state.favouredTalks,
+          this.state.scheduledTalks
+        );
+
+        // Now we know the unique ones. Go get our talks
+        return (
+          this.getTalks(uniqueTalks, this.state.scheduleByTalk)
+            // Once complete - pass unique talks to next in chain
+            .then(() => uniqueTalks)
+        );
+      })
+      .then(uniqueTalks => {
+        // Map array of talk IDs into their values....
+        return mapIDArrayToValue(uniqueTalks, this.state.talks);
+      })
+      .then(talks => {
+        // Once we're done with all of our talk requests...
+        return (
+          this.getSpeakersForTalks(talks)
+            // Once complete - pass talks to next in chain
+            .then(() => talks)
+        );
+      })
+      .then(talks => {
+        // Once we're done with all of our talk requests...
+        return this.calcStats(talks);
+      });
   }
 
   userSignedIn() {
@@ -450,8 +497,7 @@ class App extends Component {
   logOut() {
     firebase.auth().signOut().then(
       () => {
-        db.record.clear().then(() => {
-          debugLog.log("DELETING");
+        uuidStorage.clear().then(() => {
           return this.uuidExists().catch(error => {
             this.setState({
               redirectLogin: true,
@@ -469,26 +515,11 @@ class App extends Component {
     return (
       <LoginForm
         onSignIn={this.userSignedIn}
-        db={db}
+        storeUUID={uuidStorage.storeUUID}
         fbui={fbui}
         firebase={firebase}
       />
     );
-  }
-
-  // [TODO] Move to a utilities class
-  mergeUniqueArray(firstArray, secondArray) {
-    let mergedArray = firstArray.concat(secondArray);
-    return mergedArray
-      .map(id => {
-        return id.id;
-      })
-      .reduce((result, current) => {
-        if (current && result.indexOf(current) < 0) {
-          result.push(current);
-        }
-        return result;
-      }, []);
   }
 
   render() {
@@ -526,7 +557,7 @@ class App extends Component {
               <Dashboard
                 speakerData={this.state.speakers}
                 talkData={this.state.talks}
-                talkIDs={this.mergeUniqueArray(
+                talkIDs={mergeUniqueArrayByID(
                   this.state.favouredTalks,
                   this.state.scheduledTalks
                 )}
@@ -547,7 +578,7 @@ class App extends Component {
                   reportStats={this.state.stats}
                   speakerData={this.state.speakers}
                   talkData={this.state.talks}
-                  talks={this.mergeUniqueArray(
+                  talks={mergeUniqueArrayByID(
                     this.state.favouredTalks,
                     this.state.scheduledTalks
                   )}

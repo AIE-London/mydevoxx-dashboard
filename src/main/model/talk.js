@@ -12,8 +12,18 @@ export default class Talk {
   _room;
   _startTime;
   _endTime;
+  _type;
 
-  constructor(talkId, title, tracks, language, summary, speakers, videoUrl) {
+  constructor(
+    talkId,
+    title,
+    tracks,
+    language,
+    summary,
+    speakers,
+    videoUrl,
+    type
+  ) {
     this._talkId = talkId;
     this._title = title;
     this._tracks = tracks;
@@ -21,6 +31,11 @@ export default class Talk {
     this._summary = summary;
     this._speakers = speakers;
     this._videoUrl = videoUrl;
+    this._type = type;
+  }
+
+  get type() {
+    return this._type;
   }
 
   get videoUrl() {

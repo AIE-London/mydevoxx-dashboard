@@ -2,6 +2,30 @@
  * Created by dan on 07/05/2017.
  */
 
+/*
+ Iterate through and output a JS object. Key value pairs
+ e.g.
+ {
+   talkID: {
+     room: "room1",
+     fromTime: date,
+     toTime: date
+   }
+ }
+ */
+export function indexScheduleByTalkID(arrayOfEvents) {
+  return arrayOfEvents.reduce((outputObject, currentEvent) => {
+    // Create object for the talk and add it into our output object
+    outputObject[currentEvent.talkId] = {
+      room: currentEvent.roomName,
+      fromTime: currentEvent.fromTimeMillis,
+      toTime: currentEvent.toTimeMillis
+    };
+    // Return output object to pass it to the next iteration
+    return outputObject;
+  }, {});
+}
+
 export function orderTalksByStartDate(talkIds, talkData) {
   return talkIds.sort((talkA, talkB) => {
     try {
