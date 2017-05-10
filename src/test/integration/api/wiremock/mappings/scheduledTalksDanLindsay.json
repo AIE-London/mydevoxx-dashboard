@@ -1,20 +1,14 @@
 {
   "request":{
     "method":"GET",
-    "url":"/scheduled/?uuid=26667c9fdcc603ee93b43fb3e780b07378695a86"
+    "url":"/scheduled/?uuid=26667c9fdcc603ee93b43fb3e780b07378695a97"
   },
   "response":{
     "status":200,
     "jsonBody":{
       "scheduled":[
         {
-          "id": "MXR-2678"
-        },
-        {
-          "id": "FIN-9540"
-        },
-        {
-          "id": "ORF-1487"
+          "id":"MXR-2678"
         }
       ]
     },

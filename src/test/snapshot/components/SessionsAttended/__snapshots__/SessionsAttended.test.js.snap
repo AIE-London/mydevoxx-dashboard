@@ -1,27 +1,29 @@
 exports[`test SessionsAttended component with snapshot 1`] = `
 <div
-  className="iCnvCe row"
+  className="IRCQW row"
   id="attended-sessions">
   <h2
     className="gzZDMR">
     My Sessions
   </h2>
-  <div
-    className="fXfwtB">
-    <div>
-      <h3>
-        Test talk title
-      </h3>
-      <h4>
-        Speakers: 
-      </h4>
-      <ul
-        className="bGhaQW">
-        <li
-          className="cLQKgI">
-          Daan Cotton
-        </li>
-      </ul>
+  <div>
+    <div
+      className="fXfwtB">
+      <div>
+        <h3>
+          Test talk title
+        </h3>
+        <h4>
+          Speakers: 
+        </h4>
+        <ul
+          className="bGhaQW">
+          <li
+            className="cLQKgI">
+            Daan Cotton
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

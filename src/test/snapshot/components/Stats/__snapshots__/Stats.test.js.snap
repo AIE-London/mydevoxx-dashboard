@@ -19,7 +19,7 @@ exports[`test stats component with all properties filled 1`] = `
         <div
           className="col-xs-12">
           <h2
-            className="eIkKGg">
+            className="fklsZz">
             Top Tracks:
           </h2>
           <div
@@ -45,7 +45,7 @@ exports[`test stats component with all properties filled 1`] = `
             </ul>
           </div>
           <h2
-            className="eIkKGg">
+            className="fklsZz">
             Top Speakers:
           </h2>
           <div
