@@ -6,6 +6,8 @@ import styled from "styled-components";
 import Card from "./Card";
 import { CommaList, CommaListItem } from "./CommaList";
 
+import { orderTalksByStartDate } from "../utils/talkUtils";
+
 const Container = styled(Card)`
   padding: 0.5em 1em;
   overflow-y: auto;
@@ -70,7 +72,10 @@ class SessionsAttended extends Component {
     return (
       <Container id="attended-sessions">
         <Header>My Sessions</Header>
-        {this.props.talkIDs.map((talkID, index) => {
+        {orderTalksByStartDate(
+          this.props.talkIDs,
+          this.props.talkData
+        ).map((talkID, index) => {
           try {
             let talk = this.props.talkData[talkID];
             return (

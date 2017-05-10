@@ -8,7 +8,13 @@
     "jsonBody":{
       "scheduled":[
         {
-          "id":"MXR-2678"
+          "id": "MXR-2678"
+        },
+        {
+          "id": "FIN-9540"
+        },
+        {
+          "id": "ORF-1487"
         }
       ]
     },

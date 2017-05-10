@@ -3,6 +3,8 @@ import { Row, Col } from "react-flexbox-grid";
 import ReportStats from "./ReportStats";
 import SessionView from "./SessionView";
 
+import { orderTalksByStartDate } from "../utils/talkUtils";
+
 class Report extends Component {
   render() {
     let { minutes, talks, learning, attendees } = this.props.reportStats;
@@ -19,22 +21,17 @@ class Report extends Component {
             />
           </Col>
         </Row>
-        {this.props.talks
-          .sort((talka, talkb) => {
-            if (talka.startTime && talkb.startTime) {
-              return talkb.startTime - talka.startTime;
-            } else {
-              return 0;
-            }
-          })
-          .map((talkId, index) => (
-            <SessionView
-              key={index}
-              talkId={talkId}
-              talkData={this.props.talkData}
-              speakerData={this.props.speakerData}
-            />
-          ))}
+        {orderTalksByStartDate(
+          this.props.talks,
+          this.props.talkData
+        ).map((talkId, index) => (
+          <SessionView
+            key={index}
+            talkId={talkId}
+            talkData={this.props.talkData}
+            speakerData={this.props.speakerData}
+          />
+        ))}
       </div>
     );
   }
