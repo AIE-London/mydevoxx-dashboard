@@ -8,12 +8,16 @@ It serves as a personal dashboard for attendees of the Devoxx UK conference. Tho
 The dashboard utilizes technologies such as React and Node.js.
 
 ## Usage
-Link to the live website: https://personal.devoxx.co.uk
-To run the dashboard locally, clone this repo, then run the following in the repo: 
+Link to the live website: http://bit.ly/personal-devoxx
+To run the dashboard locally, clone this repo, then run the following:
+
 ```bash
-npm install
-npm start
+    npm install
+    npm start
 ```
+
 Then, navigate to localhost:3000 in your favourite internet browser.
 
-Come and work for us!: https://www.uk.capgemini.com/
+Come and work with us!
+
+https://www.uk.capgemini.com/
