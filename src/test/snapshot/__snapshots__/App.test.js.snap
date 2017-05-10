@@ -66,5 +66,7 @@ exports[`test App component snapshot 1`] = `
       </h3>
     </a>
   </div>
+  <div
+    id="notification-wrapper" />
 </div>
 `;
