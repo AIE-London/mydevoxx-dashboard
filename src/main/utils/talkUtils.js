@@ -14,13 +14,17 @@ export function orderTalksByStartDate(talkIds, talkData) {
 
 export function getTopTracks(talks) {
   let tracks = talks.reduce((result, talk) => {
-    talk.tracks.forEach(track => {
-      if (!result[track]) {
-        result[track] = 1;
-      } else {
-        result[track]++;
-      }
-    });
+    try {
+      talk.tracks.forEach(track => {
+        if (!result[track]) {
+          result[track] = 1;
+        } else {
+          result[track]++;
+        }
+      });
+    } catch (error) {
+      // Do nothing - if there's no tracks. We can't change the result.
+    }
     return result;
   }, {});
   let top = Object.keys(tracks).map(key => {
