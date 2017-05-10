@@ -1,4 +1,5 @@
 import request from "then-request";
+import debugLog from "../utils/debugLog";
 
 let speakerEndpoint = "https://cfp.devoxx.co.uk/api/conferences/DV17/speakers/";
 const mockSpeakerEndpoint =
@@ -19,7 +20,7 @@ if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
  */
 let getSpeaker = speakerId => {
   // [TODO] Move logging to console.debug once we can fix it running in node (test)
-  console.log("[API-CALL] Getting speaker ID");
+  debugLog.log("[API-CALL] Getting speaker ID");
   return request("GET", speakerEndpoint + speakerId).then(response => {
     let body = JSON.parse(response.getBody());
     return {
