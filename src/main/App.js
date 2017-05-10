@@ -11,6 +11,7 @@ import styled from "styled-components";
 import Dexie from "dexie";
 import * as firebase from "firebase";
 import firebaseui from "firebaseui";
+import Notifications, { notify } from "react-notify-toast";
 
 /*
   UI Components
@@ -269,28 +270,46 @@ class App extends Component {
   }
 
   storeTalkDataInState(uuid) {
-    let favTalkPromise = FavoredTalk.getFavoredTalks(uuid).then(results => {
-      this.setState({ favouredTalks: results.favored });
-    });
+    let favTalkPromise = FavoredTalk.getFavoredTalks(uuid)
+      .then(results => {
+        this.setState({ favouredTalks: results.favored });
+      })
+      .catch(error => {
+        debugLog.log(error.message);
+        notify.show(
+          "Failed to retrieve favoured talks. Refresh to retry.",
+          "error"
+        );
+      });
 
-    let schedTalkPromise = ScheduledTalk.getScheduledTalks(
-      uuid
-    ).then(results => {
-      this.setState({ scheduledTalks: results.scheduled });
-    });
+    let schedTalkPromise = ScheduledTalk.getScheduledTalks(uuid)
+      .then(results => {
+        this.setState({ scheduledTalks: results.scheduled });
+      })
+      .catch(error => {
+        notify.show(
+          "Failed to retrieve scheduled talks. Refresh to retry.",
+          "error"
+        );
+      });
 
     let thursSchedule = [];
     let friSchedule = [];
 
-    let scheduleRequests = Promise.all([
-      DaySchedule.getSlots("thursday").then(result => {
-        thursSchedule = result;
-      }),
-      DaySchedule.getSlots("friday").then(result => {
-        friSchedule = result;
-      })
-    ]).catch(error => {
-      debugLog.log("[ERROR] Recieving schedules. Carrying on.");
+    let scheduleRequests = new Promise((resolve, reject) => {
+      return Promise.all([
+        DaySchedule.getSlots("thursday").then(result => {
+          thursSchedule = result;
+        }),
+        DaySchedule.getSlots("friday").then(result => {
+          friSchedule = result;
+        })
+      ])
+        .then(() => resolve())
+        .catch(error => {
+          debugLog.log("[ERROR] Recieving schedules. Carrying on.");
+          resolve();
+        });
     });
 
     Promise.all([
@@ -410,9 +429,10 @@ class App extends Component {
     });
   }
 
-  // Is this necessary? [TODO] Remove
   userSignedIn() {
-    return this.uuidExists();
+    return this.uuidExists().catch(() => {
+      notify.show("Login persistence failed, please try again.", "error");
+    });
   }
 
   logOut() {
@@ -465,19 +485,26 @@ class App extends Component {
         <Page>
           <NavBar>
             <TitleContainer>
-              <h2
-                id="nav-icon"
-                onClick={() => this.setState({ navVisible: true })}
-                className="mobileOnly"
-              />
-              <h1>Personal Devoxx</h1>
+
+              {this.state.uuidPresent &&
+                <h2
+                  id="nav-icon"
+                  onClick={() => this.setState({ navVisible: true })}
+                  className="mobileOnly"
+                />}
+              <h1>PersonalDevoxxReport</h1>
+
             </TitleContainer>
-            <div>
-              <NavButtons />
-              <LogoutButton className="desktopOnlyInline" onClick={this.logOut}>
-                Log Out
-              </LogoutButton>
-            </div>
+            {this.state.uuidPresent &&
+              <div>
+                <NavButtons />
+                <LogoutButton
+                  className="desktopOnlyInline"
+                  onClick={this.logOut}
+                >
+                  Log Out
+                </LogoutButton>
+              </div>}
           </NavBar>
           <PrivateRoute
             path="/"
@@ -524,25 +551,28 @@ class App extends Component {
 
           <Branding />
 
-          <SideNav
-            className="mobileOnly"
-            showNav={this.state.navVisible}
-            onHideNav={() => this.setState({ navVisible: false })}
-            title={<div>Personal Devoxx</div>}
-            titleStyle={{ backgroundColor: "#ff9e19" }}
-            itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
-            items={NavItems.map(item => (
-              <NavLink
-                to={item.link}
-                key={item.name}
-                onClick={e => this.setState({ navVisible: false })}
-              >
-                {item.name}
-              </NavLink>
-            )).concat([
-              <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
-            ])}
-          />
+          {this.state.uuidPresent &&
+            <SideNav
+              className="mobileOnly"
+              showNav={this.state.navVisible}
+              onHideNav={() => this.setState({ navVisible: false })}
+              title={<div>PersonalDevoxx Report 2017</div>}
+              titleStyle={{ backgroundColor: "#ff9e19" }}
+              itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
+              items={NavItems.map(item => (
+                <NavLink
+                  to={item.link}
+                  key={item.name}
+                  onClick={e => this.setState({ navVisible: false })}
+                >
+                  {item.name}
+                </NavLink>
+              )).concat([
+                <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
+              ])}
+            />}
+          <Notifications />
+
         </Page>
       </DevoxxRouter>
     );

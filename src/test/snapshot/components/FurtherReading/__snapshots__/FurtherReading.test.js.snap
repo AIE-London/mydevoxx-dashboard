@@ -6,85 +6,87 @@ exports[`test FurtherReading component with title snapshot 1`] = `
     className="fcdRkU">
     Recommendations
   </h2>
-  <a
-    href="http://devoxx.co.uk">
-    <div
-      className="hRXQwI row">
-      <div>
+  <div>
+    <a
+      href="http://devoxx.co.uk">
+      <div
+        className="hRXQwI row">
         <div>
-          <h3>
-            Intro to Devoxx
-          </h3>
-          <h4>
-            Devoxx Webpage
-          </h4>
+          <div>
+            <h3>
+              Intro to Devoxx
+            </h3>
+            <h4>
+              Devoxx Webpage
+            </h4>
+          </div>
         </div>
+        <p>
+          Based on your 
+          tracks
+        </p>
       </div>
-      <p>
-        Based on your 
-        tracks
-      </p>
-    </div>
-  </a>
-  <a
-    href="http://devoxx.co.uk">
-    <div
-      className="hRXQwI row">
-      <div>
+    </a>
+    <a
+      href="http://devoxx.co.uk">
+      <div
+        className="hRXQwI row">
         <div>
-          <h3>
-            Intro to Devoxx2
-          </h3>
-          <h4>
-            Devoxx Webpage
-          </h4>
+          <div>
+            <h3>
+              Intro to Devoxx2
+            </h3>
+            <h4>
+              Devoxx Webpage
+            </h4>
+          </div>
         </div>
+        <p>
+          Based on your 
+          tracks
+        </p>
       </div>
-      <p>
-        Based on your 
-        tracks
-      </p>
-    </div>
-  </a>
-  <a
-    href="http://devoxx.co.uk">
-    <div
-      className="hRXQwI row">
-      <div>
+    </a>
+    <a
+      href="http://devoxx.co.uk">
+      <div
+        className="hRXQwI row">
         <div>
-          <h3>
-            Intro to Devoxx3
-          </h3>
-          <h4>
-            Devoxx Webpage
-          </h4>
+          <div>
+            <h3>
+              Intro to Devoxx3
+            </h3>
+            <h4>
+              Devoxx Webpage
+            </h4>
+          </div>
         </div>
+        <p>
+          Based on your 
+          tracks
+        </p>
       </div>
-      <p>
-        Based on your 
-        tracks
-      </p>
-    </div>
-  </a>
-  <a
-    href="http://devoxx.co.uk">
-    <div
-      className="hRXQwI row">
-      <div>
+    </a>
+    <a
+      href="http://devoxx.co.uk">
+      <div
+        className="hRXQwI row">
         <div>
-          <h3>
-            Intro to Devoxx4
-          </h3>
-          <h4>
-            Devoxx Webpage
-          </h4>
+          <div>
+            <h3>
+              Intro to Devoxx4
+            </h3>
+            <h4>
+              Devoxx Webpage
+            </h4>
+          </div>
         </div>
+        <p>
+          Based on your 
+          tracks
+        </p>
       </div>
-      <p>
-        Based on your 
-        tracks
-      </p>
-    </div>
-  </a>
+    </a>
+  </div>
 </section>
 `;
