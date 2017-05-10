@@ -31,10 +31,6 @@ const Header = styled.h2`
   margin-bottom: 0.5em;
   color: #000;
   max-width: 100%;
-  `;
-
-const Header3 = styled.h3`
-     max-width: 100%;
 `;
 
 const Session = styled.div`
