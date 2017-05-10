@@ -4,6 +4,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Card from "./Card";
+import UnavailableView from "./UnavailableView";
 
 const Container = styled.section`
   overflow-y: auto;
@@ -63,21 +64,23 @@ class FurtherReading extends Component {
     return (
       <Container id="recommended-reading">
         <Header>Recommendations</Header>
-        {this.props.recommendations.map(recommendation => (
-          <a key={recommendation.title} href={recommendation.link}>
-            <Recommendation>
-              <div>
+        <UnavailableView itemName="recommendations" textColor="#fff">
+          {this.props.recommendations.map(recommendation => (
+            <a key={recommendation.title} href={recommendation.link}>
+              <Recommendation>
                 <div>
-                  <h3>{recommendation.title}</h3>
-                  <h4>{recommendation.linkName}</h4>
+                  <div>
+                    <h3>{recommendation.title}</h3>
+                    <h4>{recommendation.linkName}</h4>
+                  </div>
+                  {recommendation.imageurl &&
+                    <img src={recommendation.imageurl} />}
                 </div>
-                {recommendation.imageurl &&
-                  <img src={recommendation.imageurl} />}
-              </div>
-              <p>Based on your {recommendation.source}</p>
-            </Recommendation>
-          </a>
-        ))}
+                <p>Based on your {recommendation.source}</p>
+              </Recommendation>
+            </a>
+          ))}
+        </UnavailableView>
       </Container>
     );
   }

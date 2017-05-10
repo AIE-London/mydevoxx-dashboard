@@ -2,6 +2,16 @@
  * Created by dan on 07/05/2017.
  */
 
+export function orderTalksByStartDate(talkIds, talkData) {
+  return talkIds.sort((talkA, talkB) => {
+    try {
+      return talkData[talkA].startTime - talkData[talkB].startTime;
+    } catch (error) {
+      return 0;
+    }
+  });
+}
+
 export function getTopTracks(talks) {
   let tracks = talks.reduce((result, talk) => {
     talk.tracks.forEach(track => {
