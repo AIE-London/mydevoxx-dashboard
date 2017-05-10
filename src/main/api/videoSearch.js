@@ -3,8 +3,8 @@
  */
 import request from "then-request";
 
-let host = "mydevoxx-capgemini-api-router.eu-gb.mybluemix.net";
-const mockHost = "aston-wiremock.eu-gb.mybluemix.net";
+let host = "https://mydevoxx-capgemini-api-router.eu-gb.mybluemix.net";
+const mockHost = process.env.WIREMOCK_SERVER;
 
 /**
  * Use mock endpoint outside of live
@@ -51,10 +51,7 @@ export const getKindId = result => {
  * @returns {Object}
  */
 export const getVideos = track => {
-  return request(
-    "GET",
-    "https://" + host + "/videos/topic/" + track
-  ).then(response => {
+  return request("GET", host + "/videos/topic/" + track).then(response => {
     let body = JSON.parse(response.getBody());
     return body.items.map(result => {
       let kindIdObj = getKindId(result);
