@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Card from "./Card";
 import { CommaList, CommaListItem } from "./CommaList";
+import UnavailableView from "./UnavailableView";
 
 import { orderTalksByStartDate } from "../utils/talkUtils";
 
@@ -72,40 +73,42 @@ class SessionsAttended extends Component {
     return (
       <Container id="attended-sessions">
         <Header>My Sessions</Header>
-        {orderTalksByStartDate(
-          this.props.talkIDs,
-          this.props.talkData
-        ).map((talkID, index) => {
-          try {
-            let talk = this.props.talkData[talkID];
-            return (
-              <Session key={talk.title}>
-                <div>
-                  <h3>{talk.title}</h3>
-                  <h4>Speakers: </h4>
-                  <CommaList>
-                    {talk.speakers.map((speakerId, index) => {
-                      try {
-                        let speakerProfile = this.props.speakerData[speakerId];
-                        return (
-                          <CommaListItem key={speakerProfile.name}>
-                            {speakerProfile.name}
-                          </CommaListItem>
-                        );
-                      } catch (error) {
-                        return <span key={index} />;
-                      }
-                    })}
-                  </CommaList>
-                </div>
-                {/* [TODO] Make these images DYNAMIC */}
-
-              </Session>
-            );
-          } catch (error) {
-            return <div key={index}>Loading...</div>;
-          }
-        })}
+        <UnavailableView itemName="sessions">
+          {orderTalksByStartDate(
+            this.props.talkIDs,
+            this.props.talkData
+          ).map((talkID, index) => {
+            try {
+              let talk = this.props.talkData[talkID];
+              return (
+                <Session key={talk.title}>
+                  <div>
+                    <h3>{talk.title}</h3>
+                    <h4>Speakers: </h4>
+                    <CommaList>
+                      {talk.speakers.map((speakerId, index) => {
+                        try {
+                          let speakerProfile = this.props.speakerData[
+                            speakerId
+                          ];
+                          return (
+                            <CommaListItem key={speakerProfile.name}>
+                              {speakerProfile.name}
+                            </CommaListItem>
+                          );
+                        } catch (error) {
+                          return <span key={index} />;
+                        }
+                      })}
+                    </CommaList>
+                  </div>
+                </Session>
+              );
+            } catch (error) {
+              return <div key={index}>Loading...</div>;
+            }
+          })}
+        </UnavailableView>
       </Container>
     );
   }
