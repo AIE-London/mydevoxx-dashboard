@@ -276,14 +276,22 @@ class App extends Component {
       })
       .catch(error => {
         debugLog.log(error.message);
-        notify.show("Login persistence failed, please try again.", "error");
+        notify.show(
+          "Failed to retrieve favoured talks. Refresh to retry.",
+          "error"
+        );
       });
 
-    let schedTalkPromise = ScheduledTalk.getScheduledTalks(
-      uuid
-    ).then(results => {
-      this.setState({ scheduledTalks: results.scheduled });
-    });
+    let schedTalkPromise = ScheduledTalk.getScheduledTalks(uuid)
+      .then(results => {
+        this.setState({ scheduledTalks: results.scheduled });
+      })
+      .catch(error => {
+        notify.show(
+          "Failed to retrieve scheduled talks. Refresh to retry.",
+          "error"
+        );
+      });
 
     let thursSchedule = [];
     let friSchedule = [];
