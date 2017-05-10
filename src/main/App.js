@@ -462,19 +462,26 @@ class App extends Component {
         <Page>
           <NavBar>
             <TitleContainer>
-              <h2
-                id="nav-icon"
-                onClick={() => this.setState({ navVisible: true })}
-                className="mobileOnly"
-              />
-              <h1>Personal Devoxx</h1>
+
+              {this.state.uuidPresent &&
+                <h2
+                  id="nav-icon"
+                  onClick={() => this.setState({ navVisible: true })}
+                  className="mobileOnly"
+                />}
+              <h1>PersonalDevoxxReport</h1>
+
             </TitleContainer>
-            <div>
-              <NavButtons />
-              <LogoutButton className="desktopOnlyInline" onClick={this.logOut}>
-                Log Out
-              </LogoutButton>
-            </div>
+            {this.state.uuidPresent &&
+              <div>
+                <NavButtons />
+                <LogoutButton
+                  className="desktopOnlyInline"
+                  onClick={this.logOut}
+                >
+                  Log Out
+                </LogoutButton>
+              </div>}
           </NavBar>
           <PrivateRoute
             path="/"
@@ -521,25 +528,27 @@ class App extends Component {
 
           <Branding />
 
-          <SideNav
-            className="mobileOnly"
-            showNav={this.state.navVisible}
-            onHideNav={() => this.setState({ navVisible: false })}
-            title={<div>Personal Devoxx</div>}
-            titleStyle={{ backgroundColor: "#ff9e19" }}
-            itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
-            items={NavItems.map(item => (
-              <NavLink
-                to={item.link}
-                key={item.name}
-                onClick={e => this.setState({ navVisible: false })}
-              >
-                {item.name}
-              </NavLink>
-            )).concat([
-              <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
-            ])}
-          />
+          {this.state.uuidPresent &&
+            <SideNav
+              className="mobileOnly"
+              showNav={this.state.navVisible}
+              onHideNav={() => this.setState({ navVisible: false })}
+              title={<div>PersonalDevoxx Report 2017</div>}
+              titleStyle={{ backgroundColor: "#ff9e19" }}
+              itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
+              items={NavItems.map(item => (
+                <NavLink
+                  to={item.link}
+                  key={item.name}
+                  onClick={e => this.setState({ navVisible: false })}
+                >
+                  {item.name}
+                </NavLink>
+              )).concat([
+                <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
+              ])}
+            />}
+
         </Page>
       </DevoxxRouter>
     );
