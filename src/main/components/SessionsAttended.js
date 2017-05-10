@@ -15,6 +15,7 @@ const Container = styled(Card)`
   max-width: 520px;
   padding-right: 0.5em;
   flex-direction: column;
+  display: block;
 `;
 
 const Header = styled.h2`
