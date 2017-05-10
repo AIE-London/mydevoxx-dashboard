@@ -13,7 +13,7 @@ To run the dashboard locally, clone this repo and then go through the below pre-
 
 ### Pre-requisites
 You will need to setup a local wiremock server. We've provided some sample 'mappings'
-in /test/wiremock/mappings.
+in /src/test/integration/api/wiremock/mappings.
 
 Once this is done. Export the WIREMOCK_SERVER environment variable.
 
