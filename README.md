@@ -8,7 +8,7 @@ It serves as a personal dashboard for attendees of the Devoxx UK conference. Tho
 The dashboard utilizes technologies such as React and Node.js.
 
 ## Usage
-Link to the live website: https://mydevoxx-dashboard.eu-gb.mybluemix.net/login
+Link to the live website: https://personal.devoxx.co.uk
 To run the dashboard locally, clone this repo, then run the following in the repo: 
 ```bash
 npm install
