@@ -85,6 +85,7 @@ class SpeakerCard extends Component {
                       return <li key={talk.id}>{talk.title}</li>;
                     } catch (error) {
                       debugLog.log("[SPKR CARD] Unknown talk ID");
+                      return null;
                     }
                   })}
                 </Talks>

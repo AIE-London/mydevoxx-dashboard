@@ -20,7 +20,7 @@ export default class Recommendation {
   }
 
   _parseUrl(url) {
-    if (!url.startsWith("http")) {
+    if (url && !url.startsWith("http")) {
       return "http://" + url;
     } else {
       return url;
