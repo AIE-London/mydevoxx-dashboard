@@ -6,7 +6,7 @@ import request from "then-request";
 
 let scheduledTalksEndpoint =
   "https://mydevoxx-capgemini-api-router.eu-gb.mybluemix.net/scheduled";
-const mockUuidEndpoint = "https://aston-wiremock.eu-gb.mybluemix.net/scheduled";
+const mockUuidEndpoint = process.env.WIREMOCK_SERVER + "/scheduled";
 
 /**
  * Use mock endpoint outside of live

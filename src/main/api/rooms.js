@@ -2,7 +2,7 @@ import request from "then-request";
 
 let roomEndpoint = "https://cfp.devoxx.co.uk/api/conferences/DV17/rooms/";
 const mockRoomEndpoint =
-  "https://aston-wiremock.eu-gb.mybluemix.net/api/conferences/DV17/rooms/";
+  process.env.WIREMOCK_SERVER + "/api/conferences/DV17/rooms/";
 
 /**
  * Use mock endpoint outside of live
