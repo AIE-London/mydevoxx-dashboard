@@ -1,3 +1,4 @@
+import ReactGA from "react-ga";
 import React, { Component } from "react";
 import {
   BrowserRouter as Router,
@@ -171,6 +172,11 @@ class App extends Component {
       globalRecommendations: [],
       stats: {}
     };
+
+    if (["production", "integration"].indexOf(process.env.NODE_ENV) >= 0) {
+      ReactGA.initialize("UA-98791923-1");
+    }
+
     //open connection to indexeddb - display error if connection failed
     db
       .open("devoxx-db")
@@ -189,6 +195,13 @@ class App extends Component {
     this.speakerInfo = this.speakerInfo.bind(this);
     this.logOut = this.logOut.bind(this);
     this.storeTalkDataInState = this.storeTalkDataInState.bind(this);
+  }
+
+  logPageView() {
+    if (["production", "integration"].indexOf(process.env.NODE_ENV) >= 0) {
+      ReactGA.set({ page: window.location.pathname });
+      ReactGA.pageview(window.location.pathname);
+    }
   }
 
   uuidExists = () => {
@@ -481,7 +494,7 @@ class App extends Component {
 
   render() {
     return (
-      <DevoxxRouter history={browserHistory}>
+      <DevoxxRouter history={browserHistory} onUpdate={this.logPageView}>
         <Page>
           <NavBar>
             <TitleContainer>
