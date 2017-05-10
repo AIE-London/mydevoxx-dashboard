@@ -44,6 +44,7 @@ import Speaker from "./model/speaker";
  */
 import { getTimeForTalk, getTopTracks } from "./utils/talkUtils";
 import { recommendGlobal } from "./utils/recommendationEngine";
+import debugLog from "./utils/debugLog";
 
 /*
   Styled Components
@@ -197,7 +198,7 @@ class App extends Component {
           .get("0")
           .then(resolution => {
             if (resolution) {
-              console.log(resolution);
+              debugLog.log(resolution);
               this.setState({ uuidPresent: true, redirectLogin: false });
 
               this.storeTalkDataInState(resolution.uuid);
@@ -289,7 +290,7 @@ class App extends Component {
         friSchedule = result;
       })
     ]).catch(error => {
-      console.log("[ERROR] Recieving schedules. Carrying on.");
+      debugLog.log("[ERROR] Recieving schedules. Carrying on.");
     });
 
     Promise.all([
@@ -364,7 +365,7 @@ class App extends Component {
                 return this.speakerInfo(result.speakers);
               },
               error => {
-                console.log("[TALK] request failed - continuing");
+                debugLog.log("[TALK] request failed - continuing");
               }
             );
           })
@@ -383,7 +384,7 @@ class App extends Component {
             }))
             .sort((speakera, speakerb) => speakerb.count - speakera.count);
 
-          console.log(topTracks);
+          debugLog.log(topTracks);
 
           this.setState({
             stats: {
@@ -415,7 +416,7 @@ class App extends Component {
     firebase.auth().signOut().then(
       () => {
         db.record.clear().then(() => {
-          console.log("DELETING");
+          debugLog.log("DELETING");
           return this.uuidExists().catch(error => {
             this.setState({
               redirectLogin: true,

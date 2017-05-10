@@ -3,6 +3,7 @@ import { Row, Col } from "react-flexbox-grid";
 import styled from "styled-components";
 import TalkCard from "./TalkCard";
 import SpeakerCard from "./SpeakerCard";
+import debugLog from "../utils/debugLog";
 
 // Styles for the different elements of the page
 const DayText = styled.h2`
@@ -53,7 +54,7 @@ class SessionView extends Component {
         </div>
       );
     } catch (error) {
-      console.log("Failed to provide time");
+      debugLog.log("Failed to provide time");
     }
     try {
       return (
