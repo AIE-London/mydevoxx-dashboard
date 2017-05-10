@@ -20,8 +20,13 @@ const StatsCard = styled(Card)`
 `;
 
 const StatHeader = styled.h2`
-    opacity: 0.8;
-    font-family: helvetica;
+  opacity: 0.8;
+  font-family: helvetica;
+`;
+
+const UnavailableMessage = styled.h4`
+  width: 100%;
+  text-align: center;
 `;
 
 class Stats extends Component {
@@ -56,11 +61,15 @@ class Stats extends Component {
 
                   <div style={{ textAlign: "center", paddingBottom: 15 }}>
                     <CommaList>
-                      {this.props.speakers.map(function(speaker) {
-                        return (
-                          <CommaListItem key={speaker}>{speaker}</CommaListItem>
-                        );
-                      })}
+                      {this.props.speakers && this.props.speakers.length > 0
+                        ? this.props.speakers.map(function(speaker) {
+                            return (
+                              <CommaListItem key={speaker}>
+                                {speaker}
+                              </CommaListItem>
+                            );
+                          })
+                        : <h4> No Speakers available</h4>}
                     </CommaList>
                   </div>
                 </Col>
@@ -85,8 +94,10 @@ class Stats extends Component {
               <Row start="xs">
                 <Col xs={12}>
                   <StatHeader>Top Tracks:</StatHeader>
+                  <UnavailableMessage>No tracks available</UnavailableMessage>
 
                   <StatHeader>Top Speakers:</StatHeader>
+                  <UnavailableMessage>No speakers available</UnavailableMessage>
                 </Col>
               </Row>
             </Col>
