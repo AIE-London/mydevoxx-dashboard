@@ -5,6 +5,7 @@ import styled from "styled-components";
 import ReportStats from "./ReportStats";
 import SessionView from "./SessionView";
 
+import { orderTalksByStartDate } from "../utils/talkUtils";
 const UnavailableMessage = styled.h3`
   width: 100%;
   text-align: center;
@@ -32,15 +33,10 @@ class Report extends Component {
           ? <UnavailableMessage>
               Report unavailable, try again later.
             </UnavailableMessage>
-          : this.props.talks
-              .sort((talka, talkb) => {
-                if (talka.startTime && talkb.startTime) {
-                  return talkb.startTime - talka.startTime;
-                } else {
-                  return 0;
-                }
-              })
-              .map((talkId, index) => (
+          : orderTalksByStartDate(
+              this.props.talks,
+              this.props.talkData
+            ).map((talkId, index) => (
                 <SessionView
                   key={index}
                   talkId={talkId}

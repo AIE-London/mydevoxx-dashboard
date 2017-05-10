@@ -7,6 +7,8 @@ import Card from "./Card";
 import { CommaList, CommaListItem } from "./CommaList";
 import UnavailableView from "./UnavailableView";
 
+import { orderTalksByStartDate } from "../utils/talkUtils";
+
 const Container = styled(Card)`
   padding: 0.5em 1em;
   overflow-y: auto;
@@ -72,7 +74,10 @@ class SessionsAttended extends Component {
       <Container id="attended-sessions">
         <Header>My Sessions</Header>
         <UnavailableView itemName="sessions">
-          {this.props.talkIDs.map((talkID, index) => {
+          {orderTalksByStartDate(
+            this.props.talkIDs,
+            this.props.talkData
+          ).map((talkID, index) => {
             try {
               let talk = this.props.talkData[talkID];
               return (
@@ -97,8 +102,6 @@ class SessionsAttended extends Component {
                       })}
                     </CommaList>
                   </div>
-                  {/* [TODO] Make these images DYNAMIC */}
-
                 </Session>
               );
             } catch (error) {
