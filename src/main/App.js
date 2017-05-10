@@ -20,7 +20,6 @@ import Notifications, { notify } from "react-notify-toast";
 
 import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
-import TopRated from "./components/TopRated";
 import LoginForm from "./components/LoginForm";
 
 import NavButtons, { NavItems } from "./components/NavButtons";

@@ -8,7 +8,6 @@ import { Col, Row } from "react-flexbox-grid";
 
 import { CommaList, CommaListItem } from "./CommaList";
 import StarRating from "./StarRating";
-import Review from "./Review";
 
 /**
  *  Styled Components
@@ -57,10 +56,6 @@ const CardNotes = styled.textarea`
   margin-top: 1em;
 `;
 
-const ReviewContainer = styled(Row)`
-  padding: 0.5em 1em;
-`;
-
 const TrackList = styled(CommaList)`
   opacity: 0.6;
 `;
@@ -71,10 +66,6 @@ const FullWidthCard = styled(Card)`
 
 class TalkCard extends Component {
   render() {
-    // [TODO] Allow the user to take notes & store in indexed DB
-    let notes = "";
-    // [TODO] Allow the user to review & store in indexed DB
-    let review = "";
     // [TODO] Allow the user to rate & store in indexed DB
     let rating = 0;
     let { title, summary, tracks } = this.props.talk;

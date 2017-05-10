@@ -74,7 +74,13 @@ class FurtherReading extends Component {
                     <h4>{recommendation.linkName}</h4>
                   </div>
                   {recommendation.imageurl &&
-                    <img src={recommendation.imageurl} />}
+                    <img
+                      src={recommendation.imageurl}
+                      alt={
+                        "A snapshot of a YouTube video entitled: " +
+                          recommendation.title
+                      }
+                    />}
                 </div>
                 <p>Based on your {recommendation.source}</p>
               </Recommendation>
