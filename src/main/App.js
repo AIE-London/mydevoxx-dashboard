@@ -173,10 +173,9 @@ class App extends Component {
       stats: {}
     };
 
-    // Add your tracking ID created from https://analytics.google.com/analytics/web/#home/
-    ReactGA.initialize("UA-98791923-1");
-    // This just needs to be called once since we have no routes in this case.
-    ReactGA.pageview(window.location.pathname);
+    if (["production", "integration"].indexOf(process.env.NODE_ENV) >= 0) {
+      ReactGA.initialize("UA-98791923-1");
+    }
 
     //open connection to indexeddb - display error if connection failed
     db
@@ -196,6 +195,13 @@ class App extends Component {
     this.speakerInfo = this.speakerInfo.bind(this);
     this.logOut = this.logOut.bind(this);
     this.storeTalkDataInState = this.storeTalkDataInState.bind(this);
+  }
+
+  logPageView() {
+    if (["production", "integration"].indexOf(process.env.NODE_ENV) >= 0) {
+      ReactGA.set({ page: window.location.pathname });
+      ReactGA.pageview(window.location.pathname);
+    }
   }
 
   uuidExists = () => {
@@ -488,7 +494,7 @@ class App extends Component {
 
   render() {
     return (
-      <DevoxxRouter history={browserHistory}>
+      <DevoxxRouter history={browserHistory} onUpdate={this.logPageView}>
         <Page>
           <NavBar>
             <TitleContainer>
