@@ -9,14 +9,34 @@ The dashboard utilizes technologies such as React and Node.js.
 
 ## Usage
 Link to the live website: http://bit.ly/personal-devoxx
-To run the dashboard locally, clone this repo, then run the following:
+To run the dashboard locally, clone this repo and then go through the below pre-requisites.
+
+### Pre-requisites
+You will need to setup a local wiremock server. We've provided some sample 'mappings'
+in /src/test/integration/api/wiremock/mappings.
+
+Once this is done. Export the WIREMOCK_SERVER environment variable.
+
+### Running the app
 
 ```bash
     npm install
+    export WIREMOCK_SERVER=http://localhost:1234
+    # use your wiremock URL
     npm start
 ```
 
 Then, navigate to localhost:3000 in your favourite internet browser.
+
+## Testing
+The app is tested via Jest.
+To run these tests clone the repo and run the following command:
+```bash
+    npm install
+    npm test
+`````
+
+## Capgemini
 
 Come and work with us!
 
