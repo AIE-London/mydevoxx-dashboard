@@ -6,7 +6,7 @@ exports[`test App component snapshot 1`] = `
     <div
       className="glmvbA">
       <h1>
-        PersonalDevoxxReport
+        Personal Devoxx
       </h1>
     </div>
   </div>
