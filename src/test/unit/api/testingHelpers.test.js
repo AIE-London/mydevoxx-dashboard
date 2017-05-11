@@ -48,3 +48,62 @@ test("Should rethrow the same error (raiseOrPass version)", () => {
     expect(true).toBe(true);
   }
 });
+
+test("Should throw an UnexpectedErrorException (raiseOrPass version)", () => {
+  let testError = new Error("error message");
+  testError.name = "UnknownErrorException";
+
+  let expectedError = new UnexpectedErrorException(
+    "Return this message",
+    testError
+  );
+
+  try {
+    raiseOrPassError(
+      "UnexpectedErrorException",
+      "Return this message",
+      testError
+    );
+    expect(false).toBe(true);
+  } catch (expectedError) {
+    expect(true).toBe(true);
+  }
+});
+
+test("Should return an UnexpectedSuccessException", () => {
+  let testError = new Error("error message");
+  testError.name = "UnknownErrorException";
+
+  let expectedError = new UnexpectedSuccessException(
+    "Return this message",
+    testError
+  );
+
+  try {
+    raiseOrPassError(
+      "UnexpectedSuccessException",
+      "Return this message",
+      testError
+    );
+    expect(false).toBe(true);
+  } catch (expectedError) {
+    expect(true).toBe(true);
+  }
+});
+
+test("Should return an MappingSetupException", () => {
+  let testError = new Error("error message");
+  testError.name = "UnknownErrorException";
+
+  let expectedError = new MappingSetupException(
+    "Return this message",
+    testError
+  );
+
+  try {
+    raiseOrPassError("MappingSetupException", "Return this message", testError);
+    expect(false).toBe(true);
+  } catch (expectedError) {
+    expect(true).toBe(true);
+  }
+});
