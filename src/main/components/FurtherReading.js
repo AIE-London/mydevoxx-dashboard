@@ -59,6 +59,22 @@ const Recommendation = styled(Card)`
   margin-bottom: 0.5em;
 `;
 
+let RecommendationLink = function({ children, link, title }) {
+  if (link) {
+    return (
+      <a key={title} href={link}>
+        {children}
+      </a>
+    );
+  } else {
+    return (
+      <div>
+        {children}
+      </div>
+    );
+  }
+};
+
 class FurtherReading extends Component {
   render() {
     return (
@@ -66,12 +82,16 @@ class FurtherReading extends Component {
         <Header>Recommendations</Header>
         <UnavailableView itemName="recommendations" textColor="#fff">
           {this.props.recommendations.map(recommendation => (
-            <a key={recommendation.title} href={recommendation.link}>
+            <RecommendationLink
+              title={recommendation.title}
+              link={recommendation.link}
+            >
               <Recommendation>
                 <div>
                   <div>
                     <h3>{recommendation.title}</h3>
-                    <h4>{recommendation.linkName}</h4>
+                    {recommendation.linkName &&
+                      <h4>{recommendation.linkName}</h4>}
                   </div>
                   {recommendation.imageurl &&
                     <img
@@ -84,7 +104,7 @@ class FurtherReading extends Component {
                 </div>
                 <p>Based on your {recommendation.source}</p>
               </Recommendation>
-            </a>
+            </RecommendationLink>
           ))}
         </UnavailableView>
       </Container>
