@@ -51,6 +51,7 @@ import { getTalk, mapIDArrayToValue } from "./utils/apiOrchestration";
 import { recommendGlobal } from "./utils/recommendationEngine";
 import debugLog from "./utils/debugLog";
 import uuidStorage from "./utils/uuidStorage";
+import YoutubeVid from "./components/YoutubeVid";
 uuidStorage.init();
 
 /*
@@ -615,7 +616,7 @@ class App extends Component {
               ])}
             />}
           <Notifications />
-
+          <YoutubeVid url="https://www.youtube.com/embed/eJVvVCh0u3c" />
         </Page>
       </DevoxxRouter>
     );
