@@ -1,4 +1,3 @@
-import ReactGA from "react-ga";
 import React, { Component } from "react";
 import {
   BrowserRouter as Router,
@@ -20,7 +19,7 @@ import Notifications, { notify } from "react-notify-toast";
 import Dashboard from "./components/Dashboard";
 import Report from "./components/Report";
 import LoginForm from "./components/LoginForm";
-
+import AnalyticsHandler from "./components/AnalyticsHandler";
 import NavButtons, { NavItems } from "./components/NavButtons";
 import Branding from "./components/Branding";
 
@@ -173,10 +172,6 @@ class App extends Component {
       stats: {}
     };
 
-    if (["production", "integration"].indexOf(process.env.NODE_ENV) >= 0) {
-      ReactGA.initialize("UA-98791923-1");
-    }
-
     uuidStorage
       .openDB()
       .then(() => {
@@ -194,13 +189,6 @@ class App extends Component {
     this.speakerInfo = this.speakerInfo.bind(this);
     this.logOut = this.logOut.bind(this);
     this.storeTalkDataInState = this.storeTalkDataInState.bind(this);
-  }
-
-  logPageView() {
-    if (["production", "integration"].indexOf(process.env.NODE_ENV) >= 0) {
-      ReactGA.set({ page: window.location.pathname });
-      ReactGA.pageview(window.location.pathname);
-    }
   }
 
   uuidExists = () => {
@@ -524,99 +512,100 @@ class App extends Component {
 
   render() {
     return (
-      <DevoxxRouter history={browserHistory} onUpdate={this.logPageView}>
-        <Page>
-          <NavBar>
-            <TitleContainer>
+      <DevoxxRouter history={browserHistory}>
+        <AnalyticsHandler>
+          <Page>
+            <NavBar>
+              <TitleContainer>
 
+                {this.state.uuidPresent &&
+                  <h2
+                    id="nav-icon"
+                    onClick={() => this.setState({ navVisible: true })}
+                    className="mobileOnly"
+                  />}
+                <h1>Personal Devoxx</h1>
+
+              </TitleContainer>
               {this.state.uuidPresent &&
-                <h2
-                  id="nav-icon"
-                  onClick={() => this.setState({ navVisible: true })}
-                  className="mobileOnly"
-                />}
-              <h1>Personal Devoxx</h1>
-
-            </TitleContainer>
-            {this.state.uuidPresent &&
-              <div>
-                <NavButtons />
-                <LogoutButton
-                  className="desktopOnlyInline"
-                  onClick={this.logOut}
-                >
-                  Log Out
-                </LogoutButton>
-              </div>}
-          </NavBar>
-          <PrivateRoute
-            path="/"
-            exact
-            uuidPresent={this.state.uuidPresent}
-            render={props => (
-              <Dashboard
-                speakerData={this.state.speakers}
-                talkData={this.state.talks}
-                talkIDs={mergeUniqueArrayByID(
-                  this.state.favouredTalks,
-                  this.state.scheduledTalks
-                )}
-                recommendations={this.state.globalRecommendations}
-                stats={this.state.stats}
-                {...props}
-              />
-            )}
-          />
-          {this.state.redirectLogin && <Redirect to="/login" />}
-          <Route path="/login" render={this.signInPage} />
-          <PrivateRoute
-            uuidPresent={this.state.uuidPresent}
-            path="/report"
-            render={props => {
-              return (
-                <Report
-                  reportStats={this.state.stats}
+                <div>
+                  <NavButtons />
+                  <LogoutButton
+                    className="desktopOnlyInline"
+                    onClick={this.logOut}
+                  >
+                    Log Out
+                  </LogoutButton>
+                </div>}
+            </NavBar>
+            <PrivateRoute
+              path="/"
+              exact
+              uuidPresent={this.state.uuidPresent}
+              render={props => (
+                <Dashboard
                   speakerData={this.state.speakers}
                   talkData={this.state.talks}
-                  talks={mergeUniqueArrayByID(
+                  talkIDs={mergeUniqueArrayByID(
                     this.state.favouredTalks,
                     this.state.scheduledTalks
                   )}
+                  recommendations={this.state.globalRecommendations}
+                  stats={this.state.stats}
+                  {...props}
                 />
-              );
-            }}
-          />
-          <PrivateRoute
-            path="/talk/:id"
-            uuidPresent={this.state.uuidPresent}
-            component={Talk}
-          />
+              )}
+            />
+            {this.state.redirectLogin && <Redirect to="/login" />}
+            <Route path="/login" render={this.signInPage} />
+            <PrivateRoute
+              uuidPresent={this.state.uuidPresent}
+              path="/report"
+              render={props => {
+                return (
+                  <Report
+                    reportStats={this.state.stats}
+                    speakerData={this.state.speakers}
+                    talkData={this.state.talks}
+                    talks={mergeUniqueArrayByID(
+                      this.state.favouredTalks,
+                      this.state.scheduledTalks
+                    )}
+                  />
+                );
+              }}
+            />
+            <PrivateRoute
+              path="/talk/:id"
+              uuidPresent={this.state.uuidPresent}
+              component={Talk}
+            />
 
-          <Branding />
+            <Branding />
 
-          {this.state.uuidPresent &&
-            <SideNav
-              className="mobileOnly"
-              showNav={this.state.navVisible}
-              onHideNav={() => this.setState({ navVisible: false })}
-              title={<div>Personal Devoxx</div>}
-              titleStyle={{ backgroundColor: "#ff9e19" }}
-              itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
-              items={NavItems.map(item => (
-                <NavLink
-                  to={item.link}
-                  key={item.name}
-                  onClick={e => this.setState({ navVisible: false })}
-                >
-                  {item.name}
-                </NavLink>
-              )).concat([
-                <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
-              ])}
-            />}
-          <Notifications />
-
-        </Page>
+            {this.state.uuidPresent &&
+              <SideNav
+                className="mobileOnly"
+                showNav={this.state.navVisible}
+                onHideNav={() => this.setState({ navVisible: false })}
+                title={<div>Personal Devoxx</div>}
+                titleStyle={{ backgroundColor: "#ff9e19" }}
+                itemStyle={{ padding: 0, margin: 0, listStyle: "none" }}
+                items={NavItems.map(item => (
+                  <NavLink
+                    to={item.link}
+                    key={item.name}
+                    onClick={e => this.setState({ navVisible: false })}
+                  >
+                    {item.name}
+                  </NavLink>
+                )).concat([
+                  <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
+                ])}
+              />}
+            <Notifications />
+          </Page>
+        </AnalyticsHandler>
       </DevoxxRouter>
     );
   }
