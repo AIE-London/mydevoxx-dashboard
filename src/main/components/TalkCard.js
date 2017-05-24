@@ -37,6 +37,7 @@ const RightPartition = styled(Col)`
   border-left: solid 1px #BDBDBD;
   border-top: solid 1px #BDBDBD;
   text-align: left;
+  padding-bottom: 1em;
 `;
 
 const CardParagraph = styled.p`
@@ -64,11 +65,15 @@ const FullWidthCard = styled(Card)`
   flex: 1;
 `;
 
+const CardVideoSubhead = styled(CardSubhead)`
+  color: #ff9e19;
+`;
+
 class TalkCard extends Component {
   render() {
     // [TODO] Allow the user to rate & store in indexed DB
     let rating = 0;
-    let { title, summary, tracks } = this.props.talk;
+    let { title, summary, tracks, videoID } = this.props.talk;
     return (
       <FullWidthCard start="xs">
         <LeftPartition xs={12} md={6}>
@@ -81,6 +86,20 @@ class TalkCard extends Component {
           <CardParagraph>
             {summary}
           </CardParagraph>
+          {videoID &&
+            <Row>
+              <CardVideoSubhead
+                onClick={() => this.props.videoSelected(videoID)}
+              >
+                Play Video
+              </CardVideoSubhead>
+            </Row>}
+        </LeftPartition>
+        <RightPartition xs={12} md={6}>
+          <Row start="xs">
+            <CardSubhead id="notesHeader">My Notes</CardSubhead>
+          </Row>
+          <CardNotes placeholder="Write notes here..." />
           <Row>
             <CardSubhead>Top Tracks</CardSubhead>
           </Row>
@@ -91,12 +110,6 @@ class TalkCard extends Component {
               ))}
             </TrackList>
           </Row>
-        </LeftPartition>
-        <RightPartition xs={12} md={6}>
-          <Row start="xs">
-            <CardSubhead id="notesHeader">My Notes</CardSubhead>
-          </Row>
-          <CardNotes placeholder="Write notes here..." />
         </RightPartition>
       </FullWidthCard>
     );

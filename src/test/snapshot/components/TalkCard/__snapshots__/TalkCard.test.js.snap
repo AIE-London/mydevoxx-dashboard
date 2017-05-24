@@ -31,6 +31,21 @@ exports[`test card component with title snapshot 1`] = `
       className="jLJUnn">
       This is a talk about devoxx
     </p>
+    
+  </div>
+  <div
+    className="col-xs-12 col-md-6 eOYzku">
+    <div
+      className="row start-xs">
+      <h3
+        className="jJURiy"
+        id="notesHeader">
+        My Notes
+      </h3>
+    </div>
+    <textarea
+      className="dBQlNn"
+      placeholder="Write notes here..." />
     <div
       className="row">
       <h3
@@ -52,20 +67,6 @@ exports[`test card component with title snapshot 1`] = `
         </li>
       </ul>
     </div>
-  </div>
-  <div
-    className="col-xs-12 col-md-6 hkfHMw">
-    <div
-      className="row start-xs">
-      <h3
-        className="jJURiy"
-        id="notesHeader">
-        My Notes
-      </h3>
-    </div>
-    <textarea
-      className="dBQlNn"
-      placeholder="Write notes here..." />
   </div>
 </div>
 `;

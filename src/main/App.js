@@ -50,6 +50,7 @@ import { getTalk, mapIDArrayToValue } from "./utils/apiOrchestration";
 import { recommendGlobal } from "./utils/recommendationEngine";
 import debugLog from "./utils/debugLog";
 import uuidStorage from "./utils/uuidStorage";
+import YoutubeVid from "./components/YoutubeVid";
 uuidStorage.init();
 
 /*
@@ -169,7 +170,8 @@ class App extends Component {
       speakers: {},
       redirectLogin: false,
       globalRecommendations: [],
-      stats: {}
+      stats: {},
+      videoID: null
     };
 
     uuidStorage
@@ -186,6 +188,7 @@ class App extends Component {
     this.userSignedIn = this.userSignedIn.bind(this);
     this.signInPage = this.signInPage.bind(this);
     this.uuidExists = this.uuidExists.bind(this);
+    this.getSpeakersForTalks = this.getSpeakersForTalks.bind(this);
     this.speakerInfo = this.speakerInfo.bind(this);
     this.logOut = this.logOut.bind(this);
     this.storeTalkDataInState = this.storeTalkDataInState.bind(this);
@@ -261,6 +264,7 @@ class App extends Component {
     let favTalkPromise = FavoredTalk.getFavoredTalks(uuid)
       .then(results => {
         this.setState({ favouredTalks: results.favored });
+        console.log(results.favored);
       })
       .catch(error => {
         debugLog.log(error.message);
@@ -273,6 +277,7 @@ class App extends Component {
     let schedTalkPromise = ScheduledTalk.getScheduledTalks(uuid)
       .then(results => {
         this.setState({ scheduledTalks: results.scheduled });
+        console.log(results.scheduled);
       })
       .catch(error => {
         notify.show(
@@ -332,16 +337,18 @@ class App extends Component {
 
     talks.forEach(talk => {
       // Iterate through talks. Add each instance of a speaker to their count
-      talk.speakers.forEach(speaker => {
-        // For each speaker - check we've got an entry for them
-        if (speakerCounts[speaker]) {
-          // If so - increment it
-          speakerCounts[speaker]++;
-        } else {
-          // If not - set them up at 1 count for now
-          speakerCounts[speaker] = 1;
-        }
-      });
+      if (talk) {
+        talk.speakers.forEach(speaker => {
+          // For each speaker - check we've got an entry for them
+          if (speakerCounts[speaker]) {
+            // If so - increment it
+            speakerCounts[speaker]++;
+          } else {
+            // If not - set them up at 1 count for now
+            speakerCounts[speaker] = 1;
+          }
+        });
+      }
       // Whilst we're iterating - get time for talk and add to total time
       timeMinutes += getTimeForTalk(talk);
     });
@@ -417,7 +424,9 @@ class App extends Component {
     // Iterate through all talks - fire off requests for speakers
     return Promise.all(
       talks.map(talk => {
-        return this.speakerInfo(talk.speakers);
+        if (talk) {
+          return this.speakerInfo(talk.speakers);
+        }
       })
     );
   }
@@ -552,6 +561,10 @@ class App extends Component {
                   )}
                   recommendations={this.state.globalRecommendations}
                   stats={this.state.stats}
+                  videoSelected={id => {
+                    this.setState({ videoID: id });
+                    console.log(id);
+                  }}
                   {...props}
                 />
               )}
@@ -571,6 +584,10 @@ class App extends Component {
                       this.state.favouredTalks,
                       this.state.scheduledTalks
                     )}
+                    videoSelected={id => {
+                      this.setState({ videoID: id });
+                      console.log(id);
+                    }}
                   />
                 );
               }}
@@ -603,6 +620,7 @@ class App extends Component {
                   <LogoutMobile onClick={this.logOut}>Log Out</LogoutMobile>
                 ])}
               />}
+            {this.state.videoID && <YoutubeVid url={this.state.videoID} />}
             <Notifications />
           </Page>
         </AnalyticsHandler>

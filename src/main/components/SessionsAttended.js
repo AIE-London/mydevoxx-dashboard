@@ -66,6 +66,17 @@ const Session = styled.div`
 `;
 
 class SessionsAttended extends Component {
+  getTitle(talk) {
+    if (talk.videoID) {
+      return (
+        <span onClick={() => this.props.videoSelected(talk.videoID)}>
+          {talk.title}
+        </span>
+      );
+    }
+    return talk.title;
+  }
+
   render() {
     return (
       <Container id="attended-sessions">
@@ -80,7 +91,7 @@ class SessionsAttended extends Component {
               return (
                 <Session key={talk.title}>
                   <div>
-                    <h3>{talk.title}</h3>
+                    <h3>{this.getTitle(talk)}</h3>
                     <h4>Speakers: </h4>
                     <CommaList>
                       {talk.speakers.map((speakerId, index) => {

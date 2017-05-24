@@ -38,6 +38,7 @@ class Report extends Component {
               this.props.talkData
             ).map((talkId, index) => (
               <SessionView
+                videoSelected={this.props.videoSelected}
                 key={index}
                 talkId={talkId}
                 talkData={this.props.talkData}
