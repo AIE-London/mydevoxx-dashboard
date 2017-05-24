@@ -14,7 +14,7 @@ beforeEach(() => {
     "en",
     "This is a talk about devoxx",
     ["123ABC"],
-    "http://video.youtube.com"
+    "https://youtu.be/vi123deo?123=123"
   );
 });
 
@@ -43,5 +43,5 @@ test("Talk model should return correct Speaker IDs", () => {
 });
 
 test("Talk model should return correct video URL", () => {
-  expect(TalkOne.videoUrl).toEqual("http://video.youtube.com");
+  expect(TalkOne.videoID).toEqual("vi123deo");
 });
