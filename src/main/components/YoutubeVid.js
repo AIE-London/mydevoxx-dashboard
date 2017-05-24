@@ -46,6 +46,7 @@ const Menu = styled.div`
   height: 40%;
   opacity: 0;
   padding: 0.5em;
+  padding-top: 0.25em;
   box-sizing: border-box;
   &:hover {
     opacity: ${({ max }) => (max ? 0 : 0.9)};
