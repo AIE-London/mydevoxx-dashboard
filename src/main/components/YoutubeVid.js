@@ -60,8 +60,10 @@ const Container = styled.div`
     z-index: 100;    
     cursor: pointer;
     position: fixed;
-    width: 600px;
-    height: 400px;
+    width: 90%;
+    height: 90%;
+    max-width: 600px;
+    max-height: 400px;
     background: black;
     left: 50%;
     top: 50%;
