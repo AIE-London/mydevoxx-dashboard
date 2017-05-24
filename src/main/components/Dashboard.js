@@ -61,6 +61,7 @@ class Dashboard extends Component {
               speakerData={this.props.speakerData}
               talkData={this.props.talkData}
               talkIDs={this.props.talkIDs}
+              videoSelected={this.props.videoSelected}
             />
           </Col>
           <Col xs={12} sm={6} md={4}>

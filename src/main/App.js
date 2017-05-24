@@ -570,6 +570,10 @@ class App extends Component {
                   this.state.favouredTalks,
                   this.state.scheduledTalks
                 )}
+                videoSelected={id => {
+                  this.setState({ videoID: id });
+                  console.log(id);
+                }}
                 recommendations={this.state.globalRecommendations}
                 stats={this.state.stats}
                 {...props}
