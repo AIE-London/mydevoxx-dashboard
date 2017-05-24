@@ -73,7 +73,8 @@ let getTalk = talkId => {
       name: body.title,
       description: body.summary,
       tracks: parseTracks(body.track),
-      speakers: parseSpeakers(body.speakers)
+      speakers: parseSpeakers(body.speakers),
+      videoURL: body.videoURL
     };
   });
 };

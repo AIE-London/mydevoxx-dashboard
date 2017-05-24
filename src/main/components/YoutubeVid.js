@@ -170,13 +170,18 @@ class YoutubeVid extends Component {
       });
     });
   }
+
+  processURL(url) {
+    return "https://www.youtube.com/embed/" + url + "?modestbranding=1&fs=0";
+  }
+
   render() {
     return (
       <div>
 
         <Container id="video">
           <VideoContainer>
-            <Video src={this.props.url + "?modestbranding=1&fs=0"} />
+            <Video src={this.processURL(this.props.url)} />
             <Menu max={this.state.max}>
               <span onClick={this.maximise}>^</span>
             </Menu>

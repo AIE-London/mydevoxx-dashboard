@@ -30,15 +30,24 @@ export default class Talk {
     this._language = language;
     this._summary = summary;
     this._speakers = speakers;
-    this._videoUrl = videoUrl;
+    this._videoUrl = this.processURL(videoUrl);
     this._type = type;
+  }
+
+  processURL(url) {
+    if (url) {
+      url = url.replace("https://youtu.be/", "");
+      url = url.substring(0, url.indexOf("?"));
+    }
+    return url;
   }
 
   get type() {
     return this._type;
   }
 
-  get videoUrl() {
+  get videoID() {
+    console.log("[VIDEO URL] " + this._videoUrl);
     return this._videoUrl;
   }
 

@@ -68,7 +68,10 @@ class SessionView extends Component {
           <Row center="xs">
             <Col xs={10}>
               <Row>
-                <TalkCard talk={talk} />
+                <TalkCard
+                  talk={talk}
+                  videoSelected={this.props.videoSelected}
+                />
               </Row>
               <SpeakerSection center="xs">
                 {talk.speakers.map(speakerID => {
