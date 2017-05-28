@@ -23,7 +23,7 @@ import retrieveUuid from "../api/retrieveUuid";
 /*
   Define Endpoints
  */
-let successURL = "https://personal.devoxx.co.uk";
+let successURL = "https://bit.ly/personal-devoxx";
 const mockSuccessURL = "http://localhost:3000/report";
 
 if (["production", "integration"].indexOf(process.env.NODE_ENV) < 0) {
